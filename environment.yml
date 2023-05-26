@@ -1,0 +1,14 @@
+name: pylipd
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - pip
+  - python=3.10
+  - pytest
+  - pandas
+  - jupyter
+  - jupyterlab
+  - pip:
+    - git+https://github.com/LinkedEarth/pylipd.git@main
+
