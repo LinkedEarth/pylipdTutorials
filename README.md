@@ -1,3 +1,5 @@
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/LinkedEarth/pylipdTutorials/HEAD)
+
 # pylipdTutorials: A Gentle Introduction to working with LiPD files in Python
 
 A collection of science-driven tutorials for using the [PyLiPD](https://pylipd.readthedocs.io/en/latest/) python package. 
