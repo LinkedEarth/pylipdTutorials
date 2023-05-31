@@ -5,7 +5,7 @@
 
 This book contains several science-driven examples on how to use the [PyLiPD](https://pylipd.readthedocs.io/en/latest/) python package, which is dedicated to the loading and manipulation of paleoclimate datasets in the [LiPD format](https://lipd.net). 
 
-## Contributores
+## Contributors
 
 <a href="https://github.com/LinkedEarth/pylipdTutorials/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=LinkedEarth/pylipdTutorials" />
