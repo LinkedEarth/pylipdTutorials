@@ -1,0 +1,1826 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Basic manipulation of pylipd.LiPD object &#8212; PyLiPD Tutorials</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/L0_lipd_object';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Working with ensembles in PyLiPD" href="L1_working_with_ensembles.html" />
+    <link rel="prev" title="Reading LiPD formatted datasets with PyLiPD" href="L0_loading_lipd_datasets.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/LinkedEarth_small.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/LinkedEarth_small.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    An introduction to the PyLiPD package
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="L0_loading_lipd_datasets.html">Reading LiPD formatted datasets with <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Basic manipulation of <code class="docutils literal notranslate"><span class="pre">pylipd.LiPD</span></code> object</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Functionalities</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="L1_working_with_ensembles.html">Working with ensembles in <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/LinkedEarth/pylipdTutorials/jupyterbook?urlpath=tree/jupyterBook/notebooks/L0_lipd_object.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/LinkedEarth/pylipdTutorials" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/LinkedEarth/pylipdTutorials/issues/new?title=Issue%20on%20page%20%2Fnotebooks/L0_lipd_object.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/L0_lipd_object.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Basic manipulation of pylipd.LiPD object</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preamble">Preamble</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#goals">Goals:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keywords">Keywords</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-requisites">Pre-requisites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relevant-packages">Relevant Packages</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-description">Data Description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstration">Demonstration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-time-series-data-from-lipd-formatted-datasets">Extract time series data from LiPD formatted datasets</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-one-dataset">Working with one dataset</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-multiple-datasets">Working with multiple datasets</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-and-popping-datasets-out-of-a-lipd-object">Removing and popping datasets out of a LiPD object</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="basic-manipulation-of-pylipd-lipd-object">
+<h1>Basic manipulation of <code class="docutils literal notranslate"><span class="pre">pylipd.LiPD</span></code> object<a class="headerlink" href="#basic-manipulation-of-pylipd-lipd-object" title="Permalink to this heading">#</a></h1>
+<section id="authors">
+<h2>Authors<a class="headerlink" href="#authors" title="Permalink to this heading">#</a></h2>
+<p>by <a class="reference external" href="https://orcid.org/0000-0001-7501-8430">Deborah Khider</a></p>
+</section>
+<section id="preamble">
+<h2>Preamble<a class="headerlink" href="#preamble" title="Permalink to this heading">#</a></h2>
+<section id="goals">
+<h3>Goals:<a class="headerlink" href="#goals" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Extract a time series for data analysis</p></li>
+<li><p>Remove/pop LiPD datasets to an existing <code class="docutils literal notranslate"><span class="pre">LiPD</span></code> object</p></li>
+</ul>
+<p>Reading Time: 5 minutes</p>
+</section>
+<section id="keywords">
+<h3>Keywords<a class="headerlink" href="#keywords" title="Permalink to this heading">#</a></h3>
+<p>LiPD; query</p>
+</section>
+<section id="pre-requisites">
+<h3>Pre-requisites<a class="headerlink" href="#pre-requisites" title="Permalink to this heading">#</a></h3>
+<p>None. This tutorial assumes basic knowledge of Python and Pandas. If you are not familiar with this coding language and the Pandas library, check out this tutorial: <a class="reference external" href="http://linked.earth/ec_workshops_py/">http://linked.earth/ec_workshops_py/</a>.</p>
+</section>
+<section id="relevant-packages">
+<h3>Relevant Packages<a class="headerlink" href="#relevant-packages" title="Permalink to this heading">#</a></h3>
+<p>Pandas, pylipd</p>
+</section>
+</section>
+<section id="data-description">
+<h2>Data Description<a class="headerlink" href="#data-description" title="Permalink to this heading">#</a></h2>
+<p>This notebook uses the following datasets, in LiPD format:</p>
+<ul class="simple">
+<li><p>Nurhati, I. S., Cobb, K. M., &amp; Di Lorenzo, E. (2011). Decadal-scale SST and salinity variations in the central tropical Pacific: Signatures of natural and anthropogenic climate change. Journal of Climate, 24(13), 3294–3308. doi:10.1175/2011jcli3852.1</p></li>
+<li><p>Euro2k database: PAGES2k Consortium., Emile-Geay, J., McKay, N. et al. A global multiproxy database for temperature reconstructions of the Common Era. Sci Data 4, 170088 (2017). doi:10.1038/sdata.2017.88</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pylipd.lipd</span> <span class="kn">import</span> <span class="n">LiPD</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="demonstration">
+<h2>Demonstration<a class="headerlink" href="#demonstration" title="Permalink to this heading">#</a></h2>
+<section id="extract-time-series-data-from-lipd-formatted-datasets">
+<h3>Extract time series data from LiPD formatted datasets<a class="headerlink" href="#extract-time-series-data-from-lipd-formatted-datasets" title="Permalink to this heading">#</a></h3>
+<p>If you are famliar with the <a class="reference external" href="https://nickmckay.github.io/lipdR/">R utilities</a>, one useful functions is the ability to expand timeseries data. This capability was also present in the previous iteration of the Python utilities and <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code> retains this compatbility to ease the transition.</p>
+<p>If you’re unsure about what a time series is in the LiPD context, <a class="reference external" href="https://nickmckay.github.io/lipdR/#helptimeseries">read more</a>.</p>
+<section id="working-with-one-dataset">
+<h4>Working with one dataset<a class="headerlink" href="#working-with-one-dataset" title="Permalink to this heading">#</a></h4>
+<p>First, let’s load a single dataset:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_path</span> <span class="o">=</span> <span class="s1">&#39;../data/Ocn-Palmyra.Nurhati.2011.lpd&#39;</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">LiPD</span><span class="p">()</span>
+<span class="n">D</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">data_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading 1 LiPD files
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/1 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1/1 [00:00&lt;00:00, 24.03it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s get all the timeseries for this dataset. Note that the <a class="reference external" href="https://pylipd.readthedocs.io/en/latest/source/pylipd.html#pylipd.lipd.LiPD.get_timeseries"><code class="docutils literal notranslate"><span class="pre">get_timeseries</span></code></a> function requires to pass the dataset names. This is useful if you only want to expand only one dataset from your LiPD object. You can also use the function <a class="reference external" href="https://pylipd.readthedocs.io/en/latest/source/pylipd.html#pylipd.lipd.LiPD.get_all_dataset_names"><code class="docutils literal notranslate"><span class="pre">get_all_dataset_names</span></code></a> in the call to expand all datasets:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ts_list</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">get_timeseries</span><span class="p">(</span><span class="n">D</span><span class="o">.</span><span class="n">get_all_dataset_names</span><span class="p">())</span>
+
+<span class="nb">type</span><span class="p">(</span><span class="n">ts_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extracting timeseries from dataset: Ocn-Palmyra.Nurhati.2011 ...
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that the above function returns a dictionary that organizes the extracted timeseries by dataset name:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ts_list</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;Ocn-Palmyra.Nurhati.2011&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Each timeseries is then stored into a list of dictionaries that preserve essential metadata for each time/depth and value pair:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">ts_list</span><span class="p">[</span><span class="s1">&#39;Ocn-Palmyra.Nurhati.2011&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>list
+</pre></div>
+</div>
+</div>
+</div>
+<p>Although the information is present, it is not easy to navigate or query across the various list. One simple way of doing so is to return the list into a <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html"><code class="docutils literal notranslate"><span class="pre">Pandas.DataFrame</span></code></a>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ts_list</span><span class="p">,</span> <span class="n">df</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">get_timeseries</span><span class="p">(</span><span class="n">D</span><span class="o">.</span><span class="n">get_all_dataset_names</span><span class="p">(),</span> <span class="n">to_dataframe</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extracting timeseries from dataset: Ocn-Palmyra.Nurhati.2011 ...
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mode</th>
+      <th>time_id</th>
+      <th>lipdVersion</th>
+      <th>googleDataURL</th>
+      <th>googleMetadataWorksheet</th>
+      <th>geo_meanLon</th>
+      <th>geo_meanLat</th>
+      <th>geo_meanElev</th>
+      <th>geo_type</th>
+      <th>geo_ocean</th>
+      <th>...</th>
+      <th>paleoData_notes</th>
+      <th>paleoData_proxy</th>
+      <th>paleoData_variableType</th>
+      <th>paleoData_values</th>
+      <th>paleoData_dataType</th>
+      <th>paleoData_inferredVariableType</th>
+      <th>paleoData_description</th>
+      <th>paleoData_ocean2kID</th>
+      <th>paleoData_inCompilation</th>
+      <th>paleoData_pages2kID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>paleoData</td>
+      <td>age</td>
+      <td>1.3</td>
+      <td>https://docs.google.com/spreadsheets/d/1AIFOcq...</td>
+      <td>oax0htr</td>
+      <td>-162.13</td>
+      <td>5.87</td>
+      <td>-10.0</td>
+      <td>Feature</td>
+      <td>WP</td>
+      <td>...</td>
+      <td>; climateInterpretation_seasonality changed - ...</td>
+      <td>d18O</td>
+      <td>measured</td>
+      <td>[-5.41, -5.47, -5.49, -5.43, -5.48, -5.53, -5....</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>paleoData</td>
+      <td>age</td>
+      <td>1.3</td>
+      <td>https://docs.google.com/spreadsheets/d/1AIFOcq...</td>
+      <td>oax0htr</td>
+      <td>-162.13</td>
+      <td>5.87</td>
+      <td>-10.0</td>
+      <td>Feature</td>
+      <td>WP</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>inferred</td>
+      <td>[1998.29, 1998.21, 1998.13, 1998.04, 1997.96, ...</td>
+      <td>float</td>
+      <td>Year</td>
+      <td>Year AD</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>paleoData</td>
+      <td>age</td>
+      <td>1.3</td>
+      <td>https://docs.google.com/spreadsheets/d/1AIFOcq...</td>
+      <td>oax0htr</td>
+      <td>-162.13</td>
+      <td>5.87</td>
+      <td>-10.0</td>
+      <td>Feature</td>
+      <td>WP</td>
+      <td>...</td>
+      <td>; paleoData_variableName changed - was origina...</td>
+      <td>Sr/Ca</td>
+      <td>measured</td>
+      <td>[8.96, 8.9, 8.91, 8.94, 8.92, 8.89, 8.87, 8.81...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>PacificNurhati2011</td>
+      <td>Ocean2k_v1.0.0</td>
+      <td>Ocn_129</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>paleoData</td>
+      <td>age</td>
+      <td>1.3</td>
+      <td>https://docs.google.com/spreadsheets/d/1AIFOcq...</td>
+      <td>oax0htr</td>
+      <td>-162.13</td>
+      <td>5.87</td>
+      <td>-10.0</td>
+      <td>Feature</td>
+      <td>WP</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>inferred</td>
+      <td>[1998.21, 1998.13, 1998.04, 1997.96, 1997.88, ...</td>
+      <td>float</td>
+      <td>Year</td>
+      <td>Year AD</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>paleoData</td>
+      <td>age</td>
+      <td>1.3</td>
+      <td>https://docs.google.com/spreadsheets/d/1AIFOcq...</td>
+      <td>oax0htr</td>
+      <td>-162.13</td>
+      <td>5.87</td>
+      <td>-10.0</td>
+      <td>Feature</td>
+      <td>WP</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>d18O</td>
+      <td>measured</td>
+      <td>[0.39, 0.35, 0.35, 0.35, 0.36, 0.22, 0.33, 0.3...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 93 columns</p>
+</div></div></div>
+</div>
+<p>You can now use all the pandas functionalities for filtering and querying dataframes. First, let’s have a look at the available properties, which corresponds to the column headers:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;mode&#39;, &#39;time_id&#39;, &#39;lipdVersion&#39;, &#39;googleDataURL&#39;,
+       &#39;googleMetadataWorksheet&#39;, &#39;geo_meanLon&#39;, &#39;geo_meanLat&#39;, &#39;geo_meanElev&#39;,
+       &#39;geo_type&#39;, &#39;geo_ocean&#39;, &#39;geo_pages2kRegion&#39;, &#39;geo_siteName&#39;,
+       &#39;dataContributor&#39;, &#39;pub1_author&#39;, &#39;pub1_title&#39;, &#39;pub1_citeKey&#39;,
+       &#39;pub1_institution&#39;, &#39;pub1_urldate&#39;, &#39;pub1_url&#39;, &#39;pub1_DOI&#39;,
+       &#39;pub2_author&#39;, &#39;pub2_publisher&#39;, &#39;pub2_journal&#39;, &#39;pub2_citeKey&#39;,
+       &#39;pub2_doi&#39;, &#39;pub2_link&#39;, &#39;pub2_title&#39;, &#39;pub2_pages&#39;, &#39;pub2_year&#39;,
+       &#39;pub2_dataUrl&#39;, &#39;pub2_volume&#39;, &#39;pub2_DOI&#39;, &#39;pub3_author&#39;, &#39;pub3_pages&#39;,
+       &#39;pub3_volume&#39;, &#39;pub3_title&#39;, &#39;pub3_publisher&#39;, &#39;pub3_link&#39;, &#39;pub3_doi&#39;,
+       &#39;pub3_citeKey&#39;, &#39;pub3_year&#39;, &#39;pub3_dataUrl&#39;, &#39;pub3_issue&#39;,
+       &#39;pub3_journal&#39;, &#39;pub3_DOI&#39;, &#39;hasUrl&#39;, &#39;dataSetName&#39;, &#39;studyName&#39;,
+       &#39;originalDataURL&#39;, &#39;googleSpreadSheetKey&#39;, &#39;createdBy&#39;, &#39;archiveType&#39;,
+       &#39;tableType&#39;, &#39;paleoData_measurementTableName&#39;,
+       &#39;paleoData_measurementTableMD5&#39;, &#39;paleoData_filename&#39;,
+       &#39;paleoData_googleWorkSheetKey&#39;, &#39;paleoData_paleoDataTableName&#39;, &#39;year&#39;,
+       &#39;yearUnits&#39;, &#39;paleoData_hasMeanValue&#39;, &#39;paleoData_sensorGenus&#39;,
+       &#39;paleoData_useInGlobalTemperatureAnalysis&#39;, &#39;paleoData_hasMinValue&#39;,
+       &#39;paleoData_units&#39;, &#39;paleoData_variableName&#39;, &#39;paleoData_sensorSpecies&#39;,
+       &#39;paleoData_TSid&#39;, &#39;paleoData_number&#39;, &#39;paleoData_wDSPaleoUrl&#39;,
+       &#39;paleoData_interpretation&#39;, &#39;paleoData_hasMaxValue&#39;,
+       &#39;paleoData_qCnotes&#39;, &#39;paleoData_hasMedianValue&#39;,
+       &#39;paleoData_qCCertification&#39;, &#39;paleoData_hasResolution_hasMeanValue&#39;,
+       &#39;paleoData_hasResolution_units&#39;,
+       &#39;paleoData_hasResolution_hasMedianValue&#39;,
+       &#39;paleoData_hasResolution_hasMinValue&#39;,
+       &#39;paleoData_hasResolution_hasMaxValue&#39;, &#39;paleoData_proxyObservationType&#39;,
+       &#39;paleoData_iso2kUI&#39;, &#39;paleoData_missingValue&#39;, &#39;paleoData_notes&#39;,
+       &#39;paleoData_proxy&#39;, &#39;paleoData_variableType&#39;, &#39;paleoData_values&#39;,
+       &#39;paleoData_dataType&#39;, &#39;paleoData_inferredVariableType&#39;,
+       &#39;paleoData_description&#39;, &#39;paleoData_ocean2kID&#39;,
+       &#39;paleoData_inCompilation&#39;, &#39;paleoData_pages2kID&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s have a look at the <code class="docutils literal notranslate"><span class="pre">paleoData_variableName</span></code> column to see what’s available:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;paleoData_variableName&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     d18O
+1     year
+2    Sr_Ca
+3     year
+4     d18O
+Name: paleoData_variableName, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>All columns get extracted, hence why <code class="docutils literal notranslate"><span class="pre">year</span></code> is extracted as a paleo variable, with its associated values stored in <code class="docutils literal notranslate"><span class="pre">paleoData_values</span></code>. Notice that there is also two variables names <code class="docutils literal notranslate"><span class="pre">d18O</span></code>. Since this is a coral record, it stands to reason that one corresponds to the measured <span class="math notranslate nohighlight">\(\delta^{18}O\)</span> of the coral and the other the <span class="math notranslate nohighlight">\(\delta^{18}O\)</span> of the seawater. Let’s have a look at the <code class="docutils literal notranslate"><span class="pre">qCnotes</span></code> field:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;paleoData_variableName&#39;</span><span class="p">,</span><span class="s1">&#39;paleoData_qCnotes&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>paleoData_variableName</th>
+      <th>paleoData_qCnotes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>d18O</td>
+      <td>Duplicate of modern d18O record presented in C...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>year</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Sr_Ca</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>year</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>d18O</td>
+      <td>d18Osw (residuals calculated from coupled SrCa...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>In fact, one is for the measurement on the coral and the other for seawater. Querying on this small dataset is not necessary; however, it can become useful when looking at a collection of files as shown in the next example (working with multiple datasets).</p>
+<p>To extract by row index (here extracting for <code class="docutils literal notranslate"><span class="pre">Sr_Ca</span></code>):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_cut</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span>
+
+<span class="n">df_cut</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mode                                                                      paleoData
+time_id                                                                         age
+lipdVersion                                                                     1.3
+googleDataURL                     https://docs.google.com/spreadsheets/d/1AIFOcq...
+googleMetadataWorksheet                                                     oax0htr
+                                                        ...                        
+paleoData_inferredVariableType                                                  NaN
+paleoData_description                                                           NaN
+paleoData_ocean2kID                                                             NaN
+paleoData_inCompilation                                                         NaN
+paleoData_pages2kID                                                             NaN
+Name: 0, Length: 93, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_cut</span><span class="p">[</span><span class="s1">&#39;paleoData_variableName&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;d18O&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>This can be very useful when working with the <a class="reference external" href="https://pyleoclim-util.readthedocs.io/en/master/"><code class="docutils literal notranslate"><span class="pre">Pyleoclim</span></code></a> software since a <code class="docutils literal notranslate"><span class="pre">Pyleoclim.Series</span></code> can be initialized from the information contained in <code class="docutils literal notranslate"><span class="pre">df_cut</span></code>. Working with <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code> and <code class="docutils literal notranslate"><span class="pre">Pyleoclim</span></code> is a subject of <a class="reference external" href="http://linked.earth/PyleoTutorials/intro.html">several tutorials</a>.</p>
+<p>Working with such a large dataframe can be overwhelming and not needed in some cases. Therefore, <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code> has a nifty function called <code class="docutils literal notranslate"><span class="pre">get_timeseries_essential</span></code> that grabs information about the dataset, its geographical location, the time/depth values, the variable information, including archive and proxy:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_essential</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">get_timeseries_essentials</span><span class="p">()</span>
+
+<span class="n">df_essential</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>dataSetName</th>
+      <th>archiveType</th>
+      <th>geo_meanLat</th>
+      <th>geo_meanLon</th>
+      <th>geo_meanElev</th>
+      <th>paleoData_variableName</th>
+      <th>paleoData_values</th>
+      <th>paleoData_units</th>
+      <th>paleoData_proxy</th>
+      <th>paleoData_proxyGeneral</th>
+      <th>time_variableName</th>
+      <th>time_values</th>
+      <th>time_units</th>
+      <th>depth_variableName</th>
+      <th>depth_values</th>
+      <th>depth_units</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Ocn-Palmyra.Nurhati.2011</td>
+      <td>coral</td>
+      <td>5.87</td>
+      <td>-162.13</td>
+      <td>-10.0</td>
+      <td>Sr_Ca</td>
+      <td>[8.96, 8.9, 8.91, 8.94, 8.92, 8.89, 8.87, 8.81...</td>
+      <td>mmol/mol</td>
+      <td>Sr/Ca</td>
+      <td>None</td>
+      <td>year</td>
+      <td>[1998.29, 1998.21, 1998.13, 1998.04, 1997.96, ...</td>
+      <td>AD</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Ocn-Palmyra.Nurhati.2011</td>
+      <td>coral</td>
+      <td>5.87</td>
+      <td>-162.13</td>
+      <td>-10.0</td>
+      <td>year</td>
+      <td>[1998.29, 1998.21, 1998.13, 1998.04, 1997.96, ...</td>
+      <td>AD</td>
+      <td>None</td>
+      <td>None</td>
+      <td>year</td>
+      <td>[1998.29, 1998.21, 1998.13, 1998.04, 1997.96, ...</td>
+      <td>AD</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Ocn-Palmyra.Nurhati.2011</td>
+      <td>coral</td>
+      <td>5.87</td>
+      <td>-162.13</td>
+      <td>-10.0</td>
+      <td>year</td>
+      <td>[1998.21, 1998.13, 1998.04, 1997.96, 1997.88, ...</td>
+      <td>AD</td>
+      <td>None</td>
+      <td>None</td>
+      <td>year</td>
+      <td>[1998.21, 1998.13, 1998.04, 1997.96, 1997.88, ...</td>
+      <td>AD</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Ocn-Palmyra.Nurhati.2011</td>
+      <td>coral</td>
+      <td>5.87</td>
+      <td>-162.13</td>
+      <td>-10.0</td>
+      <td>d18O</td>
+      <td>[0.39, 0.35, 0.35, 0.35, 0.36, 0.22, 0.33, 0.3...</td>
+      <td>permil</td>
+      <td>d18O</td>
+      <td>None</td>
+      <td>year</td>
+      <td>[1998.21, 1998.13, 1998.04, 1997.96, 1997.88, ...</td>
+      <td>AD</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Ocn-Palmyra.Nurhati.2011</td>
+      <td>coral</td>
+      <td>5.87</td>
+      <td>-162.13</td>
+      <td>-10.0</td>
+      <td>d18O</td>
+      <td>[-5.41, -5.47, -5.49, -5.43, -5.48, -5.53, -5....</td>
+      <td>permil</td>
+      <td>d18O</td>
+      <td>None</td>
+      <td>year</td>
+      <td>[1998.29, 1998.21, 1998.13, 1998.04, 1997.96, ...</td>
+      <td>AD</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The metadata (i.e., the column names) available through this function will always remain the same and are as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_essential</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;dataSetName&#39;, &#39;archiveType&#39;, &#39;geo_meanLat&#39;, &#39;geo_meanLon&#39;,
+       &#39;geo_meanElev&#39;, &#39;paleoData_variableName&#39;, &#39;paleoData_values&#39;,
+       &#39;paleoData_units&#39;, &#39;paleoData_proxy&#39;, &#39;paleoData_proxyGeneral&#39;,
+       &#39;time_variableName&#39;, &#39;time_values&#39;, &#39;time_units&#39;, &#39;depth_variableName&#39;,
+       &#39;depth_values&#39;, &#39;depth_units&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="working-with-multiple-datasets">
+<h4>Working with multiple datasets<a class="headerlink" href="#working-with-multiple-datasets" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;../data/Euro2k/&#39;</span>
+
+<span class="n">D_dir</span> <span class="o">=</span> <span class="n">LiPD</span><span class="p">()</span>
+<span class="n">D_dir</span><span class="o">.</span><span class="n">load_from_dir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading 31 LiPD files
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/31 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 16%|█▌        | 5/31 [00:00&lt;00:00, 44.47it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 32%|███▏      | 10/31 [00:00&lt;00:00, 44.38it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 48%|████▊     | 15/31 [00:00&lt;00:00, 46.24it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 65%|██████▍   | 20/31 [00:00&lt;00:00, 31.75it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 77%|███████▋  | 24/31 [00:00&lt;00:00, 32.95it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 94%|█████████▎| 29/31 [00:00&lt;00:00, 36.04it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 31/31 [00:00&lt;00:00, 36.82it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s expand into our essential dataframe:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_dir</span> <span class="o">=</span> <span class="n">D_dir</span><span class="o">.</span><span class="n">get_timeseries_essentials</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s have a look at the dataframe:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_dir</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>dataSetName</th>
+      <th>archiveType</th>
+      <th>geo_meanLat</th>
+      <th>geo_meanLon</th>
+      <th>geo_meanElev</th>
+      <th>paleoData_variableName</th>
+      <th>paleoData_values</th>
+      <th>paleoData_units</th>
+      <th>paleoData_proxy</th>
+      <th>paleoData_proxyGeneral</th>
+      <th>time_variableName</th>
+      <th>time_values</th>
+      <th>time_units</th>
+      <th>depth_variableName</th>
+      <th>depth_values</th>
+      <th>depth_units</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Arc-GulfofAlaska.Wilson.2014</td>
+      <td>tree</td>
+      <td>61.03</td>
+      <td>-146.590</td>
+      <td>230.0</td>
+      <td>temperature</td>
+      <td>[7.685, 7.427, 7.062, 7.133, 7.153, 7.653, 7.8...</td>
+      <td>degC</td>
+      <td>TRW</td>
+      <td>None</td>
+      <td>year</td>
+      <td>[800, 801, 802, 803, 804, 805, 806, 807, 808, ...</td>
+      <td>AD</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Arc-GulfofAlaska.Wilson.2014</td>
+      <td>tree</td>
+      <td>61.03</td>
+      <td>-146.590</td>
+      <td>230.0</td>
+      <td>year</td>
+      <td>[800.0, 801.0, 802.0, 803.0, 804.0, 805.0, 806...</td>
+      <td>AD</td>
+      <td>None</td>
+      <td>None</td>
+      <td>year</td>
+      <td>[800, 801, 802, 803, 804, 805, 806, 807, 808, ...</td>
+      <td>AD</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Arc-PolarUrals.Wilson.2015</td>
+      <td>tree</td>
+      <td>66.90</td>
+      <td>65.600</td>
+      <td>250.0</td>
+      <td>year</td>
+      <td>[891.0, 892.0, 893.0, 894.0, 895.0, 896.0, 897...</td>
+      <td>AD</td>
+      <td>None</td>
+      <td>None</td>
+      <td>year</td>
+      <td>[891, 892, 893, 894, 895, 896, 897, 898, 899, ...</td>
+      <td>AD</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Arc-PolarUrals.Wilson.2015</td>
+      <td>tree</td>
+      <td>66.90</td>
+      <td>65.600</td>
+      <td>250.0</td>
+      <td>density</td>
+      <td>[1.97, 0.02, 0.84, 0.43, 0.78, -1.3, -0.14, 1....</td>
+      <td>NA</td>
+      <td>TRW</td>
+      <td>None</td>
+      <td>year</td>
+      <td>[891, 892, 893, 894, 895, 896, 897, 898, 899, ...</td>
+      <td>AD</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Eur-FinnishLakelands.Helama.2014</td>
+      <td>tree</td>
+      <td>62.00</td>
+      <td>28.325</td>
+      <td>130.0</td>
+      <td>year</td>
+      <td>[2000.0, 1999.0, 1998.0, 1997.0, 1996.0, 1995....</td>
+      <td>AD</td>
+      <td>None</td>
+      <td>None</td>
+      <td>year</td>
+      <td>[2000, 1999, 1998, 1997, 1996, 1995, 1994, 199...</td>
+      <td>AD</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The size of this dataframe is:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_dir</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(83, 16)
+</pre></div>
+</div>
+</div>
+</div>
+<p>So we expandad into 83 timeseries.</p>
+<p>Let’s have a look at the available variables:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_dir</span><span class="p">[</span><span class="s1">&#39;paleoData_variableName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;temperature&#39;, &#39;year&#39;, &#39;density&#39;, &#39;JulianDay&#39;, &#39;MXD&#39;, &#39;d18O&#39;,
+       &#39;d13C&#39;, &#39;trsgi&#39;, &#39;sampleDensity&#39;, &#39;Na&#39;, &#39;thickness&#39;, &#39;age&#39;,
+       &#39;uncertainty_temperature&#39;, &#39;sampleID&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s assume we are only interested in the temperature data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_temp</span> <span class="o">=</span> <span class="n">df_dir</span><span class="p">[</span><span class="n">df_dir</span><span class="p">[</span><span class="s1">&#39;paleoData_variableName&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;temperature&#39;</span><span class="p">]</span>
+<span class="n">df_temp</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>dataSetName</th>
+      <th>archiveType</th>
+      <th>geo_meanLat</th>
+      <th>geo_meanLon</th>
+      <th>geo_meanElev</th>
+      <th>paleoData_variableName</th>
+      <th>paleoData_values</th>
+      <th>paleoData_units</th>
+      <th>paleoData_proxy</th>
+      <th>paleoData_proxyGeneral</th>
+      <th>time_variableName</th>
+      <th>time_values</th>
+      <th>time_units</th>
+      <th>depth_variableName</th>
+      <th>depth_values</th>
+      <th>depth_units</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Arc-GulfofAlaska.Wilson.2014</td>
+      <td>tree</td>
+      <td>61.03</td>
+      <td>-146.590</td>
+      <td>230.0</td>
+      <td>temperature</td>
+      <td>[7.685, 7.427, 7.062, 7.133, 7.153, 7.653, 7.8...</td>
+      <td>degC</td>
+      <td>TRW</td>
+      <td>None</td>
+      <td>year</td>
+      <td>[800, 801, 802, 803, 804, 805, 806, 807, 808, ...</td>
+      <td>AD</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Eur-FinnishLakelands.Helama.2014</td>
+      <td>tree</td>
+      <td>62.00</td>
+      <td>28.325</td>
+      <td>130.0</td>
+      <td>temperature</td>
+      <td>[14.603, 14.643, 12.074, 13.898, 13.671, 13.41...</td>
+      <td>degC</td>
+      <td>MXD</td>
+      <td>None</td>
+      <td>year</td>
+      <td>[2000, 1999, 1998, 1997, 1996, 1995, 1994, 199...</td>
+      <td>AD</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Eur-Tallinn.Tarand.2001</td>
+      <td>documents</td>
+      <td>59.40</td>
+      <td>24.750</td>
+      <td>10.0</td>
+      <td>temperature</td>
+      <td>[-7.1, nan, -6.3, -4.5, -6.4, -7.8, -5.7, -5.3...</td>
+      <td>degC</td>
+      <td>historic</td>
+      <td>None</td>
+      <td>year</td>
+      <td>[1500, 1501, 1502, 1503, 1504, 1505, 1506, 150...</td>
+      <td>AD</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Eur-CentralEurope.Dobrovolný.2009</td>
+      <td>documents</td>
+      <td>49.00</td>
+      <td>13.000</td>
+      <td>NaN</td>
+      <td>temperature</td>
+      <td>[0.199, -1.321, 1.842, 1.667, 1.997, -1.101, 0...</td>
+      <td>degC</td>
+      <td>Documentary</td>
+      <td>None</td>
+      <td>year</td>
+      <td>[1500, 1501, 1502, 1503, 1504, 1505, 1506, 150...</td>
+      <td>AD</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Eur-Seebergsee.Larocque-Tobler.2012</td>
+      <td>lake sediment</td>
+      <td>46.15</td>
+      <td>7.500</td>
+      <td>1830.0</td>
+      <td>temperature</td>
+      <td>[0.87088, 0.90377, 0.94562, 0.93462, 0.91326, ...</td>
+      <td>degC</td>
+      <td>midge</td>
+      <td>None</td>
+      <td>year</td>
+      <td>[2001, 2000, 1999, 1998, 1997, 1996, 1995, 199...</td>
+      <td>AD</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_temp</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(13, 16)
+</pre></div>
+</div>
+</div>
+</div>
+<p>which leaves us with 13 timeseries.</p>
+<p>Let’s assume that you want everything that is not related to time, sampleID, and uncertainty:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_filt</span> <span class="o">=</span> <span class="n">df_dir</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;paleoData_variableName in (&#39;temperature&#39;,&#39;MXD&#39;,&#39;density&#39;,&#39;d18O&#39;,&#39;trsgi&#39;)&quot;</span><span class="p">)</span>
+<span class="n">df_filt</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>dataSetName</th>
+      <th>archiveType</th>
+      <th>geo_meanLat</th>
+      <th>geo_meanLon</th>
+      <th>geo_meanElev</th>
+      <th>paleoData_variableName</th>
+      <th>paleoData_values</th>
+      <th>paleoData_units</th>
+      <th>paleoData_proxy</th>
+      <th>paleoData_proxyGeneral</th>
+      <th>time_variableName</th>
+      <th>time_values</th>
+      <th>time_units</th>
+      <th>depth_variableName</th>
+      <th>depth_values</th>
+      <th>depth_units</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Arc-GulfofAlaska.Wilson.2014</td>
+      <td>tree</td>
+      <td>61.0300</td>
+      <td>-146.5900</td>
+      <td>230.0</td>
+      <td>temperature</td>
+      <td>[7.685, 7.427, 7.062, 7.133, 7.153, 7.653, 7.8...</td>
+      <td>degC</td>
+      <td>TRW</td>
+      <td>None</td>
+      <td>year</td>
+      <td>[800, 801, 802, 803, 804, 805, 806, 807, 808, ...</td>
+      <td>AD</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Arc-PolarUrals.Wilson.2015</td>
+      <td>tree</td>
+      <td>66.9000</td>
+      <td>65.6000</td>
+      <td>250.0</td>
+      <td>density</td>
+      <td>[1.97, 0.02, 0.84, 0.43, 0.78, -1.3, -0.14, 1....</td>
+      <td>NA</td>
+      <td>TRW</td>
+      <td>None</td>
+      <td>year</td>
+      <td>[891, 892, 893, 894, 895, 896, 897, 898, 899, ...</td>
+      <td>AD</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Eur-FinnishLakelands.Helama.2014</td>
+      <td>tree</td>
+      <td>62.0000</td>
+      <td>28.3250</td>
+      <td>130.0</td>
+      <td>temperature</td>
+      <td>[14.603, 14.643, 12.074, 13.898, 13.671, 13.41...</td>
+      <td>degC</td>
+      <td>MXD</td>
+      <td>None</td>
+      <td>year</td>
+      <td>[2000, 1999, 1998, 1997, 1996, 1995, 1994, 199...</td>
+      <td>AD</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Eur-Tallinn.Tarand.2001</td>
+      <td>documents</td>
+      <td>59.4000</td>
+      <td>24.7500</td>
+      <td>10.0</td>
+      <td>temperature</td>
+      <td>[-7.1, nan, -6.3, -4.5, -6.4, -7.8, -5.7, -5.3...</td>
+      <td>degC</td>
+      <td>historic</td>
+      <td>None</td>
+      <td>year</td>
+      <td>[1500, 1501, 1502, 1503, 1504, 1505, 1506, 150...</td>
+      <td>AD</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Arc-Jamtland.Wilson.2016</td>
+      <td>tree</td>
+      <td>63.2475</td>
+      <td>13.3375</td>
+      <td>650.0</td>
+      <td>MXD</td>
+      <td>[0.08710426, 2.816246622, 3.166560665, 1.08398...</td>
+      <td>NA</td>
+      <td>MXD</td>
+      <td>None</td>
+      <td>year</td>
+      <td>[783, 784, 785, 786, 787, 788, 789, 790, 791, ...</td>
+      <td>AD</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>To keep the rows that are relevant to our problem, you can use the <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.query.html"><code class="docutils literal notranslate"><span class="pre">DataFrame.query</span></code></a> function available in Pandas:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_filt</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(34, 16)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Which leaves us with 34 timeseries.</p>
+</section>
+</section>
+<section id="removing-and-popping-datasets-out-of-a-lipd-object">
+<h3>Removing and popping datasets out of a LiPD object<a class="headerlink" href="#removing-and-popping-datasets-out-of-a-lipd-object" title="Permalink to this heading">#</a></h3>
+<p>You can also remove (i.e., delete the corresponding dataset from the <code class="docutils literal notranslate"><span class="pre">LiPD</span></code> object) or pop (i.e., delete the corresponding dataset from the <code class="docutils literal notranslate"><span class="pre">LiPD</span></code> object <strong>and</strong> return the dataset) datasets from a <code class="docutils literal notranslate"><span class="pre">LiPD</span></code> object. Note that these functionalities behave similarly as the functions with the same names on Python lists. These functions underpin more adavanced filtering and querying capabilities that we will discuss in later tutorials.</p>
+<p>First let’s make a <a class="reference external" href="https://pylipd.readthedocs.io/en/latest/source/pylipd.html#pylipd.lipd.LiPD.copy">copy</a> of <code class="docutils literal notranslate"><span class="pre">D_dir</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">D_test</span> <span class="o">=</span> <span class="n">D_dir</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">D_test</span><span class="o">.</span><span class="n">get_all_dataset_names</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Arc-GulfofAlaska.Wilson.2014&#39;, &#39;Arc-PolarUrals.Wilson.2015&#39;, &#39;Eur-FinnishLakelands.Helama.2014&#39;, &#39;Eur-Tallinn.Tarand.2001&#39;, &#39;Arc-Jamtland.Wilson.2016&#39;, &#39;Eur-CentralEurope.Dobrovoln_.2009&#39;, &#39;Ocn-AqabaJordanAQ19.Heiss.1999&#39;, &#39;Eur-MaritimeFrenchAlps.B_ntgen.2012&#39;, &#39;Eur-EasternCarpathianMountains.Popa.2008&#39;, &#39;Arc-Forfjorddalen.McCarroll.2013&#39;, &#39;Arc-Indigirka.Hughes.1999&#39;, &#39;Eur-Seebergsee.Larocque-Tobler.2012&#39;, &#39;Eur-SpannagelCave.Mangini.2005&#39;, &#39;Eur-RAPiD-17-5P.Moffa-Sanchez.2014&#39;, &#39;Eur-LakeSilvaplana.Trachsel.2010&#39;, &#39;Arc-Tornetrask.Melvin.2012&#39;, &#39;Arc-AkademiiNaukIceCap.Opel.2013&#39;, &#39;Arc-Tjeggelvas.Bjorklund.2012&#39;, &#39;Ocn-RedSea.Felis.2000&#39;, &#39;Eur-CentralandEasternPyrenees.Pla.2004&#39;, &#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;, &#39;Eur-TatraMountains.B_ntgen.2013&#39;, &#39;Eur-EuropeanAlps.B_ntgen.2011&#39;, &#39;Eur-LakeSilvaplana.Larocque-Tobler.2010&#39;, &#39;Arc-Kittelfjall.Bjorklund.2012&#39;, &#39;Eur-L_tschental.B_ntgen.2006&#39;, &#39;Eur-NorthernSpain.Mart_n-Chivelet.2011&#39;, &#39;Eur-CoastofPortugal.Abrantes.2011&#39;, &#39;Eur-Stockholm.Leijonhufvud.2009&#39;, &#39;Eur-NorthernScandinavia.Esper.2012&#39;, &#39;Ocn-AqabaJordanAQ18.Heiss.1999&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>And let’s <a class="reference external" href="https://pylipd.readthedocs.io/en/latest/source/pylipd.html#pylipd.lipd.LiPD.remove">remove</a> <code class="docutils literal notranslate"><span class="pre">Arc-AkademiiNaukIceCap.Opel.2013</span></code>, which corresponds to the last entry in the list above:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">D_test</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;Arc-AkademiiNaukIceCap.Opel.2013&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">D_test</span><span class="o">.</span><span class="n">get_all_dataset_names</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Arc-GulfofAlaska.Wilson.2014&#39;, &#39;Arc-PolarUrals.Wilson.2015&#39;, &#39;Eur-FinnishLakelands.Helama.2014&#39;, &#39;Eur-Tallinn.Tarand.2001&#39;, &#39;Arc-Jamtland.Wilson.2016&#39;, &#39;Eur-CentralEurope.Dobrovoln_.2009&#39;, &#39;Ocn-AqabaJordanAQ19.Heiss.1999&#39;, &#39;Eur-MaritimeFrenchAlps.B_ntgen.2012&#39;, &#39;Eur-EasternCarpathianMountains.Popa.2008&#39;, &#39;Arc-Forfjorddalen.McCarroll.2013&#39;, &#39;Arc-Indigirka.Hughes.1999&#39;, &#39;Eur-Seebergsee.Larocque-Tobler.2012&#39;, &#39;Eur-SpannagelCave.Mangini.2005&#39;, &#39;Eur-RAPiD-17-5P.Moffa-Sanchez.2014&#39;, &#39;Eur-LakeSilvaplana.Trachsel.2010&#39;, &#39;Arc-Tornetrask.Melvin.2012&#39;, &#39;Arc-Tjeggelvas.Bjorklund.2012&#39;, &#39;Ocn-RedSea.Felis.2000&#39;, &#39;Eur-CentralandEasternPyrenees.Pla.2004&#39;, &#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;, &#39;Eur-TatraMountains.B_ntgen.2013&#39;, &#39;Eur-EuropeanAlps.B_ntgen.2011&#39;, &#39;Eur-LakeSilvaplana.Larocque-Tobler.2010&#39;, &#39;Arc-Kittelfjall.Bjorklund.2012&#39;, &#39;Eur-L_tschental.B_ntgen.2006&#39;, &#39;Eur-NorthernSpain.Mart_n-Chivelet.2011&#39;, &#39;Eur-CoastofPortugal.Abrantes.2011&#39;, &#39;Eur-Stockholm.Leijonhufvud.2009&#39;, &#39;Eur-NorthernScandinavia.Esper.2012&#39;, &#39;Ocn-AqabaJordanAQ18.Heiss.1999&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s <a class="reference external" href="https://pylipd.readthedocs.io/en/latest/source/pylipd.html#pylipd.lipd.LiPD.pop">pop</a> <code class="docutils literal notranslate"><span class="pre">Eur-Stockholm.Leijonhufvud.2009</span></code> from <code class="docutils literal notranslate"><span class="pre">D_test</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d_eur</span> <span class="o">=</span> <span class="n">D_test</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;Eur-Stockholm.Leijonhufvud.2009&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s have a look at <code class="docutils literal notranslate"><span class="pre">d_eur</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">d_eur</span><span class="o">.</span><span class="n">get_all_dataset_names</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-Stockholm.Leijonhufvud.2009&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>It contains the dataset we are expecting. Let’s have a look at <code class="docutils literal notranslate"><span class="pre">D_test</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">D_test</span><span class="o">.</span><span class="n">get_all_dataset_names</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Arc-GulfofAlaska.Wilson.2014&#39;, &#39;Arc-PolarUrals.Wilson.2015&#39;, &#39;Eur-FinnishLakelands.Helama.2014&#39;, &#39;Eur-Tallinn.Tarand.2001&#39;, &#39;Arc-Jamtland.Wilson.2016&#39;, &#39;Eur-CentralEurope.Dobrovoln_.2009&#39;, &#39;Ocn-AqabaJordanAQ19.Heiss.1999&#39;, &#39;Eur-MaritimeFrenchAlps.B_ntgen.2012&#39;, &#39;Eur-EasternCarpathianMountains.Popa.2008&#39;, &#39;Arc-Forfjorddalen.McCarroll.2013&#39;, &#39;Arc-Indigirka.Hughes.1999&#39;, &#39;Eur-Seebergsee.Larocque-Tobler.2012&#39;, &#39;Eur-SpannagelCave.Mangini.2005&#39;, &#39;Eur-RAPiD-17-5P.Moffa-Sanchez.2014&#39;, &#39;Eur-LakeSilvaplana.Trachsel.2010&#39;, &#39;Arc-Tornetrask.Melvin.2012&#39;, &#39;Arc-Tjeggelvas.Bjorklund.2012&#39;, &#39;Ocn-RedSea.Felis.2000&#39;, &#39;Eur-CentralandEasternPyrenees.Pla.2004&#39;, &#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;, &#39;Eur-TatraMountains.B_ntgen.2013&#39;, &#39;Eur-EuropeanAlps.B_ntgen.2011&#39;, &#39;Eur-LakeSilvaplana.Larocque-Tobler.2010&#39;, &#39;Arc-Kittelfjall.Bjorklund.2012&#39;, &#39;Eur-L_tschental.B_ntgen.2006&#39;, &#39;Eur-NorthernSpain.Mart_n-Chivelet.2011&#39;, &#39;Eur-CoastofPortugal.Abrantes.2011&#39;, &#39;Eur-NorthernScandinavia.Esper.2012&#39;, &#39;Ocn-AqabaJordanAQ18.Heiss.1999&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-warning">
+    The dataset was removed from `D_test` in the process. Hence, it's always prudent to make a copy of the original object when using the `remove` and `pop` functionalities. 
+</div>
+<p>If can also remove/pop more than one dataset at a time:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rem</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Ocn-RedSea.Felis.2000&#39;</span><span class="p">,</span><span class="s1">&#39;Arc-Forfjorddalen.McCarroll.2013&#39;</span><span class="p">]</span>
+
+<span class="n">D_test</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">rem</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">D_test</span><span class="o">.</span><span class="n">get_all_dataset_names</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Arc-GulfofAlaska.Wilson.2014&#39;, &#39;Arc-PolarUrals.Wilson.2015&#39;, &#39;Eur-FinnishLakelands.Helama.2014&#39;, &#39;Eur-Tallinn.Tarand.2001&#39;, &#39;Arc-Jamtland.Wilson.2016&#39;, &#39;Eur-CentralEurope.Dobrovoln_.2009&#39;, &#39;Ocn-AqabaJordanAQ19.Heiss.1999&#39;, &#39;Eur-MaritimeFrenchAlps.B_ntgen.2012&#39;, &#39;Eur-EasternCarpathianMountains.Popa.2008&#39;, &#39;Arc-Indigirka.Hughes.1999&#39;, &#39;Eur-Seebergsee.Larocque-Tobler.2012&#39;, &#39;Eur-SpannagelCave.Mangini.2005&#39;, &#39;Eur-RAPiD-17-5P.Moffa-Sanchez.2014&#39;, &#39;Eur-LakeSilvaplana.Trachsel.2010&#39;, &#39;Arc-Tornetrask.Melvin.2012&#39;, &#39;Arc-Tjeggelvas.Bjorklund.2012&#39;, &#39;Eur-CentralandEasternPyrenees.Pla.2004&#39;, &#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;, &#39;Eur-TatraMountains.B_ntgen.2013&#39;, &#39;Eur-EuropeanAlps.B_ntgen.2011&#39;, &#39;Eur-LakeSilvaplana.Larocque-Tobler.2010&#39;, &#39;Arc-Kittelfjall.Bjorklund.2012&#39;, &#39;Eur-L_tschental.B_ntgen.2006&#39;, &#39;Eur-NorthernSpain.Mart_n-Chivelet.2011&#39;, &#39;Eur-CoastofPortugal.Abrantes.2011&#39;, &#39;Eur-NorthernScandinavia.Esper.2012&#39;, &#39;Ocn-AqabaJordanAQ18.Heiss.1999&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="L0_loading_lipd_datasets.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Reading LiPD formatted datasets with <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="L1_working_with_ensembles.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Working with ensembles in <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preamble">Preamble</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#goals">Goals:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keywords">Keywords</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-requisites">Pre-requisites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relevant-packages">Relevant Packages</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-description">Data Description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstration">Demonstration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-time-series-data-from-lipd-formatted-datasets">Extract time series data from LiPD formatted datasets</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-one-dataset">Working with one dataset</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-multiple-datasets">Working with multiple datasets</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-and-popping-datasets-out-of-a-lipd-object">Removing and popping datasets out of a LiPD object</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Deborah Khider
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
