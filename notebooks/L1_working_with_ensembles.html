@@ -64,6 +64,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/L1_working_with_ensembles';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Retrieving information from LiPD files" href="L1_getting_information.html" />
     <link rel="prev" title="Basic manipulation of pylipd.LiPD object" href="L0_lipd_object.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -163,6 +164,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Functionalities</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Working with ensembles in <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="L1_getting_information.html">Retrieving information from LiPD files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="L1_filtering.html">Filtering through queries</a></li>
 </ul>
 
     </div>
@@ -475,13 +478,13 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/2 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 50%|█████     | 1/2 [00:00&lt;00:00,  2.09it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 50%|█████     | 1/2 [00:00&lt;00:00,  2.00it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 2/2 [00:01&lt;00:00,  1.11it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 2/2 [00:01&lt;00:00,  1.01s/it]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 2/2 [00:01&lt;00:00,  1.20it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 2/2 [00:01&lt;00:00,  1.07it/s]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
@@ -812,9 +815,9 @@ document.write(`
       <td>36.59</td>
       <td>-118.82</td>
       <td>1386.0</td>
-      <td>age</td>
-      <td>[2007.7, 2007.0, 2006.3, 2005.6, 2004.9, 2004....</td>
-      <td>AD</td>
+      <td>d18o</td>
+      <td>[-8.01, -8.23, -8.61, -8.54, -8.6, -9.08, -8.9...</td>
+      <td>permil VPDB</td>
       <td>None</td>
       <td>None</td>
       <td>age</td>
@@ -831,9 +834,9 @@ document.write(`
       <td>36.59</td>
       <td>-118.82</td>
       <td>1386.0</td>
-      <td>d18o</td>
-      <td>[-8.01, -8.23, -8.61, -8.54, -8.6, -9.08, -8.9...</td>
-      <td>permil VPDB</td>
+      <td>depth</td>
+      <td>[0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0...</td>
+      <td>mm</td>
       <td>None</td>
       <td>None</td>
       <td>age</td>
@@ -850,9 +853,9 @@ document.write(`
       <td>36.59</td>
       <td>-118.82</td>
       <td>1386.0</td>
-      <td>depth</td>
-      <td>[0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0...</td>
-      <td>mm</td>
+      <td>age</td>
+      <td>[2007.7, 2007.0, 2006.3, 2005.6, 2004.9, 2004....</td>
+      <td>AD</td>
       <td>None</td>
       <td>None</td>
       <td>age</td>
@@ -910,6 +913,15 @@ document.write(`
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Basic manipulation of <code class="docutils literal notranslate"><span class="pre">pylipd.LiPD</span></code> object</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="L1_getting_information.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Retrieving information from LiPD files</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div></div>
   
