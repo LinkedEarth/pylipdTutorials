@@ -458,6 +458,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/deborahkhider/Documents/GitHub/pylipd/pylipd/data
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="demonstration">
@@ -481,10 +486,10 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading 1 LiPD files
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                       | 0/1 [00:00&lt;?, ?it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                          | 0/1 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|███████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 23.15it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 24.05it/s]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
@@ -575,25 +580,25 @@ document.write(`
       <th></th>
       <th>mode</th>
       <th>time_id</th>
-      <th>hasUrl</th>
       <th>createdBy</th>
-      <th>geo_meanLon</th>
-      <th>geo_meanLat</th>
-      <th>geo_meanElev</th>
-      <th>geo_type</th>
-      <th>geo_siteName</th>
-      <th>geo_pages2kRegion</th>
+      <th>googleDataURL</th>
+      <th>googleSpreadSheetKey</th>
+      <th>googleMetadataWorksheet</th>
+      <th>originalDataURL</th>
+      <th>hasUrl</th>
+      <th>lipdVersion</th>
+      <th>pub1_author</th>
       <th>...</th>
-      <th>paleoData_description</th>
       <th>paleoData_dataType</th>
       <th>paleoData_inferredVariableType</th>
-      <th>paleoData_notes</th>
-      <th>paleoData_interpretation</th>
-      <th>paleoData_qCCertification</th>
-      <th>paleoData_iso2kUI</th>
-      <th>paleoData_ocean2kID</th>
-      <th>paleoData_pages2kID</th>
+      <th>paleoData_description</th>
       <th>paleoData_inCompilation</th>
+      <th>paleoData_ocean2kID</th>
+      <th>paleoData_iso2kUI</th>
+      <th>paleoData_notes</th>
+      <th>paleoData_qCCertification</th>
+      <th>paleoData_interpretation</th>
+      <th>paleoData_pages2kID</th>
     </tr>
   </thead>
   <tbody>
@@ -601,14 +606,14 @@ document.write(`
       <th>0</th>
       <td>paleoData</td>
       <td>age</td>
-      <td>https://data.mint.isi.edu/files/lipd/Ocn-Palmy...</td>
       <td>matlab</td>
-      <td>-162.13</td>
-      <td>5.87</td>
-      <td>-10.0</td>
-      <td>Feature</td>
-      <td>Palmyra</td>
-      <td>Ocean</td>
+      <td>https://docs.google.com/spreadsheets/d/1AIFOcq...</td>
+      <td>1AIFOcqDtbZ5O4YCCnH5K-lNdzmI1UNmGnUpCJFNN-YQ</td>
+      <td>oax0htr</td>
+      <td>http://hurricane.ncdc.noaa.gov/pls/paleox/f?p=...</td>
+      <td>https://data.mint.isi.edu/files/lipd/Ocn-Palmy...</td>
+      <td>1.3</td>
+      <td>Emanuele Di Lorenzo;Intan S. Nurhati;Kim M. Cobb</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -625,18 +630,18 @@ document.write(`
       <th>1</th>
       <td>paleoData</td>
       <td>age</td>
-      <td>https://data.mint.isi.edu/files/lipd/Ocn-Palmy...</td>
       <td>matlab</td>
-      <td>-162.13</td>
-      <td>5.87</td>
-      <td>-10.0</td>
-      <td>Feature</td>
-      <td>Palmyra</td>
-      <td>Ocean</td>
+      <td>https://docs.google.com/spreadsheets/d/1AIFOcq...</td>
+      <td>1AIFOcqDtbZ5O4YCCnH5K-lNdzmI1UNmGnUpCJFNN-YQ</td>
+      <td>oax0htr</td>
+      <td>http://hurricane.ncdc.noaa.gov/pls/paleox/f?p=...</td>
+      <td>https://data.mint.isi.edu/files/lipd/Ocn-Palmy...</td>
+      <td>1.3</td>
+      <td>Emanuele Di Lorenzo;Intan S. Nurhati;Kim M. Cobb</td>
       <td>...</td>
-      <td>Year AD</td>
       <td>float</td>
       <td>Year</td>
+      <td>Year AD</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -649,18 +654,18 @@ document.write(`
       <th>2</th>
       <td>paleoData</td>
       <td>age</td>
-      <td>https://data.mint.isi.edu/files/lipd/Ocn-Palmy...</td>
       <td>matlab</td>
-      <td>-162.13</td>
-      <td>5.87</td>
-      <td>-10.0</td>
-      <td>Feature</td>
-      <td>Palmyra</td>
-      <td>Ocean</td>
+      <td>https://docs.google.com/spreadsheets/d/1AIFOcq...</td>
+      <td>1AIFOcqDtbZ5O4YCCnH5K-lNdzmI1UNmGnUpCJFNN-YQ</td>
+      <td>oax0htr</td>
+      <td>http://hurricane.ncdc.noaa.gov/pls/paleox/f?p=...</td>
+      <td>https://data.mint.isi.edu/files/lipd/Ocn-Palmy...</td>
+      <td>1.3</td>
+      <td>Emanuele Di Lorenzo;Intan S. Nurhati;Kim M. Cobb</td>
       <td>...</td>
-      <td>Year AD</td>
       <td>float</td>
       <td>Year</td>
+      <td>Year AD</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -673,49 +678,49 @@ document.write(`
       <th>3</th>
       <td>paleoData</td>
       <td>age</td>
-      <td>https://data.mint.isi.edu/files/lipd/Ocn-Palmy...</td>
       <td>matlab</td>
-      <td>-162.13</td>
-      <td>5.87</td>
-      <td>-10.0</td>
-      <td>Feature</td>
-      <td>Palmyra</td>
-      <td>Ocean</td>
+      <td>https://docs.google.com/spreadsheets/d/1AIFOcq...</td>
+      <td>1AIFOcqDtbZ5O4YCCnH5K-lNdzmI1UNmGnUpCJFNN-YQ</td>
+      <td>oax0htr</td>
+      <td>http://hurricane.ncdc.noaa.gov/pls/paleox/f?p=...</td>
+      <td>https://data.mint.isi.edu/files/lipd/Ocn-Palmy...</td>
+      <td>1.3</td>
+      <td>Emanuele Di Lorenzo;Intan S. Nurhati;Kim M. Cobb</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>; climateInterpretation_seasonality changed - ...</td>
-      <td>[{'seasonality': 'not applicable (subannually ...</td>
+      <td>Ocean2k_v1.0.0</td>
+      <td>PacificNurhati2011</td>
+      <td>CO11NUPM01BT1</td>
+      <td>; paleoData_variableName changed - was origina...</td>
       <td>MNE, NJA</td>
-      <td>CO11NUPM01B</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>[{'variableDetail': 'sea@surface', 'seasonalit...</td>
+      <td>Ocn_129</td>
     </tr>
     <tr>
       <th>4</th>
       <td>paleoData</td>
       <td>age</td>
-      <td>https://data.mint.isi.edu/files/lipd/Ocn-Palmy...</td>
       <td>matlab</td>
-      <td>-162.13</td>
-      <td>5.87</td>
-      <td>-10.0</td>
-      <td>Feature</td>
-      <td>Palmyra</td>
-      <td>Ocean</td>
+      <td>https://docs.google.com/spreadsheets/d/1AIFOcq...</td>
+      <td>1AIFOcqDtbZ5O4YCCnH5K-lNdzmI1UNmGnUpCJFNN-YQ</td>
+      <td>oax0htr</td>
+      <td>http://hurricane.ncdc.noaa.gov/pls/paleox/f?p=...</td>
+      <td>https://data.mint.isi.edu/files/lipd/Ocn-Palmy...</td>
+      <td>1.3</td>
+      <td>Emanuele Di Lorenzo;Intan S. Nurhati;Kim M. Cobb</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>; paleoData_variableName changed - was origina...</td>
-      <td>[{'seasonality': 'N/A (subannually resolved)',...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>CO11NUPM01B</td>
+      <td>; climateInterpretation_seasonality changed - ...</td>
       <td>MNE, NJA</td>
-      <td>CO11NUPM01BT1</td>
-      <td>PacificNurhati2011</td>
-      <td>Ocn_129</td>
-      <td>Ocean2k_v1.0.0</td>
+      <td>[{'variableDetail': 'sea_surface', 'scope': 'c...</td>
+      <td>NaN</td>
     </tr>
   </tbody>
 </table>
@@ -730,37 +735,35 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;mode&#39;, &#39;time_id&#39;, &#39;hasUrl&#39;, &#39;createdBy&#39;, &#39;geo_meanLon&#39;, &#39;geo_meanLat&#39;,
-       &#39;geo_meanElev&#39;, &#39;geo_type&#39;, &#39;geo_siteName&#39;, &#39;geo_pages2kRegion&#39;,
-       &#39;geo_ocean&#39;, &#39;pub1_author&#39;, &#39;pub1_dataUrl&#39;, &#39;pub1_citeKey&#39;, &#39;pub1_link&#39;,
-       &#39;pub1_journal&#39;, &#39;pub1_issue&#39;, &#39;pub1_publisher&#39;, &#39;pub1_volume&#39;,
-       &#39;pub1_doi&#39;, &#39;pub1_title&#39;, &#39;pub1_pages&#39;, &#39;pub1_year&#39;, &#39;pub1_DOI&#39;,
-       &#39;pub2_author&#39;, &#39;pub2_citeKey&#39;, &#39;pub2_title&#39;, &#39;pub2_url&#39;,
-       &#39;pub2_institution&#39;, &#39;pub2_urldate&#39;, &#39;pub2_DOI&#39;, &#39;pub3_author&#39;,
-       &#39;pub3_volume&#39;, &#39;pub3_journal&#39;, &#39;pub3_year&#39;, &#39;pub3_citeKey&#39;,
-       &#39;pub3_dataUrl&#39;, &#39;pub3_title&#39;, &#39;pub3_publisher&#39;, &#39;pub3_link&#39;,
-       &#39;pub3_pages&#39;, &#39;pub3_doi&#39;, &#39;pub3_DOI&#39;, &#39;googleMetadataWorksheet&#39;,
-       &#39;googleDataURL&#39;, &#39;dataContributor&#39;, &#39;lipdVersion&#39;, &#39;dataSetName&#39;,
-       &#39;googleSpreadSheetKey&#39;, &#39;studyName&#39;, &#39;originalDataURL&#39;, &#39;archiveType&#39;,
-       &#39;tableType&#39;, &#39;paleoData_paleoDataTableName&#39;, &#39;paleoData_filename&#39;,
-       &#39;paleoData_googleWorkSheetKey&#39;, &#39;paleoData_measurementTableMD5&#39;,
-       &#39;paleoData_measurementTableName&#39;, &#39;year&#39;, &#39;yearUnits&#39;,
-       &#39;paleoData_useInGlobalTemperatureAnalysis&#39;, &#39;paleoData_proxy&#39;,
-       &#39;paleoData_hasMaxValue&#39;, &#39;paleoData_TSid&#39;, &#39;paleoData_qCnotes&#39;,
-       &#39;paleoData_proxyObservationType&#39;, &#39;paleoData_units&#39;, &#39;paleoData_number&#39;,
-       &#39;paleoData_hasMedianValue&#39;, &#39;paleoData_variableName&#39;,
-       &#39;paleoData_sensorGenus&#39;, &#39;paleoData_wDSPaleoUrl&#39;,
-       &#39;paleoData_sensorSpecies&#39;, &#39;paleoData_hasMeanValue&#39;,
-       &#39;paleoData_hasResolution_hasMeanValue&#39;, &#39;paleoData_hasResolution_units&#39;,
-       &#39;paleoData_hasResolution_hasMaxValue&#39;,
-       &#39;paleoData_hasResolution_hasMinValue&#39;,
-       &#39;paleoData_hasResolution_hasMedianValue&#39;, &#39;paleoData_hasMinValue&#39;,
-       &#39;paleoData_missingValue&#39;, &#39;paleoData_variableType&#39;, &#39;paleoData_values&#39;,
-       &#39;paleoData_description&#39;, &#39;paleoData_dataType&#39;,
-       &#39;paleoData_inferredVariableType&#39;, &#39;paleoData_notes&#39;,
-       &#39;paleoData_interpretation&#39;, &#39;paleoData_qCCertification&#39;,
-       &#39;paleoData_iso2kUI&#39;, &#39;paleoData_ocean2kID&#39;, &#39;paleoData_pages2kID&#39;,
-       &#39;paleoData_inCompilation&#39;],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;mode&#39;, &#39;time_id&#39;, &#39;createdBy&#39;, &#39;googleDataURL&#39;, &#39;googleSpreadSheetKey&#39;,
+       &#39;googleMetadataWorksheet&#39;, &#39;originalDataURL&#39;, &#39;hasUrl&#39;, &#39;lipdVersion&#39;,
+       &#39;pub1_author&#39;, &#39;pub1_citeKey&#39;, &#39;pub1_year&#39;, &#39;pub1_dataUrl&#39;,
+       &#39;pub1_publisher&#39;, &#39;pub1_volume&#39;, &#39;pub1_title&#39;, &#39;pub1_doi&#39;, &#39;pub1_link&#39;,
+       &#39;pub1_journal&#39;, &#39;pub1_pages&#39;, &#39;pub1_DOI&#39;, &#39;pub2_author&#39;, &#39;pub2_citeKey&#39;,
+       &#39;pub2_volume&#39;, &#39;pub2_title&#39;, &#39;pub2_publisher&#39;, &#39;pub2_year&#39;, &#39;pub2_link&#39;,
+       &#39;pub2_dataUrl&#39;, &#39;pub2_pages&#39;, &#39;pub2_doi&#39;, &#39;pub2_issue&#39;, &#39;pub2_journal&#39;,
+       &#39;pub2_DOI&#39;, &#39;pub3_author&#39;, &#39;pub3_url&#39;, &#39;pub3_citeKey&#39;, &#39;pub3_urldate&#39;,
+       &#39;pub3_institution&#39;, &#39;pub3_title&#39;, &#39;pub3_DOI&#39;, &#39;geo_meanLon&#39;,
+       &#39;geo_meanLat&#39;, &#39;geo_meanElev&#39;, &#39;geo_type&#39;, &#39;geo_ocean&#39;,
+       &#39;geo_pages2kRegion&#39;, &#39;geo_siteName&#39;, &#39;dataContributor&#39;, &#39;dataSetName&#39;,
+       &#39;studyName&#39;, &#39;archiveType&#39;, &#39;tableType&#39;, &#39;paleoData_googleWorkSheetKey&#39;,
+       &#39;paleoData_measurementTableMD5&#39;, &#39;paleoData_measurementTableName&#39;,
+       &#39;paleoData_paleoDataTableName&#39;, &#39;paleoData_filename&#39;, &#39;year&#39;,
+       &#39;yearUnits&#39;, &#39;paleoData_useInGlobalTemperatureAnalysis&#39;,
+       &#39;paleoData_TSid&#39;, &#39;paleoData_variableName&#39;, &#39;paleoData_units&#39;,
+       &#39;paleoData_proxy&#39;, &#39;paleoData_hasResolution_hasMaxValue&#39;,
+       &#39;paleoData_hasResolution_units&#39;, &#39;paleoData_hasResolution_hasMeanValue&#39;,
+       &#39;paleoData_hasResolution_hasMedianValue&#39;,
+       &#39;paleoData_hasResolution_hasMinValue&#39;, &#39;paleoData_hasMedianValue&#39;,
+       &#39;paleoData_hasMeanValue&#39;, &#39;paleoData_missingValue&#39;,
+       &#39;paleoData_sensorSpecies&#39;, &#39;paleoData_proxyObservationType&#39;,
+       &#39;paleoData_hasMaxValue&#39;, &#39;paleoData_number&#39;, &#39;paleoData_hasMinValue&#39;,
+       &#39;paleoData_qCnotes&#39;, &#39;paleoData_wDSPaleoUrl&#39;, &#39;paleoData_sensorGenus&#39;,
+       &#39;paleoData_variableType&#39;, &#39;paleoData_values&#39;, &#39;paleoData_dataType&#39;,
+       &#39;paleoData_inferredVariableType&#39;, &#39;paleoData_description&#39;,
+       &#39;paleoData_inCompilation&#39;, &#39;paleoData_ocean2kID&#39;, &#39;paleoData_iso2kUI&#39;,
+       &#39;paleoData_notes&#39;, &#39;paleoData_qCCertification&#39;,
+       &#39;paleoData_interpretation&#39;, &#39;paleoData_pages2kID&#39;],
       dtype=&#39;object&#39;)
 </pre></div>
 </div>
@@ -777,8 +780,8 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     d18O
 1     year
 2     year
-3     d18O
-4    Sr_Ca
+3    Sr_Ca
+4     d18O
 Name: paleoData_variableName, dtype: object
 </pre></div>
 </div>
@@ -832,13 +835,13 @@ Name: paleoData_variableName, dtype: object
     </tr>
     <tr>
       <th>3</th>
-      <td>d18O</td>
-      <td>Duplicate of modern d18O record presented in C...</td>
+      <td>Sr_Ca</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>Sr_Ca</td>
-      <td>NaN</td>
+      <td>d18O</td>
+      <td>Duplicate of modern d18O record presented in C...</td>
     </tr>
   </tbody>
 </table>
@@ -857,15 +860,15 @@ Name: paleoData_variableName, dtype: object
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mode                                                                 paleoData
 time_id                                                                    age
-hasUrl                       https://data.mint.isi.edu/files/lipd/Ocn-Palmy...
 createdBy                                                               matlab
-geo_meanLon                                                            -162.13
+googleDataURL                https://docs.google.com/spreadsheets/d/1AIFOcq...
+googleSpreadSheetKey              1AIFOcqDtbZ5O4YCCnH5K-lNdzmI1UNmGnUpCJFNN-YQ
                                                    ...                        
-paleoData_qCCertification                                                  NaN
 paleoData_iso2kUI                                                          NaN
-paleoData_ocean2kID                                                        NaN
+paleoData_notes                                                            NaN
+paleoData_qCCertification                                                  NaN
+paleoData_interpretation                                                   NaN
 paleoData_pages2kID                                                        NaN
-paleoData_inCompilation                                                    NaN
 Name: 0, Length: 93, dtype: object
 </pre></div>
 </div>
@@ -939,12 +942,12 @@ Name: 0, Length: 93, dtype: object
       <td>-162.13</td>
       <td>-10.0</td>
       <td>year</td>
-      <td>[1998.21, 1998.13, 1998.04, 1997.96, 1997.88, ...</td>
+      <td>[1998.29, 1998.21, 1998.13, 1998.04, 1997.96, ...</td>
       <td>AD</td>
       <td>None</td>
       <td>None</td>
       <td>year</td>
-      <td>[1998.21, 1998.13, 1998.04, 1997.96, 1997.88, ...</td>
+      <td>[1998.29, 1998.21, 1998.13, 1998.04, 1997.96, ...</td>
       <td>AD</td>
       <td>None</td>
       <td>None</td>
@@ -957,10 +960,10 @@ Name: 0, Length: 93, dtype: object
       <td>5.87</td>
       <td>-162.13</td>
       <td>-10.0</td>
-      <td>year</td>
-      <td>[1998.29, 1998.21, 1998.13, 1998.04, 1997.96, ...</td>
-      <td>AD</td>
-      <td>None</td>
+      <td>Sr_Ca</td>
+      <td>[8.96, 8.9, 8.91, 8.94, 8.92, 8.89, 8.87, 8.81...</td>
+      <td>mmol/mol</td>
+      <td>Sr/Ca</td>
       <td>None</td>
       <td>year</td>
       <td>[1998.29, 1998.21, 1998.13, 1998.04, 1997.96, ...</td>
@@ -995,13 +998,13 @@ Name: 0, Length: 93, dtype: object
       <td>5.87</td>
       <td>-162.13</td>
       <td>-10.0</td>
-      <td>Sr_Ca</td>
-      <td>[8.96, 8.9, 8.91, 8.94, 8.92, 8.89, 8.87, 8.81...</td>
-      <td>mmol/mol</td>
-      <td>Sr/Ca</td>
+      <td>d18O</td>
+      <td>[0.39, 0.35, 0.35, 0.35, 0.36, 0.22, 0.33, 0.3...</td>
+      <td>permil</td>
+      <td>d18O</td>
       <td>None</td>
       <td>year</td>
-      <td>[1998.29, 1998.21, 1998.13, 1998.04, 1997.96, ...</td>
+      <td>[1998.21, 1998.13, 1998.04, 1997.96, 1997.88, ...</td>
       <td>AD</td>
       <td>None</td>
       <td>None</td>
@@ -1014,10 +1017,10 @@ Name: 0, Length: 93, dtype: object
       <td>5.87</td>
       <td>-162.13</td>
       <td>-10.0</td>
-      <td>d18O</td>
-      <td>[0.39, 0.35, 0.35, 0.35, 0.36, 0.22, 0.33, 0.3...</td>
-      <td>permil</td>
-      <td>d18O</td>
+      <td>year</td>
+      <td>[1998.21, 1998.13, 1998.04, 1997.96, 1997.88, ...</td>
+      <td>AD</td>
+      <td>None</td>
       <td>None</td>
       <td>year</td>
       <td>[1998.21, 1998.13, 1998.04, 1997.96, 1997.88, ...</td>
@@ -1064,25 +1067,25 @@ Name: 0, Length: 93, dtype: object
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading 31 LiPD files
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                      | 0/31 [00:00&lt;?, ?it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                         | 0/31 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 19%|████████████                                                  | 6/31 [00:00&lt;00:00, 49.86it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 16%|█████████████                                                                    | 5/31 [00:00&lt;00:00, 49.06it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 39%|███████████████████████▌                                     | 12/31 [00:00&lt;00:00, 53.07it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 35%|████████████████████████████▍                                                   | 11/31 [00:00&lt;00:00, 50.03it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 58%|███████████████████████████████████▍                         | 18/31 [00:00&lt;00:00, 45.07it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 55%|███████████████████████████████████████████▊                                    | 17/31 [00:00&lt;00:00, 50.81it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 77%|███████████████████████████████████████████████▏             | 24/31 [00:00&lt;00:00, 49.29it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 74%|███████████████████████████████████████████████████████████▎                    | 23/31 [00:00&lt;00:00, 44.91it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 97%|███████████████████████████████████████████████████████████  | 30/31 [00:00&lt;00:00, 52.01it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 94%|██████████████████████████████████████████████████████████████████████████▊     | 29/31 [00:00&lt;00:00, 48.34it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████████████████████████| 31/31 [00:00&lt;00:00, 49.98it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|████████████████████████████████████████████████████████████████████████████████| 31/31 [00:00&lt;00:00, 47.93it/s]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
@@ -1153,10 +1156,10 @@ Name: 0, Length: 93, dtype: object
       <td>27.85</td>
       <td>34.32</td>
       <td>-6.0</td>
-      <td>d18O</td>
-      <td>[-4.12, -3.82, -3.05, -3.02, -3.62, -3.96, -3....</td>
-      <td>permil</td>
-      <td>d18O</td>
+      <td>year</td>
+      <td>[1995.583, 1995.417, 1995.25, 1995.083, 1994.9...</td>
+      <td>AD</td>
+      <td>None</td>
       <td>None</td>
       <td>year</td>
       <td>[1995.583, 1995.417, 1995.25, 1995.083, 1994.9...</td>
@@ -1172,10 +1175,10 @@ Name: 0, Length: 93, dtype: object
       <td>27.85</td>
       <td>34.32</td>
       <td>-6.0</td>
-      <td>year</td>
-      <td>[1995.583, 1995.417, 1995.25, 1995.083, 1994.9...</td>
-      <td>AD</td>
-      <td>None</td>
+      <td>d18O</td>
+      <td>[-4.12, -3.82, -3.05, -3.02, -3.62, -3.96, -3....</td>
+      <td>permil</td>
+      <td>d18O</td>
       <td>None</td>
       <td>year</td>
       <td>[1995.583, 1995.417, 1995.25, 1995.083, 1994.9...</td>
@@ -1197,7 +1200,7 @@ Name: 0, Length: 93, dtype: object
       <td>None</td>
       <td>None</td>
       <td>year</td>
-      <td>[1100, 1101, 1102, 1103, 1104, 1105, 1106, 110...</td>
+      <td>[1100.0, 1101.0, 1102.0, 1103.0, 1104.0, 1105....</td>
       <td>AD</td>
       <td>None</td>
       <td>None</td>
@@ -1216,7 +1219,7 @@ Name: 0, Length: 93, dtype: object
       <td>MXD</td>
       <td>None</td>
       <td>year</td>
-      <td>[1100, 1101, 1102, 1103, 1104, 1105, 1106, 110...</td>
+      <td>[1100.0, 1101.0, 1102.0, 1103.0, 1104.0, 1105....</td>
       <td>AD</td>
       <td>None</td>
       <td>None</td>
@@ -1229,13 +1232,13 @@ Name: 0, Length: 93, dtype: object
       <td>59.40</td>
       <td>24.75</td>
       <td>10.0</td>
-      <td>temperature</td>
-      <td>[-7.1, nan, -6.3, -4.5, -6.4, -7.8, -5.7, -5.3...</td>
-      <td>degC</td>
-      <td>historic</td>
+      <td>JulianDay</td>
+      <td>[130.0, nan, 122.0, 104.0, 123.0, 138.0, 116.0...</td>
+      <td>days</td>
+      <td>None</td>
       <td>None</td>
       <td>year</td>
-      <td>[1500, 1501, 1502, 1503, 1504, 1505, 1506, 150...</td>
+      <td>[1500.0, 1501.0, 1502.0, 1503.0, 1504.0, 1505....</td>
       <td>AD</td>
       <td>None</td>
       <td>None</td>
@@ -1267,8 +1270,8 @@ Name: 0, Length: 93, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;d18O&#39;, &#39;year&#39;, &#39;MXD&#39;, &#39;temperature&#39;, &#39;JulianDay&#39;, &#39;trsgi&#39;,
-       &#39;sampleID&#39;, &#39;uncertainty_temperature&#39;, &#39;age&#39;, &#39;density&#39;, &#39;d13C&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;year&#39;, &#39;d18O&#39;, &#39;MXD&#39;, &#39;JulianDay&#39;, &#39;temperature&#39;, &#39;trsgi&#39;,
+       &#39;uncertainty_temperature&#39;, &#39;age&#39;, &#39;sampleID&#39;, &#39;density&#39;, &#39;d13C&#39;,
        &#39;sampleDensity&#39;, &#39;Na&#39;, &#39;thickness&#39;], dtype=object)
 </pre></div>
 </div>
@@ -1321,7 +1324,7 @@ Name: 0, Length: 93, dtype: object
   </thead>
   <tbody>
     <tr>
-      <th>4</th>
+      <th>5</th>
       <td>Eur-Tallinn.Tarand.2001</td>
       <td>documents</td>
       <td>59.4</td>
@@ -1333,7 +1336,7 @@ Name: 0, Length: 93, dtype: object
       <td>historic</td>
       <td>None</td>
       <td>year</td>
-      <td>[1500, 1501, 1502, 1503, 1504, 1505, 1506, 150...</td>
+      <td>[1500.0, 1501.0, 1502.0, 1503.0, 1504.0, 1505....</td>
       <td>AD</td>
       <td>None</td>
       <td>None</td>
@@ -1352,7 +1355,7 @@ Name: 0, Length: 93, dtype: object
       <td>Documentary</td>
       <td>None</td>
       <td>year</td>
-      <td>[1500, 1501, 1502, 1503, 1504, 1505, 1506, 150...</td>
+      <td>[1500.0, 1501.0, 1502.0, 1503.0, 1504.0, 1505....</td>
       <td>AD</td>
       <td>None</td>
       <td>None</td>
@@ -1409,7 +1412,7 @@ Name: 0, Length: 93, dtype: object
       <td>reflectance</td>
       <td>None</td>
       <td>year</td>
-      <td>[1175, 1176, 1177, 1178, 1179, 1180, 1181, 118...</td>
+      <td>[1175.0, 1176.0, 1177.0, 1178.0, 1179.0, 1180....</td>
       <td>AD</td>
       <td>None</td>
       <td>None</td>
@@ -1479,7 +1482,7 @@ Name: 0, Length: 93, dtype: object
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
+      <th>1</th>
       <td>Ocn-RedSea.Felis.2000</td>
       <td>coral</td>
       <td>27.85</td>
@@ -1510,14 +1513,14 @@ Name: 0, Length: 93, dtype: object
       <td>MXD</td>
       <td>None</td>
       <td>year</td>
-      <td>[1100, 1101, 1102, 1103, 1104, 1105, 1106, 110...</td>
+      <td>[1100.0, 1101.0, 1102.0, 1103.0, 1104.0, 1105....</td>
       <td>AD</td>
       <td>None</td>
       <td>None</td>
       <td>None</td>
     </tr>
     <tr>
-      <th>4</th>
+      <th>5</th>
       <td>Eur-Tallinn.Tarand.2001</td>
       <td>documents</td>
       <td>59.40</td>
@@ -1529,7 +1532,7 @@ Name: 0, Length: 93, dtype: object
       <td>historic</td>
       <td>None</td>
       <td>year</td>
-      <td>[1500, 1501, 1502, 1503, 1504, 1505, 1506, 150...</td>
+      <td>[1500.0, 1501.0, 1502.0, 1503.0, 1504.0, 1505....</td>
       <td>AD</td>
       <td>None</td>
       <td>None</td>
@@ -1548,7 +1551,7 @@ Name: 0, Length: 93, dtype: object
       <td>Documentary</td>
       <td>None</td>
       <td>year</td>
-      <td>[1500, 1501, 1502, 1503, 1504, 1505, 1506, 150...</td>
+      <td>[1500.0, 1501.0, 1502.0, 1503.0, 1504.0, 1505....</td>
       <td>AD</td>
       <td>None</td>
       <td>None</td>
@@ -1567,7 +1570,7 @@ Name: 0, Length: 93, dtype: object
       <td>TRW</td>
       <td>None</td>
       <td>year</td>
-      <td>[-500, -499, -498, -497, -496, -495, -494, -49...</td>
+      <td>[-500.0, -499.0, -498.0, -497.0, -496.0, -495....</td>
       <td>AD</td>
       <td>None</td>
       <td>None</td>

@@ -61,6 +61,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/L1_working_with_ensembles';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Retrieving information from LiPD files" href="L1_getting_information.html" />
     <link rel="prev" title="Basic manipulation of pylipd.LiPD object" href="L0_lipd_object.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -456,6 +457,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/deborahkhider/Documents/GitHub/pylipd/pylipd/data
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -469,16 +475,16 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading 2 LiPD files
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                       | 0/2 [00:00&lt;?, ?it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                          | 0/2 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 50%|███████████████████████████████▌                               | 1/2 [00:00&lt;00:00,  1.70it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 50%|█████████████████████████████████████████                                         | 1/2 [00:00&lt;00:00,  1.65it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|███████████████████████████████████████████████████████████████| 2/2 [00:02&lt;00:00,  1.08s/it]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████████████████████████████████████████████████████████████████████████████| 2/2 [00:02&lt;00:00,  1.12s/it]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|███████████████████████████████████████████████████████████████| 2/2 [00:02&lt;00:00,  1.01s/it]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████████████████████████████████████████████████████████████████████████████| 2/2 [00:02&lt;00:00,  1.05s/it]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
@@ -547,7 +553,7 @@ document.write(`
       <td>Crystal.McCabe-Glynn.2013</td>
       <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
       <td>Year</td>
-      <td>[2007.0, 2007.0, 2008.0, 2007.0, 2007.0, 2007....</td>
+      <td>[[2007.0, 2007.0, 2008.0, 2007.0, 2007.0, 2007...</td>
       <td>AD</td>
       <td>depth</td>
       <td>[0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0...</td>
@@ -559,7 +565,7 @@ document.write(`
       <td>ODP846.Lawrence.2006</td>
       <td>http://linked.earth/lipd/chron0model0ensemble0</td>
       <td>age</td>
-      <td>[4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, ...</td>
+      <td>[[4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0,...</td>
       <td>kyr BP</td>
       <td>depth</td>
       <td>[0.12, 0.23, 0.33, 0.43, 0.53, 0.63, 0.73, 0.8...</td>
@@ -627,7 +633,7 @@ document.write(`
       <td>Crystal.McCabe-Glynn.2013</td>
       <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
       <td>Year</td>
-      <td>[2007.0, 2007.0, 2008.0, 2007.0, 2007.0, 2007....</td>
+      <td>[[2007.0, 2007.0, 2008.0, 2007.0, 2007.0, 2007...</td>
       <td>AD</td>
       <td>depth</td>
       <td>[0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0...</td>
@@ -685,7 +691,7 @@ document.write(`
       <td>ODP846.Lawrence.2006</td>
       <td>http://linked.earth/lipd/chron0model0ensemble0</td>
       <td>age</td>
-      <td>[4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, ...</td>
+      <td>[[4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0,...</td>
       <td>kyr BP</td>
       <td>depth</td>
       <td>[0.12, 0.23, 0.33, 0.43, 0.53, 0.63, 0.73, 0.8...</td>
@@ -745,7 +751,7 @@ document.write(`
       <td>Crystal.McCabe-Glynn.2013</td>
       <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
       <td>Year</td>
-      <td>[2007.0, 2007.0, 2008.0, 2007.0, 2007.0, 2007....</td>
+      <td>[[2007.0, 2007.0, 2008.0, 2007.0, 2007.0, 2007...</td>
       <td>AD</td>
       <td>depth</td>
       <td>[0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0...</td>
@@ -809,9 +815,9 @@ document.write(`
       <td>36.59</td>
       <td>-118.82</td>
       <td>1386.0</td>
-      <td>age</td>
-      <td>[2007.7, 2007.0, 2006.3, 2005.6, 2004.9, 2004....</td>
-      <td>AD</td>
+      <td>depth</td>
+      <td>[0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0...</td>
+      <td>mm</td>
       <td>None</td>
       <td>None</td>
       <td>age</td>
@@ -828,9 +834,9 @@ document.write(`
       <td>36.59</td>
       <td>-118.82</td>
       <td>1386.0</td>
-      <td>d18o</td>
-      <td>[-8.01, -8.23, -8.61, -8.54, -8.6, -9.08, -8.9...</td>
-      <td>permil VPDB</td>
+      <td>age</td>
+      <td>[2007.7, 2007.0, 2006.3, 2005.6, 2004.9, 2004....</td>
+      <td>AD</td>
       <td>None</td>
       <td>None</td>
       <td>age</td>
@@ -847,9 +853,9 @@ document.write(`
       <td>36.59</td>
       <td>-118.82</td>
       <td>1386.0</td>
-      <td>depth</td>
-      <td>[0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0...</td>
-      <td>mm</td>
+      <td>d18o</td>
+      <td>[-8.01, -8.23, -8.61, -8.54, -8.6, -9.08, -8.9...</td>
+      <td>permil VPDB</td>
       <td>None</td>
       <td>None</td>
       <td>age</td>
@@ -907,6 +913,15 @@ document.write(`
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Basic manipulation of <code class="docutils literal notranslate"><span class="pre">pylipd.LiPD</span></code> object</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="L1_getting_information.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Retrieving information from LiPD files</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div></div>
   
