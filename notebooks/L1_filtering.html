@@ -155,7 +155,11 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Dataset Representation in PyLiPD</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../graph.html">Understanding how datasets are represented in PyLiPD</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="L0_loading_lipd_datasets.html">Reading LiPD formatted datasets with <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="L0_lipd_object.html">Basic manipulation of <code class="docutils literal notranslate"><span class="pre">pylipd.LiPD</span></code> object</a></li>
@@ -475,25 +479,26 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading 31 LiPD files
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/pylipd/data
+Loading 31 LiPD files
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/31 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 13%|█▎        | 4/31 [00:00&lt;00:00, 37.81it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 13%|█▎        | 4/31 [00:00&lt;00:00, 37.88it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 39%|███▊      | 12/31 [00:00&lt;00:00, 59.06it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 35%|███▌      | 11/31 [00:00&lt;00:00, 56.01it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 61%|██████▏   | 19/31 [00:00&lt;00:00, 62.79it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 58%|█████▊    | 18/31 [00:00&lt;00:00, 62.12it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 87%|████████▋ | 27/31 [00:00&lt;00:00, 67.71it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 81%|████████  | 25/31 [00:00&lt;00:00, 63.32it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 31/31 [00:00&lt;00:00, 64.59it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 31/31 [00:00&lt;00:00, 62.65it/s]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
@@ -512,37 +517,37 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Arc-GulfofAlaska.Wilson.2014&#39;,
- &#39;Arc-PolarUrals.Wilson.2015&#39;,
- &#39;Eur-FinnishLakelands.Helama.2014&#39;,
- &#39;Eur-Tallinn.Tarand.2001&#39;,
- &#39;Arc-Jamtland.Wilson.2016&#39;,
- &#39;Eur-CentralEurope.Dobrovoln_.2009&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Arc-Forfjorddalen.McCarroll.2013&#39;,
+ &#39;Arc-Tjeggelvas.Bjorklund.2012&#39;,
+ &#39;Eur-NorthernScandinavia.Esper.2012&#39;,
+ &#39;Arc-AkademiiNaukIceCap.Opel.2013&#39;,
  &#39;Ocn-AqabaJordanAQ19.Heiss.1999&#39;,
- &#39;Eur-MaritimeFrenchAlps.B_ntgen.2012&#39;,
- &#39;Eur-EasternCarpathianMountains.Popa.2008&#39;,
- &#39;Arc-Forfjorddalen.McCarroll.2013&#39;,
- &#39;Arc-Indigirka.Hughes.1999&#39;,
- &#39;Eur-Seebergsee.Larocque-Tobler.2012&#39;,
  &#39;Eur-SpannagelCave.Mangini.2005&#39;,
- &#39;Eur-RAPiD-17-5P.Moffa-Sanchez.2014&#39;,
+ &#39;Arc-GulfofAlaska.Wilson.2014&#39;,
+ &#39;Eur-LakeSilvaplana.Larocque-Tobler.2010&#39;,
+ &#39;Eur-FinnishLakelands.Helama.2014&#39;,
+ &#39;Arc-Jamtland.Wilson.2016&#39;,
+ &#39;Arc-Kittelfjall.Bjorklund.2012&#39;,
+ &#39;Arc-PolarUrals.Wilson.2015&#39;,
+ &#39;Ocn-AqabaJordanAQ18.Heiss.1999&#39;,
+ &#39;Eur-CentralEurope.Dobrovoln_.2009&#39;,
+ &#39;Eur-EasternCarpathianMountains.Popa.2008&#39;,
+ &#39;Eur-Seebergsee.Larocque-Tobler.2012&#39;,
+ &#39;Ocn-RedSea.Felis.2000&#39;,
+ &#39;Arc-Indigirka.Hughes.1999&#39;,
+ &#39;Eur-CentralandEasternPyrenees.Pla.2004&#39;,
+ &#39;Eur-Stockholm.Leijonhufvud.2009&#39;,
+ &#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;,
+ &#39;Eur-CoastofPortugal.Abrantes.2011&#39;,
+ &#39;Eur-EuropeanAlps.B_ntgen.2011&#39;,
  &#39;Eur-LakeSilvaplana.Trachsel.2010&#39;,
  &#39;Arc-Tornetrask.Melvin.2012&#39;,
- &#39;Arc-AkademiiNaukIceCap.Opel.2013&#39;,
- &#39;Arc-Tjeggelvas.Bjorklund.2012&#39;,
- &#39;Ocn-RedSea.Felis.2000&#39;,
- &#39;Eur-CentralandEasternPyrenees.Pla.2004&#39;,
- &#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;,
- &#39;Eur-TatraMountains.B_ntgen.2013&#39;,
- &#39;Eur-EuropeanAlps.B_ntgen.2011&#39;,
- &#39;Eur-LakeSilvaplana.Larocque-Tobler.2010&#39;,
- &#39;Arc-Kittelfjall.Bjorklund.2012&#39;,
- &#39;Eur-L_tschental.B_ntgen.2006&#39;,
+ &#39;Eur-RAPiD-17-5P.Moffa-Sanchez.2014&#39;,
+ &#39;Eur-MaritimeFrenchAlps.B_ntgen.2012&#39;,
  &#39;Eur-NorthernSpain.Mart_n-Chivelet.2011&#39;,
- &#39;Eur-CoastofPortugal.Abrantes.2011&#39;,
- &#39;Eur-Stockholm.Leijonhufvud.2009&#39;,
- &#39;Eur-NorthernScandinavia.Esper.2012&#39;,
- &#39;Ocn-AqabaJordanAQ18.Heiss.1999&#39;]
+ &#39;Eur-L_tschental.B_ntgen.2006&#39;,
+ &#39;Eur-Tallinn.Tarand.2001&#39;,
+ &#39;Eur-TatraMountains.B_ntgen.2013&#39;]
 </pre></div>
 </div>
 </div>
@@ -556,12 +561,12 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;tree&#39;,
- &#39;documents&#39;,
+ &#39;glacier ice&#39;,
  &#39;coral&#39;,
- &#39;lake sediment&#39;,
  &#39;speleothem&#39;,
- &#39;marine sediment&#39;,
- &#39;glacier ice&#39;]
+ &#39;lake sediment&#39;,
+ &#39;documents&#39;,
+ &#39;marine sediment&#39;]
 </pre></div>
 </div>
 </div>
@@ -576,7 +581,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-SpannagelCave.Mangini.2005&#39;, &#39;Eur-NorthernSpain.Mart_n-Chivelet.2011&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-NorthernSpain.Mart_n-Chivelet.2011&#39;, &#39;Eur-SpannagelCave.Mangini.2005&#39;]
 </pre></div>
 </div>
 </div>
@@ -606,12 +611,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-LakeSilvaplana.Larocque-Tobler.2010&#39;,
- &#39;Eur-Seebergsee.Larocque-Tobler.2012&#39;,
- &#39;Eur-RAPiD-17-5P.Moffa-Sanchez.2014&#39;,
- &#39;Eur-CoastofPortugal.Abrantes.2011&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-RAPiD-17-5P.Moffa-Sanchez.2014&#39;,
  &#39;Eur-CentralandEasternPyrenees.Pla.2004&#39;,
- &#39;Eur-LakeSilvaplana.Trachsel.2010&#39;]
+ &#39;Eur-LakeSilvaplana.Trachsel.2010&#39;,
+ &#39;Eur-Seebergsee.Larocque-Tobler.2012&#39;,
+ &#39;Eur-CoastofPortugal.Abrantes.2011&#39;,
+ &#39;Eur-LakeSilvaplana.Larocque-Tobler.2010&#39;]
 </pre></div>
 </div>
 </div>
@@ -625,10 +630,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-RAPiD-17-5P.Moffa-Sanchez.2014&#39;,
- &#39;Eur-CoastofPortugal.Abrantes.2011&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-NorthernSpain.Mart_n-Chivelet.2011&#39;,
+ &#39;Eur-RAPiD-17-5P.Moffa-Sanchez.2014&#39;,
  &#39;Eur-SpannagelCave.Mangini.2005&#39;,
- &#39;Eur-NorthernSpain.Mart_n-Chivelet.2011&#39;]
+ &#39;Eur-CoastofPortugal.Abrantes.2011&#39;]
 </pre></div>
 </div>
 </div>
@@ -664,28 +669,28 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-Stockholm.Leijonhufvud.2009&#39;,
- &#39;Eur-L_tschental.B_ntgen.2006&#39;,
- &#39;Arc-Kittelfjall.Bjorklund.2012&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Arc-Tjeggelvas.Bjorklund.2012&#39;,
+ &#39;Eur-EasternCarpathianMountains.Popa.2008&#39;,
+ &#39;Eur-MaritimeFrenchAlps.B_ntgen.2012&#39;,
+ &#39;Eur-Tallinn.Tarand.2001&#39;,
+ &#39;Arc-Jamtland.Wilson.2016&#39;,
+ &#39;Eur-Stockholm.Leijonhufvud.2009&#39;,
+ &#39;Eur-CentralandEasternPyrenees.Pla.2004&#39;,
  &#39;Eur-EuropeanAlps.B_ntgen.2011&#39;,
- &#39;Arc-Tornetrask.Melvin.2012&#39;,
- &#39;Eur-LakeSilvaplana.Larocque-Tobler.2010&#39;,
+ &#39;Eur-SpannagelCave.Mangini.2005&#39;,
  &#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;,
- &#39;Eur-TatraMountains.B_ntgen.2013&#39;,
+ &#39;Eur-LakeSilvaplana.Trachsel.2010&#39;,
+ &#39;Arc-Forfjorddalen.McCarroll.2013&#39;,
  &#39;Eur-Seebergsee.Larocque-Tobler.2012&#39;,
  &#39;Eur-NorthernScandinavia.Esper.2012&#39;,
- &#39;Arc-Tjeggelvas.Bjorklund.2012&#39;,
- &#39;Eur-MaritimeFrenchAlps.B_ntgen.2012&#39;,
- &#39;Eur-CentralEurope.Dobrovoln_.2009&#39;,
- &#39;Arc-Jamtland.Wilson.2016&#39;,
- &#39;Eur-EasternCarpathianMountains.Popa.2008&#39;,
- &#39;Arc-Forfjorddalen.McCarroll.2013&#39;,
- &#39;Eur-SpannagelCave.Mangini.2005&#39;,
+ &#39;Eur-TatraMountains.B_ntgen.2013&#39;,
+ &#39;Arc-Kittelfjall.Bjorklund.2012&#39;,
+ &#39;Eur-LakeSilvaplana.Larocque-Tobler.2010&#39;,
  &#39;Eur-FinnishLakelands.Helama.2014&#39;,
- &#39;Eur-CentralandEasternPyrenees.Pla.2004&#39;,
  &#39;Arc-PolarUrals.Wilson.2015&#39;,
- &#39;Eur-Tallinn.Tarand.2001&#39;,
- &#39;Eur-LakeSilvaplana.Trachsel.2010&#39;]
+ &#39;Eur-CentralEurope.Dobrovoln_.2009&#39;,
+ &#39;Eur-L_tschental.B_ntgen.2006&#39;,
+ &#39;Arc-Tornetrask.Melvin.2012&#39;]
 </pre></div>
 </div>
 </div>
@@ -700,20 +705,20 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-L_tschental.B_ntgen.2006&#39;,
- &#39;Arc-Kittelfjall.Bjorklund.2012&#39;,
- &#39;Eur-EuropeanAlps.B_ntgen.2011&#39;,
- &#39;Arc-Tornetrask.Melvin.2012&#39;,
- &#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;,
- &#39;Eur-TatraMountains.B_ntgen.2013&#39;,
- &#39;Eur-NorthernScandinavia.Esper.2012&#39;,
- &#39;Arc-Tjeggelvas.Bjorklund.2012&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Arc-Tjeggelvas.Bjorklund.2012&#39;,
+ &#39;Eur-EasternCarpathianMountains.Popa.2008&#39;,
  &#39;Eur-MaritimeFrenchAlps.B_ntgen.2012&#39;,
  &#39;Arc-Jamtland.Wilson.2016&#39;,
- &#39;Eur-EasternCarpathianMountains.Popa.2008&#39;,
+ &#39;Eur-EuropeanAlps.B_ntgen.2011&#39;,
+ &#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;,
  &#39;Arc-Forfjorddalen.McCarroll.2013&#39;,
+ &#39;Eur-NorthernScandinavia.Esper.2012&#39;,
+ &#39;Eur-TatraMountains.B_ntgen.2013&#39;,
+ &#39;Arc-Kittelfjall.Bjorklund.2012&#39;,
  &#39;Eur-FinnishLakelands.Helama.2014&#39;,
- &#39;Arc-PolarUrals.Wilson.2015&#39;]
+ &#39;Arc-PolarUrals.Wilson.2015&#39;,
+ &#39;Eur-L_tschental.B_ntgen.2006&#39;,
+ &#39;Arc-Tornetrask.Melvin.2012&#39;]
 </pre></div>
 </div>
 </div>
@@ -728,20 +733,20 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-L_tschental.B_ntgen.2006&#39;,
- &#39;Arc-Kittelfjall.Bjorklund.2012&#39;,
- &#39;Eur-EuropeanAlps.B_ntgen.2011&#39;,
- &#39;Arc-Tornetrask.Melvin.2012&#39;,
- &#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;,
- &#39;Eur-TatraMountains.B_ntgen.2013&#39;,
- &#39;Eur-NorthernScandinavia.Esper.2012&#39;,
- &#39;Arc-Tjeggelvas.Bjorklund.2012&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Arc-Tjeggelvas.Bjorklund.2012&#39;,
+ &#39;Eur-EasternCarpathianMountains.Popa.2008&#39;,
  &#39;Eur-MaritimeFrenchAlps.B_ntgen.2012&#39;,
  &#39;Arc-Jamtland.Wilson.2016&#39;,
- &#39;Eur-EasternCarpathianMountains.Popa.2008&#39;,
+ &#39;Eur-EuropeanAlps.B_ntgen.2011&#39;,
+ &#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;,
  &#39;Arc-Forfjorddalen.McCarroll.2013&#39;,
+ &#39;Eur-NorthernScandinavia.Esper.2012&#39;,
+ &#39;Eur-TatraMountains.B_ntgen.2013&#39;,
+ &#39;Arc-Kittelfjall.Bjorklund.2012&#39;,
  &#39;Eur-FinnishLakelands.Helama.2014&#39;,
- &#39;Arc-PolarUrals.Wilson.2015&#39;]
+ &#39;Arc-PolarUrals.Wilson.2015&#39;,
+ &#39;Eur-L_tschental.B_ntgen.2006&#39;,
+ &#39;Arc-Tornetrask.Melvin.2012&#39;]
 </pre></div>
 </div>
 </div>
@@ -764,7 +769,7 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/14 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 14/14 [00:00&lt;00:00, 321.81it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 14/14 [00:00&lt;00:00, 325.95it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -776,25 +781,28 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/14 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 14%|█▍        | 2/14 [00:00&lt;00:01, 10.06it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 14%|█▍        | 2/14 [00:00&lt;00:01, 10.47it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 29%|██▊       | 4/14 [00:00&lt;00:00, 13.81it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 29%|██▊       | 4/14 [00:00&lt;00:00, 14.00it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 43%|████▎     | 6/14 [00:00&lt;00:00, 15.90it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 43%|████▎     | 6/14 [00:00&lt;00:00, 15.27it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 57%|█████▋    | 8/14 [00:00&lt;00:00, 15.70it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 57%|█████▋    | 8/14 [00:00&lt;00:00, 16.30it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 71%|███████▏  | 10/14 [00:00&lt;00:00, 16.87it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 71%|███████▏  | 10/14 [00:00&lt;00:00, 17.04it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 86%|████████▌ | 12/14 [00:00&lt;00:00, 17.73it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 86%|████████▌ | 12/14 [00:00&lt;00:00, 17.43it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 14/14 [00:00&lt;00:00, 16.60it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 14/14 [00:00&lt;00:00, 16.44it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 14/14 [00:00&lt;00:00, 15.86it/s]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done..
@@ -845,53 +853,53 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>Eur-MaritimeFrenchAlps.B_ntgen.2012</td>
+      <td>Arc-Tjeggelvas.Bjorklund.2012</td>
       <td>tree</td>
       <td>year</td>
-      <td>PYTAQC8W7JI</td>
-      <td>[969.0, 970.0, 971.0, 972.0, 973.0, 974.0, 975...</td>
+      <td>PYTNM1ZY9M4</td>
+      <td>[1550.0, 1551.0, 1552.0, 1553.0, 1554.0, 1555....</td>
       <td>AD</td>
       <td>None</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>Eur-MaritimeFrenchAlps.B_ntgen.2012</td>
+      <td>Arc-Tjeggelvas.Bjorklund.2012</td>
       <td>tree</td>
-      <td>trsgi</td>
-      <td>Eur_019</td>
-      <td>[0.575, 1.094, 0.819, 0.813, 0.752, 1.089, 0.6...</td>
+      <td>density</td>
+      <td>Arc_059</td>
+      <td>[-0.33782063337638, -0.140244275270133, -0.409...</td>
       <td>NA</td>
-      <td>TRW</td>
+      <td>delta Density</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>Eur-L_tschental.B_ntgen.2006</td>
-      <td>tree</td>
-      <td>MXD</td>
-      <td>Eur_018</td>
-      <td>[-1.516, -1.828, -2.919, -1.399, -0.971, -1.68...</td>
-      <td>NA</td>
-      <td>MXD</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Eur-L_tschental.B_ntgen.2006</td>
+      <td>Arc-Forfjorddalen.McCarroll.2013</td>
       <td>tree</td>
       <td>year</td>
-      <td>PYTOZB821DI</td>
-      <td>[755.0, 756.0, 757.0, 758.0, 759.0, 760.0, 761...</td>
+      <td>PYTRQDXUHJN</td>
+      <td>[1100.0, 1101.0, 1102.0, 1103.0, 1104.0, 1105....</td>
       <td>AD</td>
       <td>None</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>Arc-Jamtland.Wilson.2016</td>
+      <th>3</th>
+      <td>Arc-Forfjorddalen.McCarroll.2013</td>
       <td>tree</td>
       <td>MXD</td>
-      <td>Arc_152</td>
-      <td>[0.08710426, 2.816246622, 3.166560665, 1.08398...</td>
+      <td>Arc_150</td>
+      <td>[-0.6724083323, -0.9420877372, -0.9158317899, ...</td>
       <td>NA</td>
       <td>MXD</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Eur-NorthernScandinavia.Esper.2012</td>
+      <td>tree</td>
+      <td>year</td>
+      <td>PYTECO66XAD</td>
+      <td>[-138.0, -137.0, -136.0, -135.0, -134.0, -133....</td>
+      <td>AD</td>
+      <td>None</td>
     </tr>
   </tbody>
 </table>
@@ -934,38 +942,38 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>Eur-Lötschental.Büntgen.2006</td>
-      <td>46.40</td>
-      <td>7.8</td>
-      <td>1700.0</td>
+      <td>Arc-Tjeggelvas.Bjorklund.2012</td>
+      <td>66.6000</td>
+      <td>17.6000</td>
+      <td>520.0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>Arc-Kittelfjall.Bjorklund.2012</td>
-      <td>65.20</td>
-      <td>15.5</td>
-      <td>550.0</td>
+      <td>Eur-EasternCarpathianMountains.Popa.2008</td>
+      <td>47.0000</td>
+      <td>25.3000</td>
+      <td>1820.0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>Eur-EuropeanAlps.Büntgen.2011</td>
-      <td>47.00</td>
-      <td>10.7</td>
-      <td>2050.0</td>
+      <td>Eur-MaritimeFrenchAlps.Büntgen.2012</td>
+      <td>44.0000</td>
+      <td>7.5000</td>
+      <td>2100.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>Arc-Tornetrask.Melvin.2012</td>
-      <td>68.26</td>
-      <td>19.6</td>
-      <td>320.0</td>
+      <td>Arc-Jamtland.Wilson.2016</td>
+      <td>63.2475</td>
+      <td>13.3375</td>
+      <td>650.0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>Eur-SpanishPyrenees.Dorado-Linan.2012</td>
-      <td>42.50</td>
-      <td>1.0</td>
-      <td>1200.0</td>
+      <td>Eur-EuropeanAlps.Büntgen.2011</td>
+      <td>47.0000</td>
+      <td>10.7000</td>
+      <td>2050.0</td>
     </tr>
   </tbody>
 </table>
@@ -1029,68 +1037,68 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>Arc-Jamtland.Wilson.2016</td>
+      <td>Arc-Tjeggelvas.Bjorklund.2012</td>
       <td>tree</td>
-      <td>MXD</td>
-      <td>Arc_152</td>
-      <td>[0.08710426, 2.816246622, 3.166560665, 1.08398...</td>
-      <td>NA</td>
-      <td>MXD</td>
-      <td>63.2475</td>
-      <td>13.3375</td>
-      <td>650.0</td>
+      <td>year</td>
+      <td>PYTNM1ZY9M4</td>
+      <td>[1550.0, 1551.0, 1552.0, 1553.0, 1554.0, 1555....</td>
+      <td>AD</td>
+      <td>None</td>
+      <td>66.60</td>
+      <td>17.60</td>
+      <td>520.0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>Arc-Jamtland.Wilson.2016</td>
+      <td>Arc-Tjeggelvas.Bjorklund.2012</td>
       <td>tree</td>
-      <td>year</td>
-      <td>PYT42OV28UH</td>
-      <td>[783.0, 784.0, 785.0, 786.0, 787.0, 788.0, 789...</td>
-      <td>AD</td>
-      <td>None</td>
-      <td>63.2475</td>
-      <td>13.3375</td>
-      <td>650.0</td>
+      <td>density</td>
+      <td>Arc_059</td>
+      <td>[-0.33782063337638, -0.140244275270133, -0.409...</td>
+      <td>NA</td>
+      <td>delta Density</td>
+      <td>66.60</td>
+      <td>17.60</td>
+      <td>520.0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>Eur-EasternCarpathianMountains.Popa.2008</td>
+      <td>Arc-Forfjorddalen.McCarroll.2013</td>
       <td>tree</td>
-      <td>trsgi</td>
-      <td>Eur_016</td>
-      <td>[0.869, 0.106, 0.869, 0.281, 0.094, 0.24, -0.3...</td>
-      <td>NA</td>
-      <td>TRW</td>
-      <td>47.0000</td>
-      <td>25.3000</td>
-      <td>1820.0</td>
+      <td>year</td>
+      <td>PYTRQDXUHJN</td>
+      <td>[1100.0, 1101.0, 1102.0, 1103.0, 1104.0, 1105....</td>
+      <td>AD</td>
+      <td>None</td>
+      <td>68.73</td>
+      <td>15.73</td>
+      <td>200.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>Eur-EasternCarpathianMountains.Popa.2008</td>
+      <td>Arc-Forfjorddalen.McCarroll.2013</td>
       <td>tree</td>
-      <td>year</td>
-      <td>PYTL34KH163</td>
-      <td>[1163.0, 1164.0, 1165.0, 1166.0, 1167.0, 1168....</td>
-      <td>AD</td>
-      <td>None</td>
-      <td>47.0000</td>
-      <td>25.3000</td>
-      <td>1820.0</td>
+      <td>MXD</td>
+      <td>Arc_150</td>
+      <td>[-0.6724083323, -0.9420877372, -0.9158317899, ...</td>
+      <td>NA</td>
+      <td>MXD</td>
+      <td>68.73</td>
+      <td>15.73</td>
+      <td>200.0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>Arc-Kittelfjall.Bjorklund.2012</td>
+      <td>Eur-NorthernScandinavia.Esper.2012</td>
       <td>tree</td>
-      <td>density</td>
-      <td>Arc_057</td>
-      <td>[-0.94999768059676, 0.112527984315676, -1.1685...</td>
-      <td>NA</td>
-      <td>delta Density</td>
-      <td>65.2000</td>
-      <td>15.5000</td>
-      <td>550.0</td>
+      <td>year</td>
+      <td>PYTECO66XAD</td>
+      <td>[-138.0, -137.0, -136.0, -135.0, -134.0, -133....</td>
+      <td>AD</td>
+      <td>None</td>
+      <td>68.00</td>
+      <td>25.00</td>
+      <td>300.0</td>
     </tr>
   </tbody>
 </table>
@@ -1140,16 +1148,26 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>Arc-Tornetrask.Melvin.2012</td>
+      <td>Eur-EuropeanAlps.Büntgen.2011</td>
       <td>tree</td>
-      <td>temperature</td>
-      <td>Arc_012mxd</td>
-      <td>[nan, nan, nan, nan, nan, nan, nan, nan, nan, ...</td>
-      <td>degC</td>
-      <td>MXD</td>
+      <td>trsgi</td>
+      <td>Eur_017</td>
+      <td>[0.405, 0.395, 1.209, 1.244, -0.101, 0.658, 0....</td>
+      <td>NA</td>
+      <td>TRW</td>
     </tr>
     <tr>
       <th>1</th>
+      <td>Eur-MaritimeFrenchAlps.Büntgen.2012</td>
+      <td>tree</td>
+      <td>trsgi</td>
+      <td>Eur_019</td>
+      <td>[0.575, 1.094, 0.819, 0.813, 0.752, 1.089, 0.6...</td>
+      <td>NA</td>
+      <td>TRW</td>
+    </tr>
+    <tr>
+      <th>2</th>
       <td>Arc-Tornetrask.Melvin.2012</td>
       <td>tree</td>
       <td>temperature</td>
@@ -1159,32 +1177,22 @@ document.write(`
       <td>TRW</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>Eur-TatraMountains.B_ntgen.2013</td>
+      <th>3</th>
+      <td>Arc-Tornetrask.Melvin.2012</td>
       <td>tree</td>
-      <td>trsgi</td>
-      <td>Eur_015</td>
-      <td>[-0.93, -0.369, -0.927, -1.236, -1.125, -0.502...</td>
-      <td>NA</td>
-      <td>TRW</td>
+      <td>temperature</td>
+      <td>Arc_012mxd</td>
+      <td>[nan, nan, nan, nan, nan, nan, nan, nan, nan, ...</td>
+      <td>degC</td>
+      <td>MXD</td>
     </tr>
     <tr>
-      <th>3</th>
+      <th>4</th>
       <td>Eur-EasternCarpathianMountains.Popa.2008</td>
       <td>tree</td>
       <td>trsgi</td>
       <td>Eur_016</td>
       <td>[0.869, 0.106, 0.869, 0.281, 0.094, 0.24, -0.3...</td>
-      <td>NA</td>
-      <td>TRW</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Eur-EuropeanAlps.B_ntgen.2011</td>
-      <td>tree</td>
-      <td>trsgi</td>
-      <td>Eur_017</td>
-      <td>[0.405, 0.395, 1.209, 1.244, -0.101, 0.658, 0....</td>
       <td>NA</td>
       <td>TRW</td>
     </tr>
@@ -1235,7 +1243,37 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>Eur-L_tschental.B_ntgen.2006</td>
+      <td>Eur-EasternCarpathianMountains.Popa.2008</td>
+      <td>tree</td>
+      <td>year</td>
+      <td>PYTL34KH163</td>
+      <td>[1163.0, 1164.0, 1165.0, 1166.0, 1167.0, 1168....</td>
+      <td>AD</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Arc-PolarUrals.Wilson.2015</td>
+      <td>tree</td>
+      <td>year</td>
+      <td>PYTTZYVUGBN</td>
+      <td>[891.0, 892.0, 893.0, 894.0, 895.0, 896.0, 897...</td>
+      <td>AD</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Arc-Forfjorddalen.McCarroll.2013</td>
+      <td>tree</td>
+      <td>year</td>
+      <td>PYTRQDXUHJN</td>
+      <td>[1100.0, 1101.0, 1102.0, 1103.0, 1104.0, 1105....</td>
+      <td>AD</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Eur-Lötschental.Büntgen.2006</td>
       <td>tree</td>
       <td>year</td>
       <td>PYTOZB821DI</td>
@@ -1244,42 +1282,12 @@ document.write(`
       <td>None</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>Eur-FinnishLakelands.Helama.2014</td>
-      <td>tree</td>
-      <td>year</td>
-      <td>PYTUSB62S0A</td>
-      <td>[2000.0, 1999.0, 1998.0, 1997.0, 1996.0, 1995....</td>
-      <td>AD</td>
-      <td>None</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Arc-Tjeggelvas.Bjorklund.2012</td>
-      <td>tree</td>
-      <td>year</td>
-      <td>PYTNM1ZY9M4</td>
-      <td>[1550.0, 1551.0, 1552.0, 1553.0, 1554.0, 1555....</td>
-      <td>AD</td>
-      <td>None</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Eur-EuropeanAlps.B_ntgen.2011</td>
-      <td>tree</td>
-      <td>year</td>
-      <td>PYTZASMDVCX</td>
-      <td>[-500.0, -499.0, -498.0, -497.0, -496.0, -495....</td>
-      <td>AD</td>
-      <td>None</td>
-    </tr>
-    <tr>
       <th>4</th>
-      <td>Eur-SpanishPyrenees.Dorado-Linan.2012</td>
+      <td>Eur-TatraMountains.Büntgen.2013</td>
       <td>tree</td>
       <td>year</td>
-      <td>PYT2K8MIA3N</td>
-      <td>[1260.0, 1261.0, 1262.0, 1263.0, 1264.0, 1265....</td>
+      <td>PYTQ1JTP057</td>
+      <td>[1040.0, 1041.0, 1042.0, 1043.0, 1044.0, 1045....</td>
       <td>AD</td>
       <td>None</td>
     </tr>
@@ -1333,22 +1341,38 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>Arc-Tornetrask.Melvin.2012</td>
+      <td>Eur-EuropeanAlps.Büntgen.2011</td>
       <td>tree</td>
-      <td>temperature</td>
-      <td>Arc_012mxd</td>
-      <td>[nan, nan, nan, nan, nan, nan, nan, nan, nan, ...</td>
-      <td>degC</td>
-      <td>MXD</td>
+      <td>trsgi</td>
+      <td>Eur_017</td>
+      <td>[0.405, 0.395, 1.209, 1.244, -0.101, 0.658, 0....</td>
+      <td>NA</td>
+      <td>TRW</td>
       <td>tree</td>
       <td>year</td>
-      <td>PYTVDYC36EJ</td>
-      <td>[-39.0, -38.0, -37.0, -36.0, -35.0, -34.0, -33...</td>
+      <td>PYTZASMDVCX</td>
+      <td>[-500.0, -499.0, -498.0, -497.0, -496.0, -495....</td>
       <td>AD</td>
       <td>None</td>
     </tr>
     <tr>
       <th>1</th>
+      <td>Eur-MaritimeFrenchAlps.Büntgen.2012</td>
+      <td>tree</td>
+      <td>trsgi</td>
+      <td>Eur_019</td>
+      <td>[0.575, 1.094, 0.819, 0.813, 0.752, 1.089, 0.6...</td>
+      <td>NA</td>
+      <td>TRW</td>
+      <td>tree</td>
+      <td>year</td>
+      <td>PYTAQC8W7JI</td>
+      <td>[969.0, 970.0, 971.0, 972.0, 973.0, 974.0, 975...</td>
+      <td>AD</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>2</th>
       <td>Arc-Tornetrask.Melvin.2012</td>
       <td>tree</td>
       <td>temperature</td>
@@ -1364,23 +1388,23 @@ document.write(`
       <td>None</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>Eur-TatraMountains.B_ntgen.2013</td>
+      <th>3</th>
+      <td>Arc-Tornetrask.Melvin.2012</td>
       <td>tree</td>
-      <td>trsgi</td>
-      <td>Eur_015</td>
-      <td>[-0.93, -0.369, -0.927, -1.236, -1.125, -0.502...</td>
-      <td>NA</td>
-      <td>TRW</td>
+      <td>temperature</td>
+      <td>Arc_012mxd</td>
+      <td>[nan, nan, nan, nan, nan, nan, nan, nan, nan, ...</td>
+      <td>degC</td>
+      <td>MXD</td>
       <td>tree</td>
       <td>year</td>
-      <td>PYTQ1JTP057</td>
-      <td>[1040.0, 1041.0, 1042.0, 1043.0, 1044.0, 1045....</td>
+      <td>PYTVDYC36EJ</td>
+      <td>[-39.0, -38.0, -37.0, -36.0, -35.0, -34.0, -33...</td>
       <td>AD</td>
       <td>None</td>
     </tr>
     <tr>
-      <th>3</th>
+      <th>4</th>
       <td>Eur-EasternCarpathianMountains.Popa.2008</td>
       <td>tree</td>
       <td>trsgi</td>
@@ -1396,34 +1420,18 @@ document.write(`
       <td>None</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>Eur-EuropeanAlps.B_ntgen.2011</td>
-      <td>tree</td>
-      <td>trsgi</td>
-      <td>Eur_017</td>
-      <td>[0.405, 0.395, 1.209, 1.244, -0.101, 0.658, 0....</td>
-      <td>NA</td>
-      <td>TRW</td>
-      <td>tree</td>
-      <td>year</td>
-      <td>PYTZASMDVCX</td>
-      <td>[-500.0, -499.0, -498.0, -497.0, -496.0, -495....</td>
-      <td>AD</td>
-      <td>None</td>
-    </tr>
-    <tr>
       <th>5</th>
-      <td>Eur-SpanishPyrenees.Dorado-Linan.2012</td>
+      <td>Eur-TatraMountains.Büntgen.2013</td>
       <td>tree</td>
       <td>trsgi</td>
-      <td>Eur_020</td>
-      <td>[-1.612, -0.703, -0.36, -0.767, -0.601, -0.733...</td>
+      <td>Eur_015</td>
+      <td>[-0.93, -0.369, -0.927, -1.236, -1.125, -0.502...</td>
       <td>NA</td>
       <td>TRW</td>
       <td>tree</td>
       <td>year</td>
-      <td>PYT2K8MIA3N</td>
-      <td>[1260.0, 1261.0, 1262.0, 1263.0, 1264.0, 1265....</td>
+      <td>PYTQ1JTP057</td>
+      <td>[1040.0, 1041.0, 1042.0, 1043.0, 1044.0, 1045....</td>
       <td>AD</td>
       <td>None</td>
     </tr>
@@ -1445,17 +1453,17 @@ document.write(`
     </tr>
     <tr>
       <th>7</th>
-      <td>Eur-MaritimeFrenchAlps.B_ntgen.2012</td>
+      <td>Eur-SpanishPyrenees.Dorado-Linan.2012</td>
       <td>tree</td>
       <td>trsgi</td>
-      <td>Eur_019</td>
-      <td>[0.575, 1.094, 0.819, 0.813, 0.752, 1.089, 0.6...</td>
+      <td>Eur_020</td>
+      <td>[-1.612, -0.703, -0.36, -0.767, -0.601, -0.733...</td>
       <td>NA</td>
       <td>TRW</td>
       <td>tree</td>
       <td>year</td>
-      <td>PYTAQC8W7JI</td>
-      <td>[969.0, 970.0, 971.0, 972.0, 973.0, 974.0, 975...</td>
+      <td>PYT2K8MIA3N</td>
+      <td>[1260.0, 1261.0, 1262.0, 1263.0, 1264.0, 1265....</td>
       <td>AD</td>
       <td>None</td>
     </tr>
@@ -1512,25 +1520,44 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>Arc-Tornetrask.Melvin.2012</td>
+      <td>Eur-EuropeanAlps.Büntgen.2011</td>
       <td>tree</td>
-      <td>temperature</td>
-      <td>Arc_012mxd</td>
-      <td>[nan, nan, nan, nan, nan, nan, nan, nan, nan, ...</td>
-      <td>degC</td>
-      <td>MXD</td>
+      <td>trsgi</td>
+      <td>Eur_017</td>
+      <td>[0.405, 0.395, 1.209, 1.244, -0.101, 0.658, 0....</td>
+      <td>NA</td>
+      <td>TRW</td>
       <td>tree</td>
       <td>year</td>
-      <td>PYTVDYC36EJ</td>
-      <td>[-39.0, -38.0, -37.0, -36.0, -35.0, -34.0, -33...</td>
+      <td>PYTZASMDVCX</td>
+      <td>[-500.0, -499.0, -498.0, -497.0, -496.0, -495....</td>
       <td>AD</td>
       <td>None</td>
-      <td>68.26</td>
-      <td>19.6</td>
-      <td>320.0</td>
+      <td>47.00</td>
+      <td>10.7</td>
+      <td>2050.0</td>
     </tr>
     <tr>
       <th>1</th>
+      <td>Eur-MaritimeFrenchAlps.Büntgen.2012</td>
+      <td>tree</td>
+      <td>trsgi</td>
+      <td>Eur_019</td>
+      <td>[0.575, 1.094, 0.819, 0.813, 0.752, 1.089, 0.6...</td>
+      <td>NA</td>
+      <td>TRW</td>
+      <td>tree</td>
+      <td>year</td>
+      <td>PYTAQC8W7JI</td>
+      <td>[969.0, 970.0, 971.0, 972.0, 973.0, 974.0, 975...</td>
+      <td>AD</td>
+      <td>None</td>
+      <td>44.00</td>
+      <td>7.5</td>
+      <td>2100.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
       <td>Arc-Tornetrask.Melvin.2012</td>
       <td>tree</td>
       <td>temperature</td>
@@ -1549,26 +1576,26 @@ document.write(`
       <td>320.0</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>Eur-TatraMountains.B_ntgen.2013</td>
+      <th>3</th>
+      <td>Arc-Tornetrask.Melvin.2012</td>
       <td>tree</td>
-      <td>trsgi</td>
-      <td>Eur_015</td>
-      <td>[-0.93, -0.369, -0.927, -1.236, -1.125, -0.502...</td>
-      <td>NA</td>
-      <td>TRW</td>
+      <td>temperature</td>
+      <td>Arc_012mxd</td>
+      <td>[nan, nan, nan, nan, nan, nan, nan, nan, nan, ...</td>
+      <td>degC</td>
+      <td>MXD</td>
       <td>tree</td>
       <td>year</td>
-      <td>PYTQ1JTP057</td>
-      <td>[1040.0, 1041.0, 1042.0, 1043.0, 1044.0, 1045....</td>
+      <td>PYTVDYC36EJ</td>
+      <td>[-39.0, -38.0, -37.0, -36.0, -35.0, -34.0, -33...</td>
       <td>AD</td>
       <td>None</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>68.26</td>
+      <td>19.6</td>
+      <td>320.0</td>
     </tr>
     <tr>
-      <th>3</th>
+      <th>4</th>
       <td>Eur-EasternCarpathianMountains.Popa.2008</td>
       <td>tree</td>
       <td>trsgi</td>
@@ -1585,25 +1612,6 @@ document.write(`
       <td>47.00</td>
       <td>25.3</td>
       <td>1820.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Eur-EuropeanAlps.B_ntgen.2011</td>
-      <td>tree</td>
-      <td>trsgi</td>
-      <td>Eur_017</td>
-      <td>[0.405, 0.395, 1.209, 1.244, -0.101, 0.658, 0....</td>
-      <td>NA</td>
-      <td>TRW</td>
-      <td>tree</td>
-      <td>year</td>
-      <td>PYTZASMDVCX</td>
-      <td>[-500.0, -499.0, -498.0, -497.0, -496.0, -495....</td>
-      <td>AD</td>
-      <td>None</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
     </tr>
   </tbody>
 </table>
