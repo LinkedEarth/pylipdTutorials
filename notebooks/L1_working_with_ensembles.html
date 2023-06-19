@@ -171,6 +171,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="L1_getting_information.html">Retrieving textual information from LiPD files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="L1_filtering.html">Filtering through queries</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Querying using SPARQL</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="L2_custom_queries.html">Custom queries on LiPD objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="L2_using_graphdb.html">Directly querying the LiPDGraph</a></li>
+</ul>
 
     </div>
 </nav></div>
@@ -482,13 +487,13 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/2 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 50%|█████     | 1/2 [00:00&lt;00:00,  1.64it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 50%|█████     | 1/2 [00:00&lt;00:00,  2.06it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 2/2 [00:02&lt;00:00,  1.21s/it]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 2/2 [00:01&lt;00:00,  1.11it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 2/2 [00:02&lt;00:00,  1.12s/it]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 2/2 [00:01&lt;00:00,  1.19it/s]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
@@ -526,7 +531,7 @@ This may take a few minutes since we need to load matrices containing 1000 colum
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 3 µs, sys: 0 ns, total: 3 µs
-Wall time: 6.2 µs
+Wall time: 5.48 µs
 </pre></div>
 </div>
 <div class="output text_html"><div>

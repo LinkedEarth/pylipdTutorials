@@ -171,6 +171,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Retrieving textual information from LiPD files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="L1_filtering.html">Filtering through queries</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Querying using SPARQL</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="L2_custom_queries.html">Custom queries on LiPD objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="L2_using_graphdb.html">Directly querying the LiPDGraph</a></li>
+</ul>
 
     </div>
 </nav></div>
@@ -503,16 +508,16 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/3 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 33%|███▎      | 1/3 [00:00&lt;00:01,  1.66it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 33%|███▎      | 1/3 [00:00&lt;00:00,  2.05it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 67%|██████▋   | 2/3 [00:02&lt;00:01,  1.24s/it]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 67%|██████▋   | 2/3 [00:01&lt;00:00,  1.10it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 3/3 [00:02&lt;00:00,  1.35it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 3/3 [00:01&lt;00:00,  1.71it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 3/3 [00:02&lt;00:00,  1.23it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 3/3 [00:01&lt;00:00,  1.59it/s]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
@@ -665,51 +670,51 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;230th/238u&#39;,
- &#39;depth&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;d234uinitial&#39;,
+ &#39;230th age&#39;,
+ &#39;sample&#39;,
  &#39;230th/232th_uncertainty&#39;,
  &#39;230th/238u_uncertainty&#39;,
- &#39;230th age&#39;,
  &#39;corr_age&#39;,
- &#39;230th age_uncertainty&#39;,
- &#39;230th age_uncertaity&#39;,
- &#39;d18o&#39;,
  &#39;d234u_undertainty&#39;,
- &#39;230th/232th&#39;,
- &#39;d234u&#39;,
- &#39;d234uinitial&#39;,
- &#39;232th_uncertainty&#39;,
- &#39;232th&#39;,
- &#39;depth_dating&#39;,
- &#39;sample&#39;,
- &#39;corr_age_uncert&#39;,
- &#39;age&#39;,
  &#39;Year&#39;,
- &#39;238u&#39;,
- &#39;d234uinitial_uncertainty&#39;,
+ &#39;depth_dating&#39;,
+ &#39;232th&#39;,
+ &#39;age&#39;,
+ &#39;depth&#39;,
+ &#39;230th age_uncertaity&#39;,
  &#39;238u_uncertainty&#39;,
- &#39;sample label&#39;,
- &#39;interval&#39;,
- &#39;event&#39;,
- &#39;median&#39;,
- &#39;sst&#39;,
+ &#39;230th/232th&#39;,
+ &#39;d234uinitial_uncertainty&#39;,
+ &#39;230th age_uncertainty&#39;,
+ &#39;232th_uncertainty&#39;,
+ &#39;d18o&#39;,
+ &#39;d234u&#39;,
+ &#39;corr_age_uncert&#39;,
+ &#39;230th/238u&#39;,
+ &#39;238u&#39;,
  &#39;section&#39;,
- &#39;u. peregrina d13c.d13C&#39;,
- &#39;d180&#39;,
- &#39;lower95&#39;,
- &#39;temp muller&#39;,
- &#39;c. wuellerstorfi d13c.d13C&#39;,
- &#39;ukprime37.Uk37Prime&#39;,
- &#39;site/hole&#39;,
- &#39;upper95&#39;,
- &#39;u. peregrina d18o.d18O&#39;,
- &#39;c37 total.Alkenone&#39;,
  &#39;temp prahl&#39;,
- &#39;depth cr&#39;,
  &#39;c. wuellerstorfi d18o.d18O&#39;,
+ &#39;lower95&#39;,
+ &#39;c. wuellerstorfi d13c.d13C&#39;,
+ &#39;sst&#39;,
+ &#39;d180&#39;,
+ &#39;depth cr&#39;,
+ &#39;interval&#39;,
  &#39;depth comp&#39;,
- &#39;year&#39;,
- &#39;d18O&#39;]
+ &#39;event&#39;,
+ &#39;temp muller&#39;,
+ &#39;upper95&#39;,
+ &#39;site/hole&#39;,
+ &#39;median&#39;,
+ &#39;sample label&#39;,
+ &#39;c37 total.Alkenone&#39;,
+ &#39;u. peregrina d13c.d13C&#39;,
+ &#39;u. peregrina d18o.d18O&#39;,
+ &#39;ukprime37.Uk37Prime&#39;,
+ &#39;d18O&#39;,
+ &#39;year&#39;]
 </pre></div>
 </div>
 </div>
@@ -750,254 +755,254 @@ document.write(`
     <tr>
       <th>0</th>
       <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYT5V9980U6</td>
-      <td>230th/238u</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYTFG8C0PYM</td>
-      <td>depth</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYT5YL6Q4K3</td>
-      <td>230th/232th_uncertainty</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYTJX7XXGA4</td>
-      <td>230th/238u_uncertainty</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYTATZ2HMEW</td>
-      <td>230th age</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYTI6SOK6KO</td>
-      <td>corr_age</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYTZV45N0TM</td>
-      <td>230th age_uncertainty</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYTS7IAZQJC</td>
-      <td>230th age_uncertaity</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYT2H04CZ1R</td>
-      <td>d18o</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYTY5LGA87Y</td>
-      <td>d234u_undertainty</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYT8AQFW8T8</td>
-      <td>230th/232th</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYTPIQHVISC</td>
-      <td>d234u</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
       <td>PYT8CN0W9R9</td>
       <td>d234uinitial</td>
     </tr>
     <tr>
-      <th>13</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYTKIQ1K7TU</td>
-      <td>232th_uncertainty</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYTVDX1FMFG</td>
-      <td>depth</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYTAOT1M9SM</td>
-      <td>232th</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYTPMETRV22</td>
-      <td>depth_dating</td>
-    </tr>
-    <tr>
-      <th>17</th>
+      <th>1</th>
       <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
       <td>PYTWD7SB8DU</td>
       <td>230th age</td>
     </tr>
     <tr>
-      <th>18</th>
+      <th>2</th>
       <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
       <td>PYTDEN0DI3L</td>
       <td>sample</td>
     </tr>
     <tr>
-      <th>19</th>
+      <th>3</th>
       <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYT4HOF5BEB</td>
-      <td>corr_age_uncert</td>
+      <td>PYT5YL6Q4K3</td>
+      <td>230th/232th_uncertainty</td>
     </tr>
     <tr>
-      <th>20</th>
+      <th>4</th>
       <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYT0EBE8TVT</td>
-      <td>age</td>
+      <td>PYTJX7XXGA4</td>
+      <td>230th/238u_uncertainty</td>
     </tr>
     <tr>
-      <th>21</th>
+      <th>5</th>
+      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
+      <td>PYTATZ2HMEW</td>
+      <td>230th age</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
+      <td>PYTI6SOK6KO</td>
+      <td>corr_age</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
+      <td>PYTY5LGA87Y</td>
+      <td>d234u_undertainty</td>
+    </tr>
+    <tr>
+      <th>8</th>
       <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
       <td>PYTZFD4PON5</td>
       <td>Year</td>
     </tr>
     <tr>
-      <th>22</th>
+      <th>9</th>
       <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYTZZ3HHOLE</td>
-      <td>238u</td>
+      <td>PYTPMETRV22</td>
+      <td>depth_dating</td>
     </tr>
     <tr>
-      <th>23</th>
+      <th>10</th>
       <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYTB1QCQ2VE</td>
-      <td>d234uinitial_uncertainty</td>
+      <td>PYTAOT1M9SM</td>
+      <td>232th</td>
     </tr>
     <tr>
-      <th>24</th>
+      <th>11</th>
+      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
+      <td>PYT0EBE8TVT</td>
+      <td>age</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
+      <td>PYTVDX1FMFG</td>
+      <td>depth</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
+      <td>PYTS7IAZQJC</td>
+      <td>230th age_uncertaity</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
+      <td>PYTFG8C0PYM</td>
+      <td>depth</td>
+    </tr>
+    <tr>
+      <th>15</th>
       <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
       <td>PYT2ZUQLZK8</td>
       <td>238u_uncertainty</td>
     </tr>
     <tr>
+      <th>16</th>
+      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
+      <td>PYT8AQFW8T8</td>
+      <td>230th/232th</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
+      <td>PYTB1QCQ2VE</td>
+      <td>d234uinitial_uncertainty</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
+      <td>PYTZV45N0TM</td>
+      <td>230th age_uncertainty</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
+      <td>PYTKIQ1K7TU</td>
+      <td>232th_uncertainty</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
+      <td>PYT2H04CZ1R</td>
+      <td>d18o</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
+      <td>PYTPIQHVISC</td>
+      <td>d234u</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
+      <td>PYT4HOF5BEB</td>
+      <td>corr_age_uncert</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
+      <td>PYT5V9980U6</td>
+      <td>230th/238u</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
+      <td>PYTZZ3HHOLE</td>
+      <td>238u</td>
+    </tr>
+    <tr>
       <th>25</th>
-      <td>http://linked.earth/lipd/chron0measurement0.PY...</td>
-      <td>PYTTD7XCQGS</td>
-      <td>age</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>http://linked.earth/lipd/paleo0measurement1.PY...</td>
-      <td>PYTJZ4GLRYP</td>
-      <td>sample label</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>http://linked.earth/lipd/paleo0measurement0.PY...</td>
-      <td>PYT2ZB6MLZ9</td>
-      <td>interval</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>http://linked.earth/lipd/paleo0measurement0.PY...</td>
-      <td>PYTKRFVW61B</td>
-      <td>depth</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>http://linked.earth/lipd/paleo0measurement1.PY...</td>
-      <td>PYTE5EC1JBW</td>
-      <td>event</td>
-    </tr>
-    <tr>
-      <th>30</th>
-      <td>http://linked.earth/lipd/chron0model0summary0....</td>
-      <td>PYTPWX0LH3I</td>
-      <td>depth</td>
-    </tr>
-    <tr>
-      <th>31</th>
-      <td>http://linked.earth/lipd/chron0model0summary0....</td>
-      <td>PYT7DLYN7X4</td>
-      <td>median</td>
-    </tr>
-    <tr>
-      <th>32</th>
-      <td>http://linked.earth/lipd/paleo0model0ensemble0...</td>
-      <td>PYTDW6AIJPW</td>
-      <td>sst</td>
-    </tr>
-    <tr>
-      <th>33</th>
       <td>http://linked.earth/lipd/paleo0model0ensemble0...</td>
       <td>PYTCHXB40SL</td>
       <td>depth</td>
     </tr>
     <tr>
-      <th>34</th>
+      <th>26</th>
       <td>http://linked.earth/lipd/paleo0measurement0.PY...</td>
       <td>PYT8BDSRW3H</td>
       <td>section</td>
     </tr>
     <tr>
-      <th>35</th>
-      <td>http://linked.earth/lipd/chron0measurement0.PY...</td>
-      <td>PYTLEHYPAYV</td>
-      <td>d18o</td>
-    </tr>
-    <tr>
-      <th>36</th>
+      <th>27</th>
       <td>http://linked.earth/lipd/chron0model0ensemble0...</td>
       <td>PYTUHE3XLGQ</td>
       <td>age</td>
     </tr>
     <tr>
-      <th>37</th>
+      <th>28</th>
+      <td>http://linked.earth/lipd/paleo0measurement0.PY...</td>
+      <td>PYT95DVDUU3</td>
+      <td>temp prahl</td>
+    </tr>
+    <tr>
+      <th>29</th>
       <td>http://linked.earth/lipd/paleo0measurement1.PY...</td>
-      <td>PYTTUPVG4K3</td>
-      <td>u. peregrina d13c.d13C</td>
+      <td>PYT3ZMI0BXW</td>
+      <td>c. wuellerstorfi d18o.d18O</td>
     </tr>
     <tr>
-      <th>38</th>
-      <td>http://linked.earth/lipd/chron0model0ensemble0...</td>
-      <td>PYTGOFY4KZD</td>
-      <td>depth</td>
-    </tr>
-    <tr>
-      <th>39</th>
-      <td>http://linked.earth/lipd/chron0model0summary0....</td>
-      <td>PYT4Y96QMUU</td>
-      <td>d180</td>
-    </tr>
-    <tr>
-      <th>40</th>
+      <th>30</th>
       <td>http://linked.earth/lipd/chron0model0summary0....</td>
       <td>PYTI487BQDZ</td>
       <td>lower95</td>
     </tr>
     <tr>
+      <th>31</th>
+      <td>http://linked.earth/lipd/chron0measurement0.PY...</td>
+      <td>PYTTD7XCQGS</td>
+      <td>age</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>http://linked.earth/lipd/paleo0measurement1.PY...</td>
+      <td>PYT19MC8WE2</td>
+      <td>c. wuellerstorfi d13c.d13C</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>http://linked.earth/lipd/chron0measurement0.PY...</td>
+      <td>PYT9CFQ4GK0</td>
+      <td>depth</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>http://linked.earth/lipd/chron0model0summary0....</td>
+      <td>PYTPWX0LH3I</td>
+      <td>depth</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>http://linked.earth/lipd/paleo0model0ensemble0...</td>
+      <td>PYTDW6AIJPW</td>
+      <td>sst</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>http://linked.earth/lipd/chron0model0summary0....</td>
+      <td>PYT4Y96QMUU</td>
+      <td>d180</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>http://linked.earth/lipd/paleo0measurement1.PY...</td>
+      <td>PYT68HYMYHH</td>
+      <td>depth cr</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>http://linked.earth/lipd/paleo0measurement0.PY...</td>
+      <td>PYT2ZB6MLZ9</td>
+      <td>interval</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>http://linked.earth/lipd/paleo0measurement1.PY...</td>
+      <td>PYTPQ0FJO1S</td>
+      <td>depth comp</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>http://linked.earth/lipd/paleo0measurement1.PY...</td>
+      <td>PYTE5EC1JBW</td>
+      <td>event</td>
+    </tr>
+    <tr>
       <th>41</th>
       <td>http://linked.earth/lipd/paleo0measurement0.PY...</td>
-      <td>PYTXJB98403</td>
-      <td>age</td>
+      <td>PYTKRFVW61B</td>
+      <td>depth</td>
     </tr>
     <tr>
       <th>42</th>
@@ -1007,87 +1012,87 @@ document.write(`
     </tr>
     <tr>
       <th>43</th>
-      <td>http://linked.earth/lipd/paleo0measurement1.PY...</td>
-      <td>PYT19MC8WE2</td>
-      <td>c. wuellerstorfi d13c.d13C</td>
-    </tr>
-    <tr>
-      <th>44</th>
-      <td>http://linked.earth/lipd/chron0measurement0.PY...</td>
-      <td>PYT9CFQ4GK0</td>
-      <td>depth</td>
-    </tr>
-    <tr>
-      <th>45</th>
-      <td>http://linked.earth/lipd/paleo0measurement0.PY...</td>
-      <td>PYTM9N6HCQM</td>
-      <td>ukprime37.Uk37Prime</td>
-    </tr>
-    <tr>
-      <th>46</th>
-      <td>http://linked.earth/lipd/paleo0measurement1.PY...</td>
-      <td>PYTS96EE0CB</td>
-      <td>depth</td>
-    </tr>
-    <tr>
-      <th>47</th>
-      <td>http://linked.earth/lipd/paleo0measurement0.PY...</td>
-      <td>PYTJ3PSH0LT</td>
-      <td>site/hole</td>
-    </tr>
-    <tr>
-      <th>48</th>
       <td>http://linked.earth/lipd/chron0model0summary0....</td>
       <td>PYTDIEKUM44</td>
       <td>upper95</td>
     </tr>
     <tr>
-      <th>49</th>
-      <td>http://linked.earth/lipd/paleo0measurement1.PY...</td>
-      <td>PYTYDOYFVYD</td>
-      <td>u. peregrina d18o.d18O</td>
+      <th>44</th>
+      <td>http://linked.earth/lipd/paleo0measurement0.PY...</td>
+      <td>PYTXJB98403</td>
+      <td>age</td>
     </tr>
     <tr>
-      <th>50</th>
+      <th>45</th>
+      <td>http://linked.earth/lipd/paleo0measurement0.PY...</td>
+      <td>PYTJ3PSH0LT</td>
+      <td>site/hole</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>http://linked.earth/lipd/chron0model0summary0....</td>
+      <td>PYT7DLYN7X4</td>
+      <td>median</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>http://linked.earth/lipd/paleo0measurement1.PY...</td>
+      <td>PYTJZ4GLRYP</td>
+      <td>sample label</td>
+    </tr>
+    <tr>
+      <th>48</th>
       <td>http://linked.earth/lipd/paleo0measurement0.PY...</td>
       <td>PYT10H23U2E</td>
       <td>c37 total.Alkenone</td>
     </tr>
     <tr>
+      <th>49</th>
+      <td>http://linked.earth/lipd/paleo0measurement1.PY...</td>
+      <td>PYTS96EE0CB</td>
+      <td>depth</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>http://linked.earth/lipd/chron0measurement0.PY...</td>
+      <td>PYTLEHYPAYV</td>
+      <td>d18o</td>
+    </tr>
+    <tr>
       <th>51</th>
-      <td>http://linked.earth/lipd/paleo0measurement0.PY...</td>
-      <td>PYT95DVDUU3</td>
-      <td>temp prahl</td>
+      <td>http://linked.earth/lipd/paleo0measurement1.PY...</td>
+      <td>PYTTUPVG4K3</td>
+      <td>u. peregrina d13c.d13C</td>
     </tr>
     <tr>
       <th>52</th>
       <td>http://linked.earth/lipd/paleo0measurement1.PY...</td>
-      <td>PYT68HYMYHH</td>
-      <td>depth cr</td>
+      <td>PYTYDOYFVYD</td>
+      <td>u. peregrina d18o.d18O</td>
     </tr>
     <tr>
       <th>53</th>
-      <td>http://linked.earth/lipd/paleo0measurement1.PY...</td>
-      <td>PYT3ZMI0BXW</td>
-      <td>c. wuellerstorfi d18o.d18O</td>
+      <td>http://linked.earth/lipd/paleo0measurement0.PY...</td>
+      <td>PYTM9N6HCQM</td>
+      <td>ukprime37.Uk37Prime</td>
     </tr>
     <tr>
       <th>54</th>
-      <td>http://linked.earth/lipd/paleo0measurement1.PY...</td>
-      <td>PYTPQ0FJO1S</td>
-      <td>depth comp</td>
+      <td>http://linked.earth/lipd/chron0model0ensemble0...</td>
+      <td>PYTGOFY4KZD</td>
+      <td>depth</td>
     </tr>
     <tr>
       <th>55</th>
       <td>http://linked.earth/lipd/CO06MOPE.paleo1measur...</td>
-      <td>LPDca7af9c3</td>
-      <td>year</td>
+      <td>Ocean2kHR_107</td>
+      <td>d18O</td>
     </tr>
     <tr>
       <th>56</th>
       <td>http://linked.earth/lipd/CO06MOPE.paleo1measur...</td>
-      <td>Ocean2kHR_107</td>
-      <td>d18O</td>
+      <td>LPDca7af9c3</td>
+      <td>year</td>
     </tr>
   </tbody>
 </table>
@@ -1172,7 +1177,7 @@ document.write(`
       <th>0</th>
       <td>Crystal.McCabe-Glynn.2013</td>
       <td>Variable North Pacific influence on drought in...</td>
-      <td>Max Berkelhammer Courtenay Strong and Hai Chen...</td>
+      <td>Hai Cheng and R. Lawrence Edwards Ashish Sinha...</td>
       <td>10.1038/ngeo1862</td>
       <td>None</td>
       <td>2013.0</td>
@@ -1192,17 +1197,17 @@ document.write(`
     <tr>
       <th>1</th>
       <td>ODP846.Lawrence.2006</td>
-      <td>High-latitude influence on the eastern equator...</td>
-      <td>M.A. Hall and T.D. Herbert and Z. Liu and D. P...</td>
+      <td>A Pliocene-Pleistocene stack of 57 globally di...</td>
+      <td>Lorraine E. Lisiecki and Maureen E. Raymo</td>
+      <td>10.1029/2004PA001071</td>
       <td>None</td>
-      <td>None</td>
-      <td>2004.0</td>
-      <td>Nature</td>
-      <td>427.0</td>
-      <td>6976.0</td>
-      <td>720-723</td>
-      <td>None</td>
-      <td>None</td>
+      <td>2005.0</td>
+      <td>Paleoceanography</td>
+      <td>20.0</td>
+      <td>1.0</td>
+      <td>79-83</td>
+      <td>article-journal</td>
+      <td>American Geophysical Union (AGU)</td>
       <td>None</td>
       <td>None</td>
       <td>None</td>
@@ -1213,17 +1218,17 @@ document.write(`
     <tr>
       <th>2</th>
       <td>ODP846.Lawrence.2006</td>
-      <td>Pleiocene stable isotope stratigraphy of ODP S...</td>
-      <td>D. Pate and M.A. Hall and T.D. Herbert and Z. ...</td>
+      <td>The Role of Uncertainty in Estimating Lead/Lag...</td>
+      <td>D. Khider and C. E. Lawrence and S. Ahn and L....</td>
+      <td>10.1002/2016PA003057</td>
       <td>None</td>
-      <td>None</td>
-      <td>1995.0</td>
-      <td>Proceedinds of the Ocean Drilling Program Scie...</td>
-      <td>138.0</td>
-      <td>None</td>
-      <td>337-356</td>
-      <td>None</td>
-      <td>None</td>
+      <td>2017.0</td>
+      <td>Paleoceanography</td>
+      <td>32.0</td>
+      <td>11.0</td>
+      <td>79-83</td>
+      <td>article-journal</td>
+      <td>American Geophysical Union (AGU)</td>
       <td>None</td>
       <td>None</td>
       <td>None</td>
@@ -1234,17 +1239,17 @@ document.write(`
     <tr>
       <th>3</th>
       <td>ODP846.Lawrence.2006</td>
-      <td>A Pliocene-Pleistocene stack of 57 globally di...</td>
-      <td>Maureen E. Raymo and Lorraine E. Lisiecki</td>
-      <td>10.1029/2004PA001071</td>
+      <td>Benthic Foraminiferal Stable Isotope Stratigra...</td>
+      <td>A.C. Mix and J. Le and N.J. Shackleton</td>
+      <td>10.2973/odp.proc.sr.138.160.1995</td>
       <td>None</td>
-      <td>2005.0</td>
-      <td>Paleoceanography</td>
-      <td>20.0</td>
-      <td>1.0</td>
+      <td>1995.0</td>
+      <td>Proceedings of the Ocean Drilling Program, 138...</td>
+      <td>312.0</td>
+      <td>5770.0</td>
       <td>79-83</td>
-      <td>article-journal</td>
-      <td>American Geophysical Union (AGU)</td>
+      <td>chapter</td>
+      <td>Ocean Drilling Program</td>
       <td>None</td>
       <td>None</td>
       <td>None</td>

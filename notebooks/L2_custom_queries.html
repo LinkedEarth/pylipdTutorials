@@ -1,0 +1,1497 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Custom queries on LiPD objects &#8212; PyLiPD Tutorials</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/L2_custom_queries';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Directly querying the LiPDGraph" href="L2_using_graphdb.html" />
+    <link rel="prev" title="Filtering through queries" href="L1_filtering.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/LinkedEarth_small.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/LinkedEarth_small.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    An introduction to the PyLiPD package
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Dataset Representation in PyLiPD</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../graph.html">Understanding how datasets are represented in PyLiPD</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="L0_loading_lipd_datasets.html">Reading LiPD formatted datasets with <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="L0_lipd_object.html">Basic manipulation of <code class="docutils literal notranslate"><span class="pre">pylipd.LiPD</span></code> objects</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Functionalities</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="L1_working_with_ensembles.html">Working with ensembles in <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="L1_getting_information.html">Retrieving textual information from LiPD files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="L1_filtering.html">Filtering through queries</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Querying using SPARQL</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Custom queries on LiPD objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="L2_using_graphdb.html">Directly querying the LiPDGraph</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/LinkedEarth/pylipdTutorials/jupyterbook?urlpath=tree/jupyterBook/notebooks/L2_custom_queries.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/LinkedEarth/pylipdTutorials" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/LinkedEarth/pylipdTutorials/issues/new?title=Issue%20on%20page%20%2Fnotebooks/L2_custom_queries.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/L2_custom_queries.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Custom queries on LiPD objects</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preamble">Preamble</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#goals">Goals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keywords">Keywords</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-requisites">Pre-requisites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relevant-packages">Relevant Packages</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-description">Data Description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstration">Demonstration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-the-lipd-object">Understanding the LiPD object</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-a-query">Constructing a query</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-variables">Optional variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#querying-for-predicates">Querying for predicates</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#geoquery">Geoquery</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-by-name">Filtering by name</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#concluding-remarks">Concluding remarks</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="custom-queries-on-lipd-objects">
+<h1>Custom queries on LiPD objects<a class="headerlink" href="#custom-queries-on-lipd-objects" title="Permalink to this heading">#</a></h1>
+<section id="authors">
+<h2>Authors<a class="headerlink" href="#authors" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://orcid.org/0000-0001-7501-8430">Deborah Khider</a></p>
+</section>
+<section id="preamble">
+<h2>Preamble<a class="headerlink" href="#preamble" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code> is a Python package that allows you to read, manipulate, and write <a class="reference external" href="https://doi.org/10.5194/cp-12-1093-2016">LiPD</a> formatted datasets. While <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code> comes pre-loaded with certain functions to filter datasets and extract information (see other tutorials), in some cases one might want to design more specific queries.
+In this tutorial, we will demonstrate how to generate such custom queries using SPARQL.</p>
+<section id="goals">
+<h3>Goals<a class="headerlink" href="#goals" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Learn how to build SPAQRL queries</p></li>
+</ul>
+<p>Reading Time: 15 minutes</p>
+</section>
+<section id="keywords">
+<h3>Keywords<a class="headerlink" href="#keywords" title="Permalink to this heading">#</a></h3>
+<p>LiPD, SPARQL</p>
+</section>
+<section id="pre-requisites">
+<h3>Pre-requisites<a class="headerlink" href="#pre-requisites" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="http://linked.earth/pylipdTutorials/graph.html">Understand the basics of RDF and SPAQRL</a></p></li>
+<li><p><span class="xref myst">Loading LiPD objects</span></p></li>
+<li><p><a class="reference internal" href="L1_getting_information.html"><span class="doc std std-doc">Getting information from LiPD objects</span></a></p></li>
+<li><p><a class="reference internal" href="L1_filtering.html"><span class="doc std std-doc">Filtering by certain criteria</span></a></p></li>
+</ul>
+</section>
+<section id="relevant-packages">
+<h3>Relevant Packages<a class="headerlink" href="#relevant-packages" title="Permalink to this heading">#</a></h3>
+<p>pylipd</p>
+</section>
+</section>
+<section id="data-description">
+<h2>Data Description<a class="headerlink" href="#data-description" title="Permalink to this heading">#</a></h2>
+<p>This notebook uses the following datasets, in LiPD format:</p>
+<ul class="simple">
+<li><p>McCabe-Glynn, S., Johnson, K., Strong, C. et al. Variable North Pacific influence on drought in southwestern North America since AD 854. Nature Geosci 6, 617–621 (2013). <a class="reference external" href="https://doi.org/10.1038/ngeo1862">https://doi.org/10.1038/ngeo1862</a></p></li>
+<li><p>Lawrence, K. T., Liu, Z. H., &amp; Herbert, T. D. (2006). Evolution of the eastern tropical Pacific through Plio-Pleistocne glaciation. Science, 312(5770), 79-83.</p></li>
+<li><p>PAGES2k Consortium., Emile-Geay, J., McKay, N. et al. A global multiproxy database for temperature reconstructions of the Common Era. Sci Data 4, 170088 (2017). doi:10.1038/sdata.2017.88</p></li>
+</ul>
+</section>
+<section id="demonstration">
+<h2>Demonstration<a class="headerlink" href="#demonstration" title="Permalink to this heading">#</a></h2>
+<section id="understanding-the-lipd-object">
+<h3>Understanding the LiPD object<a class="headerlink" href="#understanding-the-lipd-object" title="Permalink to this heading">#</a></h3>
+<p>Let’s start by importing our favorite package and load our datasets.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pylipd.lipd</span> <span class="kn">import</span> <span class="n">LiPD</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;../data/Pages2k/&#39;</span>
+
+<span class="n">D</span> <span class="o">=</span> <span class="n">LiPD</span><span class="p">()</span>
+<span class="n">D</span><span class="o">.</span><span class="n">load_from_dir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Directory ../data/Pages2k/ does not exist
+</pre></div>
+</div>
+</div>
+</div>
+<p>By now, you should be familiar with our <code class="docutils literal notranslate"><span class="pre">load</span></code> functionalities. But you need to understand a little bit about what’s happening under the hood to truly appreciate this tutorial and why everything will function the way it does.</p>
+<ul class="simple">
+<li><p>The first step is to expand the dataset stored in LiPD format. Remember that LiPD essentially consists of data tables stored in csv format and a JSON-LD file that contains the metadata.</p></li>
+<li><p>The second step is to map the JSON file to RDF using our ontology as the schema.</p></li>
+<li><p>The third (and <strong>unique</strong>) step is to load the data contained into the csv files into the graph directly. This is quite unique to LinkedEarth. If you work with other knowledge bases, you’ll find that most of the time, the actual data are stored in another format that you will need the learn to handle in conjunction with the metadata.</p></li>
+</ul>
+<p>Also, each dataset gets its own graph! So you can think of the <code class="docutils literal notranslate"><span class="pre">LiPD</span></code> object as a collection of graphs, each of which represent a particular dataset.</p>
+<p>Let’s have a close look at our object, shall we?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">D</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="vm">__dict__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;graph&#39;: &lt;Graph identifier=Nfa275d20f8c44ad5ab6b826662b012d3 (&lt;class &#39;rdflib.graph.ConjunctiveGraph&#39;&gt;)&gt;}
+</pre></div>
+</div>
+</div>
+</div>
+<p>In particular, our graph object is a <code class="docutils literal notranslate"><span class="pre">ConjuctiveGraph</span></code> from the <a class="reference external" href="https://rdflib.readthedocs.io/en/stable/">rdflib library</a>. Why should you care?</p>
+<ol class="arabic simple">
+<li><p>If you isolate the graph, then you can use the <code class="docutils literal notranslate"><span class="pre">rdflib</span></code> package directly. Since this is a well-maintained community package with a larger user base than <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code>, chances are that stackoverflow or their documentation will provide you with some answers on how to work with your graph.</p></li>
+<li><p>why a <code class="docutils literal notranslate"><span class="pre">ConjuctiveGraph</span></code>? We use this particular type because although each dataset is stored into its own graph, we often want to query across datasets (i.e., across graphs) and this particular object in <code class="docutils literal notranslate"><span class="pre">rdflib</span></code> allows us to do so.</p></li>
+</ol>
+<p>Let’s try to create our own queries from this.</p>
+</section>
+<section id="constructing-a-query">
+<h3>Constructing a query<a class="headerlink" href="#constructing-a-query" title="Permalink to this heading">#</a></h3>
+<p>Let’s return to the query described in <a class="reference external" href="http://linked.earth/pylipdTutorials/graph.html">this primer</a> in which we try to gather all the dataset names. Let’s modify it to also return the variable <code class="docutils literal notranslate"><span class="pre">ds</span></code> so you can see the difference between the object and the name:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">PREFIX le:&lt;http://linked.earth/ontology#&gt;</span>
+
+<span class="s2">SELECT ?ds ?dsname WHERE{</span>
+
+<span class="s2">?ds a le:Dataset .</span>
+<span class="s2">?ds le:name ?dsname .}</span>
+
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice that this is just a string containing the query in SPARQL language. Now, let’s run it:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res_sparql</span><span class="p">,</span> <span class="n">res_df</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Which returns two objects:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">res_sparql</span></code>, which is a <code class="docutils literal notranslate"><span class="pre">SPARQLResult</span></code> object from <code class="docutils literal notranslate"><span class="pre">rdflib</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">res_df</span></code>, which processes the <code class="docutils literal notranslate"><span class="pre">SPARQLResult</span></code> into a DataFrame, which is often what you will be interested to look at. Let’s have a look at it:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ds</th>
+      <th>dsname</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>First, notice that the columns of the dataframe corresponds to the names of the variables that you have specified in the SPARQL query. You can choose any name that you want as long as you use a question mark at the beginning to indicate to SPARQL that you are questioning the database for the answer. Second, notice the difference between <code class="docutils literal notranslate"><span class="pre">ds</span></code> and <code class="docutils literal notranslate"><span class="pre">dsname</span></code>. <code class="docutils literal notranslate"><span class="pre">ds</span></code> is the dataset object and the query returns the URI of that object. <code class="docutils literal notranslate"><span class="pre">dsname</span></code> is a string, which contains the names of the dataset. In general, we form our URIs with the names of the objects so don’t be surprised if you sometimes end up with the URI instead of the name (we all sometimes forget to ask for the name).</p>
+<p>One thing to consider is the speed of query. If you’re doing exploratory work with SPARQL, you may wish to only return a few results to see if you’re doing this right. In this case, the number of datasets is quite small:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">res_df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<p>But if you have thousands of rows in that dataframe, you might not want to wait for the query to perform as this may take a few minutes. If you only want to return the first 10 rows in the query, just add the limit to the query:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">PREFIX le:&lt;http://linked.earth/ontology#&gt;</span>
+
+<span class="s2">SELECT ?ds ?dsname WHERE{</span>
+
+<span class="s2">?ds a le:Dataset .</span>
+<span class="s2">?ds le:name ?dsname .}</span>
+
+<span class="s2">LIMIT 10</span>
+
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">res</span><span class="p">,</span> <span class="n">res_df</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+
+<span class="nb">len</span><span class="p">(</span><span class="n">res_df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Please note that the number of rows doesn’t correspond to the number of datasets. For instance, if a dataset contains several variables (as most do) and I ask for each variable in a dataset, then each variable will be contained in an individual row.</p>
+</section>
+<section id="optional-variables">
+<h3>Optional variables<a class="headerlink" href="#optional-variables" title="Permalink to this heading">#</a></h3>
+<p>Let’s pop out one the Pages2k dataset into a new LiPD object, <code class="docutils literal notranslate"><span class="pre">D2</span></code> and add the ODP846 dataset for the purpose of this demonstration. Why ODP846? The file was created before LiPD had DatasetIDs, therefore I know this dataset doesn’t have one.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">D</span><span class="o">.</span><span class="n">get_all_dataset_names</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">D2</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;Ocn-RedSea.Felis.2000&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">D2</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;../data/ODP846.Lawrence.2006.lpd&#39;</span><span class="p">)</span>
+<span class="n">D2</span><span class="o">.</span><span class="n">get_all_dataset_names</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading 1 LiPD files
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/1 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1/1 [00:01&lt;00:00,  1.24s/it]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1/1 [00:01&lt;00:00,  1.24s/it]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;ODP846.Lawrence.2006&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s perform a similar query, but asking for the datasetID in addition to returning the dataset name:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">PREFIX le:&lt;http://linked.earth/ontology#&gt;</span>
+
+<span class="s2">SELECT ?ds ?dsname ?datasetID WHERE{</span>
+
+<span class="s2">?ds a le:Dataset .</span>
+<span class="s2">?ds le:name ?dsname .</span>
+<span class="s2">?ds le:datasetId ?datasetID}</span>
+
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">res</span><span class="p">,</span> <span class="n">res_df</span> <span class="o">=</span> <span class="n">D2</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+
+<span class="n">res_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ds</th>
+      <th>dsname</th>
+      <th>datasetID</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>As you can see, only the PAGES2k dataset was returned through this query. The ODP846 dataset was omitted because it doesn’t have a datasetID. If you want to make this query optional, then all you need to do is write <code class="docutils literal notranslate"><span class="pre">OPTIONAL</span></code> in front of it:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">PREFIX le:&lt;http://linked.earth/ontology#&gt;</span>
+
+<span class="s2">SELECT ?ds ?dsname ?datasetID WHERE{</span>
+
+<span class="s2">?ds a le:Dataset .</span>
+<span class="s2">?ds le:name ?dsname .</span>
+<span class="s2">OPTIONAL{?ds le:datasetId ?datasetID.}}</span>
+
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">res</span><span class="p">,</span> <span class="n">res_df</span> <span class="o">=</span> <span class="n">D2</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+
+<span class="n">res_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ds</th>
+      <th>dsname</th>
+      <th>datasetID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>http://linked.earth/lipd/ODP846.Lawrence.2006</td>
+      <td>ODP846.Lawrence.2006</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>In this case, you at least get the dataset name. When to use <code class="docutils literal notranslate"><span class="pre">OPTIONAL</span></code> filtering is really up to you. If the answer associated with a specific property is critical to your analysis, then it allows you to filter out these datasets directly. However, if the piece of information is not critical, you may want to use the <code class="docutils literal notranslate"><span class="pre">OPTIONAL</span></code> filter.</p>
+</section>
+<section id="querying-for-predicates">
+<h3>Querying for predicates<a class="headerlink" href="#querying-for-predicates" title="Permalink to this heading">#</a></h3>
+<p>Constructing these queries beg the question: do I need to know the ontology? To some extent, yes. You would need to know any database schema to be able to query it. However you do not need to know it in excrutiating details.</p>
+<p>First, as you may have surmised, most of the <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code> functionalities designed to return information about the datasets are essentially wrappers around these queries. So if you’re interested, you can actually have a look at <a class="reference external" href="https://github.com/LinkedEarth/pylipd/blob/main/pylipd/globals/queries.py"><code class="docutils literal notranslate"><span class="pre">queries.py</span></code></a> within the <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code> package to get some inspiration.</p>
+<p>Second, you can also directly query all the predicates attached to an object directly. Let’s do so, shall we?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">PREFIX le:&lt;http://linked.earth/ontology#&gt;</span>
+
+<span class="s2">SELECT DISTINCT ?p WHERE {</span>
+
+<span class="s2">?ds a le:Dataset .</span>
+<span class="s2">?ds ?p ?o .</span>
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s break that query down. The second line contains the directive <code class="docutils literal notranslate"><span class="pre">DISTINCT</span></code> which will return unique predicates. The last line makes the predicate a variable that we are querying.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span><span class="p">,</span><span class="n">df</span> <span class="o">=</span> <span class="n">D2</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>p</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>http://linked.earth/ontology#createdBy</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>http://linked.earth/ontology#publishedIn</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>http://linked.earth/ontology#includesPaleoData</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>http://linked.earth/ontology#name</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>http://linked.earth/ontology#lipdVersion</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>http://linked.earth/ontology#proxyArchiveType</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>http://linked.earth/ontology#hasUrl</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>http://linked.earth/ontology#lipdComplete</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>http://linked.earth/ontology#contributor</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>http://linked.earth/ontology#includesChronData</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>http://linked.earth/ontology#collectedFrom</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="geoquery">
+<h4>Geoquery<a class="headerlink" href="#geoquery" title="Permalink to this heading">#</a></h4>
+<p>Let’s try a geospatial query on our original database. From the list of properties above, <code class="docutils literal notranslate"><span class="pre">collectedFrom</span></code> links to coordinates. So let’s try to have a look at this object:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">PREFIX le:&lt;http://linked.earth/ontology#&gt;</span>
+
+<span class="s2">SELECT DISTINCT ?p WHERE {</span>
+
+<span class="s2">?ds a le:Dataset .</span>
+<span class="s2">?ds le:collectedFrom ?geo .</span>
+<span class="s2">?geo ?p ?o .</span>
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span><span class="p">,</span><span class="n">df</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>p</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>From this properties, <code class="docutils literal notranslate"><span class="pre">lat</span></code>, <code class="docutils literal notranslate"><span class="pre">long</span></code> and <code class="docutils literal notranslate"><span class="pre">alt</span></code> are promising. Notice that the URI is different. This is not a predicate from the ontology created by LinkedEarth but rather from another ontology with a different URI. We should define it in a prefix.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">PREFIX le:&lt;http://linked.earth/ontology#&gt;</span>
+<span class="s2">PREFIX wgs84: &lt;http://www.w3.org/2003/01/geo/wgs84_pos#&gt;</span>
+
+<span class="s2">SELECT ?dsname ?lat ?lon  WHERE {</span>
+
+<span class="s2">?ds a le:Dataset .</span>
+<span class="s2">?ds le:name ?dsname .</span>
+
+<span class="s2">?ds le:collectedFrom ?geo .</span>
+<span class="s2">OPTIONAL{?geo wgs84:lat ?lat .</span>
+<span class="s2">        ?geo wgs84:long ?lon .}</span>
+
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s have a look at our new query:</p>
+<ul class="simple">
+<li><p>Notice the new prefix since we are reusing the <a class="reference external" href="https://www.w3.org/2003/01/geo/">wgs84</a> ontology.</p></li>
+<li><p>The third line defines the variables that we wish to return in our query, namely the datasetName, latitude and longitude</p></li>
+<li><p>The last paragraph concerns our geographical query. Note that these lines are made OPTIONAL in case the file doesn’t contain geographical coordinates. This is unlikely to be the case, but it is a quich way to appraise errors in our database or your LiPD files.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span><span class="p">,</span><span class="n">df</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>dsname</th>
+      <th>lat</th>
+      <th>lon</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Let’s take this query a little bit further: let’s say I only want to keep the data between 40N and 70N and 0E to 30E. Welcome to the <code class="docutils literal notranslate"><span class="pre">FILTER</span></code> functionality.</p>
+<p>Your query is going to look much the same with the added <code class="docutils literal notranslate"><span class="pre">FILTER</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">PREFIX le:&lt;http://linked.earth/ontology#&gt;</span>
+<span class="s2">PREFIX wgs84: &lt;http://www.w3.org/2003/01/geo/wgs84_pos#&gt;</span>
+
+<span class="s2">SELECT ?dsname ?lat ?lon  WHERE {</span>
+
+<span class="s2">?ds a le:Dataset .</span>
+<span class="s2">?ds le:name ?dsname .</span>
+
+<span class="s2">?ds le:collectedFrom ?geo .</span>
+<span class="s2">?geo wgs84:lat ?lat .</span>
+<span class="s2">?geo wgs84:long ?lon .</span>
+
+<span class="s2">FILTER ( ?lat &gt;= 40 &amp;&amp; ?lat &lt; 70 &amp;&amp; ?lon &gt;= 0 &amp;&amp; ?lon &lt; 30 ) .</span>
+
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>I also removed the <code class="docutils literal notranslate"><span class="pre">OPTIONAL</span></code> argument since we are doing a geospatial query. If the dataset doesn’t have lat/lon, then it shouldn’t be included anyway in the return.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span><span class="p">,</span><span class="n">df</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>dsname</th>
+      <th>lat</th>
+      <th>lon</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Congratulations! You’ve performed your first filter! In case you are wondering, this exact query is used in the function <code class="docutils literal notranslate"><span class="pre">filter_by_geo_box</span></code>.</p>
+</section>
+<section id="filtering-by-name">
+<h4>Filtering by name<a class="headerlink" href="#filtering-by-name" title="Permalink to this heading">#</a></h4>
+<p>You must now be dying to know how you can look for specific variable names and filter by them. In the interest of time, I’ll create the query that returns all unique variable names first (This is what’s behind <code class="docutils literal notranslate"><span class="pre">get_all_variable_names</span></code>) but I encourage you to spend some time following it line-by-line and even use the predicate search shown above to see how I got the names of the properties.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">PREFIX le:&lt;http://linked.earth/ontology#&gt;</span>
+
+<span class="s2">SELECT DISTINCT ?varname WHERE{</span>
+
+<span class="s2">?ds a le:Dataset .</span>
+
+<span class="s2">?ds le:includesPaleoData ?data .</span>
+<span class="s2">?data le:foundInMeasurementTable ?table .</span>
+<span class="s2">?table le:includesVariable ?var .</span>
+<span class="s2">?var le:name ?varname .</span>
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span><span class="p">,</span><span class="n">df</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>varname</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>This returned all unique variable names present in all the <code class="docutils literal notranslate"><span class="pre">PaleoData</span></code> objects tables present in the <code class="docutils literal notranslate"><span class="pre">LiPD</span></code> object. This is the power of SPARQL: you do not need to know how many tables/columns/data are present in the dataset to query across them.</p>
+<p>Let’s filter by temperature. In this case, I really mean <code class="docutils literal notranslate"><span class="pre">temperature</span></code> and ignore the <code class="docutils literal notranslate"><span class="pre">uncertainty</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">PREFIX le:&lt;http://linked.earth/ontology#&gt;</span>
+
+<span class="s2">SELECT ?dsname ?varname WHERE{</span>
+
+<span class="s2">?ds a le:Dataset .</span>
+<span class="s2">?ds le:name ?dsname .</span>
+
+<span class="s2">?ds le:includesPaleoData ?data .</span>
+<span class="s2">?data le:foundInMeasurementTable ?table .</span>
+<span class="s2">?table le:includesVariable ?var .</span>
+<span class="s2">?var le:name ?varname .</span>
+
+<span class="s2">FILTER (?varname = &#39;temperature&#39;)</span>
+
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span><span class="p">,</span><span class="n">df</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>dsname</th>
+      <th>varname</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>If you want to relax this assumption, you have two choices:</p>
+<ol class="arabic simple">
+<li><p>explicitly go look for <code class="docutils literal notranslate"><span class="pre">uncertainty_temperature</span></code></p></li>
+<li><p>Use <a class="reference external" href="https://en.wikipedia.org/wiki/Regular_expression">regular expressions</a>. Although as you may discover, you now have two problems: SPARQL and regex.</p></li>
+</ol>
+<p>Let’s have a look at the first option:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">PREFIX le:&lt;http://linked.earth/ontology#&gt;</span>
+
+<span class="s2">SELECT ?dsname ?varname WHERE{</span>
+
+<span class="s2">?ds a le:Dataset .</span>
+<span class="s2">?ds le:name ?dsname .</span>
+
+<span class="s2">?ds le:includesPaleoData ?data .</span>
+<span class="s2">?data le:foundInMeasurementTable ?table .</span>
+<span class="s2">?table le:includesVariable ?var .</span>
+<span class="s2">?var le:name ?varname .</span>
+
+<span class="s2">FILTER (?varname = &#39;temperature&#39; || ?varname = &#39;uncertainty_temperature&#39;)</span>
+
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Much like other languages, SPARQL uses <code class="docutils literal notranslate"><span class="pre">||</span></code> to indicate a logical “or” and <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code> for a logical “and”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span><span class="p">,</span><span class="n">df</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>dsname</th>
+      <th>varname</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Using regular expressions:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">PREFIX le:&lt;http://linked.earth/ontology#&gt;</span>
+
+<span class="s2">SELECT ?dsname ?varname WHERE{</span>
+
+<span class="s2">?ds a le:Dataset .</span>
+<span class="s2">?ds le:name ?dsname .</span>
+
+<span class="s2">?ds le:includesPaleoData ?data .</span>
+<span class="s2">?data le:foundInMeasurementTable ?table .</span>
+<span class="s2">?table le:includesVariable ?var .</span>
+<span class="s2">?var le:name ?varname .</span>
+
+<span class="s2">FILTER regex (?varname, &quot;temperature.*&quot;, &quot;i&quot; ) .</span>
+
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">_</span><span class="p">,</span><span class="n">df</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>dsname</th>
+      <th>varname</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="alert alert-warning">
+As you have seen in previous tutorials, PyLiPD natively uses regex to query for variables.
+</div></section>
+</section>
+<section id="concluding-remarks">
+<h3>Concluding remarks<a class="headerlink" href="#concluding-remarks" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>We are expanding <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code> to include more and more of the common queries in paleoclimatology. If you’d like to see one, please <a class="reference external" href="https://github.com/LinkedEarth/pylipd/issues">open an issue</a>. Make sure you consult the open issues before opening your own and upvote if it already exists. If a issue is upvoted, it will be most likely slated for being addressed quickly.</p></li>
+</ul>
+<p>Below are some FAQs, with their answers:</p>
+<ul class="simple">
+<li><p><em>Can I create my own properties in a LiPD file and search with <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code>?</em> The short answer resides in whether you are creating a <code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">property</span></code> (a property linking to a known class such as <code class="docutils literal notranslate"><span class="pre">string</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">boolean</span></code>) or an <code class="docutils literal notranslate"><span class="pre">object</span> <span class="pre">property</span></code>. <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">properties</span></code> will immediately be recognized by <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code> and can be used. For <code class="docutils literal notranslate"><span class="pre">object</span> <span class="pre">properties</span></code>, please contact us as this will change the underlying classes in the ontology.</p></li>
+<li><p><em>Can you create APIs for my properties?</em> The short answer is no, unless this is a property that will be re-used extensively by others. As you navigate datasets, you will notice that some properties are essentially used as flags for analysis. This may only serve one person and will therefore not be intergrated at the API level. However, if you cannot create your own query using this tutorial, please <a class="reference external" href="https://discourse.linked.earth">start a discussion on Discourse</a>.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="L1_filtering.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Filtering through queries</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="L2_using_graphdb.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Directly querying the LiPDGraph</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preamble">Preamble</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#goals">Goals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keywords">Keywords</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-requisites">Pre-requisites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relevant-packages">Relevant Packages</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-description">Data Description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstration">Demonstration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-the-lipd-object">Understanding the LiPD object</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-a-query">Constructing a query</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-variables">Optional variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#querying-for-predicates">Querying for predicates</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#geoquery">Geoquery</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-by-name">Filtering by name</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#concluding-remarks">Concluding remarks</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Deborah Khider
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
