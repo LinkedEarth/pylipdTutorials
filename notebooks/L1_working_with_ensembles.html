@@ -64,8 +64,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/L1_working_with_ensembles';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Retrieving information from LiPD files" href="L1_getting_information.html" />
-    <link rel="prev" title="Basic manipulation of pylipd.LiPD object" href="L0_lipd_object.html" />
+    <link rel="next" title="Retrieving textual information from LiPD files" href="L1_getting_information.html" />
+    <link rel="prev" title="Basic manipulation of pylipd.LiPD objects" href="L0_lipd_object.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -163,12 +163,12 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="L0_loading_lipd_datasets.html">Reading LiPD formatted datasets with <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="L0_lipd_object.html">Basic manipulation of <code class="docutils literal notranslate"><span class="pre">pylipd.LiPD</span></code> object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="L0_lipd_object.html">Basic manipulation of <code class="docutils literal notranslate"><span class="pre">pylipd.LiPD</span></code> objects</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Functionalities</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Working with ensembles in <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="L1_getting_information.html">Retrieving information from LiPD files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="L1_getting_information.html">Retrieving textual information from LiPD files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="L1_filtering.html">Filtering through queries</a></li>
 </ul>
 
@@ -427,7 +427,7 @@ document.write(`
 </section>
 <section id="preamble">
 <h2>Preamble<a class="headerlink" href="#preamble" title="Permalink to this heading">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code> is a Python package that allows you to read, manipulate, and write <a class="reference external" href="https://cp.copernicus.org/articles/12/1093/2016/cp-12-1093-2016-discussion.html#discussion">LiPD</a> formatted datasets. One of the advantages of the LiPD format is that it allows to store tables of uncertainty ensembles (in particular, age). This notebook describes how <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code> handles dealing with age ensembles.</p>
+<p>Ensembles are key to uncertainty quantification, and are a main reason for why the <a class="reference external" href="https://doi.org/10.5194/cp-12-1093-2016">LiPD</a> format was created. LiPD stores tables of uncertainty ensembles (in particular, age), which <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code> can efficiently load for analysis. This notebook describes how <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code> handles such age ensembles.</p>
 <section id="goals">
 <h3>Goals<a class="headerlink" href="#goals" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
@@ -482,13 +482,13 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/2 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 50%|█████     | 1/2 [00:00&lt;00:00,  2.06it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 50%|█████     | 1/2 [00:00&lt;00:00,  1.64it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 2/2 [00:01&lt;00:00,  1.11it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 2/2 [00:02&lt;00:00,  1.21s/it]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 2/2 [00:01&lt;00:00,  1.19it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 2/2 [00:02&lt;00:00,  1.12s/it]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
@@ -513,15 +513,22 @@ document.write(`
 </div>
 </div>
 <p>To load the ensemble tables for all the files:</p>
-<div class="cell docutils container">
+<div class="alert alert-warning">
+This may take a few minutes since we need to load matrices containing 1000 columns and a few hundred rows into memory. Although it is possible to load all the ensemble tables present in all the datasets, we strongly suggest against it (you will run out of memory). Instead, open dataset by dataset as we will demonstrate in this notebook.
+</div><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">get_ensemble_tables</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">time</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">get_ensemble_tables</span><span class="p">()</span>
 
 <span class="n">df</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 3 µs, sys: 0 ns, total: 3 µs
+Wall time: 6.2 µs
+</pre></div>
+</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -592,7 +599,7 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">ensembleDepthUnits</span></code>: The units for the depth.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">notes</span></code>: Notes regarding how the model was obtained/done.</p></li>
 </ul>
-<p>If interested in only one dataset:</p>
+<p>If interested in only one dataset (see the warning):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">get_ensemble_tables</span><span class="p">(</span><span class="n">dsname</span><span class="o">=</span><span class="n">names</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -835,7 +842,7 @@ document.write(`
 </table>
 </div></div></div>
 </div>
-<p>See <a class="reference external" href="http://linked.earth/PyleoTutorials/notebooks/L1_working_with_age_ensembles.html">this tutorial</a> to see how to use these two table to create <a class="reference external" href="https://pyleoclim-util.readthedocs.io/en/latest/core/api.html#ensembleseries-pyleoclim-ensembleseries">Pyleoclim <code class="docutils literal notranslate"><span class="pre">EnsembleSeries</span></code></a>.</p>
+<p>To learn  how to use these two tables to create a <a class="reference external" href="https://pyleoclim-util.readthedocs.io/en/latest/core/api.html#ensembleseries-pyleoclim-ensembleseries">Pyleoclim <code class="docutils literal notranslate"><span class="pre">EnsembleSeries</span></code></a> object and use it for analysis and visualization, see <a class="reference external" href="http://linked.earth/PyleoTutorials/notebooks/L1_working_with_age_ensembles.html">this tutorial</a></p>
 </section>
 </section>
 </section>
@@ -877,7 +884,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Basic manipulation of <code class="docutils literal notranslate"><span class="pre">pylipd.LiPD</span></code> object</p>
+        <p class="prev-next-title">Basic manipulation of <code class="docutils literal notranslate"><span class="pre">pylipd.LiPD</span></code> objects</p>
       </div>
     </a>
     <a class="right-next"
@@ -885,7 +892,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Retrieving information from LiPD files</p>
+        <p class="prev-next-title">Retrieving textual information from LiPD files</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
