@@ -16,4 +16,7 @@ parts:
     - file: notebooks/L1_working_with_ensembles.ipynb
     - file: notebooks/L1_getting_information.ipynb
     - file: notebooks/L1_filtering.ipynb
-    
+  - caption: Advanced Querying using SPARQL
+    chapters:
+    - file: notebooks/L2_custom_queries.ipynb
+    - file: notebooks/L2_using_graphdb.ipynb
