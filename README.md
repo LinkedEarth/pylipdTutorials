@@ -1,4 +1,5 @@
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/LinkedEarth/pylipdTutorials/HEAD)
+[![DOI](https://zenodo.org/badge/509538632.svg)](https://zenodo.org/badge/latestdoi/509538632)
 
 # pylipdTutorials: A Gentle Introduction to working with LiPD files in Python
 
