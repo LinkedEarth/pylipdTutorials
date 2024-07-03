@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Retrieving textual information from LiPD files &#8212; PyLiPD Tutorials</title>
   
@@ -15,52 +14,49 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/L1_getting_information';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -75,19 +71,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -109,12 +109,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -129,9 +137,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../intro.html">
+  
   
   
   
@@ -141,12 +153,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/LinkedEarth_small.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/LinkedEarth_small.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/LinkedEarth_small.png" class="logo__image only-light" alt="PyLiPD Tutorials - Home"/>
+    <script>document.write(`<img src="../_static/LinkedEarth_small.png" class="logo__image only-dark" alt="PyLiPD Tutorials - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -190,7 +213,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -199,14 +222,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -231,14 +254,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://mybinder.org/v2/gh/LinkedEarth/pylipdTutorials/jupyterbook?urlpath=tree/jupyterBook/notebooks/L1_getting_information.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onBinder"
+   title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../_static/images/logo_binder.svg">
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
@@ -359,26 +382,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -424,19 +449,19 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="retrieving-textual-information-from-lipd-files">
-<h1>Retrieving textual information from LiPD files<a class="headerlink" href="#retrieving-textual-information-from-lipd-files" title="Permalink to this heading">#</a></h1>
+<h1>Retrieving textual information from LiPD files<a class="headerlink" href="#retrieving-textual-information-from-lipd-files" title="Link to this heading">#</a></h1>
 <section id="authors">
-<h2>Authors<a class="headerlink" href="#authors" title="Permalink to this heading">#</a></h2>
+<h2>Authors<a class="headerlink" href="#authors" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://orcid.org/0000-0001-7501-8430">Deborah Khider</a></p>
 </section>
 <section id="preamble">
-<h2>Preamble<a class="headerlink" href="#preamble" title="Permalink to this heading">#</a></h2>
+<h2>Preamble<a class="headerlink" href="#preamble" title="Link to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code> is a Python package that allows you to read, manipulate, and write <a class="reference external" href="https://doi.org/10.5194/cp-12-1093-2016">LiPD</a> formatted datasets. In this tutorial, we will demonstrate how you can use pre-defined APIs that allows getting specific information from a LiPD file.</p>
 <section id="goals">
-<h3>Goals<a class="headerlink" href="#goals" title="Permalink to this heading">#</a></h3>
+<h3>Goals<a class="headerlink" href="#goals" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Use existing APIs to get information about the datasets loaded in the workspace, their location, the variables available, the types of geologic archives.</p></li>
 <li><p>Obtain a BibTeX file of references to properly credit scholarly contributions</p></li>
@@ -444,20 +469,20 @@ document.write(`
 <p>Reading Time: 5 minutes</p>
 </section>
 <section id="keywords">
-<h3>Keywords<a class="headerlink" href="#keywords" title="Permalink to this heading">#</a></h3>
+<h3>Keywords<a class="headerlink" href="#keywords" title="Link to this heading">#</a></h3>
 <p>LiPD</p>
 </section>
 <section id="pre-requisites">
-<h3>Pre-requisites<a class="headerlink" href="#pre-requisites" title="Permalink to this heading">#</a></h3>
+<h3>Pre-requisites<a class="headerlink" href="#pre-requisites" title="Link to this heading">#</a></h3>
 <p>None. This tutorial assumes basic knowledge of Python and Pandas. If you are not familiar with this coding language and this particular library, check out this tutorial: <a class="reference external" href="http://linked.earth/ec_workshops_py/">http://linked.earth/ec_workshops_py/</a>.</p>
 </section>
 <section id="relevant-packages">
-<h3>Relevant Packages<a class="headerlink" href="#relevant-packages" title="Permalink to this heading">#</a></h3>
+<h3>Relevant Packages<a class="headerlink" href="#relevant-packages" title="Link to this heading">#</a></h3>
 <p>pylipd</p>
 </section>
 </section>
 <section id="data-description">
-<h2>Data Description<a class="headerlink" href="#data-description" title="Permalink to this heading">#</a></h2>
+<h2>Data Description<a class="headerlink" href="#data-description" title="Link to this heading">#</a></h2>
 <p>This notebook uses the following datasets, in LiPD format:</p>
 <ul class="simple">
 <li><p>McCabe-Glynn, S., Johnson, K., Strong, C. et al. Variable North Pacific influence on drought in southwestern North America since AD 854. Nature Geosci 6, 617–621 (2013). <a class="reference external" href="https://doi.org/10.1038/ngeo1862">https://doi.org/10.1038/ngeo1862</a></p></li>
@@ -466,9 +491,9 @@ document.write(`
 </ul>
 </section>
 <section id="demonstration">
-<h2>Demonstration<a class="headerlink" href="#demonstration" title="Permalink to this heading">#</a></h2>
+<h2>Demonstration<a class="headerlink" href="#demonstration" title="Link to this heading">#</a></h2>
 <section id="extracting-infomation-about-the-content-of-a-lipd-object">
-<h3>Extracting infomation about the content of a LiPD object<a class="headerlink" href="#extracting-infomation-about-the-content-of-a-lipd-object" title="Permalink to this heading">#</a></h3>
+<h3>Extracting infomation about the content of a LiPD object<a class="headerlink" href="#extracting-infomation-about-the-content-of-a-lipd-object" title="Link to this heading">#</a></h3>
 <p>Let’s start by importing our favorite package and load our datasets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -488,7 +513,25 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Directory ../data/Pages2k/ does not exist
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading 16 LiPD files
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/16 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 31%|███▏      | 5/16 [00:00&lt;00:00, 46.34it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 75%|███████▌  | 12/16 [00:00&lt;00:00, 56.92it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 16/16 [00:00&lt;00:00, 54.53it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -508,16 +551,16 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/3 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 33%|███▎      | 1/3 [00:00&lt;00:00,  2.05it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 33%|███▎      | 1/3 [00:00&lt;00:00,  2.84it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 67%|██████▋   | 2/3 [00:01&lt;00:00,  1.10it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 67%|██████▋   | 2/3 [00:01&lt;00:00,  1.51it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 3/3 [00:01&lt;00:00,  1.71it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 3/3 [00:01&lt;00:00,  1.97it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 3/3 [00:01&lt;00:00,  1.59it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 3/3 [00:01&lt;00:00,  1.93it/s]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
@@ -530,8 +573,8 @@ document.write(`
 </div>
 </section>
 <section id="getting-information-about-datasets">
-<h3>Getting information about Datasets<a class="headerlink" href="#getting-information-about-datasets" title="Permalink to this heading">#</a></h3>
-<p>From the introductory notebooks on <a class="reference internal" href="L0_loading_lipd_datasets.html"><span class="doc std std-doc">loading LiPD datasets</span></a> and <a class="reference internal" href="L0_lipd_object.html"><span class="doc std std-doc">working with <code class="docutils literal notranslate"><span class="pre">LiPD</span></code> objects</span></a>, you should be already familiar with the functions to get all the names of the datasets.</p>
+<h3>Getting information about Datasets<a class="headerlink" href="#getting-information-about-datasets" title="Link to this heading">#</a></h3>
+<p>From the introductory notebooks on <a class="reference internal" href="#L0_loading_lipd_datasets.md"><span class="xref myst">loading LiPD datasets</span></a> and <a class="reference internal" href="#L0_lipd_object.md"><span class="xref myst">working with <code class="docutils literal notranslate"><span class="pre">LiPD</span></code> objects</span></a>, you should be already familiar with the functions to get all the names of the datasets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">D</span><span class="o">.</span><span class="n">get_all_dataset_names</span><span class="p">()</span>
@@ -539,7 +582,25 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Crystal.McCabe-Glynn.2013&#39;, &#39;ODP846.Lawrence.2006&#39;, &#39;CO06MOPE&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-Stockholm.Leijonhufvud.2009&#39;,
+ &#39;Ocn-PedradeLume-CapeVerdeIslands.Moses.2006&#39;,
+ &#39;Eur-NorthernSpain.Martin-Chivelet.2011&#39;,
+ &#39;Ocn-SinaiPeninsula_RedSea.Moustafa.2000&#39;,
+ &#39;Eur-FinnishLakelands.Helama.2014&#39;,
+ &#39;Ocn-AlboranSea436B.Nieto-Moreno.2013&#39;,
+ &#39;Eur-SpannagelCave.Mangini.2005&#39;,
+ &#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;,
+ &#39;Ocn-RedSea.Felis.2000&#39;,
+ &#39;Ant-WAIS-Divide.Severinghaus.2012&#39;,
+ &#39;Asi-SourthAndMiddleUrals.Demezhko.2007&#39;,
+ &#39;Eur-NorthernScandinavia.Esper.2012&#39;,
+ &#39;Eur-CoastofPortugal.Abrantes.2011&#39;,
+ &#39;Ocn-FeniDrift.Richter.2009&#39;,
+ &#39;Eur-LakeSilvaplana.Trachsel.2010&#39;,
+ &#39;Arc-Kongressvatnet.D_Andrea.2012&#39;,
+ &#39;Crystal.McCabe-Glynn.2013&#39;,
+ &#39;ODP846.Lawrence.2006&#39;,
+ &#39;CO06MOPE&#39;]
 </pre></div>
 </div>
 </div>
@@ -551,7 +612,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>19
 </pre></div>
 </div>
 </div>
@@ -564,7 +625,23 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;iso2k100_CO06MOPE&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;uOhCAmcuPO5Xo9rSniHn&#39;,
+ &#39;HH7jd52QFWaBgs9OvMqP&#39;,
+ &#39;WX0GIjmoc46FH1Oj4c5r&#39;,
+ &#39;wH1adV7y36OC0h3kwDRF&#39;,
+ &#39;ZDMEZiVVO4eFNwBA4D3o&#39;,
+ &#39;fYUegig785BJMl3NrZcz&#39;,
+ &#39;19nwWA48PSW3uSoDRiA4&#39;,
+ &#39;PPWjMBBkRAcCv6bkL58K&#39;,
+ &#39;4fZQAHmeuJn8ipLfurWv&#39;,
+ &#39;5oHqINxYpL0XCaLcIjhR&#39;,
+ &#39;mE7P31hoHDXy1Q9yfQlq&#39;,
+ &#39;fyUORoSbcL0GP0J3wyoj&#39;,
+ &#39;33wLrOlZRR8hw53DVKSr&#39;,
+ &#39;IVVTVphliHduuTjQhlTM&#39;,
+ &#39;23GDZxTEJsBQAH05hU4g&#39;,
+ &#39;pwY7bQRstXsZc6iOpgRI&#39;,
+ &#39;iso2k100_CO06MOPE&#39;]
 </pre></div>
 </div>
 </div>
@@ -576,7 +653,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>17
 </pre></div>
 </div>
 </div>
@@ -593,12 +670,18 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;speleothem&#39;, &#39;marine sediment&#39;, &#39;Coral&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Documents&#39;,
+ &#39;Coral&#39;,
+ &#39;Speleothem&#39;,
+ &#39;Wood&#39;,
+ &#39;Marine sediment&#39;,
+ &#39;Borehole&#39;,
+ &#39;Lake sediment&#39;]
 </pre></div>
 </div>
 </div>
 </div>
-<p>This function is particularly useful to know what terms can be used to <a class="reference internal" href="L1_filtering.html"><span class="doc std std-doc">filter with specific queries</span></a>. You can see that <code class="docutils literal notranslate"><span class="pre">coral</span></code> appears with two different capitalizations. For filtering, this won’t matter as we will see in the next <a class="reference internal" href="L1_filtering.html"><span class="doc std std-doc">tutorial</span></a>.</p>
+<p>This function is particularly useful to know what terms can be used to <a class="reference internal" href="#L1_filtering.md"><span class="xref myst">filter with specific queries</span></a>. You can see that <code class="docutils literal notranslate"><span class="pre">coral</span></code> appears with two different capitalizations. For filtering, this won’t matter as we will see in the next <a class="reference internal" href="#L1_filtering.md"><span class="xref myst">tutorial</span></a>.</p>
 <p>You can get information about the location of each dataset as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -636,22 +719,134 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
+      <td>Eur-Stockholm.Leijonhufvud.2009</td>
+      <td>59.3200</td>
+      <td>18.0600</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Ocn-PedradeLume-CapeVerdeIslands.Moses.2006</td>
+      <td>16.7600</td>
+      <td>-22.8883</td>
+      <td>-5.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Eur-NorthernSpain.Martin-Chivelet.2011</td>
+      <td>42.9000</td>
+      <td>-3.5000</td>
+      <td>1250.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Ocn-SinaiPeninsula,RedSea.Moustafa.2000</td>
+      <td>27.8483</td>
+      <td>34.3100</td>
+      <td>-3.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Eur-FinnishLakelands.Helama.2014</td>
+      <td>62.0000</td>
+      <td>28.3250</td>
+      <td>130.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Ocn-AlboranSea436B.Nieto-Moreno.2013</td>
+      <td>36.2053</td>
+      <td>-4.3133</td>
+      <td>-1108.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Eur-SpannagelCave.Mangini.2005</td>
+      <td>47.1000</td>
+      <td>11.6000</td>
+      <td>2347.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Eur-SpanishPyrenees.Dorado-Linan.2012</td>
+      <td>42.5000</td>
+      <td>1.0000</td>
+      <td>1200.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Ocn-RedSea.Felis.2000</td>
+      <td>27.8500</td>
+      <td>34.3200</td>
+      <td>-6.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Ant-WAIS-Divide.Severinghaus.2012</td>
+      <td>-79.4630</td>
+      <td>-112.1250</td>
+      <td>1766.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Asi-SourthAndMiddleUrals.Demezhko.2007</td>
+      <td>55.0000</td>
+      <td>59.5000</td>
+      <td>1900.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Eur-NorthernScandinavia.Esper.2012</td>
+      <td>68.0000</td>
+      <td>25.0000</td>
+      <td>300.0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Eur-CoastofPortugal.Abrantes.2011</td>
+      <td>41.1000</td>
+      <td>-8.9000</td>
+      <td>-80.0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Ocn-FeniDrift.Richter.2009</td>
+      <td>55.5000</td>
+      <td>-13.9000</td>
+      <td>-2543.0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Eur-LakeSilvaplana.Trachsel.2010</td>
+      <td>46.5000</td>
+      <td>9.8000</td>
+      <td>1791.0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Arc-Kongressvatnet.D'Andrea.2012</td>
+      <td>78.0217</td>
+      <td>13.9311</td>
+      <td>94.0</td>
+    </tr>
+    <tr>
+      <th>16</th>
       <td>Crystal.McCabe-Glynn.2013</td>
-      <td>36.59</td>
+      <td>36.5900</td>
       <td>-118.8200</td>
       <td>1386.0</td>
     </tr>
     <tr>
-      <th>1</th>
+      <th>17</th>
       <td>ODP846.Lawrence.2006</td>
-      <td>-3.10</td>
+      <td>-3.1000</td>
       <td>-90.8000</td>
       <td>-3296.0</td>
     </tr>
     <tr>
-      <th>2</th>
+      <th>18</th>
       <td>CO06MOPE</td>
-      <td>16.75</td>
+      <td>16.7500</td>
       <td>-22.8883</td>
       <td>-5.0</td>
     </tr>
@@ -661,7 +856,7 @@ document.write(`
 </div>
 </section>
 <section id="getting-information-about-variables">
-<h3>Getting information about variables<a class="headerlink" href="#getting-information-about-variables" title="Permalink to this heading">#</a></h3>
+<h3>Getting information about variables<a class="headerlink" href="#getting-information-about-variables" title="Link to this heading">#</a></h3>
 <p>To get information about available variable names, you can do the following:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -670,56 +865,65 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;d234uinitial&#39;,
- &#39;230th age&#39;,
- &#39;sample&#39;,
- &#39;230th/232th_uncertainty&#39;,
- &#39;230th/238u_uncertainty&#39;,
- &#39;corr_age&#39;,
- &#39;d234u_undertainty&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;temperature&#39;,
+ &#39;year&#39;,
+ &#39;d18O&#39;,
+ &#39;trsgi&#39;,
+ &#39;uncertainty_temperature&#39;,
+ &#39;MXD&#39;,
+ &#39;Mg_Ca&#39;,
+ &#39;notes&#39;,
+ &#39;depth_top&#39;,
+ &#39;depth_bottom&#39;,
+ &#39;Uk37&#39;,
  &#39;Year&#39;,
- &#39;depth_dating&#39;,
- &#39;232th&#39;,
- &#39;age&#39;,
- &#39;depth&#39;,
- &#39;230th age_uncertaity&#39;,
- &#39;238u_uncertainty&#39;,
- &#39;230th/232th&#39;,
+ &#39;d234u_undertainty&#39;,
  &#39;d234uinitial_uncertainty&#39;,
- &#39;230th age_uncertainty&#39;,
+ &#39;230th age&#39;,
+ &#39;238u&#39;,
+ &#39;232th&#39;,
+ &#39;corr_age&#39;,
+ &#39;230th/238u_uncertainty&#39;,
+ &#39;230th age_uncertaity&#39;,
+ &#39;age&#39;,
+ &#39;d234uinitial&#39;,
+ &#39;sample&#39;,
  &#39;232th_uncertainty&#39;,
  &#39;d18o&#39;,
- &#39;d234u&#39;,
- &#39;corr_age_uncert&#39;,
+ &#39;230th/232th_uncertainty&#39;,
+ &#39;depth&#39;,
  &#39;230th/238u&#39;,
- &#39;238u&#39;,
- &#39;section&#39;,
- &#39;temp prahl&#39;,
- &#39;c. wuellerstorfi d18o.d18O&#39;,
- &#39;lower95&#39;,
- &#39;c. wuellerstorfi d13c.d13C&#39;,
- &#39;sst&#39;,
- &#39;d180&#39;,
+ &#39;238u_uncertainty&#39;,
+ &#39;d234u&#39;,
+ &#39;depth_dating&#39;,
+ &#39;corr_age_uncert&#39;,
+ &#39;230th/232th&#39;,
+ &#39;230th age_uncertainty&#39;,
+ &#39;u. peregrina d18o&#39;,
  &#39;depth cr&#39;,
- &#39;interval&#39;,
- &#39;depth comp&#39;,
- &#39;event&#39;,
- &#39;temp muller&#39;,
- &#39;upper95&#39;,
+ &#39;u. peregrina d13c&#39;,
+ &#39;c. wuellerstorfi d13c&#39;,
  &#39;site/hole&#39;,
- &#39;median&#39;,
+ &#39;lower95&#39;,
+ &#39;temp muller&#39;,
+ &#39;d180&#39;,
+ &#39;ukprime37&#39;,
+ &#39;upper95&#39;,
+ &#39;interval&#39;,
+ &#39;section&#39;,
  &#39;sample label&#39;,
- &#39;c37 total.Alkenone&#39;,
- &#39;u. peregrina d13c.d13C&#39;,
- &#39;u. peregrina d18o.d18O&#39;,
- &#39;ukprime37.Uk37Prime&#39;,
- &#39;d18O&#39;,
- &#39;year&#39;]
+ &#39;temp prahl&#39;,
+ &#39;median&#39;,
+ &#39;c37 total&#39;,
+ &#39;sst&#39;,
+ &#39;c. wuellerstorfi d18o&#39;,
+ &#39;event&#39;,
+ &#39;depth comp&#39;]
 </pre></div>
 </div>
 </div>
 </div>
-<p>Note that like the functions retrieving the various <code class="docutils literal notranslate"><span class="pre">archiveTypes</span></code>, this function also only returns the unique names. As we have explored <a class="reference internal" href="L0_lipd_object.html"><span class="doc std std-doc">previously</span></a>, the Euro2k database contains more than one record correspoonding to <code class="docutils literal notranslate"><span class="pre">temperature</span></code>. Again, this function can be used to figure out what to filter by.</p>
+<p>Note that like the functions retrieving the various <code class="docutils literal notranslate"><span class="pre">archiveTypes</span></code>, this function also only returns the unique names. As we have explored <a class="reference internal" href="L0_lipd_object.html"><span class="std std-doc">previously</span></a>, the Euro2k database contains more than one record correspoonding to <code class="docutils literal notranslate"><span class="pre">temperature</span></code>. Again, this function can be used to figure out what to filter by.</p>
 <p>If you want to have more granularity about which variable is available in which datasets and their associated unique IDs, you can use the following function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -754,353 +958,78 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYT8CN0W9R9</td>
-      <td>d234uinitial</td>
+      <td>http://linked.earth/lipd/Eur-Stockholm.Leijonh...</td>
+      <td>Eur_006</td>
+      <td>temperature</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYTWD7SB8DU</td>
-      <td>230th age</td>
+      <td>http://linked.earth/lipd/Eur-FinnishLakelands....</td>
+      <td>Eur_005</td>
+      <td>temperature</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYTDEN0DI3L</td>
-      <td>sample</td>
+      <td>http://linked.earth/lipd/Ocn-AlboranSea436B.Ni...</td>
+      <td>LPD0e0867fe</td>
+      <td>temperature</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYT5YL6Q4K3</td>
-      <td>230th/232th_uncertainty</td>
+      <td>http://linked.earth/lipd/Ant-WAIS-Divide.Sever...</td>
+      <td>LPDb9285123</td>
+      <td>temperature</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYTJX7XXGA4</td>
-      <td>230th/238u_uncertainty</td>
+      <td>http://linked.earth/lipd/Asi-SourthAndMiddleUr...</td>
+      <td>Asia_230</td>
+      <td>temperature</td>
     </tr>
     <tr>
-      <th>5</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYTATZ2HMEW</td>
-      <td>230th age</td>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
     </tr>
     <tr>
-      <th>6</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYTI6SOK6KO</td>
-      <td>corr_age</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYTY5LGA87Y</td>
-      <td>d234u_undertainty</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYTZFD4PON5</td>
-      <td>Year</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYTPMETRV22</td>
-      <td>depth_dating</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYTAOT1M9SM</td>
-      <td>232th</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYT0EBE8TVT</td>
-      <td>age</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYTVDX1FMFG</td>
-      <td>depth</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYTS7IAZQJC</td>
-      <td>230th age_uncertaity</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYTFG8C0PYM</td>
-      <td>depth</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYT2ZUQLZK8</td>
-      <td>238u_uncertainty</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYT8AQFW8T8</td>
-      <td>230th/232th</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYTB1QCQ2VE</td>
-      <td>d234uinitial_uncertainty</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYTZV45N0TM</td>
-      <td>230th age_uncertainty</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYTKIQ1K7TU</td>
-      <td>232th_uncertainty</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYT2H04CZ1R</td>
-      <td>d18o</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYTPIQHVISC</td>
-      <td>d234u</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYT4HOF5BEB</td>
-      <td>corr_age_uncert</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYT5V9980U6</td>
-      <td>230th/238u</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>http://linked.earth/lipd/Crystal.McCabe-Glynn....</td>
-      <td>PYTZZ3HHOLE</td>
-      <td>238u</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>http://linked.earth/lipd/paleo0model0ensemble0...</td>
-      <td>PYTCHXB40SL</td>
-      <td>depth</td>
-    </tr>
-    <tr>
-      <th>26</th>
+      <th>93</th>
       <td>http://linked.earth/lipd/paleo0measurement0.PY...</td>
-      <td>PYT8BDSRW3H</td>
-      <td>section</td>
+      <td>PYT10H23U2E</td>
+      <td>c37 total</td>
     </tr>
     <tr>
-      <th>27</th>
-      <td>http://linked.earth/lipd/chron0model0ensemble0...</td>
-      <td>PYTUHE3XLGQ</td>
-      <td>age</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>http://linked.earth/lipd/paleo0measurement0.PY...</td>
-      <td>PYT95DVDUU3</td>
-      <td>temp prahl</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>http://linked.earth/lipd/paleo0measurement1.PY...</td>
-      <td>PYT3ZMI0BXW</td>
-      <td>c. wuellerstorfi d18o.d18O</td>
-    </tr>
-    <tr>
-      <th>30</th>
-      <td>http://linked.earth/lipd/chron0model0summary0....</td>
-      <td>PYTI487BQDZ</td>
-      <td>lower95</td>
-    </tr>
-    <tr>
-      <th>31</th>
-      <td>http://linked.earth/lipd/chron0measurement0.PY...</td>
-      <td>PYTTD7XCQGS</td>
-      <td>age</td>
-    </tr>
-    <tr>
-      <th>32</th>
-      <td>http://linked.earth/lipd/paleo0measurement1.PY...</td>
-      <td>PYT19MC8WE2</td>
-      <td>c. wuellerstorfi d13c.d13C</td>
-    </tr>
-    <tr>
-      <th>33</th>
-      <td>http://linked.earth/lipd/chron0measurement0.PY...</td>
-      <td>PYT9CFQ4GK0</td>
-      <td>depth</td>
-    </tr>
-    <tr>
-      <th>34</th>
-      <td>http://linked.earth/lipd/chron0model0summary0....</td>
-      <td>PYTPWX0LH3I</td>
-      <td>depth</td>
-    </tr>
-    <tr>
-      <th>35</th>
+      <th>94</th>
       <td>http://linked.earth/lipd/paleo0model0ensemble0...</td>
       <td>PYTDW6AIJPW</td>
       <td>sst</td>
     </tr>
     <tr>
-      <th>36</th>
-      <td>http://linked.earth/lipd/chron0model0summary0....</td>
-      <td>PYT4Y96QMUU</td>
-      <td>d180</td>
-    </tr>
-    <tr>
-      <th>37</th>
+      <th>95</th>
       <td>http://linked.earth/lipd/paleo0measurement1.PY...</td>
-      <td>PYT68HYMYHH</td>
-      <td>depth cr</td>
+      <td>PYT3ZMI0BXW</td>
+      <td>c. wuellerstorfi d18o</td>
     </tr>
     <tr>
-      <th>38</th>
-      <td>http://linked.earth/lipd/paleo0measurement0.PY...</td>
-      <td>PYT2ZB6MLZ9</td>
-      <td>interval</td>
-    </tr>
-    <tr>
-      <th>39</th>
-      <td>http://linked.earth/lipd/paleo0measurement1.PY...</td>
-      <td>PYTPQ0FJO1S</td>
-      <td>depth comp</td>
-    </tr>
-    <tr>
-      <th>40</th>
+      <th>96</th>
       <td>http://linked.earth/lipd/paleo0measurement1.PY...</td>
       <td>PYTE5EC1JBW</td>
       <td>event</td>
     </tr>
     <tr>
-      <th>41</th>
-      <td>http://linked.earth/lipd/paleo0measurement0.PY...</td>
-      <td>PYTKRFVW61B</td>
-      <td>depth</td>
-    </tr>
-    <tr>
-      <th>42</th>
-      <td>http://linked.earth/lipd/paleo0measurement0.PY...</td>
-      <td>PYTGO6NV72Y</td>
-      <td>temp muller</td>
-    </tr>
-    <tr>
-      <th>43</th>
-      <td>http://linked.earth/lipd/chron0model0summary0....</td>
-      <td>PYTDIEKUM44</td>
-      <td>upper95</td>
-    </tr>
-    <tr>
-      <th>44</th>
-      <td>http://linked.earth/lipd/paleo0measurement0.PY...</td>
-      <td>PYTXJB98403</td>
-      <td>age</td>
-    </tr>
-    <tr>
-      <th>45</th>
-      <td>http://linked.earth/lipd/paleo0measurement0.PY...</td>
-      <td>PYTJ3PSH0LT</td>
-      <td>site/hole</td>
-    </tr>
-    <tr>
-      <th>46</th>
-      <td>http://linked.earth/lipd/chron0model0summary0....</td>
-      <td>PYT7DLYN7X4</td>
-      <td>median</td>
-    </tr>
-    <tr>
-      <th>47</th>
+      <th>97</th>
       <td>http://linked.earth/lipd/paleo0measurement1.PY...</td>
-      <td>PYTJZ4GLRYP</td>
-      <td>sample label</td>
-    </tr>
-    <tr>
-      <th>48</th>
-      <td>http://linked.earth/lipd/paleo0measurement0.PY...</td>
-      <td>PYT10H23U2E</td>
-      <td>c37 total.Alkenone</td>
-    </tr>
-    <tr>
-      <th>49</th>
-      <td>http://linked.earth/lipd/paleo0measurement1.PY...</td>
-      <td>PYTS96EE0CB</td>
-      <td>depth</td>
-    </tr>
-    <tr>
-      <th>50</th>
-      <td>http://linked.earth/lipd/chron0measurement0.PY...</td>
-      <td>PYTLEHYPAYV</td>
-      <td>d18o</td>
-    </tr>
-    <tr>
-      <th>51</th>
-      <td>http://linked.earth/lipd/paleo0measurement1.PY...</td>
-      <td>PYTTUPVG4K3</td>
-      <td>u. peregrina d13c.d13C</td>
-    </tr>
-    <tr>
-      <th>52</th>
-      <td>http://linked.earth/lipd/paleo0measurement1.PY...</td>
-      <td>PYTYDOYFVYD</td>
-      <td>u. peregrina d18o.d18O</td>
-    </tr>
-    <tr>
-      <th>53</th>
-      <td>http://linked.earth/lipd/paleo0measurement0.PY...</td>
-      <td>PYTM9N6HCQM</td>
-      <td>ukprime37.Uk37Prime</td>
-    </tr>
-    <tr>
-      <th>54</th>
-      <td>http://linked.earth/lipd/chron0model0ensemble0...</td>
-      <td>PYTGOFY4KZD</td>
-      <td>depth</td>
-    </tr>
-    <tr>
-      <th>55</th>
-      <td>http://linked.earth/lipd/CO06MOPE.paleo1measur...</td>
-      <td>Ocean2kHR_107</td>
-      <td>d18O</td>
-    </tr>
-    <tr>
-      <th>56</th>
-      <td>http://linked.earth/lipd/CO06MOPE.paleo1measur...</td>
-      <td>LPDca7af9c3</td>
-      <td>year</td>
+      <td>PYTPQ0FJO1S</td>
+      <td>depth comp</td>
     </tr>
   </tbody>
 </table>
+<p>98 rows × 3 columns</p>
 </div></div></div>
 </div>
 </section>
 <section id="get-a-bibliography">
-<h3>Get a bibliography<a class="headerlink" href="#get-a-bibliography" title="Permalink to this heading">#</a></h3>
+<h3>Get a bibliography<a class="headerlink" href="#get-a-bibliography" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">pylipd</span></code> makes is easy to retrieve the publication information from the subset of records you used and export this to a <code class="docutils literal notranslate"><span class="pre">.bib</span></code> file:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1109,13 +1038,58 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI, creating the entry manually
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI (None), creating the entry manually
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI, creating the entry manually
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI (None), creating the entry manually
+Cannot find a matching record for the provided DOI (None), creating the entry manually
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI, creating the entry manually
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI (http://nbn-resolving.de/urn:nbn:de:gbv:46-ep000102745), creating the entry manually
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI (None), creating the entry manually
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI (None), creating the entry manually
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI (None), creating the entry manually
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI (None), creating the entry manually
+Cannot find a matching record for the provided DOI (None), creating the entry manually
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI (None), creating the entry manually
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI (None), creating the entry manually
+Cannot find a matching record for the provided DOI (None), creating the entry manually
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI (None), creating the entry manually
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI (None), creating the entry manually
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI (None), creating the entry manually
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI (None), creating the entry manually
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI (None), creating the entry manually
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI (None), creating the entry manually
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI (None), creating the entry manually
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI (None), creating the entry manually
 </pre></div>
 </div>
 </div>
@@ -1175,20 +1149,20 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>Crystal.McCabe-Glynn.2013</td>
-      <td>Variable North Pacific influence on drought in...</td>
-      <td>Hai Cheng and R. Lawrence Edwards Ashish Sinha...</td>
-      <td>10.1038/ngeo1862</td>
+      <td>Eur-Stockholm.Leijonhufvud.2009</td>
+      <td>Five centuries of Stockholm winter/spring temp...</td>
+      <td>Lotta Leijonhufvud and Rob Wilson and Ulrica S...</td>
+      <td>10.1007/s10584-009-9650-y</td>
       <td>None</td>
-      <td>2013.0</td>
-      <td>Nature Geoscience</td>
-      <td>6.0</td>
+      <td>2009.0</td>
+      <td>Climatic Change</td>
+      <td>101</td>
       <td>None</td>
-      <td>617-621</td>
+      <td>109-141</td>
+      <td>article</td>
+      <td>Springer Science + Business Media</td>
       <td>None</td>
-      <td>None</td>
-      <td>None</td>
-      <td>None</td>
+      <td>leijonhufvud2009fivecenturiesofstockholmw</td>
       <td>None</td>
       <td>None</td>
       <td>None</td>
@@ -1196,41 +1170,41 @@ document.write(`
     </tr>
     <tr>
       <th>1</th>
-      <td>ODP846.Lawrence.2006</td>
-      <td>A Pliocene-Pleistocene stack of 57 globally di...</td>
-      <td>Lorraine E. Lisiecki and Maureen E. Raymo</td>
-      <td>10.1029/2004PA001071</td>
+      <td>Eur-Stockholm.Leijonhufvud.2009</td>
+      <td>World Data Center for Paleoclimatology</td>
+      <td>L. Leijonhufvud</td>
       <td>None</td>
-      <td>2005.0</td>
-      <td>Paleoceanography</td>
-      <td>20.0</td>
-      <td>1.0</td>
-      <td>79-83</td>
-      <td>article-journal</td>
-      <td>American Geophysical Union (AGU)</td>
+      <td>None</td>
+      <td>NaN</td>
       <td>None</td>
       <td>None</td>
       <td>None</td>
       <td>None</td>
+      <td>dataCitation</td>
       <td>None</td>
       <td>None</td>
+      <td>leijonhufvud2010httpwwwncdcnoaagovpaleostudy10...</td>
+      <td>None</td>
+      <td>World Data Center for Paleoclimatology</td>
+      <td>None</td>
+      <td>http://www.ncdc.noaa.gov/paleo/study/10429</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>ODP846.Lawrence.2006</td>
-      <td>The Role of Uncertainty in Estimating Lead/Lag...</td>
-      <td>D. Khider and C. E. Lawrence and S. Ahn and L....</td>
-      <td>10.1002/2016PA003057</td>
+      <td>Ocn-PedradeLume-CapeVerdeIslands.Moses.2006</td>
+      <td>Evidence of multidecadal salinity variability ...</td>
+      <td>Peter K. Swart and Christopher S. Moses and Br...</td>
+      <td>10.1029/2005PA001257</td>
       <td>None</td>
-      <td>2017.0</td>
+      <td>2006.0</td>
       <td>Paleoceanography</td>
-      <td>32.0</td>
-      <td>11.0</td>
-      <td>79-83</td>
-      <td>article-journal</td>
-      <td>American Geophysical Union (AGU)</td>
+      <td>21</td>
       <td>None</td>
+      <td>PA3010</td>
+      <td>article</td>
+      <td>Wiley-Blackwell</td>
       <td>None</td>
+      <td>moses2006evidenceofmultidecadalsal</td>
       <td>None</td>
       <td>None</td>
       <td>None</td>
@@ -1238,45 +1212,45 @@ document.write(`
     </tr>
     <tr>
       <th>3</th>
-      <td>ODP846.Lawrence.2006</td>
-      <td>Benthic Foraminiferal Stable Isotope Stratigra...</td>
-      <td>A.C. Mix and J. Le and N.J. Shackleton</td>
-      <td>10.2973/odp.proc.sr.138.160.1995</td>
+      <td>Ocn-PedradeLume-CapeVerdeIslands.Moses.2006</td>
+      <td>World Data Center for Paleoclimatology</td>
+      <td>C.S. Moses</td>
       <td>None</td>
-      <td>1995.0</td>
-      <td>Proceedings of the Ocean Drilling Program, 138...</td>
-      <td>312.0</td>
-      <td>5770.0</td>
-      <td>79-83</td>
-      <td>chapter</td>
-      <td>Ocean Drilling Program</td>
+      <td>None</td>
+      <td>NaN</td>
       <td>None</td>
       <td>None</td>
       <td>None</td>
       <td>None</td>
+      <td>dataCitation</td>
       <td>None</td>
       <td>None</td>
+      <td>moses2009httpswwwncdcnoaagovpaleostudy6184Data...</td>
+      <td>None</td>
+      <td>World Data Center for Paleoclimatology</td>
+      <td>None</td>
+      <td>https://www.ncdc.noaa.gov/paleo/study/6184</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>ODP846.Lawrence.2006</td>
-      <td>Evolution of the Eastern Tropical Pacific Thro...</td>
-      <td>K. T. Lawrence</td>
-      <td>10.1126/science.1120395</td>
+      <td>Eur-NorthernSpain.Martin-Chivelet.2011</td>
+      <td>World Data Center for Paleoclimatology</td>
+      <td>J. Martín-Chivelet</td>
       <td>None</td>
-      <td>2006.0</td>
-      <td>Science</td>
-      <td>312.0</td>
-      <td>5770.0</td>
-      <td>79-83</td>
-      <td>article-journal</td>
-      <td>American Association for the Advancement of Sc...</td>
+      <td>None</td>
+      <td>NaN</td>
       <td>None</td>
       <td>None</td>
       <td>None</td>
       <td>None</td>
+      <td>dataCitation</td>
       <td>None</td>
       <td>None</td>
+      <td>martin2011httpwwwncdcnoaagovpaleostudy12194Dat...</td>
+      <td>None</td>
+      <td>World Data Center for Paleoclimatology</td>
+      <td>None</td>
+      <td>http://www.ncdc.noaa.gov/paleo/study/12194</td>
     </tr>
   </tbody>
 </table>
@@ -1311,11 +1285,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="L1_working_with_ensembles.html"
@@ -1335,10 +1308,7 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -1346,6 +1316,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1390,9 +1361,10 @@ By Deborah Khider
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1416,8 +1388,8 @@ By Deborah Khider
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Directly querying the LiPDGraph &#8212; PyLiPD Tutorials</title>
   
@@ -15,52 +14,49 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/L2_using_graphdb';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -74,19 +70,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -108,12 +108,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -128,9 +136,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../intro.html">
+  
   
   
   
@@ -140,12 +152,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/LinkedEarth_small.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/LinkedEarth_small.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/LinkedEarth_small.png" class="logo__image only-light" alt="PyLiPD Tutorials - Home"/>
+    <script>document.write(`<img src="../_static/LinkedEarth_small.png" class="logo__image only-dark" alt="PyLiPD Tutorials - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -189,7 +212,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -198,14 +221,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -230,14 +253,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://mybinder.org/v2/gh/LinkedEarth/pylipdTutorials/jupyterbook?urlpath=tree/jupyterBook/notebooks/L2_using_graphdb.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onBinder"
+   title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../_static/images/logo_binder.svg">
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
@@ -358,26 +381,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -421,42 +446,42 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="directly-querying-the-lipdgraph">
-<h1>Directly querying the LiPDGraph<a class="headerlink" href="#directly-querying-the-lipdgraph" title="Permalink to this heading">#</a></h1>
+<h1>Directly querying the LiPDGraph<a class="headerlink" href="#directly-querying-the-lipdgraph" title="Link to this heading">#</a></h1>
 <section id="authors">
-<h2>Authors<a class="headerlink" href="#authors" title="Permalink to this heading">#</a></h2>
+<h2>Authors<a class="headerlink" href="#authors" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://orcid.org/0000-0001-7501-8430">Deborah Khider</a></p>
 </section>
 <section id="preamble">
-<h2>Preamble<a class="headerlink" href="#preamble" title="Permalink to this heading">#</a></h2>
+<h2>Preamble<a class="headerlink" href="#preamble" title="Link to this heading">#</a></h2>
 <p>This tutorial demonstrates a query on the <code class="docutils literal notranslate"><span class="pre">LiPDGraph</span></code> using the direct SPARQL endpoint. You might ask yourself: “What is the <code class="docutils literal notranslate"><span class="pre">LiPDGraph</span></code> and how does it differ from the Lipdverse?” The short answer os the the <code class="docutils literal notranslate"><span class="pre">LiPDGraph</span></code> contains all the datasets that are available through Lipdverse, stored in a graph format. Remember tha PyLiPD essentially takes a LiPD file and transforms it into a graph. We have already done this process for the LiPDverse, and the datasets can already be queried there.</p>
 <section id="goals">
-<h3>Goals<a class="headerlink" href="#goals" title="Permalink to this heading">#</a></h3>
+<h3>Goals<a class="headerlink" href="#goals" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Learn how to query the Graph database directly</p></li>
 </ul>
 <p>Reading Time: 5 minutes</p>
 </section>
 <section id="keywords">
-<h3>Keywords<a class="headerlink" href="#keywords" title="Permalink to this heading">#</a></h3>
+<h3>Keywords<a class="headerlink" href="#keywords" title="Link to this heading">#</a></h3>
 <p>SPARQL</p>
 </section>
 <section id="pre-requisites">
-<h3>Pre-requisites<a class="headerlink" href="#pre-requisites" title="Permalink to this heading">#</a></h3>
+<h3>Pre-requisites<a class="headerlink" href="#pre-requisites" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="http://linked.earth/pylipdTutorials/graph.html">Understand the basics of RDF and SPAQRL</a></p></li>
-<li><p><a class="reference internal" href="L2_custom_queries.html"><span class="doc std std-doc">Querying with SPARQL</span></a></p></li>
+<li><p><a class="reference internal" href="#L2_custom_queries.md"><span class="xref myst">Querying with SPARQL</span></a></p></li>
 </ul>
 </section>
 <section id="relevant-packages">
-<h3>Relevant Packages<a class="headerlink" href="#relevant-packages" title="Permalink to this heading">#</a></h3>
+<h3>Relevant Packages<a class="headerlink" href="#relevant-packages" title="Link to this heading">#</a></h3>
 <p>pandas</p>
 </section>
 </section>
 <section id="data-description">
-<h2>Data Description<a class="headerlink" href="#data-description" title="Permalink to this heading">#</a></h2>
+<h2>Data Description<a class="headerlink" href="#data-description" title="Link to this heading">#</a></h2>
 <p>This notebook makes use of the <code class="docutils literal notranslate"><span class="pre">LiPDGraph</span></code> database, a graph database that contains datasets from various working groups. For a list of these compilations, see <a class="reference external" href="https://lipdverse.org/project/">this page</a>.</p>
 <p>In particular, we will be using PAGES2k and iso-2k for this demonstration.</p>
 <ul class="simple">
@@ -465,7 +490,7 @@ document.write(`
 </ul>
 </section>
 <section id="demonstration">
-<h2>Demonstration<a class="headerlink" href="#demonstration" title="Permalink to this heading">#</a></h2>
+<h2>Demonstration<a class="headerlink" href="#demonstration" title="Link to this heading">#</a></h2>
 <p>Let’s import a few web packages along with pandas.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -479,7 +504,7 @@ document.write(`
 </div>
 </div>
 <section id="simple-query">
-<h3>Simple query<a class="headerlink" href="#simple-query" title="Permalink to this heading">#</a></h3>
+<h3>Simple query<a class="headerlink" href="#simple-query" title="Link to this heading">#</a></h3>
 <p>Let’s start with one the simple queries we have been playing with. The <code class="docutils literal notranslate"><span class="pre">LiPDGraph</span></code> knowledge base is organized very similarly to a <code class="docutils literal notranslate"><span class="pre">LiPD</span></code> object, with each dataset stored in its own graph. So the queries you have been learning in the previous tutorials also apply.</p>
 <p>Let’s retrieve 10 random dataset names. But first we need to point towards the endpoint for the query:</p>
 <div class="cell docutils container">
@@ -509,7 +534,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>This should be very familiar as this is the first query we performed in the <a class="reference internal" href="L2_custom_queries.html"><span class="doc std std-doc">custom queries tutorial</span></a>. Now, let’s send it to our SPAQRL endpoint and retrieve the results that we will store in a pandas DataFrame.</p>
+<p>This should be very familiar as this is the first query we performed in the <a class="reference internal" href="#L2_custom_queries.md"><span class="xref myst">custom queries tutorial</span></a>. Now, let’s send it to our SPAQRL endpoint and retrieve the results that we will store in a pandas DataFrame.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="n">query</span><span class="p">})</span>
@@ -547,53 +572,53 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>http://linked.earth/lipd/Alsa.Mariscal.1993Legacy</td>
-      <td>Alsa.Mariscal.1993Legacy</td>
+      <td>http://linked.earth/lipd/HayesLake.McAndrews.1982</td>
+      <td>HayesLake.McAndrews.1982</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>http://linked.earth/lipd/BlackSea_Southwest2_.EPD</td>
-      <td>BlackSea(Southwest2).EPD</td>
+      <td>http://linked.earth/lipd/RosleNowe.Krajewski.1984</td>
+      <td>RosleNowe.Krajewski.1984</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>http://linked.earth/lipd/Bereziuk.Richard.1979</td>
-      <td>Bereziuk.Richard.1979</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>http://linked.earth/lipd/Asi-PAKI001.Esper.2007</td>
-      <td>Asi-PAKI001.Esper.2007</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>http://linked.earth/lipd/SO201_2_101</td>
-      <td>SO201_2_101</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>http://linked.earth/lipd/BechanCave.Davis.1990</td>
-      <td>BechanCave.Davis.1990</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>http://linked.earth/lipd/LoughMeenachrinna.Tay...</td>
-      <td>LoughMeenachrinna.Taylor.2018</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>http://linked.earth/lipd/Asi-PAKI014.Esper.2007</td>
-      <td>Asi-PAKI014.Esper.2007</td>
-    </tr>
-    <tr>
-      <th>8</th>
       <td>http://linked.earth/lipd/Selikhovo.Novenko.2016</td>
       <td>Selikhovo.Novenko.2016</td>
     </tr>
     <tr>
+      <th>3</th>
+      <td>http://linked.earth/lipd/Hussein.Haynes.1987</td>
+      <td>Hussein.Haynes.1987</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>http://linked.earth/lipd/ArroyodeValdeconejos....</td>
+      <td>ArroyodeValdeconejos.MoralesMolino.2017</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>http://linked.earth/lipd/Ocn-TongueoftheOcean....</td>
+      <td>Ocn-TongueoftheOcean.Rosenheim.2005</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>http://linked.earth/lipd/DevilsLake.Shuman.2016</td>
+      <td>DevilsLake.Shuman.2016</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>http://linked.earth/lipd/LlynCororion.Watkins....</td>
+      <td>LlynCororion.Watkins.2007</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>http://linked.earth/lipd/Cregganmore.McKeever....</td>
+      <td>Cregganmore.McKeever.1984</td>
+    </tr>
+    <tr>
       <th>9</th>
-      <td>http://linked.earth/lipd/MV0811-14JC.Du.2018</td>
-      <td>MV0811-14JC.Du.2018</td>
+      <td>http://linked.earth/lipd/Asi-PAKI014.Esper.2007</td>
+      <td>Asi-PAKI014.Esper.2007</td>
     </tr>
   </tbody>
 </table>
@@ -601,7 +626,7 @@ document.write(`
 </div>
 </section>
 <section id="complex-queries">
-<h3>Complex queries<a class="headerlink" href="#complex-queries" title="Permalink to this heading">#</a></h3>
+<h3>Complex queries<a class="headerlink" href="#complex-queries" title="Link to this heading">#</a></h3>
 <p>Ok let’s work on something more complex. Let’s say that you want to retrieve all the data in the PAGES2k and iso2k compilations that were tagged to be used in the temperature analysis for this compilations along with metadata regarding the location, the type of archive and proxy used.</p>
 <p>Don’t forget that each column is stored separately so you also need to go grab the time axis!</p>
 <div class="cell docutils container">
@@ -926,11 +951,10 @@ OPTIONAL{?var le:hasVariableID ?TSID} .
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="L2_custom_queries.html"
@@ -941,10 +965,7 @@ OPTIONAL{?var le:hasVariableID ?TSID} .
         <p class="prev-next-title">Custom queries on LiPD objects</p>
       </div>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -952,6 +973,7 @@ OPTIONAL{?var le:hasVariableID ?TSID} .
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -994,9 +1016,10 @@ By Deborah Khider
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1020,8 +1043,8 @@ By Deborah Khider
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
