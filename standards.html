@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Understanding how datasets are represented in PyLiPD &#8212; PyLiPD Tutorials</title>
+    <title>Standard, Standards, and More Standards. &#8212; PyLiPD Tutorials</title>
   
   
   
@@ -57,11 +57,11 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'graph';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'standards';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Standard, Standards, and More Standards." href="standards.html" />
-    <link rel="prev" title="An introduction to the PyLiPD package" href="intro.html" />
+    <link rel="next" title="Reading LiPD formatted datasets with PyLiPD" href="notebooks/L0_loading_lipd_datasets.html" />
+    <link rel="prev" title="Understanding how datasets are represented in PyLiPD" href="graph.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -181,8 +181,8 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Dataset Representation in PyLiPD</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Understanding how datasets are represented in PyLiPD</a></li>
-<li class="toctree-l1"><a class="reference internal" href="standards.html">Standard, Standards, and More Standards.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph.html">Understanding how datasets are represented in PyLiPD</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Standard, Standards, and More Standards.</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="nav bd-sidenav">
@@ -270,7 +270,7 @@
       
       
       
-      <li><a href="https://github.com/LinkedEarth/pylipdTutorials/issues/new?title=Issue%20on%20page%20%2Fgraph.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/LinkedEarth/pylipdTutorials/issues/new?title=Issue%20on%20page%20%2Fstandards.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -300,7 +300,7 @@
       
       
       
-      <li><a href="_sources/graph.md" target="_blank"
+      <li><a href="_sources/standards.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -384,7 +384,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Understanding how datasets are represented in PyLiPD</h1>
+    <h1>Standard, Standards, and More Standards.</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -394,9 +394,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-an-ontology">What is an Ontology?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-rdf">What is RDF?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-sparql">What is SPARQL?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-representation-of-the-data">Standard representation of the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-standard-terminology-for-the-data">A standard terminology for the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-guidelines-for-the-reporting-of-datasets">Standard guidelines for the reporting of datasets</a></li>
 </ul>
             </nav>
         </div>
@@ -408,49 +408,32 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="understanding-how-datasets-are-represented-in-pylipd">
-<h1>Understanding how datasets are represented in PyLiPD<a class="headerlink" href="#understanding-how-datasets-are-represented-in-pylipd" title="Link to this heading">#</a></h1>
-<p><a class="reference external" href="https://pylipd.readthedocs.io/en/latest/"><code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code></a> is based upon <a class="reference external" href="https://rdflib.readthedocs.io/en/stable/#">rdflib</a>, a Python package for working with RDF. This begs the question: what is RDF? and why should I care?</p>
-<p>Let’s start with the second question. For most of the functionalities present in <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code>, you shouldn’t have to care. After all, this is why <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code> was created in the first place: to make working with these datasets easier. Therefore, for 90% of your work, you shouldn’t have to care. However, if your work involves generating new compilations of record or you need to create new properties in a LiPD file for future queries, then you need to know a little about how <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code> represent the data.</p>
-<p>TL;DR: the LiDP structure was expanded into an ontology. One of the languages to write ontologies is RDF. SPARQL is the query language for RDF. Therefore, you can access all the information represented in LiPD files using SPARQL.</p>
-<p>Read on to learn more about all these terms:</p>
-<section id="what-is-an-ontology">
-<h2>What is an Ontology?<a class="headerlink" href="#what-is-an-ontology" title="Link to this heading">#</a></h2>
-<p>An ontology is a model of (a relevant part of) the world. In our case, the relevant part of the world is a paleoclimate dataset. The ontology lists the types of objects , called classes (e.g., <code class="docutils literal notranslate"><span class="pre">Dataset</span></code>, <code class="docutils literal notranslate"><span class="pre">Publication</span></code>, <code class="docutils literal notranslate"><span class="pre">Variable</span></code>), the relationship that connects them (e.g., <code class="docutils literal notranslate"><span class="pre">Dataset</span> <span class="pre">publishedIn</span> <span class="pre">Publication</span></code>), and constraints on the ways that classes and relationships can be combined. A snapshop of the ontology derived from the LiPD format is shown below:</p>
-<a class="reference internal image-reference" href="_images/Ontologyv2.png"><img alt="The LinkedEarth Ontology" class="align-center" src="_images/Ontologyv2.png" style="width: 400px;" /></a>
-<p>The full ontology is available <a class="reference external" href="http://linked.earth/ontology/core/1.2.0/index-en.html">here</a>. It should help you construct custom queries using the SPAQRL language.</p>
-<p>The ontology serves as a map onto which we can load the structured information about paleoclimate data. You can think of the ontology as the equivalent of a database schema. Since we store knowledge, we use the word “knowledge base” instead of database to refer to the organized collection of this information. In essence, when laoding LiPD files, <code class="docutils literal notranslate"><span class="pre">PyLIPD</span></code> creates a local and ephemeral knowledge base on your computer that you can manipulate to extract relevant information for your scientific work. You will also hear the word knowledge graph to refer to the storing of that information. For all intents and purposes, in PyLiPD, these two words can be interchanged. However, it is often easier to think about the knowledge representation as a directed graph in which the nodes represent the classes and the edges (the connections between the nodes) the relationships among these classes; therefore we strongly encourage you to think about the datasets you are working with as graphs.</p>
-<p>If you look at the legend on the Figure above, notice that the relationships are called properties. There are two types of properties: object properties, which relate two classes in the ontology, and data properties, which relate a class with a special call that has been pre-defined, such as “string”, “float”, “integer”. You can think of these data properties as the leaves in the graph.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="standard-standards-and-more-standards">
+<h1>Standard, Standards, and More Standards.<a class="headerlink" href="#standard-standards-and-more-standards" title="Link to this heading">#</a></h1>
+<p>Although <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code> allows you to open, manipulate, and soon write any LIPD files, its querying functionalities are most powerful when the file is “standard”. But what does “standard” actually mean?</p>
+<p>Following the definition of <a class="reference external" href="https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/2019PA003632">Khider et al. (2019)</a>, a standard is comprised of three elements:</p>
+<ol class="arabic simple">
+<li><p>A standard representation of the data</p></li>
+<li><p>A standard terminology for the data</p></li>
+<li><p>Standard guidelines for the data</p></li>
+</ol>
+<section id="standard-representation-of-the-data">
+<h2>Standard representation of the data<a class="headerlink" href="#standard-representation-of-the-data" title="Link to this heading">#</a></h2>
+<p>First, we need to define the categories for which we need information and the relationship amongst them. <a class="reference external" href="https://lipd.net">LiPD</a>, and by extension, the <a class="reference external" href="http://linked.earth/pylipdTutorials/graph.html">ontology</a> over which <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code> operates, create these categories and associated relationship. This provides us with the necessary structure to be able to retrieve some information such as the name of a variable or the values associated with that variable.</p>
+<p>We also recognize that the format needs to be flexible enough for new categories to be added, so each scientist can describe their data with as many details as necessary to ensure reproducbility of the work. LiPD and its associated ontology allow for this flexibility: anyone can add new categories while respecting some of the fundamental structure of the LiPD representation.</p>
 </section>
-<section id="what-is-rdf">
-<h2>What is RDF?<a class="headerlink" href="#what-is-rdf" title="Link to this heading">#</a></h2>
-<p>RDF (Resource Description Framework) is a simple language to describe facts about the objects (represented as universal resource identifiers, URIs) and their relationships (constraints need to be expressed in a much richer language such as the Web Ontology Language, OWL). RDF uses triplets to express these facts: a subject, a predicate and an object. Subjects and objects are classes while the predicate represent the property.</p>
-<p>For instance, let’s have a look at the following statement:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PREFIX</span> <span class="n">le</span><span class="p">:</span><span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">linked</span><span class="o">.</span><span class="n">earth</span><span class="o">/</span><span class="n">ontology</span><span class="c1">#&gt;</span>
-
-<span class="n">le</span><span class="p">:</span><span class="n">MD98_2181</span><span class="o">.</span><span class="n">Stott</span><span class="mf">.2007</span> <span class="n">rdf</span><span class="p">:</span><span class="nb">type</span> <span class="n">le</span><span class="p">:</span><span class="n">Dataset</span>
-<span class="n">le</span><span class="p">:</span><span class="n">MD98_2181</span><span class="o">.</span><span class="n">Stott</span><span class="mf">.2007</span> <span class="n">le</span><span class="p">:</span><span class="n">name</span> <span class="n">MD98_2181</span><span class="o">.</span><span class="n">Stott</span><span class="mf">.2007</span>
-</pre></div>
-</div>
-<p>The first line defines a prefix. Remember that in RDF objects are represented as URIs (an example of which are URLs). So this statement essentially says that when we use <code class="docutils literal notranslate"><span class="pre">le</span></code> later on, we really mean <code class="docutils literal notranslate"><span class="pre">http://linked.earth/ontology#</span></code> as the prefix to the URI. <code class="docutils literal notranslate"><span class="pre">le</span></code> is called a namespace.</p>
-<p>Let’s move on to the next statement, which is our first RDF triplet. In this case, the subject is <code class="docutils literal notranslate"><span class="pre">le:MD98_2181.Stott.2007</span></code> (remember that it essentially is the equivalent of <code class="docutils literal notranslate"><span class="pre">http://linked.earth/ontology#MD98_2181.Stott.2007</span></code>), <code class="docutils literal notranslate"><span class="pre">rdf:type</span></code> is the subject and <code class="docutils literal notranslate"><span class="pre">le:Dataset</span></code> is the object. In English, this can be read as “MD98-2181.Stott.2007 is a dataset”.</p>
-<p>Our last statement is another RDF triplet. In this case, the subject is <code class="docutils literal notranslate"><span class="pre">le:MD98_2181.Stott.2007</span></code>, the predicate is <code class="docutils literal notranslate"><span class="pre">le:name</span></code> and the object is <code class="docutils literal notranslate"><span class="pre">MD98_2181.Stott.2007</span></code>. This can be confusing at first, right? Well, remember that <code class="docutils literal notranslate"><span class="pre">le:MD98_2181.Stott.2007</span></code> represents a dataset object which can have a lot of predicates (properties) associated with it. One of such properties is its name, which is a simple string. Therefore, <code class="docutils literal notranslate"><span class="pre">le:name</span></code> is an example of a data property.</p>
-<p>Why use ontologies and RDF? This allows us to link our data to the web, which uses this representation to store knowledge. Our ontology doesn’t have many linkages so far. One notable exception is geography, where we reuse the <a class="reference external" href="https://www.w3.org/2003/01/geo/">wgs84</a> ontology, which you will see loaded many times in notebook examples.</p>
-<p>Did you know that knowledge bases/graphs power many features you use everyday while surfing the web? Spend some time to research the Google knowledge graph. One of its uses is to create the info boxes that you get from Google searches. Pretty much every large tech company will use a knowledge graph for various applications.</p>
+<section id="a-standard-terminology-for-the-data">
+<h2>A standard terminology for the data<a class="headerlink" href="#a-standard-terminology-for-the-data" title="Link to this heading">#</a></h2>
+<p>While the structure allows us to retrieve the name of the variable, it doesn’t allow for querying over specific names. This is feasbile through a language called SPARQL, and we provided examples of its use <a class="reference external" href="http://linked.earth/pylipdTutorials/notebooks/L2_custom_queries.html">in this tutorial</a>.</p>
+<p>However, it is impossible to write a query without knowing the name of the variable. And it helps if variables that are the same use the same name. Although tools like <a class="reference external" href="https://en.wikipedia.org/wiki/Regular_expression">regular expressions</a> can help with flexible queries, it can be dangerous to use as two concepts similar enough to return a flexible match are actually very different (e.g., air temperature vs thermocline temperature on a query meant to match for temperature). Therefore, a standard terminology for key information in paleoclimate is needed.</p>
+<p>In 2021, NOAA published the <a class="reference external" href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2020PA004193">Paleoenvironmental Standard Terms (PaST) Thesaurus</a> that standardizes information about variables, units, measurement materials, etc. The LinkedEarth team has adopted the PaST Thesaurus for the standardization of LiPD files found on the <a class="reference external" href="https://lipdverse.org">LipdVerse</a> or the <a class="reference external" href="https://linkedearth.graphdb.mint.isi.edu">LipdGraph</a>. Note that this nomenclature is not enforced and you may name your variables as you wish, but you may want to keep in mind this terminology to help you write powerful queries for your datasets.</p>
+<p>A list of the standardized terms for LiPD files can be accessed <a class="reference external" href="https://lipdverse.org/vocabulary/">here</a>.</p>
 </section>
-<section id="what-is-sparql">
-<h2>What is SPARQL?<a class="headerlink" href="#what-is-sparql" title="Link to this heading">#</a></h2>
-<p>SPARQL (pronounced “sparkle”) is the query language for RDF. Let’s say I want to return all the names of the datasets stored in the <code class="docutils literal notranslate"><span class="pre">PyLiPD</span> <span class="pre">LiPD</span></code> knowledge base, then I can use the following query:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>PREFIX le:&lt;http://linked.earth/ontology#&gt;
-
-SELECT ?dsname WHERE{
-
-?ds a le:Dataset
-?ds le:name ?dsname}
-</pre></div>
-</div>
-<p>This structure should look somewhat familiar. First, we define our namespace <code class="docutils literal notranslate"><span class="pre">le</span></code>. The querying starts on the next line. We want to <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> the names of the datasets (represented by the variable <code class="docutils literal notranslate"><span class="pre">?dsname</span></code>) that follows some constraints in the <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> statement. Note that variable names in SPARQL are preceded by question marks. The next two lines should look very familiar. We first created a variable <code class="docutils literal notranslate"><span class="pre">?ds</span></code> to store all <code class="docutils literal notranslate"><span class="pre">le:Dataset</span></code>. Note the <code class="docutils literal notranslate"><span class="pre">a</span></code> stands for <code class="docutils literal notranslate"><span class="pre">ref:type</span></code>. Then we look for all the names associated with each <code class="docutils literal notranslate"><span class="pre">?ds</span></code>.</p>
-<p>If this may sound confusing, don’t worry! You’ll get plenty of practice in our more advanced tutorials (Advanced Querying).</p>
+<section id="standard-guidelines-for-the-reporting-of-datasets">
+<h2>Standard guidelines for the reporting of datasets<a class="headerlink" href="#standard-guidelines-for-the-reporting-of-datasets" title="Link to this heading">#</a></h2>
+<p>The last part of the standardization process is to create a list of the categories that should always have information to ensure re-use of the data. For instance, a paleoclimate datasets obtained from a coral is not useful if there is no information about where the coral sample was taken from.</p>
+<p>Starting in 2016, the LinkedEarth team led an effort to create a reporting standard for paleoclimate datasets, surveying the community about which categories are necessary to ensure re-use of the data. <a class="reference external" href="https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/2019PA003632">PaCTS</a> was the result of this effort. However, this standard is difficult to implement in practice as too many catagories were deemed necessary, leaving it as an aspirational standard.</p>
+<p>We are interested in hearing from you regarding what categories you access the most in a file! Please, start a discussion on our <a class="reference external" href="https://discourse.linked.earth">Discourse</a> forum.</p>
 </section>
 </section>
 
@@ -485,20 +468,20 @@ SELECT ?dsname WHERE{
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="intro.html"
+       href="graph.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">An introduction to the PyLiPD package</p>
+        <p class="prev-next-title">Understanding how datasets are represented in PyLiPD</p>
       </div>
     </a>
     <a class="right-next"
-       href="standards.html"
+       href="notebooks/L0_loading_lipd_datasets.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Standard, Standards, and More Standards.</p>
+        <p class="prev-next-title">Reading LiPD formatted datasets with <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code></p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -518,9 +501,9 @@ SELECT ?dsname WHERE{
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-an-ontology">What is an Ontology?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-rdf">What is RDF?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-sparql">What is SPARQL?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-representation-of-the-data">Standard representation of the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-standard-terminology-for-the-data">A standard terminology for the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-guidelines-for-the-reporting-of-datasets">Standard guidelines for the reporting of datasets</a></li>
 </ul>
   </nav></div>
 

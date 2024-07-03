@@ -182,6 +182,7 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Dataset Representation in PyLiPD</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../graph.html">Understanding how datasets are represented in PyLiPD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../standards.html">Standard, Standards, and More Standards.</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="nav bd-sidenav">
@@ -516,13 +517,16 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/16 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 31%|███▏      | 5/16 [00:00&lt;00:00, 46.01it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 25%|██▌       | 4/16 [00:00&lt;00:00, 39.30it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 75%|███████▌  | 12/16 [00:00&lt;00:00, 56.13it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 62%|██████▎   | 10/16 [00:00&lt;00:00, 50.68it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 16/16 [00:00&lt;00:00, 53.77it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 16/16 [00:00&lt;00:00, 52.35it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 16/16 [00:00&lt;00:00, 50.70it/s]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
@@ -590,7 +594,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-SpannagelCave.Mangini.2005&#39;, &#39;Eur-NorthernSpain.Martin-Chivelet.2011&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-NorthernSpain.Martin-Chivelet.2011&#39;, &#39;Eur-SpannagelCave.Mangini.2005&#39;]
 </pre></div>
 </div>
 </div>
@@ -605,9 +609,9 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Ocn-FeniDrift.Richter.2009&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-CoastofPortugal.Abrantes.2011&#39;,
  &#39;Ocn-AlboranSea436B.Nieto-Moreno.2013&#39;,
- &#39;Eur-CoastofPortugal.Abrantes.2011&#39;]
+ &#39;Ocn-FeniDrift.Richter.2009&#39;]
 </pre></div>
 </div>
 </div>
@@ -622,11 +626,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Ocn-FeniDrift.Richter.2009&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-CoastofPortugal.Abrantes.2011&#39;,
  &#39;Arc-Kongressvatnet.D_Andrea.2012&#39;,
  &#39;Ocn-AlboranSea436B.Nieto-Moreno.2013&#39;,
- &#39;Eur-LakeSilvaplana.Trachsel.2010&#39;,
- &#39;Eur-CoastofPortugal.Abrantes.2011&#39;]
+ &#39;Ocn-FeniDrift.Richter.2009&#39;,
+ &#39;Eur-LakeSilvaplana.Trachsel.2010&#39;]
 </pre></div>
 </div>
 </div>
@@ -640,11 +644,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-SpannagelCave.Mangini.2005&#39;,
- &#39;Ocn-FeniDrift.Richter.2009&#39;,
- &#39;Ocn-AlboranSea436B.Nieto-Moreno.2013&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-NorthernSpain.Martin-Chivelet.2011&#39;,
  &#39;Eur-CoastofPortugal.Abrantes.2011&#39;,
- &#39;Eur-NorthernSpain.Martin-Chivelet.2011&#39;]
+ &#39;Eur-SpannagelCave.Mangini.2005&#39;,
+ &#39;Ocn-AlboranSea436B.Nieto-Moreno.2013&#39;,
+ &#39;Ocn-FeniDrift.Richter.2009&#39;]
 </pre></div>
 </div>
 </div>
@@ -659,9 +663,9 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Ocn-FeniDrift.Richter.2009&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-CoastofPortugal.Abrantes.2011&#39;,
  &#39;Ocn-AlboranSea436B.Nieto-Moreno.2013&#39;,
- &#39;Eur-CoastofPortugal.Abrantes.2011&#39;,
+ &#39;Ocn-FeniDrift.Richter.2009&#39;,
  &#39;Eur-NorthernSpain.Martin-Chivelet.2011&#39;,
  &#39;Eur-SpannagelCave.Mangini.2005&#39;]
 </pre></div>
@@ -682,12 +686,12 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;,
- &#39;Eur-SpannagelCave.Mangini.2005&#39;,
- &#39;Eur-FinnishLakelands.Helama.2014&#39;,
- &#39;Asi-SourthAndMiddleUrals.Demezhko.2007&#39;,
  &#39;Eur-Stockholm.Leijonhufvud.2009&#39;,
- &#39;Eur-LakeSilvaplana.Trachsel.2010&#39;,
- &#39;Eur-NorthernScandinavia.Esper.2012&#39;]
+ &#39;Eur-SpannagelCave.Mangini.2005&#39;,
+ &#39;Asi-SourthAndMiddleUrals.Demezhko.2007&#39;,
+ &#39;Eur-NorthernScandinavia.Esper.2012&#39;,
+ &#39;Eur-FinnishLakelands.Helama.2014&#39;,
+ &#39;Eur-LakeSilvaplana.Trachsel.2010&#39;]
 </pre></div>
 </div>
 </div>
