@@ -7,6 +7,7 @@ parts:
   - caption: Dataset Representation in PyLiPD
     chapters:
     - file: graph.md
+    - file: standards.md
   - caption: Getting Started
     chapters:
     - file: notebooks/L0_loading_lipd_datasets.ipynb
