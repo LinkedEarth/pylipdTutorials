@@ -510,11 +510,12 @@ document.write(`
 <p>Let’s retrieve 10 random dataset names. But first we need to point towards the endpoint for the query:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://linkedearth.graphdb.mint.isi.edu/repositories/LiPDVerse3&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://linkedearth.graphdb.mint.isi.edu/repositories/LiPDVerse-dynamic&#39;</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>We periodocially version the LiPDGraph for reproducbility purposes. <code class="docutils literal notranslate"><span class="pre">LiPDverse-dynamic</span></code> refers to the most up-to-date versions of the LiPDGraph. Once your study is done, we encourage you to point towards the latest frozen version.</p>
 <p>Next, let’s write our queries:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -525,7 +526,7 @@ document.write(`
 <span class="s2">SELECT ?ds ?dsname WHERE{</span>
 
 <span class="s2">?ds a le:Dataset .</span>
-<span class="s2">?ds le:name ?dsname .</span>
+<span class="s2">?ds le:hasName ?dsname .</span>
 <span class="s2">} </span>
 
 <span class="s2">ORDER BY RAND() LIMIT 10</span>
@@ -536,6 +537,7 @@ document.write(`
 </div>
 </div>
 <p>This should be very familiar as this is the first query we performed in the <a class="reference internal" href="#L2_custom_queries.md"><span class="xref myst">custom queries tutorial</span></a>. Now, let’s send it to our SPAQRL endpoint and retrieve the results that we will store in a pandas DataFrame.</p>
+<p>Note: The next cell might take a little bit of time to run since the query has to be performed on the remote server before sending the data back.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="n">query</span><span class="p">})</span>
@@ -573,53 +575,53 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>http://linked.earth/lipd/Bereziuk.Richard.1979</td>
-      <td>Bereziuk.Richard.1979</td>
+      <td>http://linked.earth/lipd/Alsa.Mariscal.1993Legacy</td>
+      <td>Alsa.Mariscal.1993Legacy</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>http://linked.earth/lipd/Asi-PAKI001.Esper.2007</td>
-      <td>Asi-PAKI001.Esper.2007</td>
+      <td>http://linked.earth/lipd/AxeLake.author.1111</td>
+      <td>AxeLake.author.1111</td>
     </tr>
     <tr>
       <th>2</th>
+      <td>http://linked.earth/lipd/HayesLake.McAndrews.1982</td>
+      <td>HayesLake.McAndrews.1982</td>
+    </tr>
+    <tr>
+      <th>3</th>
       <td>http://linked.earth/lipd/RosleNowe.Krajewski.1984</td>
       <td>RosleNowe.Krajewski.1984</td>
     </tr>
     <tr>
-      <th>3</th>
-      <td>http://linked.earth/lipd/Kluki.Tobolski.1987</td>
-      <td>Kluki.Tobolski.1987</td>
-    </tr>
-    <tr>
       <th>4</th>
-      <td>http://linked.earth/lipd/Ocn-TongueoftheOcean....</td>
-      <td>Ocn-TongueoftheOcean.Rosenheim.2005</td>
+      <td>http://linked.earth/lipd/LakeBI2.Gajewski.1992</td>
+      <td>LakeBI2.Gajewski.1992</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>http://linked.earth/lipd/Asi-CHIN066.Shao.2013</td>
-      <td>Asi-CHIN066.Shao.2013</td>
+      <td>http://linked.earth/lipd/BechanCave.Davis.1990</td>
+      <td>BechanCave.Davis.1990</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>http://linked.earth/lipd/YellowDogPond.Brubake...</td>
-      <td>YellowDogPond.Brubaker.1975</td>
+      <td>http://linked.earth/lipd/IC10VIGR</td>
+      <td>IC10VIGR</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>http://linked.earth/lipd/SO201_2_101</td>
-      <td>SO201_2_101</td>
-    </tr>
-    <tr>
-      <th>8</th>
       <td>http://linked.earth/lipd/Craterlake.Arcusa.2020</td>
       <td>Craterlake.Arcusa.2020</td>
     </tr>
     <tr>
+      <th>8</th>
+      <td>http://linked.earth/lipd/NAm-PyramidMountain.L...</td>
+      <td>NAm-PyramidMountain.Luckman.2001</td>
+    </tr>
+    <tr>
       <th>9</th>
-      <td>http://linked.earth/lipd/Lednica-2.Litt.1991</td>
-      <td>Lednica-2.Litt.1991</td>
+      <td>http://linked.earth/lipd/Asi-PAKI001.Esper.2007</td>
+      <td>Asi-PAKI001.Esper.2007</td>
     </tr>
   </tbody>
 </table>
@@ -633,44 +635,61 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;PREFIX le: &lt;http://linked.earth/ontology#&gt;</span>
+<span class="s2">PREFIX le_var: &lt;http://linked.earth/ontology/variables#&gt;</span>
 <span class="s2">PREFIX wgs84: &lt;http://www.w3.org/2003/01/geo/wgs84_pos#&gt;</span>
 
 
-<span class="s2">SELECT ?dataSetName ?archiveType ?geo_meanLat ?geo_meanLon ?geo_meanElev </span>
+<span class="s2">PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span>
+<span class="s2">SELECT DISTINCT ?dataSetName ?archiveType ?geo_meanLat ?geo_meanLon ?geo_meanElev </span>
 <span class="s2">    ?paleoData_variableName ?paleoData_values ?paleoData_units </span>
 <span class="s2">    ?paleoData_proxy ?paleoData_proxyGeneral ?time_variableName ?time_values </span>
 <span class="s2">	?time_units ?compilationName ?TSID where{</span>
 <span class="s2">    </span>
 <span class="s2">    ?ds a le:Dataset .</span>
-<span class="s2">    ?ds le:name ?dataSetName .</span>
-<span class="s2">    OPTIONAL{?ds le:proxyArchiveType ?archiveType .}</span>
-<span class="s2">    </span>
-<span class="s2">    ?ds le:collectedFrom ?loc .</span>
-<span class="s2">    ?loc wgs84:lat ?geo_meanLat .</span>
-<span class="s2">    ?loc wgs84:long ?geo_meanLon .</span>
-<span class="s2">    OPTIONAL {?loc wgs84:alt ?geo_meanElev .}</span>
-<span class="s2">    </span>
-<span class="s2">    ?ds le:includesPaleoData ?data .</span>
-<span class="s2">    ?data le:foundInMeasurementTable ?table .</span>
-<span class="s2">    ?table le:includesVariable ?var . </span>
-<span class="s2">    ?var le:name ?paleoData_variableName .</span>
+<span class="s2">    ?ds le:hasName ?dataSetName .</span>
+<span class="s2">    OPTIONAL{</span>
+<span class="s2">            ?ds le:hasArchiveType ?archiveTypeObj .</span>
+<span class="s2">            ?archiveTypeObj rdfs:label ?archiveType .</span>
+<span class="s2">        }</span>
+<span class="s2">        </span>
+<span class="s2">    ?ds le:hasLocation ?loc .</span>
+<span class="s2">        OPTIONAL{?loc wgs84:lat ?geo_meanLat .}</span>
+<span class="s2">        OPTIONAL{?loc wgs84:long ?geo_meanLon .}      </span>
+<span class="s2">        OPTIONAL {?loc wgs84:alt ?geo_meanElev .}</span>
+
+<span class="s2">    ?ds le:hasPaleoData ?data .</span>
+<span class="s2">    ?data le:hasMeasurementTable ?table .</span>
+<span class="s2">    ?table le:hasVariable ?var .</span>
+<span class="s2">    ?var le:hasName ?paleoData_variableName .</span>
 <span class="s2">    ?var le:hasValues ?paleoData_values .</span>
-<span class="s2">    OPTIONAL{?var le:hasUnits ?paleoData_units .}</span>
-<span class="s2">    OPTIONAL{?var le:proxy ?paleoData_proxy .}</span>
-<span class="s2">    OPTIONAL{?var le:proxyGeneral ?paleoData_proxyGeneral .}</span>
+<span class="s2">    OPTIONAL{</span>
+<span class="s2">        ?var le:hasUnits ?paleoData_unitsObj .</span>
+<span class="s2">        ?paleoData_unitsObj rdfs:label ?paleoData_units .</span>
+<span class="s2">    }</span>
+<span class="s2">    OPTIONAL{</span>
+<span class="s2">        ?var le:hasProxy ?paleoData_proxyObj .</span>
+<span class="s2">        ?paleoData_proxyObj rdfs:label ?paleoData_proxy .</span>
+<span class="s2">    }</span>
+<span class="s2">    OPTIONAL{</span>
+<span class="s2">        ?var le:hasProxyGeneral ?paleoData_proxyGeneralObj .</span>
+<span class="s2">        ?paleoData_proxyGeneralObj rdfs:label ?paleoData_proxyGeneral .</span>
+<span class="s2">    }</span>
 <span class="s2">    ?var le:partOfCompilation ?compilation . </span>
-<span class="s2">    ?compilation le:name ?compilationName .</span>
+<span class="s2">    ?compilation le:hasName ?compilationName .</span>
 <span class="s2">    VALUES ?compilationName {&quot;iso2k&quot; &quot;Pages2kTemperature&quot;} .</span>
 <span class="s2">    ?var le:useInGlobalTemperatureAnalysis True .</span>
-<span class="s2">    OPTIONAL{?var le:hasVariableID ?TSID} .</span>
-<span class="s2">    </span>
-<span class="s2">    </span>
-<span class="s2">    ?table le:includesVariable ?timevar .</span>
-<span class="s2">    ?timevar le:name ?time_variableName .</span>
-<span class="s2">    FILTER (regex(?time_variableName, &quot;year.*&quot;)).</span>
+<span class="s2">    OPTIONAL{</span>
+<span class="s2">        ?var le:hasVariableId ?TSID</span>
+<span class="s2">    } .</span>
+<span class="s2">        </span>
+<span class="s2">    ?table le:hasVariable ?timevar .</span>
+<span class="s2">    ?timevar le:hasName ?time_variableName .</span>
+<span class="s2">    ?timevar le:hasStandardVariable le_var:year .</span>
 <span class="s2">    ?timevar le:hasValues ?time_values .</span>
-<span class="s2">    OPTIONAL{?timevar le:hasUnits ?time_units .}</span>
-<span class="s2">    </span>
+<span class="s2">    OPTIONAL{</span>
+<span class="s2">        ?timevar le:hasUnits ?time_unitsObj .</span>
+<span class="s2">        ?time_unitsObj rdfs:label ?time_units .</span>
+<span class="s2">    }</span>
 <span class="s2">}&quot;&quot;&quot;</span>
 </pre></div>
 </div>
@@ -694,48 +713,66 @@ document.write(`
 <li><p>The third paragraph:</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>?ds a le:Dataset .
-?ds le:name ?dataSetName .
-OPTIONAL{?ds le:proxyArchiveType ?archiveType .}
+?ds le:hasName ?dataSetName .
+OPTIONAL{
+    ?ds le:hasArchiveType ?archiveTypeObj .
+    ?archiveTypeObj rdfs:label ?archiveType .
+        }
 </pre></div>
 </div>
 <p>performs a query to return the information stored at the dataset level (namely the name of the dataset and the type of archive)</p>
 <ul class="simple">
 <li><p>The fourth paragraph:</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>?ds le:collectedFrom ?loc .
-?loc wgs84:lat ?geo_meanLat .
-?loc wgs84:long ?geo_meanLon .
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>?ds le:hasLocation ?loc .
+OPTIONAL{?loc wgs84:lat ?geo_meanLat .}
+OPTIONAL{?loc wgs84:long ?geo_meanLon .}      
 OPTIONAL {?loc wgs84:alt ?geo_meanElev .}
+
 </pre></div>
 </div>
 <p>returns geographical coordinates.</p>
 <ul class="simple">
 <li><p>The fifth pragraph allows to dig to the variable level:</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>?ds le:includesPaleoData ?data .
-?data le:foundInMeasurementTable ?table .
-?table le:includesVariable ?var . 
-?var le:name ?paleoData_variableName .
-?var le:hasValues ?paleoData_values .
-OPTIONAL{?var le:hasUnits ?paleoData_units .}
-OPTIONAL{?var le:proxy ?paleoData_proxy .}
-OPTIONAL{?var le:proxyGeneral ?paleoData_proxyGeneral .}
-?var le:partOfCompilation ?compilation . 
-?compilation le:name ?compilationName .
-VALUES ?compilationName {&quot;iso2k&quot; &quot;Pages2kTemperature&quot;} .
-?var le:useInGlobalTemperatureAnalysis True .
-OPTIONAL{?var le:hasVariableID ?TSID} .  
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>?ds le:hasPaleoData ?data .
+    ?data le:hasMeasurementTable ?table .
+    
+    ?table le:hasVariable ?var .
+    ?var le:hasName ?paleoData_variableName .
+    ?var le:hasValues ?paleoData_values .
+    
+    OPTIONAL{
+        ?var le:hasUnits ?paleoData_unitsObj .
+        ?paleoData_unitsObj rdfs:label ?paleoData_units .
+    }
+    OPTIONAL{
+        ?var le:hasProxy ?paleoData_proxyObj .
+        ?paleoData_proxyObj rdfs:label ?paleoData_proxy .
+    }
+    OPTIONAL{
+        ?var le:hasProxyGeneral ?paleoData_proxyGeneralObj .
+        ?paleoData_proxyGeneralObj rdfs:label ?paleoData_proxyGeneral .
+    }
+    ?var le:partOfCompilation ?compilation . 
+    ?compilation le:hasName ?compilationName .
+    VALUES ?compilationName {&quot;iso2k&quot; &quot;Pages2kTemperature&quot;} .
+    ?var le:useInGlobalTemperatureAnalysis True .
+
+    OPTIONAL{
+        ?var le:hasVariableId ?TSID
+    } .
 </pre></div>
 </div>
 <p>and asks for the name of the variable, its values, units, the proxy information, and unique identifier. Notice the two filters: one for the compilation the datasets belong to and the other to retain only the variables that these working groups have identified as being used in a global temperature analysis.</p>
 <ul class="simple">
 <li><p>The last paragraph:</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>?table le:includesVariable ?timevar .
-    ?timevar le:name ?time_variableName .
-    FILTER (regex(?time_variableName, &quot;year.*&quot;)).
-    ?timevar le:hasValues ?time_values .
-    OPTIONAL{?timevar le:hasUnits ?time_units .}
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>?timevar le:hasValues ?time_values .
+    OPTIONAL{
+        ?timevar le:hasUnits ?time_unitsObj .
+        ?time_unitsObj rdfs:label ?time_units .
+    }
 </pre></div>
 </div>
 <p>looks for the time information associated with the data.</p>
@@ -796,9 +833,9 @@ OPTIONAL{?var le:hasVariableID ?TSID} .
     <tr>
       <th>0</th>
       <td>LS16STCL</td>
-      <td>LakeSediment</td>
-      <td>50.830</td>
-      <td>-116.39</td>
+      <td>Lake sediment</td>
+      <td>50.8300</td>
+      <td>-116.3900</td>
       <td>1126.0</td>
       <td>d18O</td>
       <td>[-7.81, -5.91, -9.03, -5.35, -5.61, -5.98, -5....</td>
@@ -807,7 +844,7 @@ OPTIONAL{?var le:hasVariableID ?TSID} .
       <td>NaN</td>
       <td>year</td>
       <td>[2009.0, 2008.3, 2007.8, 2007.4, 2007.0, 2006....</td>
-      <td>AD</td>
+      <td>yr AD</td>
       <td>iso2k</td>
       <td>LPD7dc5b9ba</td>
     </tr>
@@ -815,8 +852,8 @@ OPTIONAL{?var le:hasVariableID ?TSID} .
       <th>1</th>
       <td>CO00URMA</td>
       <td>Coral</td>
-      <td>0.933</td>
-      <td>173.00</td>
+      <td>0.9330</td>
+      <td>173.0000</td>
       <td>6.0</td>
       <td>d18O</td>
       <td>[-4.8011, -4.725, -4.6994, -4.86, -5.0886, -5....</td>
@@ -825,52 +862,16 @@ OPTIONAL{?var le:hasVariableID ?TSID} .
       <td>NaN</td>
       <td>year</td>
       <td>[1994.5, 1994.33, 1994.17, 1994.0, 1993.83, 19...</td>
-      <td>AD</td>
+      <td>yr AD</td>
       <td>iso2k</td>
       <td>Ocean2kHR_177</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>CO00URMA</td>
-      <td>Coral</td>
-      <td>0.933</td>
-      <td>173.00</td>
-      <td>6.0</td>
-      <td>d18O</td>
-      <td>[-4.8011, -4.725, -4.6994, -4.86, -5.0886, -5....</td>
-      <td>permil</td>
-      <td>d18O</td>
-      <td>NaN</td>
-      <td>year</td>
-      <td>[1994.5, 1994.33, 1994.17, 1994.0, 1993.83, 19...</td>
-      <td>AD</td>
-      <td>iso2k</td>
-      <td>Ocean2kHR_177</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>CO00URMA</td>
-      <td>Coral</td>
-      <td>0.933</td>
-      <td>173.00</td>
-      <td>6.0</td>
-      <td>d18O</td>
-      <td>[-4.8011, -4.725, -4.6994, -4.86, -5.0886, -5....</td>
-      <td>permil</td>
-      <td>d18O</td>
-      <td>NaN</td>
-      <td>year</td>
-      <td>[1994.5, 1994.33, 1994.17, 1994.0, 1993.83, 19...</td>
-      <td>AD</td>
-      <td>iso2k</td>
-      <td>Ocean2kHR_177</td>
-    </tr>
-    <tr>
-      <th>4</th>
       <td>CO05KUBE</td>
       <td>Coral</td>
-      <td>32.467</td>
-      <td>-64.70</td>
+      <td>32.4670</td>
+      <td>-64.7000</td>
       <td>-12.0</td>
       <td>d18O</td>
       <td>[-4.15, -3.66, -3.69, -4.07, -3.95, -4.12, -3....</td>
@@ -879,9 +880,45 @@ OPTIONAL{?var le:hasVariableID ?TSID} .
       <td>NaN</td>
       <td>year</td>
       <td>[1983.21, 1983.13, 1983.04, 1982.96, 1982.88, ...</td>
-      <td>AD</td>
+      <td>yr AD</td>
       <td>iso2k</td>
       <td>Ocean2kHR_105</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>IC13THQU</td>
+      <td>Glacier ice</td>
+      <td>-13.9333</td>
+      <td>-70.8333</td>
+      <td>5670.0</td>
+      <td>d18O</td>
+      <td>[-18.5905, -16.3244, -16.2324, -17.0112, -18.6...</td>
+      <td>permil</td>
+      <td>d18O</td>
+      <td>NaN</td>
+      <td>year</td>
+      <td>[2009, 2008, 2007, 2006, 2005, 2004, 2003, 200...</td>
+      <td>yr AD</td>
+      <td>iso2k</td>
+      <td>SAm_035</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>CO01TUNG</td>
+      <td>Coral</td>
+      <td>-5.2170</td>
+      <td>145.8170</td>
+      <td>-3.0</td>
+      <td>d18O</td>
+      <td>[-4.875, -4.981, -5.166, -5.06, -4.942, -4.919...</td>
+      <td>permil</td>
+      <td>d18O</td>
+      <td>NaN</td>
+      <td>year</td>
+      <td>[1993.042, 1992.792, 1992.542, 1992.292, 1992....</td>
+      <td>yr AD</td>
+      <td>iso2k</td>
+      <td>Ocean2kHR_141</td>
     </tr>
   </tbody>
 </table>

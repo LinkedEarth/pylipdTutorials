@@ -529,16 +529,16 @@ In this tutorial, we will demonstrate how to generate such custom queries using 
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/16 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 25%|██▌       | 4/16 [00:00&lt;00:00, 38.68it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 25%|██▌       | 4/16 [00:00&lt;00:00, 35.76it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 62%|██████▎   | 10/16 [00:00&lt;00:00, 50.81it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 56%|█████▋    | 9/16 [00:00&lt;00:00, 42.83it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 16/16 [00:00&lt;00:00, 52.31it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 88%|████████▊ | 14/16 [00:00&lt;00:00, 43.19it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 16/16 [00:00&lt;00:00, 50.62it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 16/16 [00:00&lt;00:00, 38.02it/s]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
@@ -564,7 +564,7 @@ In this tutorial, we will demonstrate how to generate such custom queries using 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;graph&#39;: &lt;Graph identifier=N7efd56c0faaf4c30a4028dce044b5348 (&lt;class &#39;rdflib.graph.ConjunctiveGraph&#39;&gt;)&gt;}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;graph&#39;: &lt;Graph identifier=Nfd601a0aa0b24ebb81c29de0d23a1090 (&lt;class &#39;rdflib.graph.ConjunctiveGraph&#39;&gt;)&gt;}
 </pre></div>
 </div>
 </div>
@@ -588,7 +588,7 @@ In this tutorial, we will demonstrate how to generate such custom queries using 
 <span class="s2">SELECT ?ds ?dsname WHERE{</span>
 
 <span class="s2">?ds a le:Dataset .</span>
-<span class="s2">?ds le:name ?dsname .}</span>
+<span class="s2">?ds le:hasName ?dsname .}</span>
 
 <span class="s2">&quot;&quot;&quot;</span>
 </pre></div>
@@ -638,6 +638,31 @@ In this tutorial, we will demonstrate how to generate such custom queries using 
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <th>0</th>
+      <td>http://linked.earth/lipd/Asi-SourthAndMiddleUr...</td>
+      <td>Asi-SourthAndMiddleUrals.Demezhko.2007</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>http://linked.earth/lipd/Eur-LakeSilvaplana.Tr...</td>
+      <td>Eur-LakeSilvaplana.Trachsel.2010</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>http://linked.earth/lipd/Eur-SpanishPyrenees.D...</td>
+      <td>Eur-SpanishPyrenees.Dorado-Linan.2012</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>http://linked.earth/lipd/Eur-FinnishLakelands....</td>
+      <td>Eur-FinnishLakelands.Helama.2014</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>http://linked.earth/lipd/Arc-Kongressvatnet.D_...</td>
+      <td>Arc-Kongressvatnet.D'Andrea.2012</td>
+    </tr>
   </tbody>
 </table>
 </div></div></div>
@@ -651,7 +676,7 @@ In this tutorial, we will demonstrate how to generate such custom queries using 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16
 </pre></div>
 </div>
 </div>
@@ -666,7 +691,7 @@ In this tutorial, we will demonstrate how to generate such custom queries using 
 <span class="s2">SELECT ?ds ?dsname WHERE{</span>
 
 <span class="s2">?ds a le:Dataset .</span>
-<span class="s2">?ds le:name ?dsname .}</span>
+<span class="s2">?ds le:hasName ?dsname .}</span>
 
 <span class="s2">LIMIT 10</span>
 
@@ -679,7 +704,7 @@ In this tutorial, we will demonstrate how to generate such custom queries using 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
 </pre></div>
 </div>
 </div>
@@ -696,22 +721,22 @@ In this tutorial, we will demonstrate how to generate such custom queries using 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-Stockholm.Leijonhufvud.2009&#39;,
- &#39;Ocn-PedradeLume-CapeVerdeIslands.Moses.2006&#39;,
- &#39;Eur-NorthernSpain.Martin-Chivelet.2011&#39;,
- &#39;Ocn-SinaiPeninsula_RedSea.Moustafa.2000&#39;,
- &#39;Eur-FinnishLakelands.Helama.2014&#39;,
- &#39;Ocn-AlboranSea436B.Nieto-Moreno.2013&#39;,
- &#39;Eur-SpannagelCave.Mangini.2005&#39;,
- &#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;,
- &#39;Ocn-RedSea.Felis.2000&#39;,
- &#39;Ant-WAIS-Divide.Severinghaus.2012&#39;,
- &#39;Asi-SourthAndMiddleUrals.Demezhko.2007&#39;,
- &#39;Eur-NorthernScandinavia.Esper.2012&#39;,
- &#39;Eur-CoastofPortugal.Abrantes.2011&#39;,
- &#39;Ocn-FeniDrift.Richter.2009&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Asi-SourthAndMiddleUrals.Demezhko.2007&#39;,
  &#39;Eur-LakeSilvaplana.Trachsel.2010&#39;,
- &#39;Arc-Kongressvatnet.D_Andrea.2012&#39;]
+ &#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;,
+ &#39;Eur-FinnishLakelands.Helama.2014&#39;,
+ &#39;Arc-Kongressvatnet.D_Andrea.2012&#39;,
+ &#39;Ocn-AlboranSea436B.Nieto-Moreno.2013&#39;,
+ &#39;Eur-NorthernSpain.Martin-Chivelet.2011&#39;,
+ &#39;Ocn-PedradeLume-CapeVerdeIslands.Moses.2006&#39;,
+ &#39;Eur-NorthernScandinavia.Esper.2012&#39;,
+ &#39;Eur-Stockholm.Leijonhufvud.2009&#39;,
+ &#39;Ocn-FeniDrift.Richter.2009&#39;,
+ &#39;Ocn-RedSea.Felis.2000&#39;,
+ &#39;Eur-SpannagelCave.Mangini.2005&#39;,
+ &#39;Eur-CoastofPortugal.Abrantes.2011&#39;,
+ &#39;Ocn-SinaiPeninsula_RedSea.Moustafa.2000&#39;,
+ &#39;Ant-WAIS-Divide.Severinghaus.2012&#39;]
 </pre></div>
 </div>
 </div>
@@ -737,10 +762,10 @@ In this tutorial, we will demonstrate how to generate such custom queries using 
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/1 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1/1 [00:01&lt;00:00,  1.17s/it]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1/1 [00:00&lt;00:00,  1.12it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1/1 [00:01&lt;00:00,  1.17s/it]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1/1 [00:00&lt;00:00,  1.12it/s]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
@@ -764,8 +789,8 @@ In this tutorial, we will demonstrate how to generate such custom queries using 
 <span class="s2">SELECT ?ds ?dsname ?datasetID WHERE{</span>
 
 <span class="s2">?ds a le:Dataset .</span>
-<span class="s2">?ds le:name ?dsname .</span>
-<span class="s2">?ds le:datasetId ?datasetID}</span>
+<span class="s2">?ds le:hasName ?dsname .</span>
+<span class="s2">?ds le:hasDatasetId ?datasetID}</span>
 
 <span class="s2">&quot;&quot;&quot;</span>
 
@@ -800,6 +825,12 @@ In this tutorial, we will demonstrate how to generate such custom queries using 
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <th>0</th>
+      <td>http://linked.earth/lipd/Ocn-RedSea.Felis.2000</td>
+      <td>Ocn-RedSea.Felis.2000</td>
+      <td>4fZQAHmeuJn8ipLfurWv</td>
+    </tr>
   </tbody>
 </table>
 </div></div></div>
@@ -814,8 +845,8 @@ In this tutorial, we will demonstrate how to generate such custom queries using 
 <span class="s2">SELECT ?ds ?dsname ?datasetID WHERE{</span>
 
 <span class="s2">?ds a le:Dataset .</span>
-<span class="s2">?ds le:name ?dsname .</span>
-<span class="s2">OPTIONAL{?ds le:datasetId ?datasetID.}}</span>
+<span class="s2">?ds le:hasName ?dsname .</span>
+<span class="s2">OPTIONAL{?ds le:hasDatasetId ?datasetID.}}</span>
 
 <span class="s2">&quot;&quot;&quot;</span>
 
@@ -850,6 +881,18 @@ In this tutorial, we will demonstrate how to generate such custom queries using 
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <th>0</th>
+      <td>http://linked.earth/lipd/Ocn-RedSea.Felis.2000</td>
+      <td>Ocn-RedSea.Felis.2000</td>
+      <td>4fZQAHmeuJn8ipLfurWv</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>http://linked.earth/lipd/ODP846.Lawrence.2006</td>
+      <td>ODP846.Lawrence.2006</td>
+      <td>None</td>
+    </tr>
   </tbody>
 </table>
 </div></div></div>
@@ -911,95 +954,95 @@ In this tutorial, we will demonstrate how to generate such custom queries using 
   <tbody>
     <tr>
       <th>0</th>
-      <td>http://linked.earth/ontology#lipdVersion</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>http://linked.earth/ontology#minYear</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>http://linked.earth/ontology#hasArchiveType</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>http://linked.earth/ontology#inCompilation2_</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>http://linked.earth/ontology#hasPaleoData</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>http://linked.earth/ontology#hasDatasetId</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>http://linked.earth/ontology#hasLocation</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>http://linked.earth/ontology#studyName</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>http://linked.earth/ontology#maxYear</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>http://linked.earth/ontology#createdBy</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>http://linked.earth/ontology#googleMetadataWor...</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>http://linked.earth/ontology#hasName</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>http://linked.earth/ontology#inCompilation1_</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>http://linked.earth/ontology#hasUrl</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>http://linked.earth/ontology#hasContributor</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>http://linked.earth/ontology#hasPublication</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>http://linked.earth/ontology#hasChangeLog</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>http://linked.earth/ontology#hasOriginalDataUrl</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>http://linked.earth/ontology#googleDataURL</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>http://linked.earth/ontology#hasSpreadsheetLink</td>
-    </tr>
-    <tr>
-      <th>21</th>
       <td>http://linked.earth/ontology#inCompilation3_</td>
     </tr>
     <tr>
+      <th>1</th>
+      <td>http://linked.earth/ontology#hasLocation</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>http://linked.earth/ontology#lipdVersion</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>http://linked.earth/ontology#inCompilation2_</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>http://linked.earth/ontology#hasPublication</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>http://linked.earth/ontology#googleMetadataWor...</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>http://linked.earth/ontology#minYear</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>http://linked.earth/ontology#studyName</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>http://linked.earth/ontology#hasPaleoData</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>http://linked.earth/ontology#hasUrl</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>http://linked.earth/ontology#inCompilation1_</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>http://linked.earth/ontology#hasSpreadsheetLink</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>http://linked.earth/ontology#googleDataURL</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>http://linked.earth/ontology#maxYear</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>http://linked.earth/ontology#hasName</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>http://linked.earth/ontology#hasArchiveType</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>http://linked.earth/ontology#createdBy</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>http://linked.earth/ontology#hasContributor</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>http://linked.earth/ontology#hasOriginalDataUrl</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>http://linked.earth/ontology#hasChangeLog</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>http://linked.earth/ontology#hasDatasetId</td>
+    </tr>
+    <tr>
       <th>22</th>
-      <td>http://linked.earth/ontology#hasInvestigator</td>
+      <td>http://linked.earth/ontology#lipdComplete</td>
     </tr>
     <tr>
       <th>23</th>
@@ -1007,7 +1050,7 @@ In this tutorial, we will demonstrate how to generate such custom queries using 
     </tr>
     <tr>
       <th>24</th>
-      <td>http://linked.earth/ontology#lipdComplete</td>
+      <td>http://linked.earth/ontology#hasInvestigator</td>
     </tr>
   </tbody>
 </table>
@@ -1015,7 +1058,7 @@ In this tutorial, we will demonstrate how to generate such custom queries using 
 </div>
 <section id="geoquery">
 <h4>Geoquery<a class="headerlink" href="#geoquery" title="Link to this heading">#</a></h4>
-<p>Let’s try a geospatial query on our original database. From the list of properties above, <code class="docutils literal notranslate"><span class="pre">collectedFrom</span></code> links to coordinates. So let’s try to have a look at this object:</p>
+<p>Let’s try a geospatial query on our original database. From the list of properties above, <code class="docutils literal notranslate"><span class="pre">hasLocation</span></code> links to coordinates. So let’s try to have a look at this object:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
@@ -1025,7 +1068,7 @@ In this tutorial, we will demonstrate how to generate such custom queries using 
 <span class="s2">SELECT DISTINCT ?p WHERE {</span>
 
 <span class="s2">?ds a le:Dataset .</span>
-<span class="s2">?ds le:collectedFrom ?geo .</span>
+<span class="s2">?ds le:hasLocation ?geo .</span>
 <span class="s2">?geo ?p ?o .</span>
 <span class="s2">}</span>
 <span class="s2">&quot;&quot;&quot;</span>
@@ -1064,6 +1107,46 @@ In this tutorial, we will demonstrate how to generate such custom queries using 
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <th>0</th>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>http://linked.earth/ontology#coordinatesFor</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>http://www.w3.org/2003/01/geo/wgs84_pos#long</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>http://www.w3.org/2003/01/geo/wgs84_pos#lat</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>http://linked.earth/ontology#hasSiteName</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>http://linked.earth/ontology#coordinates</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>http://www.w3.org/2003/01/geo/wgs84_pos#alt</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>http://linked.earth/ontology#pages2kRegion</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>http://linked.earth/ontology#region</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>http://linked.earth/ontology#hasOcean</td>
+    </tr>
   </tbody>
 </table>
 </div></div></div>
@@ -1079,9 +1162,9 @@ In this tutorial, we will demonstrate how to generate such custom queries using 
 <span class="s2">SELECT ?dsname ?lat ?lon  WHERE {</span>
 
 <span class="s2">?ds a le:Dataset .</span>
-<span class="s2">?ds le:name ?dsname .</span>
+<span class="s2">?ds le:hasName ?dsname .</span>
 
-<span class="s2">?ds le:collectedFrom ?geo .</span>
+<span class="s2">?ds le:hasLocation ?geo .</span>
 <span class="s2">OPTIONAL{?geo wgs84:lat ?lat .</span>
 <span class="s2">        ?geo wgs84:long ?lon .}</span>
 
@@ -1130,6 +1213,96 @@ In this tutorial, we will demonstrate how to generate such custom queries using 
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <th>0</th>
+      <td>Asi-SourthAndMiddleUrals.Demezhko.2007</td>
+      <td>55.0000</td>
+      <td>59.5000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Eur-LakeSilvaplana.Trachsel.2010</td>
+      <td>46.5000</td>
+      <td>9.8000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Eur-SpanishPyrenees.Dorado-Linan.2012</td>
+      <td>42.5000</td>
+      <td>1.0000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Eur-FinnishLakelands.Helama.2014</td>
+      <td>62.0000</td>
+      <td>28.3250</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Arc-Kongressvatnet.D'Andrea.2012</td>
+      <td>78.0217</td>
+      <td>13.9311</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Ocn-AlboranSea436B.Nieto-Moreno.2013</td>
+      <td>36.2053</td>
+      <td>-4.3133</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Eur-NorthernSpain.Martin-Chivelet.2011</td>
+      <td>42.9000</td>
+      <td>-3.5000</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Ocn-PedradeLume-CapeVerdeIslands.Moses.2006</td>
+      <td>16.7600</td>
+      <td>-22.8883</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Eur-NorthernScandinavia.Esper.2012</td>
+      <td>68.0000</td>
+      <td>25.0000</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Eur-Stockholm.Leijonhufvud.2009</td>
+      <td>59.3200</td>
+      <td>18.0600</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Ocn-FeniDrift.Richter.2009</td>
+      <td>55.5000</td>
+      <td>-13.9000</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Eur-SpannagelCave.Mangini.2005</td>
+      <td>47.1000</td>
+      <td>11.6000</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Eur-CoastofPortugal.Abrantes.2011</td>
+      <td>41.1000</td>
+      <td>-8.9000</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Ocn-SinaiPeninsula,RedSea.Moustafa.2000</td>
+      <td>27.8483</td>
+      <td>34.3100</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Ant-WAIS-Divide.Severinghaus.2012</td>
+      <td>-79.4630</td>
+      <td>-112.1250</td>
+    </tr>
   </tbody>
 </table>
 </div></div></div>
@@ -1146,9 +1319,9 @@ In this tutorial, we will demonstrate how to generate such custom queries using 
 <span class="s2">SELECT ?dsname ?lat ?lon  WHERE {</span>
 
 <span class="s2">?ds a le:Dataset .</span>
-<span class="s2">?ds le:name ?dsname .</span>
+<span class="s2">?ds le:hasName ?dsname .</span>
 
-<span class="s2">?ds le:collectedFrom ?geo .</span>
+<span class="s2">?ds le:hasLocation ?geo .</span>
 <span class="s2">?geo wgs84:lat ?lat .</span>
 <span class="s2">?geo wgs84:long ?lon .</span>
 
@@ -1194,6 +1367,42 @@ In this tutorial, we will demonstrate how to generate such custom queries using 
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <th>0</th>
+      <td>Eur-LakeSilvaplana.Trachsel.2010</td>
+      <td>46.50</td>
+      <td>9.800</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Eur-SpanishPyrenees.Dorado-Linan.2012</td>
+      <td>42.50</td>
+      <td>1.000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Eur-FinnishLakelands.Helama.2014</td>
+      <td>62.00</td>
+      <td>28.325</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Eur-NorthernScandinavia.Esper.2012</td>
+      <td>68.00</td>
+      <td>25.000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Eur-Stockholm.Leijonhufvud.2009</td>
+      <td>59.32</td>
+      <td>18.060</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Eur-SpannagelCave.Mangini.2005</td>
+      <td>47.10</td>
+      <td>11.600</td>
+    </tr>
   </tbody>
 </table>
 </div></div></div>
@@ -1213,10 +1422,10 @@ In this tutorial, we will demonstrate how to generate such custom queries using 
 
 <span class="s2">?ds a le:Dataset .</span>
 
-<span class="s2">?ds le:includesPaleoData ?data .</span>
-<span class="s2">?data le:foundInMeasurementTable ?table .</span>
-<span class="s2">?table le:includesVariable ?var .</span>
-<span class="s2">?var le:name ?varname .</span>
+<span class="s2">?ds le:hasPaleoData ?data .</span>
+<span class="s2">?data le:hasMeasurementTable ?table .</span>
+<span class="s2">?table le:hasVariable ?var .</span>
+<span class="s2">?var le:hasName ?varname .</span>
 <span class="s2">}</span>
 <span class="s2">&quot;&quot;&quot;</span>
 </pre></div>
@@ -1254,6 +1463,50 @@ In this tutorial, we will demonstrate how to generate such custom queries using 
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <th>0</th>
+      <td>year</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>temperature</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>trsgi</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Uk37</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>d18O</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>MXD</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>depth_bottom</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>depth_top</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>notes</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Mg_Ca</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>uncertainty_temperature</td>
+    </tr>
   </tbody>
 </table>
 </div></div></div>
@@ -1269,12 +1522,12 @@ In this tutorial, we will demonstrate how to generate such custom queries using 
 <span class="s2">SELECT ?dsname ?varname WHERE{</span>
 
 <span class="s2">?ds a le:Dataset .</span>
-<span class="s2">?ds le:name ?dsname .</span>
+<span class="s2">?ds le:hasName ?dsname .</span>
 
-<span class="s2">?ds le:includesPaleoData ?data .</span>
-<span class="s2">?data le:foundInMeasurementTable ?table .</span>
-<span class="s2">?table le:includesVariable ?var .</span>
-<span class="s2">?var le:name ?varname .</span>
+<span class="s2">?ds le:hasPaleoData ?data .</span>
+<span class="s2">?data le:hasMeasurementTable ?table .</span>
+<span class="s2">?table le:hasVariable ?var .</span>
+<span class="s2">?var le:hasName ?varname .</span>
 
 <span class="s2">FILTER (?varname = &#39;temperature&#39;)</span>
 
@@ -1316,6 +1569,56 @@ In this tutorial, we will demonstrate how to generate such custom queries using 
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <th>0</th>
+      <td>Asi-SourthAndMiddleUrals.Demezhko.2007</td>
+      <td>temperature</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Eur-LakeSilvaplana.Trachsel.2010</td>
+      <td>temperature</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Eur-FinnishLakelands.Helama.2014</td>
+      <td>temperature</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Arc-Kongressvatnet.D'Andrea.2012</td>
+      <td>temperature</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Ocn-AlboranSea436B.Nieto-Moreno.2013</td>
+      <td>temperature</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Eur-Stockholm.Leijonhufvud.2009</td>
+      <td>temperature</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Ocn-FeniDrift.Richter.2009</td>
+      <td>temperature</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Ocn-FeniDrift.Richter.2009</td>
+      <td>temperature</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Eur-CoastofPortugal.Abrantes.2011</td>
+      <td>temperature</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Ant-WAIS-Divide.Severinghaus.2012</td>
+      <td>temperature</td>
+    </tr>
   </tbody>
 </table>
 </div></div></div>
@@ -1335,12 +1638,12 @@ In this tutorial, we will demonstrate how to generate such custom queries using 
 <span class="s2">SELECT ?dsname ?varname WHERE{</span>
 
 <span class="s2">?ds a le:Dataset .</span>
-<span class="s2">?ds le:name ?dsname .</span>
+<span class="s2">?ds le:hasName ?dsname .</span>
 
-<span class="s2">?ds le:includesPaleoData ?data .</span>
-<span class="s2">?data le:foundInMeasurementTable ?table .</span>
-<span class="s2">?table le:includesVariable ?var .</span>
-<span class="s2">?var le:name ?varname .</span>
+<span class="s2">?ds le:hasPaleoData ?data .</span>
+<span class="s2">?data le:hasMeasurementTable ?table .</span>
+<span class="s2">?table le:hasVariable ?var .</span>
+<span class="s2">?var le:hasName ?varname .</span>
 
 <span class="s2">FILTER (?varname = &#39;temperature&#39; || ?varname = &#39;uncertainty_temperature&#39;)</span>
 
@@ -1383,6 +1686,61 @@ In this tutorial, we will demonstrate how to generate such custom queries using 
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <th>0</th>
+      <td>Asi-SourthAndMiddleUrals.Demezhko.2007</td>
+      <td>temperature</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Eur-LakeSilvaplana.Trachsel.2010</td>
+      <td>temperature</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Eur-FinnishLakelands.Helama.2014</td>
+      <td>temperature</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Arc-Kongressvatnet.D'Andrea.2012</td>
+      <td>temperature</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Ocn-AlboranSea436B.Nieto-Moreno.2013</td>
+      <td>temperature</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Eur-Stockholm.Leijonhufvud.2009</td>
+      <td>temperature</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Ocn-FeniDrift.Richter.2009</td>
+      <td>temperature</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Ocn-FeniDrift.Richter.2009</td>
+      <td>temperature</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Eur-CoastofPortugal.Abrantes.2011</td>
+      <td>temperature</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Ant-WAIS-Divide.Severinghaus.2012</td>
+      <td>temperature</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Ant-WAIS-Divide.Severinghaus.2012</td>
+      <td>uncertainty_temperature</td>
+    </tr>
   </tbody>
 </table>
 </div></div></div>
@@ -1397,12 +1755,12 @@ In this tutorial, we will demonstrate how to generate such custom queries using 
 <span class="s2">SELECT ?dsname ?varname WHERE{</span>
 
 <span class="s2">?ds a le:Dataset .</span>
-<span class="s2">?ds le:name ?dsname .</span>
+<span class="s2">?ds le:hasName ?dsname .</span>
 
-<span class="s2">?ds le:includesPaleoData ?data .</span>
-<span class="s2">?data le:foundInMeasurementTable ?table .</span>
-<span class="s2">?table le:includesVariable ?var .</span>
-<span class="s2">?var le:name ?varname .</span>
+<span class="s2">?ds le:hasPaleoData ?data .</span>
+<span class="s2">?data le:hasMeasurementTable ?table .</span>
+<span class="s2">?table le:hasVariable ?var .</span>
+<span class="s2">?var le:hasName ?varname .</span>
 
 <span class="s2">FILTER regex (?varname, &quot;temperature.*&quot;, &quot;i&quot; ) .</span>
 
@@ -1439,6 +1797,61 @@ In this tutorial, we will demonstrate how to generate such custom queries using 
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <th>0</th>
+      <td>Asi-SourthAndMiddleUrals.Demezhko.2007</td>
+      <td>temperature</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Eur-LakeSilvaplana.Trachsel.2010</td>
+      <td>temperature</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Eur-FinnishLakelands.Helama.2014</td>
+      <td>temperature</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Arc-Kongressvatnet.D'Andrea.2012</td>
+      <td>temperature</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Ocn-AlboranSea436B.Nieto-Moreno.2013</td>
+      <td>temperature</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Eur-Stockholm.Leijonhufvud.2009</td>
+      <td>temperature</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Ocn-FeniDrift.Richter.2009</td>
+      <td>temperature</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Ocn-FeniDrift.Richter.2009</td>
+      <td>temperature</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Eur-CoastofPortugal.Abrantes.2011</td>
+      <td>temperature</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Ant-WAIS-Divide.Severinghaus.2012</td>
+      <td>temperature</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Ant-WAIS-Divide.Severinghaus.2012</td>
+      <td>uncertainty_temperature</td>
+    </tr>
   </tbody>
 </table>
 </div></div></div>
