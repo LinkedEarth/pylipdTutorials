@@ -524,7 +524,7 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/1 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1/1 [00:00&lt;00:00, 15.71it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1/1 [00:00&lt;00:00, 30.48it/s]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
@@ -612,25 +612,25 @@ document.write(`
       <th></th>
       <th>mode</th>
       <th>time_id</th>
-      <th>studyName</th>
-      <th>googleSpreadSheetKey</th>
-      <th>hasUrl</th>
-      <th>pub1_author</th>
-      <th>pub1_citeKey</th>
-      <th>pub1_year</th>
-      <th>pub1_title</th>
-      <th>pub1_hasLink</th>
+      <th>archiveType</th>
+      <th>geo_meanLon</th>
+      <th>geo_meanLat</th>
+      <th>geo_meanElev</th>
+      <th>geo_type</th>
+      <th>geo_siteName</th>
+      <th>geo_ocean</th>
+      <th>geo_pages2kRegion</th>
       <th>...</th>
-      <th>paleoData_number</th>
-      <th>paleoData_units</th>
+      <th>paleoData_notes</th>
+      <th>paleoData_sensorSpecies</th>
+      <th>paleoData_sensorGenus</th>
       <th>paleoData_proxy</th>
-      <th>paleoData_values</th>
-      <th>paleoData_dataType</th>
-      <th>paleoData_inferredVariableType</th>
-      <th>paleoData_description</th>
-      <th>paleoData_compilation_nest</th>
+      <th>paleoData_qCCertification</th>
+      <th>paleoData_iso2kUI</th>
       <th>paleoData_interpretation</th>
+      <th>paleoData_ocean2kID</th>
       <th>paleoData_inCompilation</th>
+      <th>paleoData_pages2kID</th>
     </tr>
   </thead>
   <tbody>
@@ -638,19 +638,19 @@ document.write(`
       <th>0</th>
       <td>paleoData</td>
       <td>age</td>
-      <td>Nurhati2011_Palmyra</td>
-      <td>1AIFOcqDtbZ5O4YCCnH5K-lNdzmI1UNmGnUpCJFNN-YQ</td>
-      <td>https://data.mint.isi.edu/files/lipd/Ocn-Palmy...</td>
-      <td>Kevin J. Anchukaitis;K. Halimeda Kilbourne;Cyr...</td>
-      <td>tierney2015tropicalseasurfacetempera</td>
-      <td>2015</td>
-      <td>Tropical sea surface temperatures for the past...</td>
-      <td>http://dx.doi.org/10.1002/2014PA002717</td>
+      <td>Coral</td>
+      <td>-162.13</td>
+      <td>5.87</td>
+      <td>-10.0</td>
+      <td>Feature</td>
+      <td>Palmyra</td>
+      <td>WP</td>
+      <td>Ocean</td>
       <td>...</td>
-      <td>1</td>
-      <td>permil</td>
-      <td>d18O</td>
-      <td>[0.39, 0.35, 0.35, 0.35, 0.36, 0.22, 0.33, 0.3...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -662,22 +662,22 @@ document.write(`
       <th>1</th>
       <td>paleoData</td>
       <td>age</td>
-      <td>Nurhati2011_Palmyra</td>
-      <td>1AIFOcqDtbZ5O4YCCnH5K-lNdzmI1UNmGnUpCJFNN-YQ</td>
-      <td>https://data.mint.isi.edu/files/lipd/Ocn-Palmy...</td>
-      <td>Kevin J. Anchukaitis;K. Halimeda Kilbourne;Cyr...</td>
-      <td>tierney2015tropicalseasurfacetempera</td>
-      <td>2015</td>
-      <td>Tropical sea surface temperatures for the past...</td>
-      <td>http://dx.doi.org/10.1002/2014PA002717</td>
+      <td>Coral</td>
+      <td>-162.13</td>
+      <td>5.87</td>
+      <td>-10.0</td>
+      <td>Feature</td>
+      <td>Palmyra</td>
+      <td>WP</td>
+      <td>Ocean</td>
       <td>...</td>
-      <td>2</td>
-      <td>yr AD</td>
+      <td>d18Osw (residuals calculated from coupled SrCa...</td>
+      <td>lutea</td>
+      <td>Porites</td>
+      <td>d18O</td>
       <td>NaN</td>
-      <td>[1998.21, 1998.13, 1998.04, 1997.96, 1997.88, ...</td>
-      <td>float</td>
-      <td>Year</td>
-      <td>Year AD</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -686,22 +686,22 @@ document.write(`
       <th>2</th>
       <td>paleoData</td>
       <td>age</td>
-      <td>Nurhati2011_Palmyra</td>
-      <td>1AIFOcqDtbZ5O4YCCnH5K-lNdzmI1UNmGnUpCJFNN-YQ</td>
-      <td>https://data.mint.isi.edu/files/lipd/Ocn-Palmy...</td>
-      <td>Kevin J. Anchukaitis;K. Halimeda Kilbourne;Cyr...</td>
-      <td>tierney2015tropicalseasurfacetempera</td>
-      <td>2015</td>
-      <td>Tropical sea surface temperatures for the past...</td>
-      <td>http://dx.doi.org/10.1002/2014PA002717</td>
+      <td>Coral</td>
+      <td>-162.13</td>
+      <td>5.87</td>
+      <td>-10.0</td>
+      <td>Feature</td>
+      <td>Palmyra</td>
+      <td>WP</td>
+      <td>Ocean</td>
       <td>...</td>
-      <td>2</td>
-      <td>yr AD</td>
-      <td>NaN</td>
-      <td>[1998.29, 1998.21, 1998.13, 1998.04, 1997.96, ...</td>
-      <td>float</td>
-      <td>Year</td>
-      <td>Year AD</td>
+      <td>Duplicate of modern d18O record presented in C...</td>
+      <td>lutea</td>
+      <td>Porites</td>
+      <td>d18O</td>
+      <td>MNE, NJA</td>
+      <td>CO11NUPM01B</td>
+      <td>[{'variableDetail': 'sea_surface', 'scope': 'c...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -710,53 +710,53 @@ document.write(`
       <th>3</th>
       <td>paleoData</td>
       <td>age</td>
-      <td>Nurhati2011_Palmyra</td>
-      <td>1AIFOcqDtbZ5O4YCCnH5K-lNdzmI1UNmGnUpCJFNN-YQ</td>
-      <td>https://data.mint.isi.edu/files/lipd/Ocn-Palmy...</td>
-      <td>Kevin J. Anchukaitis;K. Halimeda Kilbourne;Cyr...</td>
-      <td>tierney2015tropicalseasurfacetempera</td>
-      <td>2015</td>
-      <td>Tropical sea surface temperatures for the past...</td>
-      <td>http://dx.doi.org/10.1002/2014PA002717</td>
+      <td>Coral</td>
+      <td>-162.13</td>
+      <td>5.87</td>
+      <td>-10.0</td>
+      <td>Feature</td>
+      <td>Palmyra</td>
+      <td>WP</td>
+      <td>Ocean</td>
       <td>...</td>
-      <td>1</td>
-      <td>permil</td>
-      <td>d18O</td>
-      <td>[-5.41, -5.47, -5.49, -5.43, -5.48, -5.53, -5....</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>; paleoData_variableName changed - was origina...</td>
+      <td>lutea</td>
+      <td>Porites</td>
+      <td>Sr/Ca</td>
       <td>MNE, NJA</td>
-      <td>[{'direction': 'negative', 'scope': 'climate',...</td>
-      <td>NaN</td>
+      <td>CO11NUPM01BT1</td>
+      <td>[{'scope': 'climate', 'hasVariable': {'label':...</td>
+      <td>PacificNurhati2011</td>
+      <td>Ocean2k_v1.0.0</td>
+      <td>Ocn_129</td>
     </tr>
     <tr>
       <th>4</th>
       <td>paleoData</td>
       <td>age</td>
-      <td>Nurhati2011_Palmyra</td>
-      <td>1AIFOcqDtbZ5O4YCCnH5K-lNdzmI1UNmGnUpCJFNN-YQ</td>
-      <td>https://data.mint.isi.edu/files/lipd/Ocn-Palmy...</td>
-      <td>Kevin J. Anchukaitis;K. Halimeda Kilbourne;Cyr...</td>
-      <td>tierney2015tropicalseasurfacetempera</td>
-      <td>2015</td>
-      <td>Tropical sea surface temperatures for the past...</td>
-      <td>http://dx.doi.org/10.1002/2014PA002717</td>
+      <td>Coral</td>
+      <td>-162.13</td>
+      <td>5.87</td>
+      <td>-10.0</td>
+      <td>Feature</td>
+      <td>Palmyra</td>
+      <td>WP</td>
+      <td>Ocean</td>
       <td>...</td>
-      <td>3</td>
-      <td>mmol/mol</td>
-      <td>Sr/Ca</td>
-      <td>[8.96, 8.9, 8.91, 8.94, 8.92, 8.89, 8.87, 8.81...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>MNE, NJA</td>
-      <td>[{'variableDetail': 'sea@surface', 'direction'...</td>
-      <td>Ocean2k_v1.0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
   </tbody>
 </table>
-<p>5 rows × 90 columns</p>
+<p>5 rows × 88 columns</p>
 </div></div></div>
 </div>
 <p>You can now use all the pandas functionalities for filtering and querying dataframes. First, let’s have a look at the available properties, which corresponds to the column headers:</p>
@@ -767,36 +767,36 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;mode&#39;, &#39;time_id&#39;, &#39;studyName&#39;, &#39;googleSpreadSheetKey&#39;, &#39;hasUrl&#39;,
-       &#39;pub1_author&#39;, &#39;pub1_citeKey&#39;, &#39;pub1_year&#39;, &#39;pub1_title&#39;,
-       &#39;pub1_hasLink&#39;, &#39;pub1_dataUrl&#39;, &#39;pub1_issue&#39;, &#39;pub1_pages&#39;,
-       &#39;pub1_publisher&#39;, &#39;pub1_doi&#39;, &#39;pub1_volume&#39;, &#39;pub1_journal&#39;, &#39;pub1_DOI&#39;,
-       &#39;pub2_author&#39;, &#39;pub2_institution&#39;, &#39;pub2_title&#39;, &#39;pub2_url&#39;,
-       &#39;pub2_urldate&#39;, &#39;pub2_citeKey&#39;, &#39;pub2_DOI&#39;, &#39;pub3_author&#39;,
-       &#39;pub3_hasLink&#39;, &#39;pub3_dataUrl&#39;, &#39;pub3_journal&#39;, &#39;pub3_citeKey&#39;,
-       &#39;pub3_volume&#39;, &#39;pub3_title&#39;, &#39;pub3_doi&#39;, &#39;pub3_year&#39;, &#39;pub3_publisher&#39;,
-       &#39;pub3_pages&#39;, &#39;pub3_DOI&#39;, &#39;googleMetadataWorksheet&#39;, &#39;dataSetName&#39;,
-       &#39;dataContributor&#39;, &#39;googleDataURL&#39;, &#39;lipdVersion&#39;, &#39;geo_meanLon&#39;,
-       &#39;geo_meanLat&#39;, &#39;geo_meanElev&#39;, &#39;geo_type&#39;, &#39;geo_ocean&#39;,
-       &#39;geo_pages2kRegion&#39;, &#39;geo_siteName&#39;, &#39;originalDataURL&#39;, &#39;createdBy&#39;,
-       &#39;archiveType&#39;, &#39;tableType&#39;, &#39;paleoData_paleoDataTableName&#39;,
-       &#39;paleoData_measurementTableName&#39;, &#39;paleoData_filename&#39;,
-       &#39;paleoData_googleWorkSheetKey&#39;, &#39;paleoData_measurementTableMD5&#39;, &#39;year&#39;,
-       &#39;yearUnits&#39;, &#39;paleoData_variableType&#39;, &#39;paleoData_sensorSpecies&#39;,
-       &#39;paleoData_TSid&#39;, &#39;paleoData_sensorGenus&#39;, &#39;paleoData_notes&#39;,
-       &#39;paleoData_hasMeanValue&#39;, &#39;paleoData_hasMedianValue&#39;,
-       &#39;paleoData_hasMaxValue&#39;, &#39;paleoData_proxyObservationType&#39;,
-       &#39;paleoData_hasArchiveType_label&#39;, &#39;paleoData_wDSPaleoUrl&#39;,
-       &#39;paleoData_missingValue&#39;, &#39;paleoData_useInGlobalTemperatureAnalysis&#39;,
-       &#39;paleoData_hasMinValue&#39;, &#39;paleoData_resolution_hasMaxValue&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;mode&#39;, &#39;time_id&#39;, &#39;archiveType&#39;, &#39;geo_meanLon&#39;, &#39;geo_meanLat&#39;,
+       &#39;geo_meanElev&#39;, &#39;geo_type&#39;, &#39;geo_siteName&#39;, &#39;geo_ocean&#39;,
+       &#39;geo_pages2kRegion&#39;, &#39;dataSetName&#39;, &#39;hasUrl&#39;, &#39;lipdVersion&#39;,
+       &#39;pub1_author&#39;, &#39;pub1_DOI&#39;, &#39;pub1_year&#39;, &#39;pub1_title&#39;, &#39;pub1_journal&#39;,
+       &#39;pub1_pages&#39;, &#39;pub1_dataUrl&#39;, &#39;pub1_publisher&#39;, &#39;pub1_citeKey&#39;,
+       &#39;pub1_volume&#39;, &#39;pub2_author&#39;, &#39;pub2_urldate&#39;, &#39;pub2_institution&#39;,
+       &#39;pub2_title&#39;, &#39;pub2_url&#39;, &#39;pub2_citeKey&#39;, &#39;pub3_author&#39;,
+       &#39;pub3_publisher&#39;, &#39;pub3_pages&#39;, &#39;pub3_DOI&#39;, &#39;pub3_year&#39;, &#39;pub3_issue&#39;,
+       &#39;pub3_volume&#39;, &#39;pub3_dataUrl&#39;, &#39;pub3_journal&#39;, &#39;pub3_title&#39;,
+       &#39;pub3_citeKey&#39;, &#39;studyName&#39;, &#39;dataContributor&#39;, &#39;createdBy&#39;,
+       &#39;googleMetadataWorksheet&#39;, &#39;originalDataURL&#39;, &#39;googleDataURL&#39;,
+       &#39;googleSpreadSheetKey&#39;, &#39;tableType&#39;, &#39;paleoData_filename&#39;,
+       &#39;paleoData_measurementTableName&#39;, &#39;paleoData_measurementTableMD5&#39;,
+       &#39;paleoData_googleWorkSheetKey&#39;, &#39;paleoData_paleoDataTableName&#39;, &#39;year&#39;,
+       &#39;yearUnits&#39;, &#39;paleoData_hasMaxValue&#39;, &#39;paleoData_missingValue&#39;,
+       &#39;paleoData_hasArchiveType_label&#39;, &#39;paleoData_number&#39;,
+       &#39;paleoData_variableType&#39;, &#39;paleoData_wDSPaleoUrl&#39;,
+       &#39;paleoData_hasMeanValue&#39;, &#39;paleoData_hasMinValue&#39;, &#39;paleoData_dataType&#39;,
+       &#39;paleoData_variableName&#39;, &#39;paleoData_hasMedianValue&#39;, &#39;paleoData_TSid&#39;,
+       &#39;paleoData_resolution_hasMeanValue&#39;, &#39;paleoData_resolution_hasMaxValue&#39;,
        &#39;paleoData_resolution_hasMedianValue&#39;,
-       &#39;paleoData_resolution_hasMeanValue&#39;, &#39;paleoData_resolution_hasMinValue&#39;,
-       &#39;paleoData_resolution_units&#39;, &#39;paleoData_variableName&#39;,
-       &#39;paleoData_number&#39;, &#39;paleoData_units&#39;, &#39;paleoData_proxy&#39;,
-       &#39;paleoData_values&#39;, &#39;paleoData_dataType&#39;,
+       &#39;paleoData_resolution_hasMinValue&#39;, &#39;paleoData_resolution_units&#39;,
        &#39;paleoData_inferredVariableType&#39;, &#39;paleoData_description&#39;,
-       &#39;paleoData_compilation_nest&#39;, &#39;paleoData_interpretation&#39;,
-       &#39;paleoData_inCompilation&#39;],
+       &#39;paleoData_units&#39;, &#39;paleoData_values&#39;,
+       &#39;paleoData_useInGlobalTemperatureAnalysis&#39;,
+       &#39;paleoData_proxyObservationType&#39;, &#39;paleoData_notes&#39;,
+       &#39;paleoData_sensorSpecies&#39;, &#39;paleoData_sensorGenus&#39;, &#39;paleoData_proxy&#39;,
+       &#39;paleoData_qCCertification&#39;, &#39;paleoData_iso2kUI&#39;,
+       &#39;paleoData_interpretation&#39;, &#39;paleoData_ocean2kID&#39;,
+       &#39;paleoData_inCompilation&#39;, &#39;paleoData_pages2kID&#39;],
       dtype=&#39;object&#39;)
 </pre></div>
 </div>
@@ -810,11 +810,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     d18O
-1     year
-2     year
-3     d18O
-4    Sr/Ca
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     year
+1     d18O
+2     d18O
+3    Sr/Ca
+4     year
 Name: paleoData_variableName, dtype: object
 </pre></div>
 </div>
@@ -853,28 +853,28 @@ Name: paleoData_variableName, dtype: object
   <tbody>
     <tr>
       <th>0</th>
+      <td>year</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
       <td>d18O</td>
       <td>d18Osw (residuals calculated from coupled SrCa...</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>year</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
       <th>2</th>
-      <td>year</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>3</th>
       <td>d18O</td>
       <td>Duplicate of modern d18O record presented in C...</td>
     </tr>
     <tr>
-      <th>4</th>
+      <th>3</th>
       <td>Sr/Ca</td>
       <td>; paleoData_variableName changed - was origina...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>year</td>
+      <td>NaN</td>
     </tr>
   </tbody>
 </table>
@@ -891,18 +891,18 @@ Name: paleoData_variableName, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mode                                                                      paleoData
-time_id                                                                         age
-studyName                                                       Nurhati2011_Palmyra
-googleSpreadSheetKey                   1AIFOcqDtbZ5O4YCCnH5K-lNdzmI1UNmGnUpCJFNN-YQ
-hasUrl                            https://data.mint.isi.edu/files/lipd/Ocn-Palmy...
-                                                        ...                        
-paleoData_inferredVariableType                                                  NaN
-paleoData_description                                                           NaN
-paleoData_compilation_nest                                                 MNE, NJA
-paleoData_interpretation          [{&#39;variableDetail&#39;: &#39;sea@surface&#39;, &#39;direction&#39;...
-paleoData_inCompilation                                              Ocean2k_v1.0.0
-Name: 4, Length: 90, dtype: object
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mode                        paleoData
+time_id                           age
+archiveType                     Coral
+geo_meanLon                   -162.13
+geo_meanLat                      5.87
+                              ...    
+paleoData_iso2kUI                 NaN
+paleoData_interpretation          NaN
+paleoData_ocean2kID               NaN
+paleoData_inCompilation           NaN
+paleoData_pages2kID               NaN
+Name: 4, Length: 88, dtype: object
 </pre></div>
 </div>
 </div>
@@ -914,7 +914,7 @@ Name: 4, Length: 90, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Sr/Ca&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;year&#39;
 </pre></div>
 </div>
 </div>
@@ -1065,16 +1065,13 @@ Name: 4, Length: 90, dtype: object
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/16 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 38%|███▊      | 6/16 [00:00&lt;00:00, 49.59it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 38%|███▊      | 6/16 [00:00&lt;00:00, 50.40it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 69%|██████▉   | 11/16 [00:00&lt;00:00, 46.42it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 75%|███████▌  | 12/16 [00:00&lt;00:00, 39.97it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 16/16 [00:00&lt;00:00, 39.60it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 16/16 [00:00&lt;00:00, 41.52it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 16/16 [00:00&lt;00:00, 43.03it/s]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
@@ -1140,18 +1137,18 @@ Name: 4, Length: 90, dtype: object
   <tbody>
     <tr>
       <th>0</th>
-      <td>Asi-SourthAndMiddleUrals.Demezhko.2007</td>
-      <td>Borehole</td>
-      <td>55.0000</td>
-      <td>59.5000</td>
-      <td>1900.0</td>
-      <td>temperature</td>
-      <td>[0.166, 0.264, 0.354, 0.447, 0.538, 0.62, 0.68...</td>
-      <td>degC</td>
-      <td>borehole</td>
+      <td>Eur-NorthernSpain.Martin-Chivelet.2011</td>
+      <td>Speleothem</td>
+      <td>42.90</td>
+      <td>-3.50</td>
+      <td>1250.0</td>
+      <td>d18O</td>
+      <td>[0.94, 0.8, 0.23, 0.17, 0.51, 0.36, 0.24, 0.4,...</td>
+      <td>permil</td>
+      <td>d18O</td>
       <td>None</td>
       <td>year</td>
-      <td>[800, 850, 900, 950, 1000, 1050, 1100, 1150, 1...</td>
+      <td>[2000, 1987, 1983, 1978, 1975, 1971, 1967, 196...</td>
       <td>yr AD</td>
       <td>None</td>
       <td>None</td>
@@ -1159,10 +1156,48 @@ Name: 4, Length: 90, dtype: object
     </tr>
     <tr>
       <th>1</th>
+      <td>Eur-NorthernScandinavia.Esper.2012</td>
+      <td>Wood</td>
+      <td>68.00</td>
+      <td>25.00</td>
+      <td>300.0</td>
+      <td>MXD</td>
+      <td>[0.46, 1.305, 0.755, -0.1, -0.457, 1.62, 0.765...</td>
+      <td>None</td>
+      <td>maximum latewood density</td>
+      <td>None</td>
+      <td>year</td>
+      <td>[-138, -137, -136, -135, -134, -133, -132, -13...</td>
+      <td>yr AD</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Eur-Stockholm.Leijonhufvud.2009</td>
+      <td>Documents</td>
+      <td>59.32</td>
+      <td>18.06</td>
+      <td>10.0</td>
+      <td>temperature</td>
+      <td>[-1.7212, -1.6382, -0.6422, 0.1048, -0.7252, -...</td>
+      <td>degC</td>
+      <td>historical</td>
+      <td>None</td>
+      <td>year</td>
+      <td>[1502, 1503, 1504, 1505, 1506, 1507, 1508, 150...</td>
+      <td>yr AD</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>3</th>
       <td>Eur-LakeSilvaplana.Trachsel.2010</td>
       <td>Lake sediment</td>
-      <td>46.5000</td>
-      <td>9.8000</td>
+      <td>46.50</td>
+      <td>9.80</td>
       <td>1791.0</td>
       <td>temperature</td>
       <td>[0.181707222, 0.111082797, 0.001382129, -0.008...</td>
@@ -1177,11 +1212,11 @@ Name: 4, Length: 90, dtype: object
       <td>None</td>
     </tr>
     <tr>
-      <th>2</th>
+      <th>4</th>
       <td>Eur-SpanishPyrenees.Dorado-Linan.2012</td>
       <td>Wood</td>
-      <td>42.5000</td>
-      <td>1.0000</td>
+      <td>42.50</td>
+      <td>1.00</td>
       <td>1200.0</td>
       <td>trsgi</td>
       <td>[-1.612, -0.703, -0.36, -0.767, -0.601, -0.733...</td>
@@ -1190,44 +1225,6 @@ Name: 4, Length: 90, dtype: object
       <td>None</td>
       <td>year</td>
       <td>[1260, 1261, 1262, 1263, 1264, 1265, 1266, 126...</td>
-      <td>yr AD</td>
-      <td>None</td>
-      <td>None</td>
-      <td>None</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Eur-FinnishLakelands.Helama.2014</td>
-      <td>Wood</td>
-      <td>62.0000</td>
-      <td>28.3250</td>
-      <td>130.0</td>
-      <td>temperature</td>
-      <td>[14.603, 14.643, 12.074, 13.898, 13.671, 13.41...</td>
-      <td>degC</td>
-      <td>maximum latewood density</td>
-      <td>None</td>
-      <td>year</td>
-      <td>[2000, 1999, 1998, 1997, 1996, 1995, 1994, 199...</td>
-      <td>yr AD</td>
-      <td>None</td>
-      <td>None</td>
-      <td>None</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Arc-Kongressvatnet.D'Andrea.2012</td>
-      <td>Lake sediment</td>
-      <td>78.0217</td>
-      <td>13.9311</td>
-      <td>94.0</td>
-      <td>temperature</td>
-      <td>[5.9, 5.1, 6.1, 5.3, 4.3, 4.8, 3.8, 4.8, 4.3, ...</td>
-      <td>degC</td>
-      <td>alkenone</td>
-      <td>None</td>
-      <td>year</td>
-      <td>[2008, 2004, 2000, 1996, 1990, 1987, 1982, 197...</td>
       <td>yr AD</td>
       <td>None</td>
       <td>None</td>
@@ -1259,7 +1256,7 @@ Name: 4, Length: 90, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;temperature&#39;, &#39;trsgi&#39;, &#39;Uk37&#39;, &#39;d18O&#39;, &#39;MXD&#39;, &#39;notes&#39;, &#39;Mg_Ca&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;d18O&#39;, &#39;MXD&#39;, &#39;temperature&#39;, &#39;trsgi&#39;, &#39;Uk37&#39;, &#39;notes&#39;, &#39;Mg_Ca&#39;,
        &#39;uncertainty_temperature&#39;], dtype=object)
 </pre></div>
 </div>
@@ -1312,26 +1309,26 @@ Name: 4, Length: 90, dtype: object
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>Asi-SourthAndMiddleUrals.Demezhko.2007</td>
-      <td>Borehole</td>
-      <td>55.0000</td>
-      <td>59.5000</td>
-      <td>1900.0</td>
+      <th>2</th>
+      <td>Eur-Stockholm.Leijonhufvud.2009</td>
+      <td>Documents</td>
+      <td>59.3200</td>
+      <td>18.0600</td>
+      <td>10.0</td>
       <td>temperature</td>
-      <td>[0.166, 0.264, 0.354, 0.447, 0.538, 0.62, 0.68...</td>
+      <td>[-1.7212, -1.6382, -0.6422, 0.1048, -0.7252, -...</td>
       <td>degC</td>
-      <td>borehole</td>
+      <td>historical</td>
       <td>None</td>
       <td>year</td>
-      <td>[800, 850, 900, 950, 1000, 1050, 1100, 1150, 1...</td>
+      <td>[1502, 1503, 1504, 1505, 1506, 1507, 1508, 150...</td>
       <td>yr AD</td>
       <td>None</td>
       <td>None</td>
       <td>None</td>
     </tr>
     <tr>
-      <th>1</th>
+      <th>3</th>
       <td>Eur-LakeSilvaplana.Trachsel.2010</td>
       <td>Lake sediment</td>
       <td>46.5000</td>
@@ -1350,26 +1347,7 @@ Name: 4, Length: 90, dtype: object
       <td>None</td>
     </tr>
     <tr>
-      <th>3</th>
-      <td>Eur-FinnishLakelands.Helama.2014</td>
-      <td>Wood</td>
-      <td>62.0000</td>
-      <td>28.3250</td>
-      <td>130.0</td>
-      <td>temperature</td>
-      <td>[14.603, 14.643, 12.074, 13.898, 13.671, 13.41...</td>
-      <td>degC</td>
-      <td>maximum latewood density</td>
-      <td>None</td>
-      <td>year</td>
-      <td>[2000, 1999, 1998, 1997, 1996, 1995, 1994, 199...</td>
-      <td>yr AD</td>
-      <td>None</td>
-      <td>None</td>
-      <td>None</td>
-    </tr>
-    <tr>
-      <th>4</th>
+      <th>6</th>
       <td>Arc-Kongressvatnet.D'Andrea.2012</td>
       <td>Lake sediment</td>
       <td>78.0217</td>
@@ -1388,23 +1366,42 @@ Name: 4, Length: 90, dtype: object
       <td>None</td>
     </tr>
     <tr>
-      <th>6</th>
-      <td>Ocn-AlboranSea436B.Nieto-Moreno.2013</td>
+      <th>7</th>
+      <td>Eur-CoastofPortugal.Abrantes.2011</td>
       <td>Marine sediment</td>
-      <td>36.2053</td>
-      <td>-4.3133</td>
-      <td>-1108.0</td>
+      <td>41.1000</td>
+      <td>-8.9000</td>
+      <td>-80.0</td>
       <td>temperature</td>
-      <td>[18.79, 19.38, 19.61, 18.88, 18.74, 19.25, 18....</td>
+      <td>[15.235, 15.329, 15.264, 15.376, 15.4, 15.129,...</td>
       <td>degC</td>
       <td>alkenone</td>
       <td>None</td>
       <td>year</td>
-      <td>[1999.07, 1993.12, 1987.17, 1975.26, 1963.36, ...</td>
+      <td>[971.19, 982.672, 991.858, 1001.044, 1010.23, ...</td>
       <td>yr AD</td>
       <td>None</td>
       <td>None</td>
       <td>None</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Ocn-FeniDrift.Richter.2009</td>
+      <td>Marine sediment</td>
+      <td>55.5000</td>
+      <td>-13.9000</td>
+      <td>-2543.0</td>
+      <td>temperature</td>
+      <td>[12.94, 10.99, 10.53, 10.44, 11.39, 13.38, 10....</td>
+      <td>degC</td>
+      <td>None</td>
+      <td>None</td>
+      <td>year</td>
+      <td>[1998, 1987, 1975, 1962, 1949, 1936, 1924, 191...</td>
+      <td>yr AD</td>
+      <td>depth_bottom</td>
+      <td>[0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5, ...</td>
+      <td>cm</td>
     </tr>
   </tbody>
 </table>
@@ -1471,18 +1468,18 @@ Name: 4, Length: 90, dtype: object
   <tbody>
     <tr>
       <th>0</th>
-      <td>Asi-SourthAndMiddleUrals.Demezhko.2007</td>
-      <td>Borehole</td>
-      <td>55.0000</td>
-      <td>59.5000</td>
-      <td>1900.0</td>
-      <td>temperature</td>
-      <td>[0.166, 0.264, 0.354, 0.447, 0.538, 0.62, 0.68...</td>
-      <td>degC</td>
-      <td>borehole</td>
+      <td>Eur-NorthernSpain.Martin-Chivelet.2011</td>
+      <td>Speleothem</td>
+      <td>42.90</td>
+      <td>-3.50</td>
+      <td>1250.0</td>
+      <td>d18O</td>
+      <td>[0.94, 0.8, 0.23, 0.17, 0.51, 0.36, 0.24, 0.4,...</td>
+      <td>permil</td>
+      <td>d18O</td>
       <td>None</td>
       <td>year</td>
-      <td>[800, 850, 900, 950, 1000, 1050, 1100, 1150, 1...</td>
+      <td>[2000, 1987, 1983, 1978, 1975, 1971, 1967, 196...</td>
       <td>yr AD</td>
       <td>None</td>
       <td>None</td>
@@ -1490,10 +1487,48 @@ Name: 4, Length: 90, dtype: object
     </tr>
     <tr>
       <th>1</th>
+      <td>Eur-NorthernScandinavia.Esper.2012</td>
+      <td>Wood</td>
+      <td>68.00</td>
+      <td>25.00</td>
+      <td>300.0</td>
+      <td>MXD</td>
+      <td>[0.46, 1.305, 0.755, -0.1, -0.457, 1.62, 0.765...</td>
+      <td>None</td>
+      <td>maximum latewood density</td>
+      <td>None</td>
+      <td>year</td>
+      <td>[-138, -137, -136, -135, -134, -133, -132, -13...</td>
+      <td>yr AD</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Eur-Stockholm.Leijonhufvud.2009</td>
+      <td>Documents</td>
+      <td>59.32</td>
+      <td>18.06</td>
+      <td>10.0</td>
+      <td>temperature</td>
+      <td>[-1.7212, -1.6382, -0.6422, 0.1048, -0.7252, -...</td>
+      <td>degC</td>
+      <td>historical</td>
+      <td>None</td>
+      <td>year</td>
+      <td>[1502, 1503, 1504, 1505, 1506, 1507, 1508, 150...</td>
+      <td>yr AD</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>3</th>
       <td>Eur-LakeSilvaplana.Trachsel.2010</td>
       <td>Lake sediment</td>
-      <td>46.5000</td>
-      <td>9.8000</td>
+      <td>46.50</td>
+      <td>9.80</td>
       <td>1791.0</td>
       <td>temperature</td>
       <td>[0.181707222, 0.111082797, 0.001382129, -0.008...</td>
@@ -1508,11 +1543,11 @@ Name: 4, Length: 90, dtype: object
       <td>None</td>
     </tr>
     <tr>
-      <th>2</th>
+      <th>4</th>
       <td>Eur-SpanishPyrenees.Dorado-Linan.2012</td>
       <td>Wood</td>
-      <td>42.5000</td>
-      <td>1.0000</td>
+      <td>42.50</td>
+      <td>1.00</td>
       <td>1200.0</td>
       <td>trsgi</td>
       <td>[-1.612, -0.703, -0.36, -0.767, -0.601, -0.733...</td>
@@ -1521,44 +1556,6 @@ Name: 4, Length: 90, dtype: object
       <td>None</td>
       <td>year</td>
       <td>[1260, 1261, 1262, 1263, 1264, 1265, 1266, 126...</td>
-      <td>yr AD</td>
-      <td>None</td>
-      <td>None</td>
-      <td>None</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Eur-FinnishLakelands.Helama.2014</td>
-      <td>Wood</td>
-      <td>62.0000</td>
-      <td>28.3250</td>
-      <td>130.0</td>
-      <td>temperature</td>
-      <td>[14.603, 14.643, 12.074, 13.898, 13.671, 13.41...</td>
-      <td>degC</td>
-      <td>maximum latewood density</td>
-      <td>None</td>
-      <td>year</td>
-      <td>[2000, 1999, 1998, 1997, 1996, 1995, 1994, 199...</td>
-      <td>yr AD</td>
-      <td>None</td>
-      <td>None</td>
-      <td>None</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Arc-Kongressvatnet.D'Andrea.2012</td>
-      <td>Lake sediment</td>
-      <td>78.0217</td>
-      <td>13.9311</td>
-      <td>94.0</td>
-      <td>temperature</td>
-      <td>[5.9, 5.1, 6.1, 5.3, 4.3, 4.8, 3.8, 4.8, 4.3, ...</td>
-      <td>degC</td>
-      <td>alkenone</td>
-      <td>None</td>
-      <td>year</td>
-      <td>[2008, 2004, 2000, 1996, 1990, 1987, 1982, 197...</td>
       <td>yr AD</td>
       <td>None</td>
       <td>None</td>
@@ -1595,7 +1592,7 @@ Name: 4, Length: 90, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Asi-SourthAndMiddleUrals.Demezhko.2007&#39;, &#39;Eur-LakeSilvaplana.Trachsel.2010&#39;, &#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;, &#39;Eur-FinnishLakelands.Helama.2014&#39;, &#39;Arc-Kongressvatnet.D_Andrea.2012&#39;, &#39;Ocn-AlboranSea436B.Nieto-Moreno.2013&#39;, &#39;Eur-NorthernSpain.Martin-Chivelet.2011&#39;, &#39;Ocn-PedradeLume-CapeVerdeIslands.Moses.2006&#39;, &#39;Eur-NorthernScandinavia.Esper.2012&#39;, &#39;Eur-Stockholm.Leijonhufvud.2009&#39;, &#39;Ocn-FeniDrift.Richter.2009&#39;, &#39;Ocn-RedSea.Felis.2000&#39;, &#39;Eur-SpannagelCave.Mangini.2005&#39;, &#39;Eur-CoastofPortugal.Abrantes.2011&#39;, &#39;Ocn-SinaiPeninsula_RedSea.Moustafa.2000&#39;, &#39;Ant-WAIS-Divide.Severinghaus.2012&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-NorthernSpain.Martin-Chivelet.2011&#39;, &#39;Eur-NorthernScandinavia.Esper.2012&#39;, &#39;Eur-Stockholm.Leijonhufvud.2009&#39;, &#39;Eur-LakeSilvaplana.Trachsel.2010&#39;, &#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;, &#39;Arc-Kongressvatnet.D_Andrea.2012&#39;, &#39;Eur-CoastofPortugal.Abrantes.2011&#39;, &#39;Ocn-PedradeLume-CapeVerdeIslands.Moses.2006&#39;, &#39;Ocn-FeniDrift.Richter.2009&#39;, &#39;Ocn-SinaiPeninsula_RedSea.Moustafa.2000&#39;, &#39;Ant-WAIS-Divide.Severinghaus.2012&#39;, &#39;Asi-SourthAndMiddleUrals.Demezhko.2007&#39;, &#39;Ocn-AlboranSea436B.Nieto-Moreno.2013&#39;, &#39;Eur-SpannagelCave.Mangini.2005&#39;, &#39;Ocn-RedSea.Felis.2000&#39;, &#39;Eur-FinnishLakelands.Helama.2014&#39;]
 </pre></div>
 </div>
 </div>
@@ -1610,7 +1607,7 @@ Name: 4, Length: 90, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Asi-SourthAndMiddleUrals.Demezhko.2007&#39;, &#39;Eur-LakeSilvaplana.Trachsel.2010&#39;, &#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;, &#39;Eur-FinnishLakelands.Helama.2014&#39;, &#39;Arc-Kongressvatnet.D_Andrea.2012&#39;, &#39;Ocn-AlboranSea436B.Nieto-Moreno.2013&#39;, &#39;Eur-NorthernSpain.Martin-Chivelet.2011&#39;, &#39;Ocn-PedradeLume-CapeVerdeIslands.Moses.2006&#39;, &#39;Eur-NorthernScandinavia.Esper.2012&#39;, &#39;Ocn-FeniDrift.Richter.2009&#39;, &#39;Ocn-RedSea.Felis.2000&#39;, &#39;Eur-SpannagelCave.Mangini.2005&#39;, &#39;Eur-CoastofPortugal.Abrantes.2011&#39;, &#39;Ocn-SinaiPeninsula_RedSea.Moustafa.2000&#39;, &#39;Ant-WAIS-Divide.Severinghaus.2012&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-NorthernSpain.Martin-Chivelet.2011&#39;, &#39;Eur-NorthernScandinavia.Esper.2012&#39;, &#39;Eur-LakeSilvaplana.Trachsel.2010&#39;, &#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;, &#39;Arc-Kongressvatnet.D_Andrea.2012&#39;, &#39;Eur-CoastofPortugal.Abrantes.2011&#39;, &#39;Ocn-PedradeLume-CapeVerdeIslands.Moses.2006&#39;, &#39;Ocn-FeniDrift.Richter.2009&#39;, &#39;Ocn-SinaiPeninsula_RedSea.Moustafa.2000&#39;, &#39;Ant-WAIS-Divide.Severinghaus.2012&#39;, &#39;Asi-SourthAndMiddleUrals.Demezhko.2007&#39;, &#39;Ocn-AlboranSea436B.Nieto-Moreno.2013&#39;, &#39;Eur-SpannagelCave.Mangini.2005&#39;, &#39;Ocn-RedSea.Felis.2000&#39;, &#39;Eur-FinnishLakelands.Helama.2014&#39;]
 </pre></div>
 </div>
 </div>
@@ -1644,7 +1641,7 @@ Name: 4, Length: 90, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Asi-SourthAndMiddleUrals.Demezhko.2007&#39;, &#39;Eur-LakeSilvaplana.Trachsel.2010&#39;, &#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;, &#39;Eur-FinnishLakelands.Helama.2014&#39;, &#39;Arc-Kongressvatnet.D_Andrea.2012&#39;, &#39;Ocn-AlboranSea436B.Nieto-Moreno.2013&#39;, &#39;Eur-NorthernSpain.Martin-Chivelet.2011&#39;, &#39;Ocn-PedradeLume-CapeVerdeIslands.Moses.2006&#39;, &#39;Ocn-FeniDrift.Richter.2009&#39;, &#39;Ocn-RedSea.Felis.2000&#39;, &#39;Eur-SpannagelCave.Mangini.2005&#39;, &#39;Eur-CoastofPortugal.Abrantes.2011&#39;, &#39;Ocn-SinaiPeninsula_RedSea.Moustafa.2000&#39;, &#39;Ant-WAIS-Divide.Severinghaus.2012&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-NorthernSpain.Martin-Chivelet.2011&#39;, &#39;Eur-LakeSilvaplana.Trachsel.2010&#39;, &#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;, &#39;Arc-Kongressvatnet.D_Andrea.2012&#39;, &#39;Eur-CoastofPortugal.Abrantes.2011&#39;, &#39;Ocn-PedradeLume-CapeVerdeIslands.Moses.2006&#39;, &#39;Ocn-FeniDrift.Richter.2009&#39;, &#39;Ocn-SinaiPeninsula_RedSea.Moustafa.2000&#39;, &#39;Ant-WAIS-Divide.Severinghaus.2012&#39;, &#39;Asi-SourthAndMiddleUrals.Demezhko.2007&#39;, &#39;Ocn-AlboranSea436B.Nieto-Moreno.2013&#39;, &#39;Eur-SpannagelCave.Mangini.2005&#39;, &#39;Ocn-RedSea.Felis.2000&#39;, &#39;Eur-FinnishLakelands.Helama.2014&#39;]
 </pre></div>
 </div>
 </div>
@@ -1663,7 +1660,7 @@ Name: 4, Length: 90, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Asi-SourthAndMiddleUrals.Demezhko.2007&#39;, &#39;Eur-LakeSilvaplana.Trachsel.2010&#39;, &#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;, &#39;Eur-FinnishLakelands.Helama.2014&#39;, &#39;Arc-Kongressvatnet.D_Andrea.2012&#39;, &#39;Ocn-AlboranSea436B.Nieto-Moreno.2013&#39;, &#39;Eur-NorthernSpain.Martin-Chivelet.2011&#39;, &#39;Ocn-PedradeLume-CapeVerdeIslands.Moses.2006&#39;, &#39;Ocn-FeniDrift.Richter.2009&#39;, &#39;Eur-SpannagelCave.Mangini.2005&#39;, &#39;Eur-CoastofPortugal.Abrantes.2011&#39;, &#39;Ocn-SinaiPeninsula_RedSea.Moustafa.2000&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-NorthernSpain.Martin-Chivelet.2011&#39;, &#39;Eur-LakeSilvaplana.Trachsel.2010&#39;, &#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;, &#39;Arc-Kongressvatnet.D_Andrea.2012&#39;, &#39;Eur-CoastofPortugal.Abrantes.2011&#39;, &#39;Ocn-PedradeLume-CapeVerdeIslands.Moses.2006&#39;, &#39;Ocn-FeniDrift.Richter.2009&#39;, &#39;Ocn-SinaiPeninsula_RedSea.Moustafa.2000&#39;, &#39;Asi-SourthAndMiddleUrals.Demezhko.2007&#39;, &#39;Ocn-AlboranSea436B.Nieto-Moreno.2013&#39;, &#39;Eur-SpannagelCave.Mangini.2005&#39;, &#39;Eur-FinnishLakelands.Helama.2014&#39;]
 </pre></div>
 </div>
 </div>

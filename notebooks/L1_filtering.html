@@ -435,9 +435,18 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-description">Data Description</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstration">Demonstration</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-by-the-type-of-archive">Filtering by the type of archive</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-by-location">Filtering by location</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-by-variable-names">Filtering by variable names</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-on-the-lipd-object">Filtering on the <code class="docutils literal notranslate"><span class="pre">LiPD</span></code> object</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-by-the-type-of-archive">Filtering by the type of archive</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-by-location">Filtering by location</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-by-time-interval">Filtering by time interval</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-on-the-lipdseries-object">Filtering on the <code class="docutils literal notranslate"><span class="pre">LiPDSeries</span></code> object</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-by-variable-names">Filtering by variable names</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-by-proxy">Filtering by proxy</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-by-resolution">Filtering by resolution</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -461,7 +470,7 @@ document.write(`
 <h2>Preamble<a class="headerlink" href="#preamble" title="Link to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code> is a Python package that allows you to read, manipulate, and write <a class="reference external" href="https://doi.org/10.5194/cp-12-1093-2016">LiPD</a> formatted datasets. In this tutorial, we will demonstrate how to use pre-defined filtering capabilities through APIs.</p>
 <div class="alert alert-success">
-<b>Note:</b> This capabilities are under heavy development. If you are interested in other filtering capabilities to help with your science, please <a href='https://github.com/LinkedEarth/pylipd/issues'>open an issue</a>.
+<b>Note:</b> These capabilities are under heavy development. If you are interested in other filtering capabilities to help with your science, please <a href='https://github.com/LinkedEarth/pylipd/issues'>open an issue</a>.
 </div>
 <section id="goals">
 <h3>Goals<a class="headerlink" href="#goals" title="Link to this heading">#</a></h3>
@@ -496,8 +505,10 @@ document.write(`
 </section>
 <section id="demonstration">
 <h2>Demonstration<a class="headerlink" href="#demonstration" title="Link to this heading">#</a></h2>
+<section id="filtering-on-the-lipd-object">
+<h3>Filtering on the <code class="docutils literal notranslate"><span class="pre">LiPD</span></code> object<a class="headerlink" href="#filtering-on-the-lipd-object" title="Link to this heading">#</a></h3>
 <section id="filtering-by-the-type-of-archive">
-<h3>Filtering by the type of archive<a class="headerlink" href="#filtering-by-the-type-of-archive" title="Link to this heading">#</a></h3>
+<h4>Filtering by the type of archive<a class="headerlink" href="#filtering-by-the-type-of-archive" title="Link to this heading">#</a></h4>
 <p>Let’s start by importing our favorite package and load our datasets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -517,16 +528,13 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/16 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 25%|██▌       | 4/16 [00:00&lt;00:00, 34.72it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 38%|███▊      | 6/16 [00:00&lt;00:00, 50.49it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 56%|█████▋    | 9/16 [00:00&lt;00:00, 42.98it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 75%|███████▌  | 12/16 [00:00&lt;00:00, 46.87it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 88%|████████▊ | 14/16 [00:00&lt;00:00, 43.64it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 16/16 [00:00&lt;00:00, 38.23it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 16/16 [00:00&lt;00:00, 42.86it/s]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
@@ -545,22 +553,22 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Asi-SourthAndMiddleUrals.Demezhko.2007&#39;,
- &#39;Eur-LakeSilvaplana.Trachsel.2010&#39;,
- &#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;,
- &#39;Eur-FinnishLakelands.Helama.2014&#39;,
- &#39;Arc-Kongressvatnet.D_Andrea.2012&#39;,
- &#39;Ocn-AlboranSea436B.Nieto-Moreno.2013&#39;,
- &#39;Eur-NorthernSpain.Martin-Chivelet.2011&#39;,
- &#39;Ocn-PedradeLume-CapeVerdeIslands.Moses.2006&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-NorthernSpain.Martin-Chivelet.2011&#39;,
  &#39;Eur-NorthernScandinavia.Esper.2012&#39;,
  &#39;Eur-Stockholm.Leijonhufvud.2009&#39;,
- &#39;Ocn-FeniDrift.Richter.2009&#39;,
- &#39;Ocn-RedSea.Felis.2000&#39;,
- &#39;Eur-SpannagelCave.Mangini.2005&#39;,
+ &#39;Eur-LakeSilvaplana.Trachsel.2010&#39;,
+ &#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;,
+ &#39;Arc-Kongressvatnet.D_Andrea.2012&#39;,
  &#39;Eur-CoastofPortugal.Abrantes.2011&#39;,
+ &#39;Ocn-PedradeLume-CapeVerdeIslands.Moses.2006&#39;,
+ &#39;Ocn-FeniDrift.Richter.2009&#39;,
  &#39;Ocn-SinaiPeninsula_RedSea.Moustafa.2000&#39;,
- &#39;Ant-WAIS-Divide.Severinghaus.2012&#39;]
+ &#39;Ant-WAIS-Divide.Severinghaus.2012&#39;,
+ &#39;Asi-SourthAndMiddleUrals.Demezhko.2007&#39;,
+ &#39;Ocn-AlboranSea436B.Nieto-Moreno.2013&#39;,
+ &#39;Eur-SpannagelCave.Mangini.2005&#39;,
+ &#39;Ocn-RedSea.Felis.2000&#39;,
+ &#39;Eur-FinnishLakelands.Helama.2014&#39;]
 </pre></div>
 </div>
 </div>
@@ -573,13 +581,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Borehole&#39;,
- &#39;Lake sediment&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Speleothem&#39;,
  &#39;Wood&#39;,
+ &#39;Documents&#39;,
+ &#39;Lake sediment&#39;,
  &#39;Marine sediment&#39;,
- &#39;Speleothem&#39;,
  &#39;Coral&#39;,
- &#39;Documents&#39;]
+ &#39;Borehole&#39;]
 </pre></div>
 </div>
 </div>
@@ -609,9 +617,9 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Ocn-AlboranSea436B.Nieto-Moreno.2013&#39;,
- &#39;Eur-CoastofPortugal.Abrantes.2011&#39;,
- &#39;Ocn-FeniDrift.Richter.2009&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Ocn-FeniDrift.Richter.2009&#39;,
+ &#39;Ocn-AlboranSea436B.Nieto-Moreno.2013&#39;,
+ &#39;Eur-CoastofPortugal.Abrantes.2011&#39;]
 </pre></div>
 </div>
 </div>
@@ -626,11 +634,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-LakeSilvaplana.Trachsel.2010&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Arc-Kongressvatnet.D_Andrea.2012&#39;,
+ &#39;Ocn-FeniDrift.Richter.2009&#39;,
  &#39;Ocn-AlboranSea436B.Nieto-Moreno.2013&#39;,
- &#39;Eur-CoastofPortugal.Abrantes.2011&#39;,
- &#39;Arc-Kongressvatnet.D_Andrea.2012&#39;,
- &#39;Ocn-FeniDrift.Richter.2009&#39;]
+ &#39;Eur-LakeSilvaplana.Trachsel.2010&#39;,
+ &#39;Eur-CoastofPortugal.Abrantes.2011&#39;]
 </pre></div>
 </div>
 </div>
@@ -644,11 +652,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Ocn-AlboranSea436B.Nieto-Moreno.2013&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Ocn-FeniDrift.Richter.2009&#39;,
+ &#39;Ocn-AlboranSea436B.Nieto-Moreno.2013&#39;,
  &#39;Eur-NorthernSpain.Martin-Chivelet.2011&#39;,
  &#39;Eur-CoastofPortugal.Abrantes.2011&#39;,
- &#39;Eur-SpannagelCave.Mangini.2005&#39;,
- &#39;Ocn-FeniDrift.Richter.2009&#39;]
+ &#39;Eur-SpannagelCave.Mangini.2005&#39;]
 </pre></div>
 </div>
 </div>
@@ -663,18 +671,18 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Ocn-AlboranSea436B.Nieto-Moreno.2013&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Ocn-FeniDrift.Richter.2009&#39;,
+ &#39;Ocn-AlboranSea436B.Nieto-Moreno.2013&#39;,
  &#39;Eur-CoastofPortugal.Abrantes.2011&#39;,
- &#39;Ocn-FeniDrift.Richter.2009&#39;,
- &#39;Eur-SpannagelCave.Mangini.2005&#39;,
- &#39;Eur-NorthernSpain.Martin-Chivelet.2011&#39;]
+ &#39;Eur-NorthernSpain.Martin-Chivelet.2011&#39;,
+ &#39;Eur-SpannagelCave.Mangini.2005&#39;]
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="filtering-by-location">
-<h3>Filtering by location<a class="headerlink" href="#filtering-by-location" title="Link to this heading">#</a></h3>
+<h4>Filtering by location<a class="headerlink" href="#filtering-by-location" title="Link to this heading">#</a></h4>
 <p>Let’s filter using a <a class="reference external" href="https://pylipd.readthedocs.io/en/latest/source/pylipd.html#pylipd.lipd.LiPD.filter_by_geo_bbox">bounding box</a> between 40-70N and 0-90E:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -687,11 +695,11 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Asi-SourthAndMiddleUrals.Demezhko.2007&#39;,
  &#39;Eur-NorthernScandinavia.Esper.2012&#39;,
- &#39;Eur-FinnishLakelands.Helama.2014&#39;,
- &#39;Eur-LakeSilvaplana.Trachsel.2010&#39;,
- &#39;Eur-SpannagelCave.Mangini.2005&#39;,
  &#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;,
- &#39;Eur-Stockholm.Leijonhufvud.2009&#39;]
+ &#39;Eur-LakeSilvaplana.Trachsel.2010&#39;,
+ &#39;Eur-Stockholm.Leijonhufvud.2009&#39;,
+ &#39;Eur-SpannagelCave.Mangini.2005&#39;,
+ &#39;Eur-FinnishLakelands.Helama.2014&#39;]
 </pre></div>
 </div>
 </div>
@@ -707,8 +715,8 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-NorthernScandinavia.Esper.2012&#39;,
- &#39;Eur-FinnishLakelands.Helama.2014&#39;,
- &#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;]
+ &#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;,
+ &#39;Eur-FinnishLakelands.Helama.2014&#39;]
 </pre></div>
 </div>
 </div>
@@ -724,15 +732,68 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-NorthernScandinavia.Esper.2012&#39;,
- &#39;Eur-FinnishLakelands.Helama.2014&#39;,
- &#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;]
+ &#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;,
+ &#39;Eur-FinnishLakelands.Helama.2014&#39;]
 </pre></div>
 </div>
 </div>
 </div>
 </section>
+<section id="filtering-by-time-interval">
+<h4>Filtering by time interval<a class="headerlink" href="#filtering-by-time-interval" title="Link to this heading">#</a></h4>
+<p>The <a class="reference external" href="https://pylipd.readthedocs.io/en/latest/api.html#pylipd.lipd.LiPD.filter_by_time"><code class="docutils literal notranslate"><span class="pre">.filter_by_time</span></code></a> method allows you to filter for a specific interval and a matching record length within that interval. The function takes three arguments:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">timeBound</span></code> (<em>mandatory</em>): A list of the minimum and maximum time to consider</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">timeBoundType</span></code> (<em>optional</em>): As defined by the World Data Service for Paleoclimatology and an Applied Research Service for Paleoclimatology.
+<img alt="image.png" src="notebooks/attachment:4b57db62-b3ab-4f97-a602-b5918b3080ce.png" />
+Default is <code class="docutils literal notranslate"><span class="pre">any</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">recordLength</span></code>(<em>optional</em>): The minimum length of the record within the time interval.</p></li>
+</ul>
+<div class="admonition alert alert-warning"
+<p class=admonition-title style=font-weight:bold>Warning</p>
+As of August 2024, the function does not reason over time representation (i.e., BP vs CE) nor units (e.g., yr vs kyr). Make sure that all LiPD in your object have the same time representation and units before using this function.
+</div>
+<p>Let’s filter over the period [500,1800], using default settings:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">D_filt_time1</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">filter_by_time</span><span class="p">([</span><span class="mi">500</span><span class="p">,</span><span class="mi">1800</span><span class="p">])</span>
+
+
+<span class="n">num_records</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">D_filt_time1</span><span class="o">.</span><span class="n">get_all_dataset_names</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;There are </span><span class="si">{</span><span class="n">num_records</span><span class="si">}</span><span class="s2"> number of records matching this query.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>There are 13.0 number of records matching this query.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s compare to the number of records we would get if we asked for <code class="docutils literal notranslate"><span class="pre">entirely</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">D_filt_time2</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">filter_by_time</span><span class="p">([</span><span class="mi">500</span><span class="p">,</span><span class="mi">1800</span><span class="p">],</span> <span class="n">timeBoundType</span> <span class="o">=</span> <span class="s1">&#39;entirely&#39;</span><span class="p">)</span>
+
+
+<span class="n">num_records</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">D_filt_time2</span><span class="o">.</span><span class="n">get_all_dataset_names</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;There are </span><span class="si">{</span><span class="n">num_records</span><span class="si">}</span><span class="s2"> number of records matching this query.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>There are 5.0 number of records matching this query.
+</pre></div>
+</div>
+</div>
+</div>
+<p>A lot less records match this search criteria, which is not surprising since only records fully covering the 500-1800 period are considered. Note that when <code class="docutils literal notranslate"><span class="pre">entirely</span></code> is selected, the <code class="docutils literal notranslate"><span class="pre">recordLength</span></code> parameter has no effect.</p>
+</section>
+</section>
+<section id="filtering-on-the-lipdseries-object">
+<h3>Filtering on the <code class="docutils literal notranslate"><span class="pre">LiPDSeries</span></code> object<a class="headerlink" href="#filtering-on-the-lipdseries-object" title="Link to this heading">#</a></h3>
 <section id="filtering-by-variable-names">
-<h3>Filtering by variable names<a class="headerlink" href="#filtering-by-variable-names" title="Link to this heading">#</a></h3>
+<h4>Filtering by variable names<a class="headerlink" href="#filtering-by-variable-names" title="Link to this heading">#</a></h4>
 <p>Most of the time, we are interested in working with specific variables in a LiPD file. To use filtering capabilities, this requires expanding the <code class="docutils literal notranslate"><span class="pre">LiPD</span></code> object into a <code class="docutils literal notranslate"><span class="pre">LiPDSeries</span></code> object, which contains individual variables. You can do so by using the following function, applied on the filtered database of tree records from high northern latitudes:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -748,7 +809,7 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/3 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 3/3 [00:00&lt;00:00, 335.80it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 3/3 [00:00&lt;00:00, 379.93it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -760,10 +821,10 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/3 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 3/3 [00:00&lt;00:00, 14.76it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 3/3 [00:00&lt;00:00, 21.22it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 3/3 [00:00&lt;00:00, 14.71it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 3/3 [00:00&lt;00:00, 21.15it/s]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done..
@@ -816,20 +877,20 @@ document.write(`
       <th>0</th>
       <td>Eur-NorthernScandinavia.Esper.2012</td>
       <td>Wood</td>
-      <td>MXD</td>
-      <td>Eur_014</td>
-      <td>[0.46, 1.305, 0.755, -0.1, -0.457, 1.62, 0.765...</td>
-      <td>None</td>
+      <td>year</td>
+      <td>PYTECO66XAD</td>
+      <td>[-138, -137, -136, -135, -134, -133, -132, -13...</td>
+      <td>yr AD</td>
       <td>None</td>
     </tr>
     <tr>
       <th>1</th>
       <td>Eur-NorthernScandinavia.Esper.2012</td>
       <td>Wood</td>
-      <td>year</td>
-      <td>PYTECO66XAD</td>
-      <td>[-138, -137, -136, -135, -134, -133, -132, -13...</td>
-      <td>yr AD</td>
+      <td>MXD</td>
+      <td>Eur_014</td>
+      <td>[0.46, 1.305, 0.755, -0.1, -0.457, 1.62, 0.765...</td>
+      <td>None</td>
       <td>None</td>
     </tr>
     <tr>
@@ -910,17 +971,17 @@ document.write(`
     </tr>
     <tr>
       <th>1</th>
-      <td>Eur-FinnishLakelands.Helama.2014</td>
-      <td>62.0</td>
-      <td>28.325</td>
-      <td>130.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
       <td>Eur-SpanishPyrenees.Dorado-Linan.2012</td>
       <td>42.5</td>
       <td>1.000</td>
       <td>1200.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Eur-FinnishLakelands.Helama.2014</td>
+      <td>62.0</td>
+      <td>28.325</td>
+      <td>130.0</td>
     </tr>
   </tbody>
 </table>
@@ -986,10 +1047,10 @@ document.write(`
       <th>0</th>
       <td>Eur-NorthernScandinavia.Esper.2012</td>
       <td>Wood</td>
-      <td>MXD</td>
-      <td>Eur_014</td>
-      <td>[0.46, 1.305, 0.755, -0.1, -0.457, 1.62, 0.765...</td>
-      <td>None</td>
+      <td>year</td>
+      <td>PYTECO66XAD</td>
+      <td>[-138, -137, -136, -135, -134, -133, -132, -13...</td>
+      <td>yr AD</td>
       <td>None</td>
       <td>68.0</td>
       <td>25.000</td>
@@ -999,10 +1060,10 @@ document.write(`
       <th>1</th>
       <td>Eur-NorthernScandinavia.Esper.2012</td>
       <td>Wood</td>
-      <td>year</td>
-      <td>PYTECO66XAD</td>
-      <td>[-138, -137, -136, -135, -134, -133, -132, -13...</td>
-      <td>yr AD</td>
+      <td>MXD</td>
+      <td>Eur_014</td>
+      <td>[0.46, 1.305, 0.755, -0.1, -0.457, 1.62, 0.765...</td>
+      <td>None</td>
       <td>None</td>
       <td>68.0</td>
       <td>25.000</td>
@@ -1062,9 +1123,6 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
-</pre></div>
-</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1095,22 +1153,22 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>Eur-FinnishLakelands.Helama.2014</td>
-      <td>Wood</td>
-      <td>temperature</td>
-      <td>Eur_005</td>
-      <td>[14.603, 14.643, 12.074, 13.898, 13.671, 13.41...</td>
-      <td>degC</td>
-      <td>None</td>
-    </tr>
-    <tr>
-      <th>1</th>
       <td>Eur-SpanishPyrenees.Dorado-Linan.2012</td>
       <td>Wood</td>
       <td>trsgi</td>
       <td>Eur_020</td>
       <td>[-1.612, -0.703, -0.36, -0.767, -0.601, -0.733...</td>
       <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Eur-FinnishLakelands.Helama.2014</td>
+      <td>Wood</td>
+      <td>temperature</td>
+      <td>Eur_005</td>
+      <td>[14.603, 14.643, 12.074, 13.898, 13.671, 13.41...</td>
+      <td>degC</td>
       <td>None</td>
     </tr>
   </tbody>
@@ -1127,9 +1185,6 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
-</pre></div>
-</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1238,22 +1293,6 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>Eur-FinnishLakelands.Helama.2014</td>
-      <td>Wood</td>
-      <td>temperature</td>
-      <td>Eur_005</td>
-      <td>[14.603, 14.643, 12.074, 13.898, 13.671, 13.41...</td>
-      <td>degC</td>
-      <td>None</td>
-      <td>Wood</td>
-      <td>year</td>
-      <td>PYTUSB62S0A</td>
-      <td>[2000, 1999, 1998, 1997, 1996, 1995, 1994, 199...</td>
-      <td>yr AD</td>
-      <td>None</td>
-    </tr>
-    <tr>
-      <th>1</th>
       <td>Eur-SpanishPyrenees.Dorado-Linan.2012</td>
       <td>Wood</td>
       <td>trsgi</td>
@@ -1265,6 +1304,22 @@ document.write(`
       <td>year</td>
       <td>PYT2K8MIA3N</td>
       <td>[1260, 1261, 1262, 1263, 1264, 1265, 1266, 126...</td>
+      <td>yr AD</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Eur-FinnishLakelands.Helama.2014</td>
+      <td>Wood</td>
+      <td>temperature</td>
+      <td>Eur_005</td>
+      <td>[14.603, 14.643, 12.074, 13.898, 13.671, 13.41...</td>
+      <td>degC</td>
+      <td>None</td>
+      <td>Wood</td>
+      <td>year</td>
+      <td>PYTUSB62S0A</td>
+      <td>[2000, 1999, 1998, 1997, 1996, 1995, 1994, 199...</td>
       <td>yr AD</td>
       <td>None</td>
     </tr>
@@ -1321,25 +1376,6 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>Eur-FinnishLakelands.Helama.2014</td>
-      <td>Wood</td>
-      <td>temperature</td>
-      <td>Eur_005</td>
-      <td>[14.603, 14.643, 12.074, 13.898, 13.671, 13.41...</td>
-      <td>degC</td>
-      <td>None</td>
-      <td>Wood</td>
-      <td>year</td>
-      <td>PYTUSB62S0A</td>
-      <td>[2000, 1999, 1998, 1997, 1996, 1995, 1994, 199...</td>
-      <td>yr AD</td>
-      <td>None</td>
-      <td>62.0</td>
-      <td>28.325</td>
-      <td>130.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
       <td>Eur-SpanishPyrenees.Dorado-Linan.2012</td>
       <td>Wood</td>
       <td>trsgi</td>
@@ -1357,10 +1393,163 @@ document.write(`
       <td>1.000</td>
       <td>1200.0</td>
     </tr>
+    <tr>
+      <th>1</th>
+      <td>Eur-FinnishLakelands.Helama.2014</td>
+      <td>Wood</td>
+      <td>temperature</td>
+      <td>Eur_005</td>
+      <td>[14.603, 14.643, 12.074, 13.898, 13.671, 13.41...</td>
+      <td>degC</td>
+      <td>None</td>
+      <td>Wood</td>
+      <td>year</td>
+      <td>PYTUSB62S0A</td>
+      <td>[2000, 1999, 1998, 1997, 1996, 1995, 1994, 199...</td>
+      <td>yr AD</td>
+      <td>None</td>
+      <td>62.0</td>
+      <td>28.325</td>
+      <td>130.0</td>
+    </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
+</section>
+<section id="filtering-by-proxy">
+<h4>Filtering by proxy<a class="headerlink" href="#filtering-by-proxy" title="Link to this heading">#</a></h4>
+<p>LiPD files have a <code class="docutils literal notranslate"><span class="pre">proxy</span></code> field that can be used to associate the proxy used for the inference or measurements. On the LiPDVerse, this field is <a class="reference external" href="https://lipdverse.org/vocabulary/paleodata_proxy/">standardized</a>.</p>
+<p>To get a list of all proxies available in the <code class="docutils literal notranslate"><span class="pre">LiPDSeries</span></code> object, first use the <a class="reference external" href="https://pylipd.readthedocs.io/en/latest/api.html#pylipd.lipd_series.LiPDSeries.get_all_proxy"><code class="docutils literal notranslate"><span class="pre">.get_all_proxy</span></code></a> method:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ts_all</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">to_lipd_series</span><span class="p">()</span>
+<span class="n">ts_all</span><span class="o">.</span><span class="n">get_all_proxy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Creating LiPD Series...
+- Extracting dataset subgraphs
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/16 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 16/16 [00:00&lt;00:00, 308.82it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- Extracting variable subgraphs
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/16 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 12%|█▎        | 2/16 [00:00&lt;00:00, 19.23it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 25%|██▌       | 4/16 [00:00&lt;00:00, 12.36it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 38%|███▊      | 6/16 [00:00&lt;00:00, 14.66it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 56%|█████▋    | 9/16 [00:00&lt;00:00, 17.40it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 69%|██████▉   | 11/16 [00:00&lt;00:00, 15.43it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 88%|████████▊ | 14/16 [00:00&lt;00:00, 17.41it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 16/16 [00:00&lt;00:00, 16.96it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done..
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;borehole&#39;,
+ &#39;alkenone&#39;,
+ &#39;Mg/Ca&#39;,
+ &#39;maximum latewood density&#39;,
+ &#39;d18O&#39;,
+ &#39;ring width&#39;,
+ &#39;reflectance&#39;,
+ &#39;historical&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s filter for the <code class="docutils literal notranslate"><span class="pre">ring</span> <span class="pre">width</span></code> proxy:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ts_filt_proxy</span> <span class="o">=</span> <span class="n">ts_all</span><span class="o">.</span><span class="n">filter_by_proxy</span><span class="p">(</span><span class="s1">&#39;ring width&#39;</span><span class="p">)</span>
+
+<span class="n">ts_filt_proxy</span><span class="o">.</span><span class="n">get_all_proxy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;ring width&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="filtering-by-resolution">
+<h4>Filtering by resolution<a class="headerlink" href="#filtering-by-resolution" title="Link to this heading">#</a></h4>
+<p>When a LiPD file is created the resolution is automatically calculated for each variable. This can be used to filter the records by either the mean, median, minimum and maximum resolution. To do so, you can use the <a class="reference external" href="https://pylipd.readthedocs.io/en/latest/api.html#pylipd.lipd_series.LiPDSeries.filter_by_resolution"><code class="docutils literal notranslate"><span class="pre">.filter_by_resolution</span></code></a> method. The <code class="docutils literal notranslate"><span class="pre">stats</span></code> parameter allows to set which one.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;There are </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">ts_all</span><span class="o">.</span><span class="n">get_timeseries_essentials</span><span class="p">())</span><span class="si">}</span><span class="s2"> variables in this LiPDSeries object.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>There are 41 variables in this LiPDSeries object.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s filter for a mean resolution of at least 10 years:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ts_filt_meanres</span> <span class="o">=</span> <span class="n">ts_all</span><span class="o">.</span><span class="n">filter_by_resolution</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;There are </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">ts_filt_meanres</span><span class="o">.</span><span class="n">get_timeseries_essentials</span><span class="p">())</span><span class="si">}</span><span class="s2"> variables in this LiPDSeries object.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>There are 25 variables in this LiPDSeries object.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s redo this query with a median resolution of 10 years:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ts_filt_medres</span> <span class="o">=</span> <span class="n">ts_all</span><span class="o">.</span><span class="n">filter_by_resolution</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">stats</span> <span class="o">=</span> <span class="s1">&#39;Median&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;There are </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">ts_filt_medres</span><span class="o">.</span><span class="n">get_timeseries_essentials</span><span class="p">())</span><span class="si">}</span><span class="s2"> variables in this LiPDSeries object.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>There are 25 variables in this LiPDSeries object.
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this case, the mean or median did not seem to matter.</p>
+</section>
 </section>
 </section>
 </section>
@@ -1439,9 +1628,18 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-description">Data Description</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstration">Demonstration</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-by-the-type-of-archive">Filtering by the type of archive</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-by-location">Filtering by location</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-by-variable-names">Filtering by variable names</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-on-the-lipd-object">Filtering on the <code class="docutils literal notranslate"><span class="pre">LiPD</span></code> object</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-by-the-type-of-archive">Filtering by the type of archive</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-by-location">Filtering by location</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-by-time-interval">Filtering by time interval</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-on-the-lipdseries-object">Filtering on the <code class="docutils literal notranslate"><span class="pre">LiPDSeries</span></code> object</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-by-variable-names">Filtering by variable names</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-by-proxy">Filtering by proxy</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-by-resolution">Filtering by resolution</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
