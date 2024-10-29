@@ -22,3 +22,4 @@ notebooks/.ipynb_checkpoints/L1_working_with_ensembles-checkpoint.ipynb
 notebooks/.ipynb_checkpoints/L2_using_graphdb-checkpoint.ipynb
 /notebooks/.virtual_documents
 /notebooks/.ipynb_checkpoints
+.DS_Store
