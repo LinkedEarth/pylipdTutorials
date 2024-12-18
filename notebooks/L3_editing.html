@@ -1,0 +1,1298 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Editing LiPD Files &#8212; PyLiPD Tutorials</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/L3_editing';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="The Dataset class" href="L3_dataset_class.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/LinkedEarth_small.png" class="logo__image only-light" alt="PyLiPD Tutorials - Home"/>
+    <img src="../_static/LinkedEarth_small.png" class="logo__image only-dark pst-js-only" alt="PyLiPD Tutorials - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    An introduction to the PyLiPD package
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Dataset Representation in PyLiPD</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../graph.html">Understanding how datasets are represented in PyLiPD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../standards.html">Standard, Standards, and More Standards.</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="L0_loading_lipd_datasets.html">Reading LiPD formatted datasets with <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="L0_lipd_object.html">Basic manipulation of <code class="docutils literal notranslate"><span class="pre">pylipd.LiPD</span></code> objects</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Functionalities</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="L1_working_with_ensembles.html">Working with ensembles in <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="L1_getting_information.html">Retrieving textual information from LiPD files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="L1_filtering.html">Filtering through queries</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Querying using SPARQL</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="L2_custom_queries.html">Custom queries on LiPD objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="L2_using_graphdb.html">Directly querying the LiPDGraph</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Editing LiPD files</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="L3_dataset_class.html">The Dataset class</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Editing LiPD Files</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/LinkedEarth/pylipdTutorials/jupyterbook?urlpath=tree/jupyterBook/notebooks/L3_editing.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/LinkedEarth/pylipdTutorials" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/LinkedEarth/pylipdTutorials/issues/new?title=Issue%20on%20page%20%2Fnotebooks/L3_editing.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/L3_editing.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Editing LiPD Files</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preamble">Preamble</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#goals">Goals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keywords">Keywords</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-requisites">Pre-requisites</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-description">Data Description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstration">Demonstration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#editing-an-exisiting-property">Editing an exisiting property</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-new-properties">Creating new properties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-new-information-from-classes">Adding new information from classes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-publication-information">Adding Publication information</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-an-ensemble-table">Adding an Ensemble Table</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-to-a-lipd-file">Writing to a LiPD file</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <img src="https://github.com/LinkedEarth/Logos/blob/master/PyLiPD/pyLiPD_logo1_transparent.png?raw=true" width ="800">
+<section class="tex2jax_ignore mathjax_ignore" id="editing-lipd-files">
+<h1>Editing LiPD Files<a class="headerlink" href="#editing-lipd-files" title="Link to this heading">#</a></h1>
+<section id="authors">
+<h2>Authors<a class="headerlink" href="#authors" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://orcid.org/0000-0001-7501-8430">Deborah Khider</a></p>
+</section>
+<section id="preamble">
+<h2>Preamble<a class="headerlink" href="#preamble" title="Link to this heading">#</a></h2>
+<p>Now that we have learned about the <a class="reference internal" href="L3_dataset_class.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">Dataset</span></code> class</span></a> and how to extract information from it, let’s edit a LiPD file. We will be considering three main instances of editing: (1) changing exisiting information, (2) adding new metadata, and (3) adding an ensemble table.</p>
+<p>Before we start, have a look at the <a class="reference external" href="https://pylipd.readthedocs.io/en/latest/api.html#lipd-classes">documentation on the LiPD classes module</a>. If you click on any of the classes, you should notice a pattern in the associated methods:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">get</span></code> + PropertyName allows you to retrieve to values associated with a property</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">set</span></code> + PropertyName allows you to set or change the value for an exisiting property value with another one of type string, float, integer, boolean. If the property value is a list, set will replace any exisitng value already present in the metadata (refer to the diagram below for the expected type).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">add</span></code> + PropertyName allows you to set or add a value for an exisiting property that takes a list.</p></li>
+</ul>
+<p>In addition, there are two functionalies that allow you to add your custom properties: <code class="docutils literal notranslate"><span class="pre">set_non_standard_property</span></code> and <code class="docutils literal notranslate"><span class="pre">add_non_standard_property</span></code>. For now, these properties can only be used for values that do not require a new class to be created.</p>
+<p><img alt="image" src="https://github.com/LinkedEarth/pylipd/blob/main/examples/notebooks/UMLDiagram.png?raw=true" /></p>
+<section id="goals">
+<h3>Goals<a class="headerlink" href="#goals" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Edit a LiPD-formatted dataset</p></li>
+<li><p>Adding information in a new object (e.g., publication information)</p></li>
+<li><p>Adding an ensemble table</p></li>
+<li><p>Save the edited dataset to a new file</p></li>
+</ul>
+<p>Reading Time: 5 minutes</p>
+</section>
+<section id="keywords">
+<h3>Keywords<a class="headerlink" href="#keywords" title="Link to this heading">#</a></h3>
+<p>LiPD, LinkedEarth Ontology, Object-Oriented Programming</p>
+</section>
+<section id="pre-requisites">
+<h3>Pre-requisites<a class="headerlink" href="#pre-requisites" title="Link to this heading">#</a></h3>
+<p>An understanding of OOP and the LinkedEarth Ontology. Completion of <a class="reference internal" href="L3_dataset_class.html"><span class="std std-doc">Dataset class example</span></a>.</p>
+</section>
+</section>
+<section id="data-description">
+<h2>Data Description<a class="headerlink" href="#data-description" title="Link to this heading">#</a></h2>
+<p>We will be working with an hypothetical marine sedimentary record of <span class="math notranslate nohighlight">\(\delta^{18}\)</span>O and Mg/Ca so we can edit the file without worrying about accuracy in a specific record. The idealized record was converted into the LiPD format using the <a class="reference external" href="https://lipd.net/playground">LiPD playground</a> and is made available on the GitHub repository for these tutorials.</p>
+</section>
+<section id="demonstration">
+<h2>Demonstration<a class="headerlink" href="#demonstration" title="Link to this heading">#</a></h2>
+<p>Let’s import the necessary packages.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pylipd.classes.dataset</span> <span class="kn">import</span> <span class="n">Dataset</span>
+<span class="kn">from</span> <span class="nn">pylipd.lipd</span> <span class="kn">import</span> <span class="n">LiPD</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The next cell allows generating unique identifier for variables called TSID in LiPD:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">uuid</span>
+
+<span class="k">def</span> <span class="nf">generate_unique_id</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;PYD&#39;</span><span class="p">):</span>
+    <span class="c1"># Generate a random UUID</span>
+    <span class="n">random_uuid</span> <span class="o">=</span> <span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span>  <span class="c1"># Generates a random UUID.</span>
+    
+    <span class="c1"># Convert UUID format to the specific format we need</span>
+    <span class="c1"># UUID is usually in the form &#39;1e2a2846-2048-480b-9ec6-674daef472bd&#39; so we slice and insert accordingly</span>
+    <span class="n">id_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">random_uuid</span><span class="p">)</span>
+    <span class="n">formatted_id</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">prefix</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">id_str</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">id_str</span><span class="p">[</span><span class="mi">9</span><span class="p">:</span><span class="mi">13</span><span class="p">]</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">id_str</span><span class="p">[</span><span class="mi">14</span><span class="p">:</span><span class="mi">18</span><span class="p">]</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">id_str</span><span class="p">[</span><span class="mi">19</span><span class="p">:</span><span class="mi">23</span><span class="p">]</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">id_str</span><span class="p">[</span><span class="mi">24</span><span class="p">:</span><span class="mi">28</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+    
+    <span class="k">return</span> <span class="n">formatted_id</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s load our idealized dataset:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;../data/MyWonderfulRecord.LinkedEarth.2024.lpd&#39;</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">LiPD</span><span class="p">()</span>
+<span class="n">D</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading 1 LiPD files
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/1 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/1 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ERROR: Could not convert LiPD file ../data/MyWonderfulRecord.LinkedEarth.2024.lpd to RDF
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;../data/MyWonderfulRecord.LinkedEarth.2024.lpd&#39;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">D</span> <span class="o">=</span> <span class="n">LiPD</span><span class="p">()</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">D</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+<span class="nn">File /usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/pylipd/lipd.py:145,</span> in <span class="ni">LiPD.load</span><span class="nt">(self, lipdfiles, parallel, standardize, add_labels)</span>
+<span class="g g-Whitespace">    </span><span class="mi">143</span> <span class="n">numfiles</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">lipdfiles</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">144</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loading </span><span class="si">{</span><span class="n">numfiles</span><span class="si">}</span><span class="s2"> LiPD files&quot;</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">145</span> <span class="bp">self</span><span class="o">.</span><span class="n">graph</span> <span class="o">=</span> <span class="n">multi_load_lipd</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">,</span> <span class="n">lipdfiles</span><span class="p">,</span> <span class="n">parallel</span><span class="p">,</span> <span class="n">standardize</span><span class="p">,</span> <span class="n">add_labels</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">146</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Loaded..&quot;</span><span class="p">)</span>
+
+<span class="nn">File /usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/pylipd/utils/multi_processing.py:57,</span> in <span class="ni">multi_load_lipd</span><span class="nt">(graph, lipdfiles, parallel, standardize, add_labels)</span>
+<span class="g g-Whitespace">     </span><span class="mi">55</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">))):</span>
+<span class="g g-Whitespace">     </span><span class="mi">56</span>     <span class="n">arg</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="ne">---&gt; </span><span class="mi">57</span>     <span class="n">subgraph</span> <span class="o">=</span> <span class="n">convert_lipd_to_graph</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">58</span>     <span class="n">graph</span><span class="o">.</span><span class="n">addN</span><span class="p">(</span><span class="n">subgraph</span><span class="o">.</span><span class="n">quads</span><span class="p">())</span>
+<span class="g g-Whitespace">     </span><span class="mi">59</span>     <span class="k">del</span> <span class="n">subgraph</span>
+
+<span class="nn">File /usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/pylipd/utils/multi_processing.py:40,</span> in <span class="ni">convert_lipd_to_graph</span><span class="nt">(arg)</span>
+<span class="g g-Whitespace">     </span><span class="mi">38</span> <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">39</span>     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ERROR: Could not convert LiPD file </span><span class="si">{</span><span class="n">lipdfile</span><span class="si">}</span><span class="s2"> to RDF&quot;</span><span class="p">)</span>            
+<span class="ne">---&gt; </span><span class="mi">40</span>     <span class="k">raise</span> <span class="n">e</span>
+
+<span class="nn">File /usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/pylipd/utils/multi_processing.py:36,</span> in <span class="ni">convert_lipd_to_graph</span><span class="nt">(arg)</span>
+<span class="g g-Whitespace">     </span><span class="mi">34</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">35</span>     <span class="n">converter</span> <span class="o">=</span> <span class="n">LipdToRDF</span><span class="p">(</span><span class="n">standardize</span><span class="p">,</span> <span class="n">add_labels</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">36</span>     <span class="n">converter</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">lipdfile</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">37</span>     <span class="k">return</span> <span class="n">converter</span><span class="o">.</span><span class="n">graph</span>
+<span class="g g-Whitespace">     </span><span class="mi">38</span> <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+
+<span class="nn">File /usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/pylipd/utils/lipd_to_rdf.py:65,</span> in <span class="ni">LipdToRDF.convert</span><span class="nt">(self, lipdpath)</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span> <span class="bp">self</span><span class="o">.</span><span class="n">graphurl</span> <span class="o">=</span> <span class="n">NSURL</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">lpdname</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span> <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;lipd_to_rdf_&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">tmpdir</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">65</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_unzip_lipd_file</span><span class="p">(</span><span class="n">lipdpath</span><span class="p">,</span> <span class="n">tmpdir</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">66</span>     <span class="n">jsons</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_files_with_extension</span><span class="p">(</span><span class="n">tmpdir</span><span class="p">,</span> <span class="s1">&#39;jsonld&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">67</span>     <span class="k">for</span> <span class="n">jsonpath</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">jsons</span><span class="p">:</span>
+
+<span class="nn">File /usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/pylipd/utils/lipd_to_rdf.py:129,</span> in <span class="ni">LipdToRDF._unzip_lipd_file</span><span class="nt">(self, lipdfile, unzipdir)</span>
+<span class="g g-Whitespace">    </span><span class="mi">125</span>         <span class="n">zip_ref</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">unzipdir</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">126</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">127</span>     <span class="c1"># If this is a local file</span>
+<span class="g g-Whitespace">    </span><span class="mi">128</span>     <span class="c1"># Unzip file</span>
+<span class="ne">--&gt; </span><span class="mi">129</span>     <span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">lipdfile</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">zip_ref</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">130</span>         <span class="n">zip_ref</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">unzipdir</span><span class="p">)</span>
+
+<span class="nn">File /usr/share/miniconda/envs/pylipd/lib/python3.10/zipfile.py:1254,</span> in <span class="ni">ZipFile.__init__</span><span class="nt">(self, file, mode, compression, allowZip64, compresslevel, strict_timestamps)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1252</span> <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1253</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1254</span>         <span class="bp">self</span><span class="o">.</span><span class="n">fp</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">filemode</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1255</span>     <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1256</span>         <span class="k">if</span> <span class="n">filemode</span> <span class="ow">in</span> <span class="n">modeDict</span><span class="p">:</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;../data/MyWonderfulRecord.LinkedEarth.2024.lpd&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, let’s export to a <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> object:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">get_datasets</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="editing-an-exisiting-property">
+<h3>Editing an exisiting property<a class="headerlink" href="#editing-an-exisiting-property" title="Link to this heading">#</a></h3>
+<p>For this example, we will assume that there is an error in the geographical coordinates and we will correct the longitude. First, we need to get to the <code class="docutils literal notranslate"><span class="pre">geo</span></code> object. When in doubt on how to navigate the file, you can use the <a class="reference external" href="https://linked.earth/ontology/">LinkedEarth ontology</a> to help you or the handy diagram above shown in the preamble.</p>
+<p>From this, you can see that the information associated with the <code class="docutils literal notranslate"><span class="pre">Location</span></code> can be obtained from the <code class="docutils literal notranslate"><span class="pre">Dataset</span></code>. A quick check from the <a class="reference external" href="https://pylipd.readthedocs.io/en/latest/api.html#pylipd.classes.dataset.Dataset">documentation</a> tells you that you can use the <code class="docutils literal notranslate"><span class="pre">getLocation</span></code> function to do so:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geo</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">getLocation</span><span class="p">()</span>
+<span class="n">lon</span> <span class="o">=</span> <span class="n">geo</span><span class="o">.</span><span class="n">getLongitude</span><span class="p">()</span>
+
+<span class="n">lon</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>170.9
+</pre></div>
+</div>
+</div>
+</div>
+<p>To change the exsiting longitude information to the corrected value (here, we will assume 165.9), you can use <a class="reference external" href="https://pylipd.readthedocs.io/en/latest/api.html#pylipd.classes.location.Location.setLongitude">the <code class="docutils literal notranslate"><span class="pre">setLongitude</span></code></a> function. Notice that the longitude value should be input as a string:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geo</span><span class="o">.</span><span class="n">setLongitude</span><span class="p">(</span><span class="s1">&#39;165.9&#39;</span><span class="p">)</span>
+<span class="n">geo</span><span class="o">.</span><span class="n">getLongitude</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;165.9&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>We have succcessfully changed the longitude to its correct value! You can also use the <code class="docutils literal notranslate"><span class="pre">set</span></code> + PropertyName functions to add information (not just correct it). For instance, this record doesn’t have a <code class="docutils literal notranslate"><span class="pre">SiteName</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geo</span><span class="o">.</span><span class="n">getSiteName</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s change this to <code class="docutils literal notranslate"><span class="pre">WonderfulCore</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geo</span><span class="o">.</span><span class="n">setSiteName</span><span class="p">(</span><span class="s1">&#39;WonderfulCore&#39;</span><span class="p">)</span>
+<span class="n">geo</span><span class="o">.</span><span class="n">getSiteName</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;WonderfulCore&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>So far, we have looked at adding or editing the values of exisiting properties.</p>
+</section>
+<section id="creating-new-properties">
+<h3>Creating new properties<a class="headerlink" href="#creating-new-properties" title="Link to this heading">#</a></h3>
+<p>Many datasets on the <a class="reference external" href="https://lipdverse.org">Lipdverse</a> and associated <a class="reference external" href="https://linkedearth.graphdb.mint.isi.edu">LiPDGraph</a> come from working groups compiling datasets for a particular purpose. In this case, it may be useful to create a temporary property associated with a specific variable (i.e., column) in the dataset to indicate its use for an analysis. For instance, the <a class="reference external" href="https://lipdverse.org/project/pages2k/">Pages2k Temperature working group</a> used the property <code class="docutils literal notranslate"><span class="pre">usedInGlobalTemperatureAnalysis</span></code> as a flag to represent the column to be used for temperature reconstructions.</p>
+<p>As an example, we will add a property called <code class="docutils literal notranslate"><span class="pre">forTempAnalysis</span></code> to the variable Temperature in our dataset. To do so, you can use the <code class="docutils literal notranslate"><span class="pre">set_non_standard_property</span></code> function. This function is available for each of the classes present in <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code> and takes a “key,value” pair an input with the key representing the property name and the value the value associated with the property.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;temperature?s?&#39;</span> <span class="c1">#look for temperature or temperatures in the varname</span>
+ 
+<span class="k">for</span> <span class="n">pdata</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">getPaleoData</span><span class="p">():</span> <span class="c1"># loop through all possible paleodata object</span>
+    <span class="k">for</span> <span class="n">table</span> <span class="ow">in</span> <span class="n">pdata</span><span class="o">.</span><span class="n">getMeasurementTables</span><span class="p">():</span> <span class="c1"># Loop through the measurement tables</span>
+        <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">table</span><span class="o">.</span><span class="n">getVariables</span><span class="p">():</span> <span class="c1"># Loop through the variables in the table</span>
+            <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">getName</span><span class="p">(),</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">):</span>
+                <span class="n">var</span><span class="o">.</span><span class="n">set_non_standard_property</span><span class="p">(</span><span class="s1">&#39;forTempAnalysis&#39;</span><span class="p">,</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="adding-new-information-from-classes">
+<h3>Adding new information from classes<a class="headerlink" href="#adding-new-information-from-classes" title="Link to this heading">#</a></h3>
+<section id="adding-publication-information">
+<h4>Adding Publication information<a class="headerlink" href="#adding-publication-information" title="Link to this heading">#</a></h4>
+<p>You may have several publications associated with a particular dataset. Therefore, publications are set in a list, in which each item represent a Publication object.  When you want to do so in <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code>, you will be using functions of the form <code class="docutils literal notranslate"><span class="pre">add</span></code> + PropertyName.</p>
+<p>Let’s add a publication to our dataset:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pylipd.classes.publication</span> <span class="kn">import</span> <span class="n">Publication</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pub</span> <span class="o">=</span> <span class="n">Publication</span><span class="p">()</span> <span class="c1"># instantiate the object</span>
+<span class="n">pub</span><span class="o">.</span><span class="n">setTitle</span><span class="p">(</span><span class="s1">&#39;Publication Title&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we have created the object and entered the title, let’s add authors. Looking at the diagram in the preamble, authors can be set as a list of <code class="docutils literal notranslate"><span class="pre">Person</span></code>. Let’s create two authors and add them to our publication object:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pylipd.classes.person</span> <span class="kn">import</span> <span class="n">Person</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">person1</span> <span class="o">=</span> <span class="n">Person</span><span class="p">();</span> <span class="n">person1</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="s2">&quot;Deborah Khider&quot;</span><span class="p">)</span>
+<span class="n">person2</span> <span class="o">=</span> <span class="n">Person</span><span class="p">();</span> <span class="n">person2</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="s2">&quot;Varun Ratnakar&quot;</span><span class="p">)</span>
+<span class="n">pub</span><span class="o">.</span><span class="n">setAuthors</span><span class="p">([</span><span class="n">person1</span><span class="p">,</span> <span class="n">person2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s add a few more information:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pub</span><span class="o">.</span><span class="n">setJournal</span><span class="p">(</span><span class="s1">&#39;Journal Name&#39;</span><span class="p">)</span>
+<span class="n">pub</span><span class="o">.</span><span class="n">setPages</span><span class="p">(</span><span class="s1">&#39;1-12&#39;</span><span class="p">)</span>
+<span class="n">pub</span><span class="o">.</span><span class="n">setVolume</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">)</span>
+<span class="n">pub</span><span class="o">.</span><span class="n">setYear</span><span class="p">(</span><span class="s1">&#39;2014&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s add the Publication information to our <code class="docutils literal notranslate"><span class="pre">Dataset</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">addPublication</span><span class="p">(</span><span class="n">pub</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ok, let’s have a look at our work:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">getPublications</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">getTitle</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Publication Title
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="adding-an-ensemble-table">
+<h4>Adding an Ensemble Table<a class="headerlink" href="#adding-an-ensemble-table" title="Link to this heading">#</a></h4>
+<p>A common task in paleoclimate studies is to create possible realizations of the age model using Bayesian age modeling software such as <a class="reference external" href="https://rss.onlinelibrary.wiley.com/doi/abs/10.1111/j.1467-9876.2008.00623.x">Bchron</a>(Haslett and Parnell, 2008), <a class="reference external" href="https://projecteuclid.org/journals/bayesian-analysis/volume-6/issue-3/Flexible-paleoclimate-age-depth-models-using-an-autoregressive-gamma-process/10.1214/11-BA618.full">BACON</a>(Blaauw and Christen, 2011), or <a class="reference external" href="https://c14.arch.ox.ac.uk/oxcalhelp/hlp_analysis_oper.html">OxCal</a>(Bronk Ramsey, 2008).</p>
+<p>For this example, we will create a “dummy” ensemble table as a <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.array.html"><code class="docutils literal notranslate"><span class="pre">numpy.array</span></code></a> from the existing data.</p>
+<p>So first, let’s grab the age values from the measurement table:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_tables</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">paleoData</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">getPaleoData</span><span class="p">():</span> <span class="c1"># loop over the various PaleoData objects</span>
+    <span class="k">for</span> <span class="n">table</span> <span class="ow">in</span> <span class="n">paleoData</span><span class="o">.</span><span class="n">getMeasurementTables</span><span class="p">():</span> <span class="c1">#get the measurement tables</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">getDataFrame</span><span class="p">(</span><span class="n">use_standard_names</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># grab the data and standardize the variable names</span>
+        <span class="n">data_tables</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="n">data_tables</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>d18O</th>
+      <th>temperature</th>
+      <th>Mg/Ca</th>
+      <th>depth</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-4.176004</td>
+      <td>28.686774</td>
+      <td>5.023996</td>
+      <td>0.5</td>
+      <td>1981.30</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-4.100000</td>
+      <td>28.853606</td>
+      <td>5.100000</td>
+      <td>1.0</td>
+      <td>1961.30</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-4.023996</td>
+      <td>29.017971</td>
+      <td>5.176004</td>
+      <td>1.5</td>
+      <td>1946.37</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-3.715535</td>
+      <td>29.661152</td>
+      <td>5.484465</td>
+      <td>2.0</td>
+      <td>1952.00</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-4.484465</td>
+      <td>27.982737</td>
+      <td>4.715535</td>
+      <td>2.5</td>
+      <td>1906.37</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Let’s have a look at the metadata for each variable (i.e., column), stored in the DataFrame attributes:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_tables</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;d18O&#39;: {&#39;@id&#39;: &#39;http://linked.earth/lipd/paleo0measurement0.WEB-f24e5-dcca-4743-b487-5c6fd.d18O&#39;,
+  &#39;interpretation&#39;: [{&#39;@id&#39;: &#39;http://linked.earth/lipd/paleo0measurement0.WEB-f24e5-dcca-4743-b487-5c6fd.d18O.Interpretation1&#39;}],
+  &#39;archiveType&#39;: &#39;Marine sediment&#39;,
+  &#39;number&#39;: 4,
+  &#39;hasMaxValue&#39;: -3.402095638,
+  &#39;hasMeanValue&#39;: -4.067024716065219,
+  &#39;hasMedianValue&#39;: -4.0811507979999995,
+  &#39;hasMinValue&#39;: -4.797904362,
+  &#39;variableName&#39;: &#39;d18O&#39;,
+  &#39;proxy&#39;: &#39;d18O&#39;,
+  &#39;resolution&#39;: {&#39;@id&#39;: &#39;http://linked.earth/lipd/paleo0measurement0.WEB-f24e5-dcca-4743-b487-5c6fd.d18O.Resolution&#39;,
+   &#39;hasMaxValue&#39;: 66.52999999999997,
+   &#39;hasMeanValue&#39;: 20.9051111111111,
+   &#39;hasMedianValue&#39;: 3.1700000000000728,
+   &#39;hasMinValue&#39;: 3.1699999999998454},
+  &#39;hasStandardVariable&#39;: &#39;d18O&#39;,
+  &#39;units&#39;: &#39;permil&#39;,
+  &#39;TSid&#39;: &#39;WEB-f24e5-dcca-4743-b487-5c6fd&#39;,
+  &#39;variableType&#39;: &#39;measured&#39;,
+  &#39;proxyObservationType&#39;: &#39;d18O&#39;},
+ &#39;temperature&#39;: {&#39;@id&#39;: &#39;http://linked.earth/lipd/paleo0measurement0.WEB-5dd32-9b60-4662-9b73-ad1b3.temperature&#39;,
+  &#39;interpretation&#39;: [{&#39;@id&#39;: &#39;http://linked.earth/lipd/paleo0measurement0.WEB-5dd32-9b60-4662-9b73-ad1b3.temperature.Interpretation1&#39;}],
+  &#39;archiveType&#39;: &#39;Marine sediment&#39;,
+  &#39;number&#39;: 5,
+  &#39;hasMaxValue&#39;: 30.27867291,
+  &#39;hasMeanValue&#39;: 28.91042688586957,
+  &#39;hasMedianValue&#39;: 28.894521055,
+  &#39;hasMinValue&#39;: 27.21849706,
+  &#39;variableName&#39;: &#39;temperature&#39;,
+  &#39;resolution&#39;: {&#39;@id&#39;: &#39;http://linked.earth/lipd/paleo0measurement0.WEB-5dd32-9b60-4662-9b73-ad1b3.temperature.Resolution&#39;,
+   &#39;hasMaxValue&#39;: 66.52999999999997,
+   &#39;hasMeanValue&#39;: 20.9051111111111,
+   &#39;hasMedianValue&#39;: 3.1700000000000728,
+   &#39;hasMinValue&#39;: 3.1699999999998454},
+  &#39;hasStandardVariable&#39;: &#39;temperature&#39;,
+  &#39;units&#39;: &#39;degC&#39;,
+  &#39;TSid&#39;: &#39;WEB-5dd32-9b60-4662-9b73-ad1b3&#39;,
+  &#39;variableType&#39;: &#39;inferred&#39;,
+  &#39;inferredVariableType&#39;: &#39;temperature&#39;,
+  &#39;forTempAnalysis&#39;: True},
+ &#39;Mg/Ca&#39;: {&#39;@id&#39;: &#39;http://linked.earth/lipd/paleo0measurement0.WEB-c745d-99e8-4f77-9042-748f9.Mg_Ca&#39;,
+  &#39;interpretation&#39;: [{&#39;@id&#39;: &#39;http://linked.earth/lipd/paleo0measurement0.WEB-c745d-99e8-4f77-9042-748f9.Mg_Ca.Interpretation1&#39;,
+    &#39;direction&#39;: &#39;positive&#39;,
+    &#39;seasonality&#39;: &#39;Annual&#39;,
+    &#39;variable&#39;: &#39;temperature&#39;,
+    &#39;variableDetail&#39;: &#39;Sea surface&#39;}],
+  &#39;archiveType&#39;: &#39;Marine sediment&#39;,
+  &#39;number&#39;: 3,
+  &#39;description&#39;: &#39;Obtained from G.ruber&#39;,
+  &#39;hasMaxValue&#39;: 5.797904362,
+  &#39;hasMeanValue&#39;: 5.132975283934784,
+  &#39;hasMedianValue&#39;: 5.118849202,
+  &#39;hasMinValue&#39;: 4.402095638,
+  &#39;variableName&#39;: &#39;Mg/Ca&#39;,
+  &#39;proxy&#39;: &#39;Mg/Ca&#39;,
+  &#39;resolution&#39;: {&#39;@id&#39;: &#39;http://linked.earth/lipd/paleo0measurement0.WEB-c745d-99e8-4f77-9042-748f9.Mg_Ca.Resolution&#39;,
+   &#39;hasMaxValue&#39;: 66.52999999999997,
+   &#39;hasMeanValue&#39;: 20.9051111111111,
+   &#39;hasMedianValue&#39;: 3.1700000000000728,
+   &#39;hasMinValue&#39;: 3.1699999999998454},
+  &#39;hasStandardVariable&#39;: &#39;Mg/Ca&#39;,
+  &#39;units&#39;: &#39;permil&#39;,
+  &#39;TSid&#39;: &#39;WEB-c745d-99e8-4f77-9042-748f9&#39;,
+  &#39;variableType&#39;: &#39;measured&#39;,
+  &#39;proxyObservationType&#39;: &#39;Mg/Ca&#39;},
+ &#39;depth&#39;: {&#39;@id&#39;: &#39;http://linked.earth/lipd/paleo0measurement0.WEB-1e2a2-4620-480b-9ec6-674da.depth&#39;,
+  &#39;interpretation&#39;: [{&#39;@id&#39;: &#39;http://linked.earth/lipd/paleo0measurement0.WEB-1e2a2-4620-480b-9ec6-674da.depth.Interpretation1&#39;}],
+  &#39;archiveType&#39;: &#39;Marine sediment&#39;,
+  &#39;number&#39;: 1,
+  &#39;hasMaxValue&#39;: 23.0,
+  &#39;hasMeanValue&#39;: 11.75,
+  &#39;hasMedianValue&#39;: 10.75,
+  &#39;hasMinValue&#39;: 0.5,
+  &#39;variableName&#39;: &#39;depth&#39;,
+  &#39;resolution&#39;: {&#39;@id&#39;: &#39;http://linked.earth/lipd/paleo0measurement0.WEB-1e2a2-4620-480b-9ec6-674da.depth.Resolution&#39;,
+   &#39;hasMaxValue&#39;: 66.52999999999997,
+   &#39;hasMeanValue&#39;: 20.9051111111111,
+   &#39;hasMedianValue&#39;: 3.1700000000000728,
+   &#39;hasMinValue&#39;: 3.1699999999998454},
+  &#39;hasStandardVariable&#39;: &#39;depth&#39;,
+  &#39;units&#39;: &#39;cm&#39;,
+  &#39;TSid&#39;: &#39;WEB-1e2a2-4620-480b-9ec6-674da&#39;,
+  &#39;variableType&#39;: &#39;measured&#39;,
+  &#39;proxyObservationType&#39;: &#39;depth&#39;},
+ &#39;year&#39;: {&#39;@id&#39;: &#39;http://linked.earth/lipd/paleo0measurement0.WEB-e6f66-1365-427c-af34-363a2.year&#39;,
+  &#39;interpretation&#39;: [{&#39;@id&#39;: &#39;http://linked.earth/lipd/paleo0measurement0.WEB-e6f66-1365-427c-af34-363a2.year.Interpretation1&#39;}],
+  &#39;archiveType&#39;: &#39;Marine sediment&#39;,
+  &#39;number&#39;: 2,
+  &#39;hasMaxValue&#39;: 1981.3,
+  &#39;hasMeanValue&#39;: 1572.5945652173914,
+  &#39;hasMedianValue&#39;: 1568.7150000000001,
+  &#39;hasMinValue&#39;: 1187.49,
+  &#39;variableName&#39;: &#39;year&#39;,
+  &#39;hasStandardVariable&#39;: &#39;year&#39;,
+  &#39;units&#39;: &#39;yr AD&#39;,
+  &#39;TSid&#39;: &#39;WEB-e6f66-1365-427c-af34-363a2&#39;,
+  &#39;variableType&#39;: &#39;inferred&#39;,
+  &#39;inferredVariableType&#39;: &#39;year&#39;}}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time</span>  <span class="o">=</span> <span class="n">data_tables</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Create 1000 realizations of the age ensemble by using a normal distribution centered around the <code class="docutils literal notranslate"><span class="pre">time</span></code> vector with a standard deviation of 5.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">std_dev</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">num_draws</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="c1">#Generate ensemble</span>
+<span class="n">ens</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">time</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="n">std_dev</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">time</span><span class="p">),</span> <span class="n">num_draws</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-info">
+Make sure that the number of realization of the age ensembles correspond to the number of columns in your array
+</div>
+<p>Next, let’s inset the table into our dataset. First, let’s check if there are any <code class="docutils literal notranslate"><span class="pre">ChronData</span></code> object we should attach the table to:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">getChronData</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since there are none, we will have to create a <code class="docutils literal notranslate"><span class="pre">ChronData</span></code> object in addition to a <code class="docutils literal notranslate"><span class="pre">Table</span></code> and <code class="docutils literal notranslate"><span class="pre">Model</span></code> object. Let’s start with creating a <code class="docutils literal notranslate"><span class="pre">Table</span></code> object for the ensemble we have just created:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pylipd.classes.datatable</span> <span class="kn">import</span> <span class="n">DataTable</span>
+
+<span class="n">ensemble_table</span> <span class="o">=</span> <span class="n">DataTable</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To add content to our new <code class="docutils literal notranslate"><span class="pre">DataTable</span></code> object, the easiest way route is to use the <a class="reference external" href="https://pylipd.readthedocs.io/en/latest/api.html#pylipd.classes.datatable.DataTable.setDataFrame"><code class="docutils literal notranslate"><span class="pre">setDataFrame</span></code></a> method. To do so, we must first generate a DataFrame similar to the one we read in the <a class="reference internal" href="L3_dataset_class.html"><span class="std std-doc">L3_dataset_class</span></a> notebook. In summary, the DataFrame contains two columns: one for depth and one for age, where the realizations are stored as a vector:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize empty DataFrame with the depth column</span>
+<span class="n">df_ens</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;depth&#39;</span><span class="p">:</span> <span class="n">data_tables</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;depth&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()})</span>
+
+<span class="c1"># Add the year data - each row will contain one vector from array_data</span>
+<span class="n">df_ens</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">ens</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">time</span><span class="p">))]</span>
+
+<span class="n">df_ens</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>depth</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.5</td>
+      <td>[1980.86392039147, 1981.9299125203563, 1988.13...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.0</td>
+      <td>[1966.6221259915496, 1957.2336616892658, 1961....</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.5</td>
+      <td>[1946.7146340635609, 1947.8779369752401, 1944....</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2.0</td>
+      <td>[1947.5117971171346, 1960.6027105934163, 1960....</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2.5</td>
+      <td>[1913.5814128812046, 1906.42398635865, 1908.14...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Add attributes to the Pandas Dataframe to store the metadata.</p>
+<div style="color: white; background-color: #F9ACAA; border-left: 6px solid #CC0000; padding: 0.5em;">
+    &#9888; <strong>Warning:</strong> Metadata attributes are necessary to save a LiPD file. 
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_year_columns</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ens</span><span class="p">[</span><span class="mi">0</span><span class="p">,:])</span>
+<span class="n">year_columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_year_columns</span><span class="p">)]</span>
+<span class="n">df_ens</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;number&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">year_columns</span><span class="p">),</span> <span class="s1">&#39;variableName&#39;</span><span class="p">:</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;yr AD&#39;</span><span class="p">,</span> <span class="s1">&#39;TSid&#39;</span><span class="p">:</span><span class="n">generate_unique_id</span><span class="p">()},</span>
+    <span class="s1">&#39;depth&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;number&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;variableName&#39;</span><span class="p">:</span> <span class="s1">&#39;depth&#39;</span><span class="p">,</span> <span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;cm&#39;</span><span class="p">,</span> <span class="s1">&#39;TSid&#39;</span><span class="p">:</span><span class="n">generate_unique_id</span><span class="p">()}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Incorporate into the LiPD structure.</p>
+<div style="color: white; background-color: #F9ACAA; border-left: 6px solid #CC0000; padding: 0.5em;">
+    &#9888; <strong>Warning:</strong> Don't forget the set the name of the file for the table. 
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ensemble_table</span><span class="o">.</span><span class="n">setDataFrame</span><span class="p">(</span><span class="n">df_ens</span><span class="p">)</span>
+<span class="n">ensemble_table</span><span class="o">.</span><span class="n">setFileName</span><span class="p">(</span><span class="s2">&quot;chron0model0ensemble0.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now add the table to a model:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pylipd.classes.model</span> <span class="kn">import</span> <span class="n">Model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">addEnsembleTable</span><span class="p">(</span><span class="n">ensemble_table</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And add the Model to a ChronData object:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pylipd.classes.chrondata</span> <span class="kn">import</span> <span class="n">ChronData</span>
+<span class="n">cd</span> <span class="o">=</span> <span class="n">ChronData</span><span class="p">()</span>
+<span class="n">cd</span><span class="o">.</span><span class="n">addModeledBy</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally add the ChronData to our Dataset:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">addChronData</span><span class="p">(</span><span class="n">cd</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Voila! Let’s check that we now have a ChronData object in our dataset:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">getChronData</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;pylipd.classes.chrondata.ChronData at 0x3000f2950&gt;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="writing-to-a-lipd-file">
+<h3>Writing to a LiPD file<a class="headerlink" href="#writing-to-a-lipd-file" title="Link to this heading">#</a></h3>
+<p>The last step in this process is to write our edited file back into a LiPD file. To do so, you need to pass the Dataset <code class="docutils literal notranslate"><span class="pre">ds</span></code> back into a LiPD object:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lipd</span> <span class="o">=</span> <span class="n">LiPD</span><span class="p">()</span>
+<span class="n">lipd</span><span class="o">.</span><span class="n">load_datasets</span><span class="p">([</span><span class="n">ds</span><span class="p">])</span>
+<span class="n">lipd</span><span class="o">.</span><span class="n">create_lipd</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">getName</span><span class="p">(),</span> <span class="s2">&quot;../data/MyWonderfulCorev2.LinkedEarth.2024.lpd&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Blaauw, M., &amp; Christen, J. A. (2011). Flexible Paleoclimate Age-Depth Models using an Autoregressive Gamma Process. Bayesian Analysis, 6(3), 457-474.</p></li>
+<li><p>Bronk Ramsey, C. (2008). Deposition models for chronological records, Quaternary Sci. Rev., 27, 42–60.</p></li>
+<li><p>Haslett, J., &amp; Parnell, A. (2008). A simple monotone process with application to radiocarbon-dated depth chronologies. Journal of the Royal Statistical Society C, 57, 399-418.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="L3_dataset_class.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">The Dataset class</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preamble">Preamble</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#goals">Goals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keywords">Keywords</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-requisites">Pre-requisites</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-description">Data Description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstration">Demonstration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#editing-an-exisiting-property">Editing an exisiting property</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-new-properties">Creating new properties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-new-information-from-classes">Adding new information from classes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-publication-information">Adding Publication information</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-an-ensemble-table">Adding an Ensemble Table</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-to-a-lipd-file">Writing to a LiPD file</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Deborah Khider
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

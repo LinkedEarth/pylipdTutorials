@@ -16,17 +16,19 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
@@ -34,12 +36,13 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -64,6 +67,7 @@
     <link rel="prev" title="Retrieving textual information from LiPD files" href="L1_getting_information.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -79,19 +83,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -99,7 +92,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -107,8 +99,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -124,7 +116,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -154,21 +147,17 @@
     
     
     <img src="../_static/LinkedEarth_small.png" class="logo__image only-light" alt="PyLiPD Tutorials - Home"/>
-    <script>document.write(`<img src="../_static/LinkedEarth_small.png" class="logo__image only-dark" alt="PyLiPD Tutorials - Home"/>`);</script>
+    <img src="../_static/LinkedEarth_small.png" class="logo__image only-dark pst-js-only" alt="PyLiPD Tutorials - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -200,6 +189,11 @@
 <li class="toctree-l1"><a class="reference internal" href="L2_custom_queries.html">Custom queries on LiPD objects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="L2_using_graphdb.html">Directly querying the LiPDGraph</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Editing LiPD files</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="L3_dataset_class.html">The Dataset class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="L3_editing.html">Editing LiPD Files</a></li>
+</ul>
 
     </div>
 </nav></div>
@@ -207,9 +201,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -384,24 +383,16 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -460,7 +451,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="filtering-through-queries">
+  <img src="https://github.com/LinkedEarth/Logos/blob/master/PyLiPD/pyLiPD_logo1_transparent.png?raw=true" width ="800">
+<section class="tex2jax_ignore mathjax_ignore" id="filtering-through-queries">
 <h1>Filtering through queries<a class="headerlink" href="#filtering-through-queries" title="Link to this heading">#</a></h1>
 <section id="authors">
 <h2>Authors<a class="headerlink" href="#authors" title="Link to this heading">#</a></h2>
@@ -528,13 +520,236 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/16 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 38%|███▊      | 6/16 [00:00&lt;00:00, 50.49it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 75%|███████▌  | 12/16 [00:00&lt;00:00, 46.87it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 16/16 [00:00&lt;00:00, 42.86it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:46:16 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 31%|███▏      | 5/16 [00:00&lt;00:00, 41.16it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:46:49 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 62%|██████▎   | 10/16 [00:00&lt;00:00, 43.42it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:47:20 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:46:12 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 94%|█████████▍| 15/16 [00:00&lt;00:00, 32.70it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 16/16 [00:00&lt;00:00, 35.31it/s]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
@@ -553,21 +768,21 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-NorthernSpain.Martin-Chivelet.2011&#39;,
- &#39;Eur-NorthernScandinavia.Esper.2012&#39;,
- &#39;Eur-Stockholm.Leijonhufvud.2009&#39;,
- &#39;Eur-LakeSilvaplana.Trachsel.2010&#39;,
- &#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;,
- &#39;Arc-Kongressvatnet.D_Andrea.2012&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Ocn-RedSea.Felis.2000&#39;,
  &#39;Eur-CoastofPortugal.Abrantes.2011&#39;,
+ &#39;Eur-LakeSilvaplana.Trachsel.2010&#39;,
+ &#39;Arc-Kongressvatnet.D_Andrea.2012&#39;,
+ &#39;Ocn-AlboranSea436B.Nieto-Moreno.2013&#39;,
+ &#39;Ocn-SinaiPeninsula_RedSea.Moustafa.2000&#39;,
+ &#39;Eur-Stockholm.Leijonhufvud.2009&#39;,
+ &#39;Eur-NorthernScandinavia.Esper.2012&#39;,
+ &#39;Eur-SpannagelCave.Mangini.2005&#39;,
+ &#39;Eur-NorthernSpain.Martin-Chivelet.2011&#39;,
+ &#39;Asi-SourthAndMiddleUrals.Demezhko.2007&#39;,
  &#39;Ocn-PedradeLume-CapeVerdeIslands.Moses.2006&#39;,
  &#39;Ocn-FeniDrift.Richter.2009&#39;,
- &#39;Ocn-SinaiPeninsula_RedSea.Moustafa.2000&#39;,
+ &#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;,
  &#39;Ant-WAIS-Divide.Severinghaus.2012&#39;,
- &#39;Asi-SourthAndMiddleUrals.Demezhko.2007&#39;,
- &#39;Ocn-AlboranSea436B.Nieto-Moreno.2013&#39;,
- &#39;Eur-SpannagelCave.Mangini.2005&#39;,
- &#39;Ocn-RedSea.Felis.2000&#39;,
  &#39;Eur-FinnishLakelands.Helama.2014&#39;]
 </pre></div>
 </div>
@@ -581,12 +796,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Speleothem&#39;,
- &#39;Wood&#39;,
- &#39;Documents&#39;,
- &#39;Lake sediment&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Coral&#39;,
  &#39;Marine sediment&#39;,
- &#39;Coral&#39;,
+ &#39;Lake sediment&#39;,
+ &#39;Documents&#39;,
+ &#39;Wood&#39;,
+ &#39;Speleothem&#39;,
  &#39;Borehole&#39;]
 </pre></div>
 </div>
@@ -617,9 +832,9 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Ocn-FeniDrift.Richter.2009&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-CoastofPortugal.Abrantes.2011&#39;,
  &#39;Ocn-AlboranSea436B.Nieto-Moreno.2013&#39;,
- &#39;Eur-CoastofPortugal.Abrantes.2011&#39;]
+ &#39;Ocn-FeniDrift.Richter.2009&#39;]
 </pre></div>
 </div>
 </div>
@@ -634,11 +849,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Arc-Kongressvatnet.D_Andrea.2012&#39;,
- &#39;Ocn-FeniDrift.Richter.2009&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-CoastofPortugal.Abrantes.2011&#39;,
+ &#39;Arc-Kongressvatnet.D_Andrea.2012&#39;,
  &#39;Ocn-AlboranSea436B.Nieto-Moreno.2013&#39;,
  &#39;Eur-LakeSilvaplana.Trachsel.2010&#39;,
- &#39;Eur-CoastofPortugal.Abrantes.2011&#39;]
+ &#39;Ocn-FeniDrift.Richter.2009&#39;]
 </pre></div>
 </div>
 </div>
@@ -652,10 +867,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Ocn-FeniDrift.Richter.2009&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-CoastofPortugal.Abrantes.2011&#39;,
  &#39;Ocn-AlboranSea436B.Nieto-Moreno.2013&#39;,
+ &#39;Ocn-FeniDrift.Richter.2009&#39;,
  &#39;Eur-NorthernSpain.Martin-Chivelet.2011&#39;,
- &#39;Eur-CoastofPortugal.Abrantes.2011&#39;,
  &#39;Eur-SpannagelCave.Mangini.2005&#39;]
 </pre></div>
 </div>
@@ -671,9 +886,53 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Ocn-FeniDrift.Richter.2009&#39;,
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:47:20 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-CoastofPortugal.Abrantes.2011&#39;,
  &#39;Ocn-AlboranSea436B.Nieto-Moreno.2013&#39;,
- &#39;Eur-CoastofPortugal.Abrantes.2011&#39;,
+ &#39;Ocn-FeniDrift.Richter.2009&#39;,
  &#39;Eur-NorthernSpain.Martin-Chivelet.2011&#39;,
  &#39;Eur-SpannagelCave.Mangini.2005&#39;]
 </pre></div>
@@ -693,13 +952,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Asi-SourthAndMiddleUrals.Demezhko.2007&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;,
  &#39;Eur-NorthernScandinavia.Esper.2012&#39;,
- &#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;,
+ &#39;Asi-SourthAndMiddleUrals.Demezhko.2007&#39;,
  &#39;Eur-LakeSilvaplana.Trachsel.2010&#39;,
+ &#39;Eur-FinnishLakelands.Helama.2014&#39;,
  &#39;Eur-Stockholm.Leijonhufvud.2009&#39;,
- &#39;Eur-SpannagelCave.Mangini.2005&#39;,
- &#39;Eur-FinnishLakelands.Helama.2014&#39;]
+ &#39;Eur-SpannagelCave.Mangini.2005&#39;]
 </pre></div>
 </div>
 </div>
@@ -714,8 +973,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-NorthernScandinavia.Esper.2012&#39;,
- &#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;,
+ &#39;Eur-NorthernScandinavia.Esper.2012&#39;,
  &#39;Eur-FinnishLakelands.Helama.2014&#39;]
 </pre></div>
 </div>
@@ -731,8 +990,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-NorthernScandinavia.Esper.2012&#39;,
- &#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;,
+ &#39;Eur-NorthernScandinavia.Esper.2012&#39;,
  &#39;Eur-FinnishLakelands.Helama.2014&#39;]
 </pre></div>
 </div>
@@ -809,7 +1068,7 @@ As of August 2024, the function does not reason over time representation (i.e., 
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/3 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 3/3 [00:00&lt;00:00, 379.93it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 3/3 [00:00&lt;00:00, 310.03it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -821,10 +1080,10 @@ As of August 2024, the function does not reason over time representation (i.e., 
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/3 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 3/3 [00:00&lt;00:00, 21.22it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 67%|██████▋   | 2/3 [00:00&lt;00:00, 18.29it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 3/3 [00:00&lt;00:00, 21.15it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 3/3 [00:00&lt;00:00, 18.20it/s]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done..
@@ -875,26 +1134,16 @@ As of August 2024, the function does not reason over time representation (i.e., 
   <tbody>
     <tr>
       <th>0</th>
-      <td>Eur-NorthernScandinavia.Esper.2012</td>
+      <td>Eur-FinnishLakelands.Helama.2014</td>
       <td>Wood</td>
-      <td>year</td>
-      <td>PYTECO66XAD</td>
-      <td>[-138, -137, -136, -135, -134, -133, -132, -13...</td>
-      <td>yr AD</td>
+      <td>temperature</td>
+      <td>Eur_005</td>
+      <td>[14.603, 14.643, 12.074, 13.898, 13.671, 13.41...</td>
+      <td>degC</td>
       <td>None</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>Eur-NorthernScandinavia.Esper.2012</td>
-      <td>Wood</td>
-      <td>MXD</td>
-      <td>Eur_014</td>
-      <td>[0.46, 1.305, 0.755, -0.1, -0.457, 1.62, 0.765...</td>
-      <td>None</td>
-      <td>None</td>
-    </tr>
-    <tr>
-      <th>2</th>
       <td>Eur-FinnishLakelands.Helama.2014</td>
       <td>Wood</td>
       <td>year</td>
@@ -904,13 +1153,23 @@ As of August 2024, the function does not reason over time representation (i.e., 
       <td>None</td>
     </tr>
     <tr>
-      <th>3</th>
-      <td>Eur-FinnishLakelands.Helama.2014</td>
+      <th>2</th>
+      <td>Eur-NorthernScandinavia.Esper.2012</td>
       <td>Wood</td>
-      <td>temperature</td>
-      <td>Eur_005</td>
-      <td>[14.603, 14.643, 12.074, 13.898, 13.671, 13.41...</td>
-      <td>degC</td>
+      <td>MXD</td>
+      <td>Eur_014</td>
+      <td>[0.46, 1.305, 0.755, -0.1, -0.457, 1.62, 0.765...</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Eur-NorthernScandinavia.Esper.2012</td>
+      <td>Wood</td>
+      <td>year</td>
+      <td>PYTECO66XAD</td>
+      <td>[-138, -137, -136, -135, -134, -133, -132, -13...</td>
+      <td>yr AD</td>
       <td>None</td>
     </tr>
     <tr>
@@ -964,17 +1223,17 @@ As of August 2024, the function does not reason over time representation (i.e., 
   <tbody>
     <tr>
       <th>0</th>
-      <td>Eur-NorthernScandinavia.Esper.2012</td>
-      <td>68.0</td>
-      <td>25.000</td>
-      <td>300.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
       <td>Eur-SpanishPyrenees.Dorado-Linan.2012</td>
       <td>42.5</td>
       <td>1.000</td>
       <td>1200.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Eur-NorthernScandinavia.Esper.2012</td>
+      <td>68.0</td>
+      <td>25.000</td>
+      <td>300.0</td>
     </tr>
     <tr>
       <th>2</th>
@@ -1045,32 +1304,19 @@ As of August 2024, the function does not reason over time representation (i.e., 
   <tbody>
     <tr>
       <th>0</th>
-      <td>Eur-NorthernScandinavia.Esper.2012</td>
+      <td>Eur-FinnishLakelands.Helama.2014</td>
       <td>Wood</td>
-      <td>year</td>
-      <td>PYTECO66XAD</td>
-      <td>[-138, -137, -136, -135, -134, -133, -132, -13...</td>
-      <td>yr AD</td>
+      <td>temperature</td>
+      <td>Eur_005</td>
+      <td>[14.603, 14.643, 12.074, 13.898, 13.671, 13.41...</td>
+      <td>degC</td>
       <td>None</td>
-      <td>68.0</td>
-      <td>25.000</td>
-      <td>300.0</td>
+      <td>62.0</td>
+      <td>28.325</td>
+      <td>130.0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>Eur-NorthernScandinavia.Esper.2012</td>
-      <td>Wood</td>
-      <td>MXD</td>
-      <td>Eur_014</td>
-      <td>[0.46, 1.305, 0.755, -0.1, -0.457, 1.62, 0.765...</td>
-      <td>None</td>
-      <td>None</td>
-      <td>68.0</td>
-      <td>25.000</td>
-      <td>300.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
       <td>Eur-FinnishLakelands.Helama.2014</td>
       <td>Wood</td>
       <td>year</td>
@@ -1083,17 +1329,30 @@ As of August 2024, the function does not reason over time representation (i.e., 
       <td>130.0</td>
     </tr>
     <tr>
-      <th>3</th>
-      <td>Eur-FinnishLakelands.Helama.2014</td>
+      <th>2</th>
+      <td>Eur-NorthernScandinavia.Esper.2012</td>
       <td>Wood</td>
-      <td>temperature</td>
-      <td>Eur_005</td>
-      <td>[14.603, 14.643, 12.074, 13.898, 13.671, 13.41...</td>
-      <td>degC</td>
+      <td>MXD</td>
+      <td>Eur_014</td>
+      <td>[0.46, 1.305, 0.755, -0.1, -0.457, 1.62, 0.765...</td>
       <td>None</td>
-      <td>62.0</td>
-      <td>28.325</td>
-      <td>130.0</td>
+      <td>None</td>
+      <td>68.0</td>
+      <td>25.000</td>
+      <td>300.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Eur-NorthernScandinavia.Esper.2012</td>
+      <td>Wood</td>
+      <td>year</td>
+      <td>PYTECO66XAD</td>
+      <td>[-138, -137, -136, -135, -134, -133, -132, -13...</td>
+      <td>yr AD</td>
+      <td>None</td>
+      <td>68.0</td>
+      <td>25.000</td>
+      <td>300.0</td>
     </tr>
     <tr>
       <th>4</th>
@@ -1123,6 +1382,28 @@ As of August 2024, the function does not reason over time representation (i.e., 
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1185,6 +1466,39 @@ As of August 2024, the function does not reason over time representation (i.e., 
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1225,21 +1539,21 @@ As of August 2024, the function does not reason over time representation (i.e., 
     </tr>
     <tr>
       <th>1</th>
-      <td>Eur-SpanishPyrenees.Dorado-Linan.2012</td>
-      <td>Wood</td>
-      <td>year</td>
-      <td>PYT2K8MIA3N</td>
-      <td>[1260, 1261, 1262, 1263, 1264, 1265, 1266, 126...</td>
-      <td>yr AD</td>
-      <td>None</td>
-    </tr>
-    <tr>
-      <th>2</th>
       <td>Eur-NorthernScandinavia.Esper.2012</td>
       <td>Wood</td>
       <td>year</td>
       <td>PYTECO66XAD</td>
       <td>[-138, -137, -136, -135, -134, -133, -132, -13...</td>
+      <td>yr AD</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Eur-SpanishPyrenees.Dorado-Linan.2012</td>
+      <td>Wood</td>
+      <td>year</td>
+      <td>PYT2K8MIA3N</td>
+      <td>[1260, 1261, 1262, 1263, 1264, 1265, 1266, 126...</td>
       <td>yr AD</td>
       <td>None</td>
     </tr>
@@ -1436,7 +1750,7 @@ As of August 2024, the function does not reason over time representation (i.e., 
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/16 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 16/16 [00:00&lt;00:00, 308.82it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 16/16 [00:00&lt;00:00, 272.01it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -1448,25 +1762,31 @@ As of August 2024, the function does not reason over time representation (i.e., 
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/16 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 12%|█▎        | 2/16 [00:00&lt;00:00, 19.23it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 12%|█▎        | 2/16 [00:00&lt;00:00, 17.63it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 25%|██▌       | 4/16 [00:00&lt;00:00, 12.36it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 25%|██▌       | 4/16 [00:00&lt;00:00, 17.15it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 38%|███▊      | 6/16 [00:00&lt;00:00, 14.66it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 38%|███▊      | 6/16 [00:00&lt;00:00, 16.62it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 56%|█████▋    | 9/16 [00:00&lt;00:00, 17.40it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 50%|█████     | 8/16 [00:00&lt;00:00, 17.20it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 69%|██████▉   | 11/16 [00:00&lt;00:00, 15.43it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 62%|██████▎   | 10/16 [00:00&lt;00:00, 10.26it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 88%|████████▊ | 14/16 [00:00&lt;00:00, 17.41it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 75%|███████▌  | 12/16 [00:00&lt;00:00, 11.66it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 16/16 [00:00&lt;00:00, 16.96it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 88%|████████▊ | 14/16 [00:01&lt;00:00, 13.37it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 16/16 [00:01&lt;00:00, 14.54it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 16/16 [00:01&lt;00:00, 13.98it/s]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done..
@@ -1475,13 +1795,13 @@ As of August 2024, the function does not reason over time representation (i.e., 
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;borehole&#39;,
- &#39;alkenone&#39;,
- &#39;Mg/Ca&#39;,
- &#39;maximum latewood density&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;alkenone&#39;,
  &#39;d18O&#39;,
  &#39;ring width&#39;,
+ &#39;maximum latewood density&#39;,
+ &#39;borehole&#39;,
  &#39;reflectance&#39;,
+ &#39;Mg/Ca&#39;,
  &#39;historical&#39;]
 </pre></div>
 </div>
@@ -1497,6 +1817,17 @@ As of August 2024, the function does not reason over time representation (i.e., 
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;ring width&#39;]
 </pre></div>
 </div>
@@ -1528,6 +1859,160 @@ As of August 2024, the function does not reason over time representation (i.e., 
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:46:12 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:46:49 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>There are 25 variables in this LiPDSeries object.
 </pre></div>
 </div>
@@ -1543,6 +2028,160 @@ As of August 2024, the function does not reason over time representation (i.e., 
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:46:12 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:46:49 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7f528cd0d870&gt;
+Traceback (most recent call last):
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
+    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
+  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
+    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
+isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>There are 25 variables in this LiPDSeries object.
 </pre></div>
 </div>
@@ -1609,7 +2248,8 @@ As of August 2024, the function does not reason over time representation (i.e., 
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1690,8 +2330,8 @@ By Deborah Khider
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>
