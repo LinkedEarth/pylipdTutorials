@@ -21,3 +21,7 @@ parts:
     chapters:
     - file: notebooks/L2_custom_queries.ipynb
     - file: notebooks/L2_using_graphdb.ipynb
+  - caption: Editing LiPD files
+    chapters:
+    - file: notebooks/L3_dataset_class.ipynb
+    - file: notebooks/L3_editing.ipynb

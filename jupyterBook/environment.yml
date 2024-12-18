@@ -4,11 +4,13 @@ channels:
   - defaults
 dependencies:
   - pip
-  - python=3.10
+  - python=3.11
   - pytest
   - pandas
+  - numpy
   - jupyter
   - jupyterlab
   - pip:
+    - pyleoclim
     - git+https://github.com/LinkedEarth/pylipd.git@main
 
