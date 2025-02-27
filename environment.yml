@@ -12,5 +12,6 @@ dependencies:
   - jupyterlab
   - pip:
     - pyleoclim
+    - openpyxl
     - git+https://github.com/LinkedEarth/pylipd.git@main
 
