@@ -7,9 +7,9 @@ dependencies:
   - python=3.11
   - pytest
   - pandas
+  - numpy
   - jupyter
   - jupyterlab
-  - numpy
   - pip:
     - pyleoclim
     - git+https://github.com/LinkedEarth/pylipd.git@main
