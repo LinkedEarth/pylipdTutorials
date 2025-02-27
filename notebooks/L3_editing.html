@@ -16,33 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -55,7 +52,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -68,7 +65,6 @@
     <link rel="prev" title="The Dataset class" href="L3_dataset_class.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -84,8 +80,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -93,6 +100,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -100,8 +108,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -117,8 +125,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -148,17 +155,21 @@
     
     
     <img src="../_static/LinkedEarth_small.png" class="logo__image only-light" alt="PyLiPD Tutorials - Home"/>
-    <img src="../_static/LinkedEarth_small.png" class="logo__image only-dark pst-js-only" alt="PyLiPD Tutorials - Home"/>
+    <script>document.write(`<img src="../_static/LinkedEarth_small.png" class="logo__image only-dark" alt="PyLiPD Tutorials - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -202,14 +213,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -253,7 +259,7 @@
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/LinkedEarth/pylipdTutorials/jupyterbook?urlpath=tree/jupyterBook/notebooks/L3_editing.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/LinkedEarth/pylipdTutorials/jupyterbook?urlpath=tree/notebooks/L3_editing.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -384,16 +390,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -494,13 +508,13 @@
 <p>Let’s import the necessary packages.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pylipd.classes.dataset</span> <span class="kn">import</span> <span class="n">Dataset</span>
-<span class="kn">from</span> <span class="nn">pylipd.lipd</span> <span class="kn">import</span> <span class="n">LiPD</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pylipd.classes.dataset</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dataset</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pylipd.lipd</span><span class="w"> </span><span class="kn">import</span> <span class="n">LiPD</span>
 
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 </pre></div>
 </div>
 </div>
@@ -508,9 +522,9 @@
 <p>The next cell allows generating unique identifier for variables called TSID in LiPD:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">uuid</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">uuid</span>
 
-<span class="k">def</span> <span class="nf">generate_unique_id</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;PYD&#39;</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_unique_id</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;PYD&#39;</span><span class="p">):</span>
     <span class="c1"># Generate a random UUID</span>
     <span class="n">random_uuid</span> <span class="o">=</span> <span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span>  <span class="c1"># Generates a random UUID.</span>
     
@@ -537,10 +551,7 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading 1 LiPD files
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/1 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1/1 [00:00&lt;00:00, 41.17it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 33.73it/s]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
@@ -642,7 +653,7 @@
 <p>Let’s add a publication to our dataset:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pylipd.classes.publication</span> <span class="kn">import</span> <span class="n">Publication</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pylipd.classes.publication</span><span class="w"> </span><span class="kn">import</span> <span class="n">Publication</span>
 </pre></div>
 </div>
 </div>
@@ -658,7 +669,7 @@
 <p>Now that we have created the object and entered the title, let’s add authors. Looking at the diagram in the preamble, authors can be set as a list of <code class="docutils literal notranslate"><span class="pre">Person</span></code>. Let’s create two authors and add them to our publication object:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pylipd.classes.person</span> <span class="kn">import</span> <span class="n">Person</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pylipd.classes.person</span><span class="w"> </span><span class="kn">import</span> <span class="n">Person</span>
 </pre></div>
 </div>
 </div>
@@ -742,53 +753,53 @@
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>depth</th>
+      <th>d18O</th>
       <th>temperature</th>
       <th>Mg/Ca</th>
+      <th>depth</th>
       <th>year</th>
-      <th>d18O</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.5</td>
+      <td>-4.176004</td>
       <td>28.686774</td>
       <td>5.023996</td>
+      <td>0.5</td>
       <td>1981.30</td>
-      <td>-4.176004</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>1.0</td>
+      <td>-4.100000</td>
       <td>28.853606</td>
       <td>5.100000</td>
+      <td>1.0</td>
       <td>1961.30</td>
-      <td>-4.100000</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1.5</td>
+      <td>-4.023996</td>
       <td>29.017971</td>
       <td>5.176004</td>
+      <td>1.5</td>
       <td>1946.37</td>
-      <td>-4.023996</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>2.0</td>
+      <td>-3.715535</td>
       <td>29.661152</td>
       <td>5.484465</td>
+      <td>2.0</td>
       <td>1952.00</td>
-      <td>-3.715535</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>2.5</td>
+      <td>-4.484465</td>
       <td>27.982737</td>
       <td>4.715535</td>
+      <td>2.5</td>
       <td>1906.37</td>
-      <td>-4.484465</td>
     </tr>
   </tbody>
 </table>
@@ -802,25 +813,26 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;depth&#39;: {&#39;@id&#39;: &#39;http://linked.earth/lipd/paleo0measurement0.WEB-1e2a2-4620-480b-9ec6-674da.depth&#39;,
-  &#39;interpretation&#39;: [{&#39;@id&#39;: &#39;http://linked.earth/lipd/paleo0measurement0.WEB-1e2a2-4620-480b-9ec6-674da.depth.Interpretation1&#39;}],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;d18O&#39;: {&#39;@id&#39;: &#39;http://linked.earth/lipd/paleo0measurement0.WEB-f24e5-dcca-4743-b487-5c6fd.d18O&#39;,
+  &#39;interpretation&#39;: [{&#39;@id&#39;: &#39;http://linked.earth/lipd/paleo0measurement0.WEB-f24e5-dcca-4743-b487-5c6fd.d18O.Interpretation1&#39;}],
   &#39;archiveType&#39;: &#39;Marine sediment&#39;,
-  &#39;number&#39;: 1,
-  &#39;hasMaxValue&#39;: 23.0,
-  &#39;hasMeanValue&#39;: 11.75,
-  &#39;hasMedianValue&#39;: 10.75,
-  &#39;hasMinValue&#39;: 0.5,
-  &#39;variableName&#39;: &#39;depth&#39;,
-  &#39;resolution&#39;: {&#39;@id&#39;: &#39;http://linked.earth/lipd/paleo0measurement0.WEB-1e2a2-4620-480b-9ec6-674da.depth.Resolution&#39;,
+  &#39;number&#39;: 4,
+  &#39;hasMaxValue&#39;: -3.402095638,
+  &#39;hasMeanValue&#39;: -4.067024716065219,
+  &#39;hasMedianValue&#39;: -4.0811507979999995,
+  &#39;hasMinValue&#39;: -4.797904362,
+  &#39;variableName&#39;: &#39;d18O&#39;,
+  &#39;proxy&#39;: &#39;d18O&#39;,
+  &#39;resolution&#39;: {&#39;@id&#39;: &#39;http://linked.earth/lipd/paleo0measurement0.WEB-f24e5-dcca-4743-b487-5c6fd.d18O.Resolution&#39;,
    &#39;hasMaxValue&#39;: 66.52999999999997,
    &#39;hasMeanValue&#39;: 20.9051111111111,
    &#39;hasMedianValue&#39;: 3.1700000000000728,
    &#39;hasMinValue&#39;: 3.1699999999998454},
-  &#39;hasStandardVariable&#39;: &#39;depth&#39;,
-  &#39;units&#39;: &#39;cm&#39;,
-  &#39;TSid&#39;: &#39;WEB-1e2a2-4620-480b-9ec6-674da&#39;,
+  &#39;hasStandardVariable&#39;: &#39;d18O&#39;,
+  &#39;units&#39;: &#39;permil&#39;,
+  &#39;TSid&#39;: &#39;WEB-f24e5-dcca-4743-b487-5c6fd&#39;,
   &#39;variableType&#39;: &#39;measured&#39;,
-  &#39;proxyObservationType&#39;: &#39;depth&#39;},
+  &#39;proxyObservationType&#39;: &#39;d18O&#39;},
  &#39;temperature&#39;: {&#39;@id&#39;: &#39;http://linked.earth/lipd/paleo0measurement0.WEB-5dd32-9b60-4662-9b73-ad1b3.temperature&#39;,
   &#39;interpretation&#39;: [{&#39;@id&#39;: &#39;http://linked.earth/lipd/paleo0measurement0.WEB-5dd32-9b60-4662-9b73-ad1b3.temperature.Interpretation1&#39;}],
   &#39;archiveType&#39;: &#39;Marine sediment&#39;,
@@ -866,6 +878,25 @@
   &#39;TSid&#39;: &#39;WEB-c745d-99e8-4f77-9042-748f9&#39;,
   &#39;variableType&#39;: &#39;measured&#39;,
   &#39;proxyObservationType&#39;: &#39;Mg/Ca&#39;},
+ &#39;depth&#39;: {&#39;@id&#39;: &#39;http://linked.earth/lipd/paleo0measurement0.WEB-1e2a2-4620-480b-9ec6-674da.depth&#39;,
+  &#39;interpretation&#39;: [{&#39;@id&#39;: &#39;http://linked.earth/lipd/paleo0measurement0.WEB-1e2a2-4620-480b-9ec6-674da.depth.Interpretation1&#39;}],
+  &#39;archiveType&#39;: &#39;Marine sediment&#39;,
+  &#39;number&#39;: 1,
+  &#39;hasMaxValue&#39;: 23.0,
+  &#39;hasMeanValue&#39;: 11.75,
+  &#39;hasMedianValue&#39;: 10.75,
+  &#39;hasMinValue&#39;: 0.5,
+  &#39;variableName&#39;: &#39;depth&#39;,
+  &#39;resolution&#39;: {&#39;@id&#39;: &#39;http://linked.earth/lipd/paleo0measurement0.WEB-1e2a2-4620-480b-9ec6-674da.depth.Resolution&#39;,
+   &#39;hasMaxValue&#39;: 66.52999999999997,
+   &#39;hasMeanValue&#39;: 20.9051111111111,
+   &#39;hasMedianValue&#39;: 3.1700000000000728,
+   &#39;hasMinValue&#39;: 3.1699999999998454},
+  &#39;hasStandardVariable&#39;: &#39;depth&#39;,
+  &#39;units&#39;: &#39;cm&#39;,
+  &#39;TSid&#39;: &#39;WEB-1e2a2-4620-480b-9ec6-674da&#39;,
+  &#39;variableType&#39;: &#39;measured&#39;,
+  &#39;proxyObservationType&#39;: &#39;depth&#39;},
  &#39;year&#39;: {&#39;@id&#39;: &#39;http://linked.earth/lipd/paleo0measurement0.WEB-e6f66-1365-427c-af34-363a2.year&#39;,
   &#39;interpretation&#39;: [{&#39;@id&#39;: &#39;http://linked.earth/lipd/paleo0measurement0.WEB-e6f66-1365-427c-af34-363a2.year.Interpretation1&#39;}],
   &#39;archiveType&#39;: &#39;Marine sediment&#39;,
@@ -879,27 +910,7 @@
   &#39;units&#39;: &#39;yr AD&#39;,
   &#39;TSid&#39;: &#39;WEB-e6f66-1365-427c-af34-363a2&#39;,
   &#39;variableType&#39;: &#39;inferred&#39;,
-  &#39;inferredVariableType&#39;: &#39;year&#39;},
- &#39;d18O&#39;: {&#39;@id&#39;: &#39;http://linked.earth/lipd/paleo0measurement0.WEB-f24e5-dcca-4743-b487-5c6fd.d18O&#39;,
-  &#39;interpretation&#39;: [{&#39;@id&#39;: &#39;http://linked.earth/lipd/paleo0measurement0.WEB-f24e5-dcca-4743-b487-5c6fd.d18O.Interpretation1&#39;}],
-  &#39;archiveType&#39;: &#39;Marine sediment&#39;,
-  &#39;number&#39;: 4,
-  &#39;hasMaxValue&#39;: -3.402095638,
-  &#39;hasMeanValue&#39;: -4.067024716065219,
-  &#39;hasMedianValue&#39;: -4.0811507979999995,
-  &#39;hasMinValue&#39;: -4.797904362,
-  &#39;variableName&#39;: &#39;d18O&#39;,
-  &#39;proxy&#39;: &#39;d18O&#39;,
-  &#39;resolution&#39;: {&#39;@id&#39;: &#39;http://linked.earth/lipd/paleo0measurement0.WEB-f24e5-dcca-4743-b487-5c6fd.d18O.Resolution&#39;,
-   &#39;hasMaxValue&#39;: 66.52999999999997,
-   &#39;hasMeanValue&#39;: 20.9051111111111,
-   &#39;hasMedianValue&#39;: 3.1700000000000728,
-   &#39;hasMinValue&#39;: 3.1699999999998454},
-  &#39;hasStandardVariable&#39;: &#39;d18O&#39;,
-  &#39;units&#39;: &#39;permil&#39;,
-  &#39;TSid&#39;: &#39;WEB-f24e5-dcca-4743-b487-5c6fd&#39;,
-  &#39;variableType&#39;: &#39;measured&#39;,
-  &#39;proxyObservationType&#39;: &#39;d18O&#39;}}
+  &#39;inferredVariableType&#39;: &#39;year&#39;}}
 </pre></div>
 </div>
 </div>
@@ -942,7 +953,7 @@ Make sure that the number of realization of the age ensembles correspond to the 
 <p>Since there are none, we will have to create a <code class="docutils literal notranslate"><span class="pre">ChronData</span></code> object in addition to a <code class="docutils literal notranslate"><span class="pre">Table</span></code> and <code class="docutils literal notranslate"><span class="pre">Model</span></code> object. Let’s start with creating a <code class="docutils literal notranslate"><span class="pre">Table</span></code> object for the ensemble we have just created:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pylipd.classes.datatable</span> <span class="kn">import</span> <span class="n">DataTable</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pylipd.classes.datatable</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataTable</span>
 
 <span class="n">ensemble_table</span> <span class="o">=</span> <span class="n">DataTable</span><span class="p">()</span>
 </pre></div>
@@ -989,27 +1000,27 @@ Make sure that the number of realization of the age ensembles correspond to the 
     <tr>
       <th>0</th>
       <td>0.5</td>
-      <td>[1979.2648387681054, 1985.768191076515, 1984.7...</td>
+      <td>[1980.86392039147, 1981.9299125203563, 1988.13...</td>
     </tr>
     <tr>
       <th>1</th>
       <td>1.0</td>
-      <td>[1960.524410715646, 1960.316468547741, 1970.30...</td>
+      <td>[1966.6221259915496, 1957.2336616892658, 1961....</td>
     </tr>
     <tr>
       <th>2</th>
       <td>1.5</td>
-      <td>[1949.4173621471534, 1943.741248943736, 1946.8...</td>
+      <td>[1946.7146340635609, 1947.8779369752401, 1944....</td>
     </tr>
     <tr>
       <th>3</th>
       <td>2.0</td>
-      <td>[1957.6899080837127, 1946.2838848540448, 1946....</td>
+      <td>[1947.5117971171346, 1960.6027105934163, 1960....</td>
     </tr>
     <tr>
       <th>4</th>
       <td>2.5</td>
-      <td>[1906.6000150368072, 1900.4965541754896, 1906....</td>
+      <td>[1913.5814128812046, 1906.42398635865, 1908.14...</td>
     </tr>
   </tbody>
 </table>
@@ -1044,7 +1055,7 @@ Make sure that the number of realization of the age ensembles correspond to the 
 <p>Now add the table to a model:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pylipd.classes.model</span> <span class="kn">import</span> <span class="n">Model</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pylipd.classes.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">()</span>
 <span class="n">model</span><span class="o">.</span><span class="n">addEnsembleTable</span><span class="p">(</span><span class="n">ensemble_table</span><span class="p">)</span>
 </pre></div>
@@ -1054,7 +1065,7 @@ Make sure that the number of realization of the age ensembles correspond to the 
 <p>And add the Model to a ChronData object:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pylipd.classes.chrondata</span> <span class="kn">import</span> <span class="n">ChronData</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pylipd.classes.chrondata</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChronData</span>
 <span class="n">cd</span> <span class="o">=</span> <span class="n">ChronData</span><span class="p">()</span>
 <span class="n">cd</span><span class="o">.</span><span class="n">addModeledBy</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
 </pre></div>
@@ -1077,7 +1088,7 @@ Make sure that the number of realization of the age ensembles correspond to the 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;pylipd.classes.chrondata.ChronData at 0x7f813584cdc0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;pylipd.classes.chrondata.ChronData at 0x3000f2950&gt;]
 </pre></div>
 </div>
 </div>
@@ -1154,8 +1165,7 @@ Make sure that the number of realization of the age ensembles correspond to the 
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1198,7 +1208,7 @@ Make sure that the number of realization of the age ensembles correspond to the 
   <div class="footer-item">
     
 <p class="component-author">
-By Deborah Khider
+By Deborah Khider, Varun Ratnakar
 </p>
 
   </div>
@@ -1232,8 +1242,8 @@ By Deborah Khider
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

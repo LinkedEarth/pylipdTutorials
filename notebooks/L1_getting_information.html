@@ -16,33 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -55,7 +52,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -67,7 +64,6 @@
     <link rel="prev" title="Working with ensembles in PyLiPD" href="L1_working_with_ensembles.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -83,8 +79,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -92,6 +99,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -99,8 +107,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -116,8 +124,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -147,17 +154,21 @@
     
     
     <img src="../_static/LinkedEarth_small.png" class="logo__image only-light" alt="PyLiPD Tutorials - Home"/>
-    <img src="../_static/LinkedEarth_small.png" class="logo__image only-dark pst-js-only" alt="PyLiPD Tutorials - Home"/>
+    <script>document.write(`<img src="../_static/LinkedEarth_small.png" class="logo__image only-dark" alt="PyLiPD Tutorials - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -201,14 +212,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -252,7 +258,7 @@
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/LinkedEarth/pylipdTutorials/jupyterbook?urlpath=tree/jupyterBook/notebooks/L1_getting_information.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/LinkedEarth/pylipdTutorials/jupyterbook?urlpath=tree/notebooks/L1_getting_information.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -383,16 +389,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -490,7 +504,7 @@
 <p>Let’s start by importing our favorite package and load our datasets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pylipd.lipd</span> <span class="kn">import</span> <span class="n">LiPD</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pylipd.lipd</span><span class="w"> </span><span class="kn">import</span> <span class="n">LiPD</span>
 </pre></div>
 </div>
 </div>
@@ -509,239 +523,7 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading 16 LiPD files
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/16 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7ffaa84996c0&gt;
-Traceback (most recent call last):
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
-    return conv_func(lexical)  # type: ignore[arg-type]
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
-    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
-    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
-isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7ffaa84996c0&gt;
-Traceback (most recent call last):
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
-    return conv_func(lexical)  # type: ignore[arg-type]
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
-    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
-    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
-isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7ffaa84996c0&gt;
-Traceback (most recent call last):
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
-    return conv_func(lexical)  # type: ignore[arg-type]
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
-    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
-    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
-isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7ffaa84996c0&gt;
-Traceback (most recent call last):
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
-    return conv_func(lexical)  # type: ignore[arg-type]
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
-    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
-    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
-isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:46:16 U&#39;
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7ffaa84996c0&gt;
-Traceback (most recent call last):
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
-    return conv_func(lexical)  # type: ignore[arg-type]
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
-    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
-    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
-isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7ffaa84996c0&gt;
-Traceback (most recent call last):
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
-    return conv_func(lexical)  # type: ignore[arg-type]
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
-    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
-    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
-isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 31%|███▏      | 5/16 [00:00&lt;00:00, 41.67it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7ffaa84996c0&gt;
-Traceback (most recent call last):
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
-    return conv_func(lexical)  # type: ignore[arg-type]
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
-    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
-    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
-isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7ffaa84996c0&gt;
-Traceback (most recent call last):
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
-    return conv_func(lexical)  # type: ignore[arg-type]
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
-    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
-    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
-isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7ffaa84996c0&gt;
-Traceback (most recent call last):
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
-    return conv_func(lexical)  # type: ignore[arg-type]
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
-    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
-    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
-isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7ffaa84996c0&gt;
-Traceback (most recent call last):
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
-    return conv_func(lexical)  # type: ignore[arg-type]
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
-    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
-    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
-isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7ffaa84996c0&gt;
-Traceback (most recent call last):
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
-    return conv_func(lexical)  # type: ignore[arg-type]
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
-    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
-    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
-isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:46:49 U&#39;
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7ffaa84996c0&gt;
-Traceback (most recent call last):
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
-    return conv_func(lexical)  # type: ignore[arg-type]
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
-    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
-    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
-isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 62%|██████▎   | 10/16 [00:00&lt;00:00, 44.48it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7ffaa84996c0&gt;
-Traceback (most recent call last):
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
-    return conv_func(lexical)  # type: ignore[arg-type]
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
-    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
-    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
-isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7ffaa84996c0&gt;
-Traceback (most recent call last):
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
-    return conv_func(lexical)  # type: ignore[arg-type]
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
-    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
-    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
-isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7ffaa84996c0&gt;
-Traceback (most recent call last):
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
-    return conv_func(lexical)  # type: ignore[arg-type]
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
-    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
-    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
-isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:47:20 U&#39;
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7ffaa84996c0&gt;
-Traceback (most recent call last):
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
-    return conv_func(lexical)  # type: ignore[arg-type]
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
-    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
-    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
-isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7ffaa84996c0&gt;
-Traceback (most recent call last):
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
-    return conv_func(lexical)  # type: ignore[arg-type]
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
-    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
-    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
-isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7ffaa84996c0&gt;
-Traceback (most recent call last):
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
-    return conv_func(lexical)  # type: ignore[arg-type]
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
-    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
-    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
-isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:46:12 U&#39;
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7ffaa84996c0&gt;
-Traceback (most recent call last):
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
-    return conv_func(lexical)  # type: ignore[arg-type]
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
-    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
-    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
-isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 94%|█████████▍| 15/16 [00:00&lt;00:00, 34.63it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7ffaa84996c0&gt;
-Traceback (most recent call last):
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
-    return conv_func(lexical)  # type: ignore[arg-type]
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
-    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
-    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
-isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-23 23:41:56 U&#39;
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 16/16 [00:00&lt;00:00, 37.05it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████████████████████████████████████| 16/16 [00:00&lt;00:00, 136.57it/s]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
@@ -764,41 +546,7 @@ isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-2
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading 3 LiPD files
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/3 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 33%|███▎      | 1/3 [00:00&lt;00:00,  2.71it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 67%|██████▋   | 2/3 [00:01&lt;00:00,  1.18it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7ffaa84996c0&gt;
-Traceback (most recent call last):
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
-    return conv_func(lexical)  # type: ignore[arg-type]
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
-    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
-    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
-isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-16 16:21:45 U&#39;
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#date, Converter=&lt;function parse_xsd_date at 0x7ffaa84996c0&gt;
-Traceback (most recent call last):
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/term.py&quot;, line 2163, in _castLexicalToPython
-    return conv_func(lexical)  # type: ignore[arg-type]
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/rdflib/xsd_datetime.py&quot;, line 593, in parse_xsd_date
-    return parse_date(date_string if not minus else (&quot;-&quot; + date_string))
-  File &quot;/usr/share/miniconda/envs/pylipd/lib/python3.10/site-packages/isodate/isodates.py&quot;, line 193, in parse_date
-    raise ISO8601Error(&quot;Unrecognised ISO 8601 date format: %r&quot; % datestring)
-isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-12 20:17:06 U&#39;
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 3/3 [00:01&lt;00:00,  1.75it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 3/3 [00:01&lt;00:00,  1.67it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████████| 3/3 [00:00&lt;00:00,  3.74it/s]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
@@ -821,21 +569,21 @@ isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-1
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Ocn-RedSea.Felis.2000&#39;,
- &#39;Eur-CoastofPortugal.Abrantes.2011&#39;,
- &#39;Eur-LakeSilvaplana.Trachsel.2010&#39;,
- &#39;Arc-Kongressvatnet.D_Andrea.2012&#39;,
- &#39;Ocn-AlboranSea436B.Nieto-Moreno.2013&#39;,
- &#39;Ocn-SinaiPeninsula_RedSea.Moustafa.2000&#39;,
- &#39;Eur-Stockholm.Leijonhufvud.2009&#39;,
- &#39;Eur-NorthernScandinavia.Esper.2012&#39;,
- &#39;Eur-SpannagelCave.Mangini.2005&#39;,
- &#39;Eur-NorthernSpain.Martin-Chivelet.2011&#39;,
- &#39;Asi-SourthAndMiddleUrals.Demezhko.2007&#39;,
- &#39;Ocn-PedradeLume-CapeVerdeIslands.Moses.2006&#39;,
- &#39;Ocn-FeniDrift.Richter.2009&#39;,
- &#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;,
  &#39;Ant-WAIS-Divide.Severinghaus.2012&#39;,
+ &#39;Asi-SourthAndMiddleUrals.Demezhko.2007&#39;,
+ &#39;Ocn-AlboranSea436B.Nieto-Moreno.2013&#39;,
+ &#39;Eur-SpannagelCave.Mangini.2005&#39;,
+ &#39;Ocn-FeniDrift.Richter.2009&#39;,
+ &#39;Eur-LakeSilvaplana.Trachsel.2010&#39;,
+ &#39;Ocn-PedradeLume-CapeVerdeIslands.Moses.2006&#39;,
+ &#39;Ocn-SinaiPeninsula_RedSea.Moustafa.2000&#39;,
+ &#39;Eur-NorthernSpain.Martin-Chivelet.2011&#39;,
+ &#39;Arc-Kongressvatnet.D_Andrea.2012&#39;,
+ &#39;Eur-CoastofPortugal.Abrantes.2011&#39;,
+ &#39;Eur-SpanishPyrenees.Dorado-Linan.2012&#39;,
  &#39;Eur-FinnishLakelands.Helama.2014&#39;,
+ &#39;Eur-NorthernScandinavia.Esper.2012&#39;,
+ &#39;Eur-Stockholm.Leijonhufvud.2009&#39;,
  &#39;Crystal.McCabe-Glynn.2013&#39;,
  &#39;ODP846.Lawrence.2006&#39;,
  &#39;CO06MOPE&#39;]
@@ -864,21 +612,21 @@ isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-1
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;4fZQAHmeuJn8ipLfurWv&#39;,
- &#39;33wLrOlZRR8hw53DVKSr&#39;,
- &#39;23GDZxTEJsBQAH05hU4g&#39;,
- &#39;pwY7bQRstXsZc6iOpgRI&#39;,
- &#39;fYUegig785BJMl3NrZcz&#39;,
- &#39;wH1adV7y36OC0h3kwDRF&#39;,
- &#39;uOhCAmcuPO5Xo9rSniHn&#39;,
- &#39;fyUORoSbcL0GP0J3wyoj&#39;,
- &#39;19nwWA48PSW3uSoDRiA4&#39;,
- &#39;WX0GIjmoc46FH1Oj4c5r&#39;,
- &#39;mE7P31hoHDXy1Q9yfQlq&#39;,
- &#39;HH7jd52QFWaBgs9OvMqP&#39;,
- &#39;IVVTVphliHduuTjQhlTM&#39;,
- &#39;PPWjMBBkRAcCv6bkL58K&#39;,
  &#39;5oHqINxYpL0XCaLcIjhR&#39;,
+ &#39;mE7P31hoHDXy1Q9yfQlq&#39;,
+ &#39;fYUegig785BJMl3NrZcz&#39;,
+ &#39;19nwWA48PSW3uSoDRiA4&#39;,
+ &#39;IVVTVphliHduuTjQhlTM&#39;,
+ &#39;23GDZxTEJsBQAH05hU4g&#39;,
+ &#39;HH7jd52QFWaBgs9OvMqP&#39;,
+ &#39;wH1adV7y36OC0h3kwDRF&#39;,
+ &#39;WX0GIjmoc46FH1Oj4c5r&#39;,
+ &#39;pwY7bQRstXsZc6iOpgRI&#39;,
+ &#39;33wLrOlZRR8hw53DVKSr&#39;,
+ &#39;PPWjMBBkRAcCv6bkL58K&#39;,
  &#39;ZDMEZiVVO4eFNwBA4D3o&#39;,
+ &#39;fyUORoSbcL0GP0J3wyoj&#39;,
+ &#39;uOhCAmcuPO5Xo9rSniHn&#39;,
  &#39;iso2k100_CO06MOPE&#39;]
 </pre></div>
 </div>
@@ -909,12 +657,12 @@ isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-1
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Coral&#39;,
+ &#39;Borehole&#39;,
  &#39;Marine sediment&#39;,
- &#39;Lake sediment&#39;,
- &#39;Documents&#39;,
- &#39;Wood&#39;,
  &#39;Speleothem&#39;,
- &#39;Borehole&#39;]
+ &#39;Lake sediment&#39;,
+ &#39;Wood&#39;,
+ &#39;Documents&#39;]
 </pre></div>
 </div>
 </div>
@@ -964,59 +712,59 @@ isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-1
     </tr>
     <tr>
       <th>1</th>
-      <td>Eur-CoastofPortugal.Abrantes.2011</td>
-      <td>41.1000</td>
-      <td>-8.9000</td>
-      <td>-80.0</td>
+      <td>Ant-WAIS-Divide.Severinghaus.2012</td>
+      <td>-79.4630</td>
+      <td>-112.1250</td>
+      <td>1766.0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>Eur-LakeSilvaplana.Trachsel.2010</td>
-      <td>46.5000</td>
-      <td>9.8000</td>
-      <td>1791.0</td>
+      <td>Asi-SourthAndMiddleUrals.Demezhko.2007</td>
+      <td>55.0000</td>
+      <td>59.5000</td>
+      <td>1900.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>Arc-Kongressvatnet.D'Andrea.2012</td>
-      <td>78.0217</td>
-      <td>13.9311</td>
-      <td>94.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
       <td>Ocn-AlboranSea436B.Nieto-Moreno.2013</td>
       <td>36.2053</td>
       <td>-4.3133</td>
       <td>-1108.0</td>
     </tr>
     <tr>
-      <th>5</th>
-      <td>Ocn-SinaiPeninsula,RedSea.Moustafa.2000</td>
-      <td>27.8483</td>
-      <td>34.3100</td>
-      <td>-3.0</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>Eur-Stockholm.Leijonhufvud.2009</td>
-      <td>59.3200</td>
-      <td>18.0600</td>
-      <td>10.0</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>Eur-NorthernScandinavia.Esper.2012</td>
-      <td>68.0000</td>
-      <td>25.0000</td>
-      <td>300.0</td>
-    </tr>
-    <tr>
-      <th>8</th>
+      <th>4</th>
       <td>Eur-SpannagelCave.Mangini.2005</td>
       <td>47.1000</td>
       <td>11.6000</td>
       <td>2347.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Ocn-FeniDrift.Richter.2009</td>
+      <td>55.5000</td>
+      <td>-13.9000</td>
+      <td>-2543.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Eur-LakeSilvaplana.Trachsel.2010</td>
+      <td>46.5000</td>
+      <td>9.8000</td>
+      <td>1791.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Ocn-PedradeLume-CapeVerdeIslands.Moses.2006</td>
+      <td>16.7600</td>
+      <td>-22.8883</td>
+      <td>-5.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Ocn-SinaiPeninsula,RedSea.Moustafa.2000</td>
+      <td>27.8483</td>
+      <td>34.3100</td>
+      <td>-3.0</td>
     </tr>
     <tr>
       <th>9</th>
@@ -1027,45 +775,45 @@ isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-1
     </tr>
     <tr>
       <th>10</th>
-      <td>Asi-SourthAndMiddleUrals.Demezhko.2007</td>
-      <td>55.0000</td>
-      <td>59.5000</td>
-      <td>1900.0</td>
+      <td>Arc-Kongressvatnet.D'Andrea.2012</td>
+      <td>78.0217</td>
+      <td>13.9311</td>
+      <td>94.0</td>
     </tr>
     <tr>
       <th>11</th>
-      <td>Ocn-PedradeLume-CapeVerdeIslands.Moses.2006</td>
-      <td>16.7600</td>
-      <td>-22.8883</td>
-      <td>-5.0</td>
+      <td>Eur-CoastofPortugal.Abrantes.2011</td>
+      <td>41.1000</td>
+      <td>-8.9000</td>
+      <td>-80.0</td>
     </tr>
     <tr>
       <th>12</th>
-      <td>Ocn-FeniDrift.Richter.2009</td>
-      <td>55.5000</td>
-      <td>-13.9000</td>
-      <td>-2543.0</td>
-    </tr>
-    <tr>
-      <th>13</th>
       <td>Eur-SpanishPyrenees.Dorado-Linan.2012</td>
       <td>42.5000</td>
       <td>1.0000</td>
       <td>1200.0</td>
     </tr>
     <tr>
-      <th>14</th>
-      <td>Ant-WAIS-Divide.Severinghaus.2012</td>
-      <td>-79.4630</td>
-      <td>-112.1250</td>
-      <td>1766.0</td>
-    </tr>
-    <tr>
-      <th>15</th>
+      <th>13</th>
       <td>Eur-FinnishLakelands.Helama.2014</td>
       <td>62.0000</td>
       <td>28.3250</td>
       <td>130.0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Eur-NorthernScandinavia.Esper.2012</td>
+      <td>68.0000</td>
+      <td>25.0000</td>
+      <td>300.0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Eur-Stockholm.Leijonhufvud.2009</td>
+      <td>59.3200</td>
+      <td>18.0600</td>
+      <td>10.0</td>
     </tr>
     <tr>
       <th>16</th>
@@ -1105,58 +853,58 @@ isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-1
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;d18O&#39;,
  &#39;year&#39;,
- &#39;temperature&#39;,
- &#39;Uk37&#39;,
- &#39;MXD&#39;,
- &#39;Mg_Ca&#39;,
- &#39;depth_top&#39;,
- &#39;notes&#39;,
- &#39;depth_bottom&#39;,
- &#39;trsgi&#39;,
  &#39;uncertainty_temperature&#39;,
- &#39;230th age&#39;,
- &#39;corr_age_uncert&#39;,
- &#39;age&#39;,
- &#39;sample&#39;,
- &#39;230th/238u_uncertainty&#39;,
- &#39;230th age_uncertaity&#39;,
- &#39;230th/232th&#39;,
- &#39;d234u_undertainty&#39;,
- &#39;depth&#39;,
- &#39;d18o&#39;,
- &#39;d234uinitial&#39;,
- &#39;230th age_uncertainty&#39;,
- &#39;230th/232th_uncertainty&#39;,
- &#39;d234uinitial_uncertainty&#39;,
- &#39;232th&#39;,
- &#39;corr_age&#39;,
- &#39;232th_uncertainty&#39;,
- &#39;d234u&#39;,
- &#39;230th/238u&#39;,
- &#39;238u_uncertainty&#39;,
+ &#39;temperature&#39;,
+ &#39;depth_top&#39;,
+ &#39;depth_bottom&#39;,
+ &#39;Mg_Ca&#39;,
+ &#39;notes&#39;,
+ &#39;Uk37&#39;,
+ &#39;trsgi&#39;,
+ &#39;MXD&#39;,
  &#39;depth_dating&#39;,
- &#39;Year&#39;,
+ &#39;230th/238u_uncertainty&#39;,
+ &#39;238u_uncertainty&#39;,
+ &#39;232th&#39;,
+ &#39;d234u_undertainty&#39;,
+ &#39;230th/232th_uncertainty&#39;,
+ &#39;depth&#39;,
+ &#39;230th/232th&#39;,
+ &#39;d234u&#39;,
  &#39;238u&#39;,
- &#39;section&#39;,
- &#39;depth comp&#39;,
+ &#39;230th/238u&#39;,
+ &#39;230th age_uncertainty&#39;,
+ &#39;d234uinitial_uncertainty&#39;,
+ &#39;Year&#39;,
+ &#39;d234uinitial&#39;,
+ &#39;sample&#39;,
+ &#39;corr_age_uncert&#39;,
+ &#39;corr_age&#39;,
+ &#39;230th age&#39;,
+ &#39;230th age_uncertaity&#39;,
+ &#39;232th_uncertainty&#39;,
+ &#39;age&#39;,
+ &#39;d18o&#39;,
+ &#39;median&#39;,
+ &#39;site/hole&#39;,
+ &#39;sample label&#39;,
+ &#39;temp prahl&#39;,
  &#39;lower95&#39;,
  &#39;c37 total&#39;,
  &#39;u. peregrina d18o&#39;,
- &#39;u. peregrina d13c&#39;,
- &#39;d180&#39;,
- &#39;depth cr&#39;,
- &#39;upper95&#39;,
- &#39;sample label&#39;,
- &#39;c. wuellerstorfi d18o&#39;,
- &#39;site/hole&#39;,
- &#39;event&#39;,
- &#39;ukprime37&#39;,
- &#39;interval&#39;,
  &#39;c. wuellerstorfi d13c&#39;,
- &#39;median&#39;,
+ &#39;section&#39;,
+ &#39;d180&#39;,
+ &#39;u. peregrina d13c&#39;,
+ &#39;event&#39;,
  &#39;temp muller&#39;,
+ &#39;c. wuellerstorfi d18o&#39;,
+ &#39;depth cr&#39;,
+ &#39;depth comp&#39;,
+ &#39;ukprime37&#39;,
  &#39;sst&#39;,
- &#39;temp prahl&#39;]
+ &#39;upper95&#39;,
+ &#39;interval&#39;]
 </pre></div>
 </div>
 </div>
@@ -1202,26 +950,26 @@ isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-1
     </tr>
     <tr>
       <th>1</th>
-      <td>http://linked.earth/lipd/Ocn-SinaiPeninsula_Re...</td>
-      <td>Ocean2kHR_018</td>
-      <td>d18O</td>
-    </tr>
-    <tr>
-      <th>2</th>
       <td>http://linked.earth/lipd/Eur-SpannagelCave.Man...</td>
       <td>Eur_001</td>
       <td>d18O</td>
     </tr>
     <tr>
+      <th>2</th>
+      <td>http://linked.earth/lipd/Ocn-PedradeLume-CapeV...</td>
+      <td>Ocean2kHR_107</td>
+      <td>d18O</td>
+    </tr>
+    <tr>
       <th>3</th>
-      <td>http://linked.earth/lipd/Eur-NorthernSpain.Mar...</td>
-      <td>Eur_008</td>
+      <td>http://linked.earth/lipd/Ocn-SinaiPeninsula_Re...</td>
+      <td>Ocean2kHR_018</td>
       <td>d18O</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>http://linked.earth/lipd/Ocn-PedradeLume-CapeV...</td>
-      <td>Ocean2kHR_107</td>
+      <td>http://linked.earth/lipd/Eur-NorthernSpain.Mar...</td>
+      <td>Eur_008</td>
       <td>d18O</td>
     </tr>
     <tr>
@@ -1233,32 +981,32 @@ isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-1
     <tr>
       <th>93</th>
       <td>http://linked.earth/lipd/paleo0measurement1.PY...</td>
-      <td>PYT19MC8WE2</td>
-      <td>c. wuellerstorfi d13c</td>
+      <td>PYTPQ0FJO1S</td>
+      <td>depth comp</td>
     </tr>
     <tr>
       <th>94</th>
-      <td>http://linked.earth/lipd/chron0model0summary0....</td>
-      <td>PYT7DLYN7X4</td>
-      <td>median</td>
+      <td>http://linked.earth/lipd/paleo0measurement0.PY...</td>
+      <td>PYTM9N6HCQM</td>
+      <td>ukprime37</td>
     </tr>
     <tr>
       <th>95</th>
-      <td>http://linked.earth/lipd/paleo0measurement0.PY...</td>
-      <td>PYTGO6NV72Y</td>
-      <td>temp muller</td>
-    </tr>
-    <tr>
-      <th>96</th>
       <td>http://linked.earth/lipd/paleo0model0ensemble0...</td>
       <td>PYTDW6AIJPW</td>
       <td>sst</td>
     </tr>
     <tr>
+      <th>96</th>
+      <td>http://linked.earth/lipd/chron0model0summary0....</td>
+      <td>PYTDIEKUM44</td>
+      <td>upper95</td>
+    </tr>
+    <tr>
       <th>97</th>
       <td>http://linked.earth/lipd/paleo0measurement0.PY...</td>
-      <td>PYT95DVDUU3</td>
-      <td>temp prahl</td>
+      <td>PYT2ZB6MLZ9</td>
+      <td>interval</td>
     </tr>
   </tbody>
 </table>
@@ -1277,59 +1025,25 @@ isodate.isoerror.ISO8601Error: Unrecognised ISO 8601 date format: &#39;2022-08-1
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI (None), creating the entry manually
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI (None), creating the entry manually
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI (None), creating the entry manually
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI (None), creating the entry manually
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI (None), creating the entry manually
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI (None), creating the entry manually
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI (http://nbn-resolving.de/urn:nbn:de:gbv:46-ep000102745), creating the entry manually
 Cannot find a matching record for the provided DOI (None), creating the entry manually
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI (None), creating the entry manually
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI (None), creating the entry manually
 Cannot find a matching record for the provided DOI (None), creating the entry manually
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI (None), creating the entry manually
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI (None), creating the entry manually
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI (None), creating the entry manually
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI (None), creating the entry manually
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI (None), creating the entry manually
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI (None), creating the entry manually
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI (None), creating the entry manually
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI (None), creating the entry manually
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot find a matching record for the provided DOI (None), creating the entry manually
+Cannot find a matching record for the provided DOI (None), creating the entry manually
+Cannot find a matching record for the provided DOI (None), creating the entry manually
+Cannot find a matching record for the provided DOI (None), creating the entry manually
+Cannot find a matching record for the provided DOI (None), creating the entry manually
+Cannot find a matching record for the provided DOI (None), creating the entry manually
+Cannot find a matching record for the provided DOI (None), creating the entry manually
+Cannot find a matching record for the provided DOI (http://nbn-resolving.de/urn:nbn:de:gbv:46-ep000102745), creating the entry manually
+Cannot find a matching record for the provided DOI (None), creating the entry manually
+Cannot find a matching record for the provided DOI (None), creating the entry manually
+Cannot find a matching record for the provided DOI (None), creating the entry manually
+Cannot find a matching record for the provided DOI (None), creating the entry manually
+Cannot find a matching record for the provided DOI (None), creating the entry manually
+Cannot find a matching record for the provided DOI (None), creating the entry manually
+Cannot find a matching record for the provided DOI (None), creating the entry manually
+Cannot find a matching record for the provided DOI (None), creating the entry manually
+Cannot find a matching record for the provided DOI (None), creating the entry manually
+Cannot find a matching record for the provided DOI (None), creating the entry manually
 </pre></div>
 </div>
 </div>
@@ -1390,8 +1104,29 @@ Cannot find a matching record for the provided DOI (None), creating the entry ma
     <tr>
       <th>0</th>
       <td>Ocn-RedSea.Felis.2000</td>
+      <td>A coral oxygen isotope record from the norther...</td>
+      <td>Ahmed H. Nawar and Gerold Wefer and Thomas Fel...</td>
+      <td>10.1029/1999PA000477</td>
+      <td>None</td>
+      <td>2000.0</td>
+      <td>Paleoceanography</td>
+      <td>15</td>
+      <td>6.0</td>
+      <td>679-694</td>
+      <td>article</td>
+      <td>Wiley-Blackwell</td>
+      <td>None</td>
+      <td>felis2000acoraloxygenisotoperecord</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Ocn-RedSea.Felis.2000</td>
       <td>Tropical sea surface temperatures for the past...</td>
-      <td>Casey P. Saenger and Nerilie J. Abram and Cyri...</td>
+      <td>Jessica E. Tierney and Kevin J. Anchukaitis an...</td>
       <td>10.1002/2014PA002717</td>
       <td>None</td>
       <td>2015.0</td>
@@ -1409,7 +1144,7 @@ Cannot find a matching record for the provided DOI (None), creating the entry ma
       <td>None</td>
     </tr>
     <tr>
-      <th>1</th>
+      <th>2</th>
       <td>Ocn-RedSea.Felis.2000</td>
       <td>World Data Center for Paleoclimatology</td>
       <td>T. Felis</td>
@@ -1430,31 +1165,10 @@ Cannot find a matching record for the provided DOI (None), creating the entry ma
       <td>https://www.ncdc.noaa.gov/paleo/study/1861</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>Ocn-RedSea.Felis.2000</td>
-      <td>A coral oxygen isotope record from the norther...</td>
-      <td>Yossi Loya and Thomas Felis and Maoz Fine and ...</td>
-      <td>10.1029/1999PA000477</td>
-      <td>None</td>
-      <td>2000.0</td>
-      <td>Paleoceanography</td>
-      <td>15</td>
-      <td>6.0</td>
-      <td>679-694</td>
-      <td>article</td>
-      <td>Wiley-Blackwell</td>
-      <td>None</td>
-      <td>felis2000acoraloxygenisotoperecord</td>
-      <td>None</td>
-      <td>None</td>
-      <td>None</td>
-      <td>None</td>
-    </tr>
-    <tr>
       <th>3</th>
-      <td>Eur-CoastofPortugal.Abrantes.2011</td>
-      <td>PANGAEA</td>
-      <td>F. Abrantes</td>
+      <td>Ant-WAIS-Divide.Severinghaus.2012</td>
+      <td>This study</td>
+      <td>Severinghaus J.</td>
       <td>None</td>
       <td>None</td>
       <td>NaN</td>
@@ -1465,28 +1179,28 @@ Cannot find a matching record for the provided DOI (None), creating the entry ma
       <td>dataCitation</td>
       <td>None</td>
       <td>None</td>
-      <td>abrantes2011httpsdoipangaeade101594pangaea7849...</td>
+      <td>severinghaus0thisstudyDataCitation</td>
       <td>None</td>
-      <td>PANGAEA</td>
       <td>None</td>
-      <td>https://doi.pangaea.de/10.1594/PANGAEA.784992</td>
+      <td>None</td>
+      <td>This study</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>Eur-CoastofPortugal.Abrantes.2011</td>
-      <td>Climate of the last millennium at the southern...</td>
-      <td>C Lopes and C Santos and F Abrantes and B Mont...</td>
-      <td>10.3354/cr01010</td>
+      <td>Ant-WAIS-Divide.Severinghaus.2012</td>
+      <td>Little Ice Age cold interval in West Antarctic...</td>
+      <td>Anais J. Orsi and Bruce D. Cornuelle and Jeffr...</td>
+      <td>10.1029/2012GL051260</td>
       <td>None</td>
-      <td>2011.0</td>
-      <td>Climate Research</td>
-      <td>48</td>
-      <td>2.0</td>
-      <td>261-280</td>
+      <td>2012.0</td>
+      <td>Geophysical Research Letters</td>
+      <td>39</td>
+      <td>9.0</td>
+      <td>L09710</td>
       <td>article</td>
-      <td>Inter-Research Science Center</td>
+      <td>Wiley-Blackwell</td>
       <td>None</td>
-      <td>abrantes2011climateofthelastmillenniu</td>
+      <td>orsi2012littleiceagecoldintervali</td>
       <td>None</td>
       <td>None</td>
       <td>None</td>
@@ -1555,8 +1269,7 @@ Cannot find a matching record for the provided DOI (None), creating the entry ma
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1595,7 +1308,7 @@ Cannot find a matching record for the provided DOI (None), creating the entry ma
   <div class="footer-item">
     
 <p class="component-author">
-By Deborah Khider
+By Deborah Khider, Varun Ratnakar
 </p>
 
   </div>
@@ -1629,8 +1342,8 @@ By Deborah Khider
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
