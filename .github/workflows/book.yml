@@ -33,7 +33,7 @@ jobs:
     
     - name: Build the Book
       run: |
-        jupyter-book build jupyterBook
+        jupyter-book build .
     
     - name: GitHub Pages Actions
       uses: peaceiris/actions-gh-pages@v3.6.1
