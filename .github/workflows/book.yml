@@ -1,9 +1,9 @@
 name: Build JupyterBook 
 
 on:
-  push:
-    branches: [ jupyterbook ]
-  # Allows you to run this workflow manually from the Actions tab
+  workflow_run:
+    workflows: ["Sync JupyterBook"]  # Must match the exact name of your sync workflow
+    types: [completed]
   workflow_dispatch:
 
 jobs:
