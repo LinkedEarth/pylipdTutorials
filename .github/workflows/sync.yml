@@ -1,0 +1,158 @@
+name: Sync JupyterBook
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-jupyterbook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v3
+        with:
+          ref: main
+          path: main-branch
+      
+      - name: Checkout jupyterbook branch
+        uses: actions/checkout@v3
+        with:
+          ref: jupyterbook
+          path: jupyterbook-branch
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Sync directories from main to jupyterbook
+        run: |
+          # Function to sync a directory
+          sync_dir() {
+            SRC="main-branch/$1"
+            DEST="jupyterbook-branch/$1"
+            
+            # If source directory exists
+            if [ -d "$SRC" ]; then
+              # Create destination directory if it doesn't exist
+              mkdir -p "$DEST"
+              
+              # Remove all files in the destination directory
+              rm -rf "$DEST"/*
+              
+              # Check if the source directory has any files
+              if [ "$(ls -A $SRC)" ]; then
+                # Copy all files from source to destination
+                cp -r "$SRC"/* "$DEST"/
+                echo "Synced files from $1"
+              else
+                echo "Source directory $1 is empty"
+              fi
+            else
+              echo "Source directory $1 does not exist"
+            fi
+          }
+          
+          # Sync each directory
+          sync_dir "data"
+          sync_dir "figures"
+          sync_dir "notebooks"
+      
+      - name: Update _toc.yml file dynamically
+        run: |
+          # Start with the static parts of the TOC
+          cat > jupyterbook-branch/_toc.yml << 'EOL'
+          format: jb-book
+          root: intro
+          parts:
+            - caption: Dataset Representation in PyLiPD
+              chapters:
+              - file: graph.md
+              - file: standards.md
+          EOL
+          
+          # Function to add notebooks with a specific prefix to the TOC
+          add_notebooks() {
+            local PREFIX=$1
+            local CAPTION=$2
+            local NOTEBOOK_DIR="jupyterbook-branch/notebooks"
+            local NOTEBOOKS=()
+            
+            # Check if the notebooks directory exists
+            if [ -d "$NOTEBOOK_DIR" ]; then
+              # Find all notebooks with the given prefix
+              for notebook in "$NOTEBOOK_DIR"/${PREFIX}_*.ipynb; do
+                # Check if the pattern actually matched any files
+                if [ -f "$notebook" ]; then
+                  # Get just the filename without the path
+                  notebook_file=$(basename "$notebook")
+                  # Add to our array
+                  NOTEBOOKS+=("$notebook_file")
+                fi
+              done
+              
+              # If we found any matching notebooks, add them to the TOC
+              if [ ${#NOTEBOOKS[@]} -gt 0 ]; then
+                # Sort the notebooks alphabetically
+                IFS=
+      
+      - name: Configure Git
+        run: |
+          cd jupyterbook-branch
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+      
+      - name: Commit and push changes
+        run: |
+          cd jupyterbook-branch
+          git add -A  # Add all changes, including deletions
+          
+          # Only commit if there are changes
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update jupyterbook branch with latest files from main"
+            git push
+            echo "Changes committed and pushed to jupyterbook branch"
+          fi
+\n' sorted_notebooks=($(sort <<<"${NOTEBOOKS[*]}"))
+                unset IFS
+                
+                # Add the section to the TOC
+                cat >> jupyterbook-branch/_toc.yml << EOL
+            - caption: $CAPTION
+              chapters:
+          EOL
+                
+                # Add each notebook
+                for notebook in "${sorted_notebooks[@]}"; do
+                  echo "              - file: notebooks/$notebook" >> jupyterbook-branch/_toc.yml
+                done
+              fi
+            fi
+          }
+          
+          # Add each group of notebooks
+          add_notebooks "L0" "Getting Started"
+          add_notebooks "L1" "Basic Functionalities"
+          add_notebooks "L2" "Advanced Querying using SPARQL"
+          add_notebooks "L3" "Editing LiPD files"
+          
+          echo "Dynamically updated _toc.yml file based on notebook prefixes"
+      
+      - name: Configure Git
+        run: |
+          cd jupyterbook-branch
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+      
+      - name: Commit and push changes
+        run: |
+          cd jupyterbook-branch
+          git add -A  # Add all changes, including deletions
+          
+          # Only commit if there are changes
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update jupyterbook branch with latest files from main"
+            git push
+            echo "Changes committed and pushed to jupyterbook branch"
+          fi
