@@ -1,27 +1,25 @@
-# Table of contents
-# Learn more at https://jupyterbook.org/customize/toc.html
-
 format: jb-book
 root: intro
 parts:
-  - caption: Dataset Representation in PyLiPD
-    chapters:
-    - file: graph.md
-    - file: standards.md
-  - caption: Getting Started
-    chapters:
-    - file: notebooks/L0_loading_lipd_datasets.ipynb
-    - file: notebooks/L0_lipd_object.ipynb
-  - caption: Basic Functionalities
-    chapters:
-    - file: notebooks/L1_working_with_ensembles.ipynb
-    - file: notebooks/L1_getting_information.ipynb
-    - file: notebooks/L1_filtering.ipynb
-  - caption: Advanced Querying using SPARQL
-    chapters:
-    - file: notebooks/L2_custom_queries.ipynb
-    - file: notebooks/L2_using_graphdb.ipynb
-  - caption: Editing LiPD files
-    chapters:
-    - file: notebooks/L3_dataset_class.ipynb
-    - file: notebooks/L3_editing.ipynb
+- caption: Dataset Representation in PyLiPD
+  chapters:
+  - file: graph.md
+  - file: standards.md
+- caption: Getting Started
+  chapters:
+  - file: notebooks/L0_lipd_object.ipynb
+  - file: notebooks/L0_loading_lipd_datasets.ipynb
+- caption: Basic Functionalities
+  chapters:
+  - file: notebooks/L1_filtering.ipynb
+  - file: notebooks/L1_getting_information.ipynb
+  - file: notebooks/L1_working_with_ensembles.ipynb
+- caption: Advanced Querying using SPARQL
+  chapters:
+  - file: notebooks/L2_custom_queries.ipynb
+  - file: notebooks/L2_using_graphdb.ipynb
+- caption: Editing LiPD files
+  chapters:
+  - file: notebooks/L3_create_template.ipynb
+  - file: notebooks/L3_dataset_class.ipynb
+  - file: notebooks/L3_editing.ipynb
