@@ -1,0 +1,2458 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Creating LiPD files from a tabular template &#8212; PyLiPD Tutorials</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/L3_c_create_template';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Editing LiPD Files" href="L3_b_editing.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/LinkedEarth_small.png" class="logo__image only-light" alt="PyLiPD Tutorials - Home"/>
+    <script>document.write(`<img src="../_static/LinkedEarth_small.png" class="logo__image only-dark" alt="PyLiPD Tutorials - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    An introduction to the PyLiPD package
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Dataset Representation in PyLiPD</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../graph.html">Understanding how datasets are represented in PyLiPD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../standards.html">Standard, Standards, and More Standards.</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="L0_a_loading_lipd_datasets.html">Reading LiPD formatted datasets with <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="L0_b_lipd_object.html">Basic manipulation of <code class="docutils literal notranslate"><span class="pre">pylipd.LiPD</span></code> objects</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Functionalities</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="L1_a_working_with_ensembles.html">Working with ensembles in <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="L1_b_getting_information.html">Retrieving textual information from LiPD files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="L1_c_filtering.html">Filtering through queries</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Querying using SPARQL</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="L2_a_custom_queries.html">Custom queries on LiPD objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="L2_b_using_graphdb.html">Directly querying the LiPDGraph</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Editing LiPD files</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="L3_a_dataset_class.html">The Dataset class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="L3_b_editing.html">Editing LiPD Files</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Creating LiPD files from a tabular template</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/LinkedEarth/pylipdTutorials/jupyterbook?urlpath=tree/notebooks/L3_c_create_template.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/LinkedEarth/pylipdTutorials" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/LinkedEarth/pylipdTutorials/issues/new?title=Issue%20on%20page%20%2Fnotebooks/L3_c_create_template.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/L3_c_create_template.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Creating LiPD files from a tabular template</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preamble">Preamble</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#goals">Goals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keywords">Keywords</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-requisites">Pre-requisites</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-description">Data Description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstration">Demonstration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opening-our-template-file">Opening our template file</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata">Metadata</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#root-metadata">Root metadata</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#dealing-with-new-standard-terms">Dealing with new standard terms</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#publication-metadata">Publication metadata</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#location-metadata">Location metadata</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#funding-metadata">Funding metadata</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paleodata">PaleoData</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chrondata">ChronData</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-an-ensemble-table">Adding an ensemble table</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-a-lipd-file">Writing a LiPD file</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opening-the-lipd-file">Opening the LiPD file</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <img src="https://github.com/LinkedEarth/Logos/blob/master/PyLiPD/pyLiPD_logo1_transparent.png?raw=true" width ="800">
+<section class="tex2jax_ignore mathjax_ignore" id="creating-lipd-files-from-a-tabular-template">
+<h1>Creating LiPD files from a tabular template<a class="headerlink" href="#creating-lipd-files-from-a-tabular-template" title="Link to this heading">#</a></h1>
+<section id="authors">
+<h2>Authors<a class="headerlink" href="#authors" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://orcid.org/0000-0001-7501-8430">Deborah Khider</a></p>
+</section>
+<section id="preamble">
+<h2>Preamble<a class="headerlink" href="#preamble" title="Link to this heading">#</a></h2>
+<p>If you are planning to only create one LiPD file on your own, we recommend using the <a class="reference external" href="https://lipd.net/playground">LiPD Playground</a>. This tutorial is intended for users who wish to programatically create multiple files from a template.</p>
+<p>In this example, we use <a class="reference external" href="https://github.com/LinkedEarth/pylipdTutorials/blob/main/data/Oman.Tian.2023.xlsx">this templated file</a>. You can repurpose the Excel template as needed; it is only meant as an example.</p>
+<section id="goals">
+<h3>Goals<a class="headerlink" href="#goals" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Create a LiPD formatted Dataset from an excel template</p></li>
+<li><p>Adding an ensemble table</p></li>
+<li><p>Save the Dataset to a file</p></li>
+</ul>
+<p>Reading Time: 40 minutes</p>
+</section>
+<section id="keywords">
+<h3>Keywords<a class="headerlink" href="#keywords" title="Link to this heading">#</a></h3>
+<p>LiPD, LinkedEarth Ontology, Object-Oriented Programming</p>
+</section>
+<section id="pre-requisites">
+<h3>Pre-requisites<a class="headerlink" href="#pre-requisites" title="Link to this heading">#</a></h3>
+<p>An understanding of OOP and the LinkedEarth Ontology. Completion of <a class="reference internal" href="#L3_dataset_class.ipynb"><span class="xref myst">Dataset class example</span></a>. An understanding how to <a class="reference internal" href="#L3_editing.ipynb"><span class="xref myst">edit LiPD files</span></a> can also be useful.</p>
+<div style="
+    padding: 10px; 
+    background-color: #eef5ff; 
+    border-left: 6px solid #007acc; 
+    margin: 10px 0;">
+    <strong>Note:</strong> Please read the pre-requisites below as it contains valuable information about the LiPD structure, the LinkedEarth Ontology and their relationship to the classes and methods available in PyLiPD.
+</div>
+<p>For reference, below is a diagram of the classed in <code class="docutils literal notranslate"><span class="pre">PyliPD</span></code>, the methods associated with them, and the resulting objects:</p>
+<p><img alt="image" src="https://github.com/LinkedEarth/pylipd/blob/main/examples/notebooks/UMLDiagram.png?raw=true" /></p>
+<p>This diagram will help you create the objects and place them in the appropriate nested structure. Each object is associated with methods that allow you to look at the information present or create that information. Have a look at the <a class="reference external" href="https://pylipd.readthedocs.io/en/latest/api.html#lipd-classes">documentation on the LiPD classes module</a>. If you click on any of the classes, you should notice a pattern in the associated methods:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">get</span></code> + PropertyName allows you to retrieve to values associated with a property</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">set</span></code> + PropertyName allows you to set or change the value for an exisiting property value with another one of type string, float, integer, boolean. If the property value is a list, set will replace any exisitng value already present in the metadata (refer to the diagram below for the expected type).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">add</span></code> + PropertyName allows you to set or add a value for an exisiting property that takes a list.</p></li>
+</ul>
+<p>In addition, there are two functionalies that allow you to add your custom properties: <code class="docutils literal notranslate"><span class="pre">set_non_standard_property</span></code> and <code class="docutils literal notranslate"><span class="pre">add_non_standard_property</span></code>. For now, these properties can only be used for values that do not require a new class to be created.</p>
+<div style="
+    padding: 10px; 
+    background-color: #fff3cd; 
+    border-left: 6px solid #ffcc00; 
+    margin: 10px 0;">
+    <strong>Warning:</strong> LiPD uses a standard vocabulary for some information.
+</div>
+<p>In order to support querying, LiPD files have several standardized fields, which corresponds in most cases to the terms that NOAA World Data Center for paleoclimatology has also standardized:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://lipdverse.org/vocabulary/archivetype/">archiveType</a></p></li>
+<li><p><a class="reference external" href="https://lipdverse.org/vocabulary/interpretation_seasonality/">interpretation_seasonality</a></p></li>
+<li><p><a class="reference external" href="https://lipdverse.org/vocabulary/interpretation_variable/">interpretation_variable</a></p></li>
+<li><p><a class="reference external" href="https://lipdverse.org/vocabulary/paleodata_proxy/">paleoData_proxy</a></p></li>
+<li><p><a class="reference external" href="https://lipdverse.org/vocabulary/paleodata_units/">paleoData_units</a></p></li>
+<li><p><a class="reference external" href="https://lipdverse.org/vocabulary/paleodata_variablename/">paleoData_variableName</a></p></li>
+</ul>
+<p>Consequently, we have represented these names as objects in the Ontology. Therefore, some information that would naturally be entered as a string (e.g., <code class="docutils literal notranslate"><span class="pre">coral</span></code> as an <code class="docutils literal notranslate"><span class="pre">archiveType</span></code>) should result in an object creation. <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code> can help you with this, as long as you don’t forget to create an object!</p>
+<p>There is one big exception to this general rule: <code class="docutils literal notranslate"><span class="pre">paleoData_variableName</span></code>. We understand that in many instances, the name contains more than just the variable name. For instance, paleoceanographers making measurements on the shells of foraminifera often report their variable name with the species name and the geochemical measurement (e.g., “G. ruber Mg/Ca”). To preserve this information at the variable level, the <a class="reference external" href="https://pylipd.readthedocs.io/en/latest/api.html#pylipd.classes.variable.Variable.setName"><code class="docutils literal notranslate"><span class="pre">setName</span></code> method</a> takes a string. To store the <code class="docutils literal notranslate"><span class="pre">paleoData_variableName</span></code> information following the standard vocabulary, use the <a class="reference external" href="https://pylipd.readthedocs.io/en/latest/api.html#pylipd.classes.variable.Variable.setStandardVariable"><code class="docutils literal notranslate"><span class="pre">setStandardVariable</span></code> method</a>.</p>
+</section>
+</section>
+<section id="data-description">
+<h2>Data Description<a class="headerlink" href="#data-description" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Tian, Y., Fleitmann, D., Zhang, Q., Sha, L., Wassenburg, J. A., Axelsson, J., … Cheng, H. (2023). Holocene climate change in southern Oman deciphered by speleothem records and climate model simulations. Nature Communications, 14(1), 4718. doi:<a class="reference external" href="https://www.nature.com/articles/s41467-023-40454-z">10.1038/s41467-023-40454-z</a>.</p></li>
+</ul>
+</section>
+<section id="demonstration">
+<h2>Demonstration<a class="headerlink" href="#demonstration" title="Link to this heading">#</a></h2>
+<p>Let’s import the necessary packages.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pylipd.classes.dataset</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dataset</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pylipd.classes.archivetype</span><span class="w"> </span><span class="kn">import</span> <span class="n">ArchiveTypeConstants</span><span class="p">,</span> <span class="n">ArchiveType</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pylipd.classes.funding</span><span class="w"> </span><span class="kn">import</span> <span class="n">Funding</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pylipd.classes.interpretation</span><span class="w"> </span><span class="kn">import</span> <span class="n">Interpretation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pylipd.classes.interpretationvariable</span><span class="w"> </span><span class="kn">import</span> <span class="n">InterpretationVariableConstants</span><span class="p">,</span> <span class="n">InterpretationVariable</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pylipd.classes.location</span><span class="w"> </span><span class="kn">import</span> <span class="n">Location</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pylipd.classes.paleodata</span><span class="w"> </span><span class="kn">import</span> <span class="n">PaleoData</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pylipd.classes.datatable</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataTable</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pylipd.classes.paleounit</span><span class="w"> </span><span class="kn">import</span> <span class="n">PaleoUnitConstants</span><span class="p">,</span> <span class="n">PaleoUnit</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pylipd.classes.paleovariable</span><span class="w"> </span><span class="kn">import</span> <span class="n">PaleoVariableConstants</span><span class="p">,</span> <span class="n">PaleoVariable</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pylipd.classes.person</span><span class="w"> </span><span class="kn">import</span> <span class="n">Person</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pylipd.classes.publication</span><span class="w"> </span><span class="kn">import</span> <span class="n">Publication</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pylipd.classes.resolution</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resolution</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pylipd.classes.variable</span><span class="w"> </span><span class="kn">import</span> <span class="n">Variable</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pylipd.classes.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pylipd.classes.chrondata</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChronData</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pylipd</span><span class="w"> </span><span class="kn">import</span> <span class="n">LiPD</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="opening-our-template-file">
+<h3>Opening our template file<a class="headerlink" href="#opening-our-template-file" title="Link to this heading">#</a></h3>
+<p>The Excel file contains the following sheets:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">About</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Guidelines</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Metadata</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">paleo1measurementTable1</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">chron1measurementTable1</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Lists</span></code></p></li>
+</ul>
+<p>The information we are interested in contained in <code class="docutils literal notranslate"><span class="pre">Metadata</span></code>, <code class="docutils literal notranslate"><span class="pre">paleo1measurementTable1</span></code> and <code class="docutils literal notranslate"><span class="pre">chron1measurementTable1</span></code>. Notice that the last two sheets follow the <a class="reference external" href="https://lipd.net/playground">LiPD nomenclature</a> closely and this can be helpful to keep track of the tables and where to insert them. However, you may choose any names that is convenient for you.</p>
+<p>Let’s start with the root metadata portion.</p>
+</section>
+<section id="metadata">
+<h3>Metadata<a class="headerlink" href="#metadata" title="Link to this heading">#</a></h3>
+<p>If you have a look at the Metadata sheet in the Excel file, you should notice that the information is orgnaized in four sections:</p>
+<ul class="simple">
+<li><p>root metadata, which contains general information about the dataset such as its name and the type of archive the measurements were made on (e.g., coral, speleothem).</p></li>
+<li><p>Publication information - Note that if more than one publication is associated with the dataset, then this information can be added in seperate columns.</p></li>
+<li><p>Location information</p></li>
+<li><p>Funding information</p></li>
+</ul>
+<p>The first step is to create a function to separate these different sections into four dataframes:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">read_metadata</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Reads the inforamtion contained in the metadata sheet of the Excel template.</span>
+<span class="sd">    Note that the algorithm uses the blank lines in the template to denote the block (e.g., publication).</span>
+
+<span class="sd">    The code returns 4 pieces of information: root meatadata, location metadata, funding metadata, and publication metadata.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># Check for empty rows across all columns</span>
+    <span class="n">empty_rows</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="c1"># Initialize the start index of the first table</span>
+    <span class="n">start_idx</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">tables</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="c1"># Iterate through the indices of the DataFrame</span>
+    <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">empty_rows</span><span class="p">[</span><span class="n">empty_rows</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+        <span class="c1"># Slice from the current start index to the row before the empty row</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">df</span><span class="p">[</span><span class="n">start_idx</span><span class="p">:</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+            <span class="n">current_table</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">start_idx</span><span class="p">:</span><span class="n">idx</span><span class="p">]</span>
+            <span class="c1"># Check if the table should use its first row as header</span>
+            <span class="k">if</span> <span class="n">start_idx</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># Skip header adjustment for the first table</span>
+                <span class="n">current_table</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">current_table</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Set first row as header</span>
+                <span class="n">current_table</span> <span class="o">=</span> <span class="n">current_table</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>  <span class="c1"># Remove the first row from the data</span>
+                <span class="n">current_table</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Reset index after dropping row</span>
+            <span class="n">tables</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_table</span><span class="p">)</span>
+        <span class="c1"># Update start_idx to the row after the current empty row</span>
+        <span class="n">start_idx</span> <span class="o">=</span> <span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span>
+    
+    <span class="c1"># Handle the last table, if any, after the last empty row to the end of the DataFrame</span>
+    <span class="k">if</span> <span class="n">start_idx</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+        <span class="n">current_table</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">start_idx</span><span class="p">:]</span>
+        <span class="k">if</span> <span class="n">start_idx</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># Likely unnecessary check but for consistency</span>
+            <span class="n">current_table</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">current_table</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Set first row as header</span>
+            <span class="n">current_table</span> <span class="o">=</span> <span class="n">current_table</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>  <span class="c1"># Remove the first row from the data</span>
+            <span class="n">current_table</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">tables</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_table</span><span class="p">)</span>
+
+    <span class="c1"># place the tables according to their types</span>
+    <span class="n">root</span><span class="o">=</span><span class="n">tables</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">pub</span><span class="o">=</span><span class="n">tables</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">geo</span><span class="o">=</span><span class="n">tables</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">fund</span><span class="o">=</span><span class="n">tables</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">root</span><span class="p">,</span> <span class="n">pub</span><span class="p">,</span> <span class="n">geo</span><span class="p">,</span> <span class="n">fund</span>    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;../data/Oman.Tian.2023.xlsx&quot;</span>
+<span class="n">sheet_name</span> <span class="o">=</span> <span class="s1">&#39;Metadata&#39;</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="n">sheet_name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the various tables</span>
+<span class="n">root</span><span class="p">,</span> <span class="n">pub</span><span class="p">,</span> <span class="n">geo</span><span class="p">,</span> <span class="n">fund</span> <span class="o">=</span> <span class="n">read_metadata</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The next step is to create an empty <a class="reference external" href="https://pylipd.readthedocs.io/en/latest/api.html#pylipd.classes.dataset.Dataset"><code class="docutils literal notranslate"><span class="pre">Dataset</span></code></a> object so we can start storing the information.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s go over each of the information that we have stored in Pandas Dataframe, namely some root information such as the name of the dataset, geographical location, information about the source of funding, and publication(s) associated with the data.</p>
+<section id="root-metadata">
+<h4>Root metadata<a class="headerlink" href="#root-metadata" title="Link to this heading">#</a></h4>
+<p>Let’s start with the root information:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">root</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>Unnamed: 1</th>
+      <th>Unnamed: 2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Dataset Name (siteName.firstAuthor.year)</td>
+      <td>Oman.Tian.2023</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Archive Type</td>
+      <td>speleothem</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Original Source_URL (if applicable)</td>
+      <td>https://www.nature.com/articles/s41467-023-404...</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Investigators (Lastname, first; lastname2, fir...</td>
+      <td>Tian, Y., Fleitmann, D., Zhang, Q., Sha, L. J,...</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Let’s add this information to the <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> object. You can see a list of possible properties under the <a class="reference external" href="https://pylipd.readthedocs.io/en/latest/api.html#pylipd.classes.dataset.Dataset"><code class="docutils literal notranslate"><span class="pre">Dataset</span></code> class in the documentation</a>. Remember from our previous tutorial that <code class="docutils literal notranslate"><span class="pre">set+PropertyName</span></code> is meant to create the information, which is what we will be doing here. If you cannot find you property in the list, don’t panic! The LiPD format is flexible so you can add your own properties using the <a class="reference external" href="https://pylipd.readthedocs.io/en/latest/api.html#pylipd.classes.dataset.Dataset.set_non_standard_property"><code class="docutils literal notranslate"><span class="pre">set_non_standard_property(key,value)</span></code> function</a>.</p>
+<p>Also, remember that archiveType needs to be set as an object. To do so, we can use the <code class="docutils literal notranslate"><span class="pre">.from_synomym</span></code> method that is applicable to all objects making up the standard vocabulary (see the pre-requistes section from this notebook for more details):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># set the name for the dataset</span>
+<span class="n">archiveType</span> <span class="o">=</span> <span class="n">ArchiveType</span><span class="o">.</span><span class="n">from_synonym</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># Try to identify a standard archiveType name from the vocabulary. </span>
+<span class="k">if</span> <span class="n">archiveType</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">ds</span><span class="o">.</span><span class="n">setArchiveType</span><span class="p">(</span><span class="n">archiveType</span><span class="p">)</span> <span class="c1">#set the archive type</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;This archiveType is not part of the standard vocabulary; check your spelling or create a new one&#39;</span><span class="p">)</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">setOriginalDataUrl</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># set the original data URL</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <a class="reference external" href="https://pylipd.readthedocs.io/en/latest/api.html#pylipd.classes.archivetype.ArchiveTypeConstants"><code class="docutils literal notranslate"><span class="pre">ArchiveTypeConstant</span></code> object</a> also allows you to see what is available in the standard vocabulary and set it directly as:</p>
+<p><code class="docutils literal notranslate"><span class="pre">ds.setArchiveType(ArchiveTypeConstants.Speleothem)</span></code></p>
+<p>Just make sure you impart the <code class="docutils literal notranslate"><span class="pre">ArchiveTypeConstants</span></code> object first.</p>
+<p>Let’s check if the information was stored properly into a <code class="docutils literal notranslate"><span class="pre">ArchiveType</span></code> object:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">getArchiveType</span><span class="p">()</span><span class="o">.</span><span class="n">label</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Speleothem&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Everything looks good! But what happens if you trigger the <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> in the cell above?</p>
+<section id="dealing-with-new-standard-terms">
+<h5>Dealing with new standard terms<a class="headerlink" href="#dealing-with-new-standard-terms" title="Link to this heading">#</a></h5>
+<p>The error raises two possibilities:</p>
+<ol class="arabic simple">
+<li><p>You misspelled the name. The <code class="docutils literal notranslate"><span class="pre">.from_synonym</span></code> function is for exact matches with terms found in the thesaurus. Using a language model to automatically guess could result in errors. This may not be a problem for the archive but you can imagine that the variable name with various isotopes can have very slight changes that have very different scientific interpretations but are close enough that a language models may interpret them as similar items (e.g., d18O and d17O). In an abundance of caution, we decided to not allow for fuzzy matches.</p></li>
+<li><p>You are actually creating a new archiveType. In this case, you need to create a new class in the ontology to represent your new archiveType. In short you need to create a new archiveType object in <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code>:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pylipd.globals.urls</span><span class="w"> </span><span class="kn">import</span> <span class="n">ARCHIVEURL</span>
+<span class="n">mynewarchive</span> <span class="o">=</span> <span class="n">ArchiveType</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ARCHIVEURL</span><span class="si">}</span><span class="s2">#MyArchiveType&quot;</span><span class="p">,</span> <span class="s2">&quot;MyArchiveType&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Yo have now created a new <code class="docutils literal notranslate"><span class="pre">ArchiveType</span></code> object that can be inserted in your dataset. Just make sure that the <code class="docutils literal notranslate"><span class="pre">label</span></code> and <code class="docutils literal notranslate"><span class="pre">id</span></code> field look like the following:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;label: &#39;</span><span class="o">+</span><span class="n">mynewarchive</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ID: &#39;</span><span class="o">+</span><span class="n">mynewarchive</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>label: MyArchiveType
+ID: http://linked.earth/ontology/archive#MyArchiveType
+</pre></div>
+</div>
+</div>
+</div>
+<p>Remember that you will need to do this for every field that has been standardized in the vocabulary:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://lipdverse.org/vocabulary/archivetype/">archiveType</a></p></li>
+<li><p><a class="reference external" href="https://lipdverse.org/vocabulary/interpretation_seasonality/">interpretation_seasonality</a></p></li>
+<li><p><a class="reference external" href="https://lipdverse.org/vocabulary/interpretation_variable/">interpretation_variable</a></p></li>
+<li><p><a class="reference external" href="https://lipdverse.org/vocabulary/paleodata_proxy/">paleoData_proxy</a></p></li>
+<li><p><a class="reference external" href="https://lipdverse.org/vocabulary/paleodata_units/">paleoData_units</a></p></li>
+<li><p><a class="reference external" href="https://lipdverse.org/vocabulary/paleodata_variablename/">paleoData_variableName</a></p></li>
+</ul>
+<p>As with the <code class="docutils literal notranslate"><span class="pre">ArchiveType</span></code> each of these have a corresponding <code class="docutils literal notranslate"><span class="pre">ObjectConstants</span></code> that can be used to see what terms are already available. See the <a class="reference external" href="https://pylipd.readthedocs.io/en/latest/api.html#lipd-controlled-vocabulary">LiPD Controlled Vocabulary module</a> for details.</p>
+<p>The next step is to enter the investigators, which takes a list of <code class="docutils literal notranslate"><span class="pre">Person</span></code> objects (see Figure in the Preamble):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">authors</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Step 1: Split the string by commas</span>
+<span class="n">parts</span> <span class="o">=</span> <span class="n">authors</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+
+<span class="c1"># Prepare a list to hold the formatted names</span>
+<span class="n">investigators</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Step 2: Iterate over the parts to process each</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>  <span class="c1"># Step by 2 since each name and initial are next to each other</span>
+    <span class="n">last_name</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>  <span class="c1"># Remove any leading/trailing whitespace</span>
+    <span class="n">initial</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>  <span class="c1"># The initial follows the last name</span>
+    <span class="n">person</span> <span class="o">=</span> <span class="n">Person</span><span class="p">()</span> <span class="c1"># create the Person object</span>
+    <span class="n">person</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">last_name</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">initial</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">investigators</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">person</span><span class="p">)</span>
+
+<span class="c1"># Step 3: Store the list of Persons into the ds object</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">setInvestigators</span><span class="p">(</span><span class="n">investigators</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s have a quick look at what we’ve done so far:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">getName</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Oman.Tian.2023&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">getInvestigators</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">getName</span><span class="p">()</span> <span class="c1">#get the name of the first person in the list</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Tian, Y.&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Everything looks go so far.</p>
+</section>
+</section>
+<section id="publication-metadata">
+<h4>Publication metadata<a class="headerlink" href="#publication-metadata" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pub</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>5</th>
+      <th>Publication Section</th>
+      <th>Ref #1</th>
+      <th>Ref #2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Authors (last, first; last2, first2; separate ...</td>
+      <td>Tian, Y., Fleitmann, D., Zhang, Q., Sha, L. J,...</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Publication title</td>
+      <td>Holocene climate change in southern Oman decip...</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Journal</td>
+      <td>Nature Communications</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Year</td>
+      <td>2023</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Volume</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Issue</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Pages</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Report Number</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>DOI</td>
+      <td>10.1038/s41467-023-40454-z</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Abstract</td>
+      <td>Qunf Cave oxygen isotope (δ18Oc) record from s...</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Alternate citation in paragraph format (For bo...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The first step is to create a <a class="reference external" href="https://pylipd.readthedocs.io/en/latest/api.html#pylipd.classes.publication.Publication"><code class="docutils literal notranslate"><span class="pre">Publication</span></code> object</a>. In this case, we only have one publication; otherwise you may need to loop over the various columns in the dataframe to create others.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pub1</span> <span class="o">=</span> <span class="n">Publication</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And now let’s add the information. Let’s start with the authors:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">authors</span> <span class="o">=</span> <span class="n">pub</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Step 1: Split the string by commas</span>
+<span class="n">parts</span> <span class="o">=</span> <span class="n">authors</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+
+<span class="c1"># Prepare a list to hold the formatted names</span>
+<span class="n">investigators</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Step 2: Iterate over the parts to process each</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>  <span class="c1"># Step by 2 since each name and initial are next to each other</span>
+    <span class="n">last_name</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>  <span class="c1"># Remove any leading/trailing whitespace</span>
+    <span class="n">initial</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>  <span class="c1"># The initial follows the last name</span>
+    <span class="n">person</span> <span class="o">=</span> <span class="n">Person</span><span class="p">()</span> <span class="c1"># create the Person object</span>
+    <span class="n">person</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">last_name</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">initial</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">investigators</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">person</span><span class="p">)</span>
+
+<span class="c1"># Step 3: Store the list of Persons into the ds object</span>
+<span class="n">pub1</span><span class="o">.</span><span class="n">setAuthors</span><span class="p">(</span><span class="n">investigators</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s add other information:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pub1</span><span class="o">.</span><span class="n">setTitle</span><span class="p">(</span><span class="n">pub</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">pub1</span><span class="o">.</span><span class="n">setJournal</span><span class="p">(</span><span class="n">pub</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">pub1</span><span class="o">.</span><span class="n">setYear</span><span class="p">(</span><span class="n">pub</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">pub1</span><span class="o">.</span><span class="n">setDOI</span><span class="p">(</span><span class="n">pub</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">pub1</span><span class="o">.</span><span class="n">setAbstract</span><span class="p">(</span><span class="n">pub</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">9</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s add our <code class="docutils literal notranslate"><span class="pre">Publication</span></code> object to the <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> object:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">addPublication</span><span class="p">(</span><span class="n">pub1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="location-metadata">
+<h4>Location metadata<a class="headerlink" href="#location-metadata" title="Link to this heading">#</a></h4>
+<p>Let’s add geographical information next. First, we need to create a <a class="reference external" href="https://pylipd.readthedocs.io/en/latest/api.html#pylipd.classes.location.Location"><code class="docutils literal notranslate"><span class="pre">Location</span></code> object</a>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loc</span> <span class="o">=</span> <span class="n">Location</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geo</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>18</th>
+      <th>Site Information</th>
+      <th>Use appropriate significant digits for all values</th>
+      <th>NaN</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Northernmost latitude (decimal degree, South n...</td>
+      <td>17.17</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Southernmost latitude (decimal degree, South n...</td>
+      <td>17.17</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Easternmost longitude (decimal degree, West ne...</td>
+      <td>54.3</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Westernmost longitude (decimal degree, West ne...</td>
+      <td>54.3</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>elevation (m), below sea level negative</td>
+      <td>650</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loc</span><span class="o">.</span><span class="n">setLatitude</span><span class="p">(</span><span class="n">geo</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">loc</span><span class="o">.</span><span class="n">setLongitude</span><span class="p">(</span><span class="n">geo</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">loc</span><span class="o">.</span><span class="n">setElevation</span><span class="p">(</span><span class="n">geo</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s add the <code class="docutils literal notranslate"><span class="pre">Location</span></code> object into the <code class="docutils literal notranslate"><span class="pre">Dataset</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">setLocation</span><span class="p">(</span><span class="n">loc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="funding-metadata">
+<h4>Funding metadata<a class="headerlink" href="#funding-metadata" title="Link to this heading">#</a></h4>
+<p>Finally, let’s look at funding information:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fund</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>26</th>
+      <th>Funding_Agency</th>
+      <th>Any additional Funding agencies and grants should be entered in Columns C,D, etc.</th>
+      <th>NaN</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Funding_Agency_Name</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Grant</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Principal_Investigator</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>country</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Since no information is available, let’s move on to the PaleoData Section.</p>
+</section>
+</section>
+<section id="paleodata">
+<h3>PaleoData<a class="headerlink" href="#paleodata" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sheet_name</span> <span class="o">=</span> <span class="s1">&#39;paleo1measurementTable1&#39;</span>
+
+<span class="c1"># Read the information into a Pandas DataFrame</span>
+<span class="n">pd_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="n">sheet_name</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="c1"># Drop completely empty rows</span>
+<span class="n">pd_df</span> <span class="o">=</span> <span class="n">pd_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s create a <a class="reference external" href="https://pylipd.readthedocs.io/en/latest/api.html#pylipd.classes.paleodata.PaleoData"><code class="docutils literal notranslate"><span class="pre">PaleoData</span></code> object</a>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">paleodata</span> <span class="o">=</span> <span class="n">PaleoData</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Our next step is to create measurement tables in this object. To do so, we can use the <a class="reference external" href="https://pylipd.readthedocs.io/en/latest/api.html#pylipd.classes.datatable.DataTable"><code class="docutils literal notranslate"><span class="pre">DataTable</span></code> object</a>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">DataTable</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s add some information about the table such as the name and the value use for missin values in the data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span><span class="o">.</span><span class="n">setFileName</span><span class="p">(</span><span class="s2">&quot;paleo0measurement0.csv&quot;</span><span class="p">)</span>
+<span class="n">table</span><span class="o">.</span><span class="n">setMissingValue</span><span class="p">(</span><span class="s2">&quot;NaN&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The next step is to add columns to our table. In other words, we need to create some variables.</p>
+<p>Let’s have a look at the sheet in the excel file. It contains three sections:</p>
+<ul class="simple">
+<li><p>Notes, which would be attached to the table</p></li>
+<li><p>Variables information such as the name, units… Each row in the template represents metadata information for each of the column.</p></li>
+<li><p>Data, which contains the numerical values for the variables.</p></li>
+</ul>
+<p>Let’s first create an algorithm that separates the various section and returns the information in three dataframes (Notes, Variables, and Data).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">extract_data</span><span class="p">(</span><span class="n">df</span><span class="p">):</span> 
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This function extracts the relevant sections for measurementTables. </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># Find the index positions of the section headers</span>
+    <span class="n">notes_start</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Notes&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">variables_start</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Variables&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">data_start</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Data&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># Extract sections, ensuring blank rows are removed</span>
+    <span class="n">df_notes</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">notes_start</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span><span class="n">variables_start</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Extract the Variables section</span>
+    <span class="n">df_variables_raw</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">variables_start</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span><span class="n">data_start</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Set the first row as the header for the Variables section</span>
+    <span class="n">df_variables</span> <span class="o">=</span> <span class="n">df_variables_raw</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Data rows</span>
+    <span class="n">df_variables</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">df_variables_raw</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Set first row as column headers</span>
+
+    <span class="c1"># Extract the Data section</span>
+    <span class="n">df_data_raw</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">data_start</span> <span class="o">+</span> <span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Correctly skip the first row and set the second row as the header</span>
+    <span class="n">df_data</span> <span class="o">=</span> <span class="n">df_data_raw</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Skip first row, keep rest</span>
+    <span class="n">df_data</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">df_data_raw</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Use second row as column headers</span>
+    <span class="n">df_data</span> <span class="o">=</span> <span class="n">df_data</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span> <span class="c1"># Drop the columns with NaN.</span>
+
+    <span class="k">return</span> <span class="n">df_notes</span><span class="p">,</span> <span class="n">df_variables</span><span class="p">,</span> <span class="n">df_data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_notes</span><span class="p">,</span> <span class="n">df_variables</span><span class="p">,</span> <span class="n">df_data</span> <span class="o">=</span> <span class="n">extract_data</span><span class="p">(</span><span class="n">pd_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s loop over the variables and get the relevant information. We will also be calculating some relevant information such as the average value and average resolution.</p>
+<p>In LiPD, each variable is also given a unique ID. The function below generates one:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">uuid</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_unique_id</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;PYD&#39;</span><span class="p">):</span>
+    <span class="c1"># Generate a random UUID</span>
+    <span class="n">random_uuid</span> <span class="o">=</span> <span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span>  <span class="c1"># Generates a random UUID.</span>
+    
+    <span class="c1"># Convert UUID format to the specific format we need</span>
+    <span class="c1"># UUID is usually in the form &#39;1e2a2846-2048-480b-9ec6-674daef472bd&#39; so we slice and insert accordingly</span>
+    <span class="n">id_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">random_uuid</span><span class="p">)</span>
+    <span class="n">formatted_id</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">prefix</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">id_str</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">id_str</span><span class="p">[</span><span class="mi">9</span><span class="p">:</span><span class="mi">13</span><span class="p">]</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">id_str</span><span class="p">[</span><span class="mi">14</span><span class="p">:</span><span class="mi">18</span><span class="p">]</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">id_str</span><span class="p">[</span><span class="mi">19</span><span class="p">:</span><span class="mi">23</span><span class="p">]</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">id_str</span><span class="p">[</span><span class="mi">24</span><span class="p">:</span><span class="mi">28</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+    
+    <span class="k">return</span> <span class="n">formatted_id</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Also, remember that some of these fiels should result in objects (namely, variableName and units). Let’s see if we can get the information from the synonyms before we proceed:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_variables</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>variableName</th>
+      <th>variableType</th>
+      <th>Units</th>
+      <th>ProxyObservationType</th>
+      <th>InferredVariableType</th>
+      <th>TakenAtDepth</th>
+      <th>InferredFrom</th>
+      <th>notes</th>
+      <th>Interpretation1_variable</th>
+      <th>Interpretation1_variableDetail</th>
+      <th>...</th>
+      <th>calibration_reference</th>
+      <th>calibration_uncertainty</th>
+      <th>calibration_uncertaintyType</th>
+      <th>sensorGenus</th>
+      <th>sensorSpecies</th>
+      <th>PhysicalSample_Name</th>
+      <th>PhysicalSample_Identifier</th>
+      <th>PhysicalSample_hasIGSN</th>
+      <th>PhysicalSample_housedAt</th>
+      <th>PhysicalSample_collectionMethod</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Depth</td>
+      <td>NaN</td>
+      <td>mm</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Age</td>
+      <td>NaN</td>
+      <td>year BP</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>d18O</td>
+      <td>NaN</td>
+      <td>per mil VPDB</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>d13C</td>
+      <td>NaN</td>
+      <td>per mil VPDB</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>4 rows × 28 columns</p>
+</div></div></div>
+</div>
+<p>Let’s start with identifying proper objects for the variableNames:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">check_names</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df_variables</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">check_names</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;variableName&#39;</span><span class="p">]]</span><span class="o">=</span> <span class="n">PaleoVariable</span><span class="o">.</span><span class="n">from_synonym</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;variableName&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">label</span>
+
+<span class="n">check_names</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Depth&#39;: &#39;depth&#39;, &#39;Age&#39;: &#39;age&#39;, &#39;d18O&#39;: &#39;d18O&#39;, &#39;d13C&#39;: &#39;d13C&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<p>This looks good for the variable names. Let’s move on to the units:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">check_units</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df_variables</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">check_units</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Units&#39;</span><span class="p">]]</span><span class="o">=</span> <span class="n">PaleoUnit</span><span class="o">.</span><span class="n">from_synonym</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Units&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">label</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">check_units</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Units&#39;</span><span class="p">]]</span><span class="o">=</span> <span class="kc">None</span>
+
+<span class="n">check_units</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mm&#39;: &#39;mm&#39;, &#39;year BP&#39;: &#39;yr BP&#39;, &#39;per mil VPDB&#39;: None}
+</pre></div>
+</div>
+</div>
+</div>
+<p>The “per mil VPDB” unit is not recognized automatically (not in the thesaurus). Let’s have a look at the <a class="reference internal" href="#"><span class="xref myst">standard unit names</span></a> and see if we can manually select one that will match.</p>
+<p>The <a class="reference external" href="https://lipdverse.org/vocabulary/paleodata_units/#permil">permil</a> entry will match, so let’s use this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">variables</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">df_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">diff</span><span class="p">()[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">Res</span> <span class="o">=</span> <span class="n">Resolution</span><span class="p">()</span> <span class="c1"># create a Resolution object - it will be the same for all variables since it is based on time</span>
+<span class="n">Res</span><span class="o">.</span><span class="n">setMinValue</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">res</span><span class="p">))</span>
+<span class="n">Res</span><span class="o">.</span><span class="n">setMaxValue</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">res</span><span class="p">))</span>
+<span class="n">Res</span><span class="o">.</span><span class="n">setMeanValue</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">res</span><span class="p">))</span>
+<span class="n">Res</span><span class="o">.</span><span class="n">setMedianValue</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">res</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df_variables</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">var</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">()</span>
+    <span class="n">var</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;variableName&#39;</span><span class="p">])</span> <span class="c1"># name of the variable</span>
+    <span class="c1"># Now let&#39;s do the standard name</span>
+    <span class="n">var</span><span class="o">.</span><span class="n">setStandardVariable</span><span class="p">(</span><span class="n">PaleoVariable</span><span class="o">.</span><span class="n">from_synonym</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;variableName&#39;</span><span class="p">]))</span>
+    <span class="n">var</span><span class="o">.</span><span class="n">setColumnNumber</span><span class="p">(</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#The column in which the data is stored. Note that LiPD uses index 1</span>
+    <span class="n">var</span><span class="o">.</span><span class="n">setVariableId</span><span class="p">(</span><span class="n">generate_unique_id</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;TIAN&#39;</span><span class="p">))</span> <span class="c1"># create a unique ID for the variable</span>
+    <span class="c1"># Units</span>
+    <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Units&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;per mil VPDB&#39;</span><span class="p">:</span>
+        <span class="n">var</span><span class="o">.</span><span class="n">setUnits</span><span class="p">(</span><span class="n">PaleoUnit</span><span class="o">.</span><span class="n">from_synonym</span><span class="p">(</span><span class="s1">&#39;permil&#39;</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">var</span><span class="o">.</span><span class="n">setUnits</span><span class="p">(</span><span class="n">PaleoUnit</span><span class="o">.</span><span class="n">from_synonym</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Units&#39;</span><span class="p">]))</span>
+    <span class="c1"># Make sure the data is JSON writable (no numpy arrays or Pandas DataFrame)</span>
+    <span class="n">var</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">df_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()))</span>
+    <span class="c1"># Calculate some metadata about the values - this makes it easier to do some queries later on, including looking for data in a particular time slice. </span>
+    <span class="n">var</span><span class="o">.</span><span class="n">setMinValue</span><span class="p">(</span><span class="n">df_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+    <span class="n">var</span><span class="o">.</span><span class="n">setMaxValue</span><span class="p">(</span><span class="n">df_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+    <span class="n">var</span><span class="o">.</span><span class="n">setMeanValue</span><span class="p">(</span><span class="n">df_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+    <span class="n">var</span><span class="o">.</span><span class="n">setMedianValue</span><span class="p">(</span><span class="n">df_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">())</span>
+    <span class="c1"># Attach the resolution metadata information to the variable</span>
+    <span class="n">var</span><span class="o">.</span><span class="n">setResolution</span><span class="p">(</span><span class="n">Res</span><span class="p">)</span>
+    <span class="c1"># append in the list</span>
+    <span class="n">variables</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>                    
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s now put our variables in the <code class="docutils literal notranslate"><span class="pre">DataTable</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span><span class="o">.</span><span class="n">setVariables</span><span class="p">(</span><span class="n">variables</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">Table</span></code> into the <code class="docutils literal notranslate"><span class="pre">PaleoData</span></code> object:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">paleodata</span><span class="o">.</span><span class="n">setMeasurementTables</span><span class="p">([</span><span class="n">table</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And finally, the <code class="docutils literal notranslate"><span class="pre">PaleoData</span></code> object into the <code class="docutils literal notranslate"><span class="pre">Dataset</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">addPaleoData</span><span class="p">(</span><span class="n">paleodata</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="chrondata">
+<h3>ChronData<a class="headerlink" href="#chrondata" title="Link to this heading">#</a></h3>
+<p>The next step is to create a ChronData object to store the information about chronology. In the last section, we used an OOP approach to add the information about each variable. In this section, we will use an approach involving <code class="docutils literal notranslate"><span class="pre">Pandas</span> <span class="pre">DataFrame</span></code>.</p>
+<p>Let’s open the data. The same function we wrote to read in the PaleoData can be used here since the template is the same for both objects.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sheet_name</span> <span class="o">=</span> <span class="s1">&#39;chron1measurementTable1&#39;</span>
+
+<span class="c1"># Read the information into a Pandas DataFrame</span>
+<span class="n">cd_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="n">sheet_name</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="c1"># Drop completely empty rows</span>
+<span class="n">cd_df</span> <span class="o">=</span> <span class="n">cd_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s create a <a class="reference external" href="https://pylipd.readthedocs.io/en/latest/api.html#pylipd.classes.chrondata.ChronData"><code class="docutils literal notranslate"><span class="pre">ChronData</span></code> object</a>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chrondata</span> <span class="o">=</span> <span class="n">ChronData</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We need to create a <code class="docutils literal notranslate"><span class="pre">DataTable</span></code>, a process similar to what we have done for the PaleoData:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chrontable</span> <span class="o">=</span> <span class="n">DataTable</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s add some basic information about the table:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chrontable</span><span class="o">.</span><span class="n">setFileName</span><span class="p">(</span><span class="s2">&quot;chron0measurement0.csv&quot;</span><span class="p">)</span>
+<span class="n">chrontable</span><span class="o">.</span><span class="n">setMissingValue</span><span class="p">(</span><span class="s2">&quot;NaN&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfc_notes</span><span class="p">,</span> <span class="n">dfc_variables</span><span class="p">,</span> <span class="n">dfc_data</span> <span class="o">=</span> <span class="n">extract_data</span><span class="p">(</span><span class="n">cd_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will used the <a class="reference external" href="https://pylipd.readthedocs.io/en/latest/api.html#pylipd.classes.datatable.DataTable.setDataFrame"><code class="docutils literal notranslate"><span class="pre">setDataFrame</span></code> function</a> to incorporate the columns into the table. In this framework, the values are held in a dataframe (which is represented by <code class="docutils literal notranslate"><span class="pre">dfc_data</span></code> in our framework) and the metadata for each variable is added as attributes to the DataFrame. Since the variables and units associated with Chronology are not yet standardized, we can leave them as strings:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metadata_dict</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1"># create a dictionary</span>
+
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">dfc_variables</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">temp_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">temp_dict</span><span class="p">[</span><span class="s1">&#39;number&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span>
+    <span class="n">temp_dict</span><span class="p">[</span><span class="s1">&#39;variableName&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;variableName&#39;</span><span class="p">]</span>
+    <span class="n">temp_dict</span><span class="p">[</span><span class="s1">&#39;TSid&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">generate_unique_id</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;TC&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Units&#39;</span><span class="p">]):</span>
+        <span class="n">temp_dict</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Units&#39;</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">temp_dict</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;NA&#39;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">temp_dict</span><span class="p">[</span><span class="s1">&#39;hasMinValue&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">dfc_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+        <span class="n">temp_dict</span><span class="p">[</span><span class="s1">&#39;hasMaxValue&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">dfc_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+        <span class="n">temp_dict</span><span class="p">[</span><span class="s1">&#39;hasMeanValue&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">dfc_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+        <span class="n">temp_dict</span><span class="p">[</span><span class="s1">&#39;hasMedianValue&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">dfc_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">pass</span>      
+    <span class="n">metadata_dict</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;variableName&#39;</span><span class="p">]]</span><span class="o">=</span><span class="n">temp_dict</span>
+
+<span class="n">dfc_data</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="n">metadata_dict</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Use the DataFrame to construct the <code class="docutils literal notranslate"><span class="pre">Table</span></code> object:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chrontable</span><span class="o">.</span><span class="n">setDataFrame</span><span class="p">(</span><span class="n">dfc_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Put the <code class="docutils literal notranslate"><span class="pre">Table</span></code> into the <code class="docutils literal notranslate"><span class="pre">ChronData</span></code> object:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chrondata</span><span class="o">.</span><span class="n">setMeasurementTables</span><span class="p">([</span><span class="n">chrontable</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Put the <code class="docutils literal notranslate"><span class="pre">ChronData</span></code> into the <code class="docutils literal notranslate"><span class="pre">Dataset</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">addChronData</span><span class="p">(</span><span class="n">chrondata</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="adding-an-ensemble-table">
+<h4>Adding an ensemble table<a class="headerlink" href="#adding-an-ensemble-table" title="Link to this heading">#</a></h4>
+<p>This particular dataset also has an ensemble table available in <a class="reference external" href="https://github.com/LinkedEarth/pylipdTutorials/raw/refs/heads/main/data/Oman.Tian.2023.chrondf.csv">Oman.Tian.2023.chrondf.csv</a>. Let’s add the information to an ensembleTable in the LiPD file.</p>
+<p>Let’s first open the data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ens_path</span> <span class="o">=</span> <span class="s2">&quot;../data/Oman.Tian.2023.chrondf.csv&quot;</span>
+
+<span class="n">df_ens</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">ens_path</span><span class="p">)</span>
+<span class="n">df_ens</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>age</th>
+      <th>d18O</th>
+      <th>depth</th>
+      <th>chron_0</th>
+      <th>chron_1</th>
+      <th>chron_2</th>
+      <th>chron_3</th>
+      <th>chron_4</th>
+      <th>chron_5</th>
+      <th>...</th>
+      <th>chron_990</th>
+      <th>chron_991</th>
+      <th>chron_992</th>
+      <th>chron_993</th>
+      <th>chron_994</th>
+      <th>chron_995</th>
+      <th>chron_996</th>
+      <th>chron_997</th>
+      <th>chron_998</th>
+      <th>chron_999</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>401.88</td>
+      <td>-0.20</td>
+      <td>0.00</td>
+      <td>444.0</td>
+      <td>445.0</td>
+      <td>417.0</td>
+      <td>290.0</td>
+      <td>403.0</td>
+      <td>349.0</td>
+      <td>...</td>
+      <td>430.0</td>
+      <td>407.0</td>
+      <td>410.0</td>
+      <td>369.0</td>
+      <td>392.0</td>
+      <td>347.0</td>
+      <td>359.0</td>
+      <td>416.0</td>
+      <td>414.0</td>
+      <td>408.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>408.55</td>
+      <td>-0.59</td>
+      <td>0.69</td>
+      <td>445.0</td>
+      <td>446.0</td>
+      <td>445.0</td>
+      <td>355.0</td>
+      <td>404.0</td>
+      <td>367.0</td>
+      <td>...</td>
+      <td>431.0</td>
+      <td>410.0</td>
+      <td>411.0</td>
+      <td>371.0</td>
+      <td>395.0</td>
+      <td>358.0</td>
+      <td>362.0</td>
+      <td>417.0</td>
+      <td>416.0</td>
+      <td>414.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>424.07</td>
+      <td>-0.58</td>
+      <td>1.37</td>
+      <td>489.0</td>
+      <td>491.0</td>
+      <td>482.0</td>
+      <td>425.0</td>
+      <td>448.0</td>
+      <td>422.0</td>
+      <td>...</td>
+      <td>469.0</td>
+      <td>468.0</td>
+      <td>459.0</td>
+      <td>411.0</td>
+      <td>437.0</td>
+      <td>397.0</td>
+      <td>422.0</td>
+      <td>441.0</td>
+      <td>463.0</td>
+      <td>435.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>438.75</td>
+      <td>-0.73</td>
+      <td>2.06</td>
+      <td>562.0</td>
+      <td>568.0</td>
+      <td>525.0</td>
+      <td>495.0</td>
+      <td>521.0</td>
+      <td>504.0</td>
+      <td>...</td>
+      <td>533.0</td>
+      <td>565.0</td>
+      <td>541.0</td>
+      <td>479.0</td>
+      <td>507.0</td>
+      <td>455.0</td>
+      <td>524.0</td>
+      <td>482.0</td>
+      <td>541.0</td>
+      <td>466.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>450.24</td>
+      <td>-1.26</td>
+      <td>2.75</td>
+      <td>568.0</td>
+      <td>574.0</td>
+      <td>536.0</td>
+      <td>503.0</td>
+      <td>531.0</td>
+      <td>514.0</td>
+      <td>...</td>
+      <td>547.0</td>
+      <td>575.0</td>
+      <td>548.0</td>
+      <td>491.0</td>
+      <td>510.0</td>
+      <td>461.0</td>
+      <td>530.0</td>
+      <td>493.0</td>
+      <td>549.0</td>
+      <td>480.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 1004 columns</p>
+</div></div></div>
+</div>
+<div style="color: white; background-color: #F9ACAA; border-left: 6px solid #CC0000; padding: 0.5em;">
+    &#9888; <strong>Warning:</strong> LiPD files require ensemble tables to have the following format: the first column contains depth and the other column the ensemble members as a list. 
+</div>
+<p>Our first step is to drop the first 3 columns in the DataFrame:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_ens</span> <span class="o">=</span> <span class="n">df_ens</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">:]</span>
+<span class="n">df_ens</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>depth</th>
+      <th>chron_0</th>
+      <th>chron_1</th>
+      <th>chron_2</th>
+      <th>chron_3</th>
+      <th>chron_4</th>
+      <th>chron_5</th>
+      <th>chron_6</th>
+      <th>chron_7</th>
+      <th>chron_8</th>
+      <th>...</th>
+      <th>chron_990</th>
+      <th>chron_991</th>
+      <th>chron_992</th>
+      <th>chron_993</th>
+      <th>chron_994</th>
+      <th>chron_995</th>
+      <th>chron_996</th>
+      <th>chron_997</th>
+      <th>chron_998</th>
+      <th>chron_999</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.00</td>
+      <td>444.0</td>
+      <td>445.0</td>
+      <td>417.0</td>
+      <td>290.0</td>
+      <td>403.0</td>
+      <td>349.0</td>
+      <td>387.0</td>
+      <td>412.0</td>
+      <td>341.0</td>
+      <td>...</td>
+      <td>430.0</td>
+      <td>407.0</td>
+      <td>410.0</td>
+      <td>369.0</td>
+      <td>392.0</td>
+      <td>347.0</td>
+      <td>359.0</td>
+      <td>416.0</td>
+      <td>414.0</td>
+      <td>408.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.69</td>
+      <td>445.0</td>
+      <td>446.0</td>
+      <td>445.0</td>
+      <td>355.0</td>
+      <td>404.0</td>
+      <td>367.0</td>
+      <td>405.0</td>
+      <td>413.0</td>
+      <td>369.0</td>
+      <td>...</td>
+      <td>431.0</td>
+      <td>410.0</td>
+      <td>411.0</td>
+      <td>371.0</td>
+      <td>395.0</td>
+      <td>358.0</td>
+      <td>362.0</td>
+      <td>417.0</td>
+      <td>416.0</td>
+      <td>414.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.37</td>
+      <td>489.0</td>
+      <td>491.0</td>
+      <td>482.0</td>
+      <td>425.0</td>
+      <td>448.0</td>
+      <td>422.0</td>
+      <td>447.0</td>
+      <td>442.0</td>
+      <td>441.0</td>
+      <td>...</td>
+      <td>469.0</td>
+      <td>468.0</td>
+      <td>459.0</td>
+      <td>411.0</td>
+      <td>437.0</td>
+      <td>397.0</td>
+      <td>422.0</td>
+      <td>441.0</td>
+      <td>463.0</td>
+      <td>435.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2.06</td>
+      <td>562.0</td>
+      <td>568.0</td>
+      <td>525.0</td>
+      <td>495.0</td>
+      <td>521.0</td>
+      <td>504.0</td>
+      <td>506.0</td>
+      <td>492.0</td>
+      <td>543.0</td>
+      <td>...</td>
+      <td>533.0</td>
+      <td>565.0</td>
+      <td>541.0</td>
+      <td>479.0</td>
+      <td>507.0</td>
+      <td>455.0</td>
+      <td>524.0</td>
+      <td>482.0</td>
+      <td>541.0</td>
+      <td>466.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2.75</td>
+      <td>568.0</td>
+      <td>574.0</td>
+      <td>536.0</td>
+      <td>503.0</td>
+      <td>531.0</td>
+      <td>514.0</td>
+      <td>511.0</td>
+      <td>501.0</td>
+      <td>555.0</td>
+      <td>...</td>
+      <td>547.0</td>
+      <td>575.0</td>
+      <td>548.0</td>
+      <td>491.0</td>
+      <td>510.0</td>
+      <td>461.0</td>
+      <td>530.0</td>
+      <td>493.0</td>
+      <td>549.0</td>
+      <td>480.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 1001 columns</p>
+</div></div></div>
+</div>
+<p>Next, let’s create the proper dataframe format. The first column will stay the same. The second column will contain each values on the ensemble in a list:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Let&#39;s keep the first column (depth) in place</span>
+<span class="n">ens_table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;depth&#39;</span><span class="p">:</span> <span class="n">df_ens</span><span class="p">[</span><span class="s1">&#39;depth&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()})</span>
+
+<span class="c1"># Add the year data - each row will contain one vector from a data array. </span>
+<span class="n">array</span> <span class="o">=</span> <span class="n">df_ens</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">ens_table</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">array</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span>
+<span class="n">ens_table</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>depth</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.00</td>
+      <td>[444.0, 445.0, 417.0, 290.0, 403.0, 349.0, 387...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.69</td>
+      <td>[445.0, 446.0, 445.0, 355.0, 404.0, 367.0, 405...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.37</td>
+      <td>[489.0, 491.0, 482.0, 425.0, 448.0, 422.0, 447...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2.06</td>
+      <td>[562.0, 568.0, 525.0, 495.0, 521.0, 504.0, 506...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2.75</td>
+      <td>[568.0, 574.0, 536.0, 503.0, 531.0, 514.0, 511...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Add attributes to the Pandas Dataframe to store the metadata.</p>
+<div style="color: white; background-color: #F9ACAA; border-left: 6px solid #CC0000; padding: 0.5em;">
+    &#9888; <strong>Warning:</strong> Metadata attributes are necessary to save a LiPD file. 
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_year_columns</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">,:])</span>
+<span class="n">year_columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_year_columns</span><span class="p">)]</span>
+<span class="n">ens_table</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;number&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">year_columns</span><span class="p">),</span> <span class="s1">&#39;variableName&#39;</span><span class="p">:</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;yr AD&#39;</span><span class="p">,</span> <span class="s1">&#39;TSid&#39;</span><span class="p">:</span><span class="n">generate_unique_id</span><span class="p">()},</span>
+    <span class="s1">&#39;depth&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;number&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;variableName&#39;</span><span class="p">:</span> <span class="s1">&#39;depth&#39;</span><span class="p">,</span> <span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;cm&#39;</span><span class="p">,</span> <span class="s1">&#39;TSid&#39;</span><span class="p">:</span><span class="n">generate_unique_id</span><span class="p">()}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s create a <code class="docutils literal notranslate"><span class="pre">DataTable</span></code> object for our ensemble table:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ensemble_table</span> <span class="o">=</span> <span class="n">DataTable</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ensemble_table</span><span class="o">.</span><span class="n">setDataFrame</span><span class="p">(</span><span class="n">ens_table</span><span class="p">)</span>
+<span class="n">ensemble_table</span><span class="o">.</span><span class="n">setFileName</span><span class="p">(</span><span class="s2">&quot;chron0model0ensemble0.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now add the table to a model:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">addEnsembleTable</span><span class="p">(</span><span class="n">ensemble_table</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And add the Model to a ChronData object:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chrondata</span><span class="o">.</span><span class="n">addModeledBy</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="writing-a-lipd-file">
+<h3>Writing a LiPD file<a class="headerlink" href="#writing-a-lipd-file" title="Link to this heading">#</a></h3>
+<p>The last step in this process is to write to a LiPD file. To do so, you need to pass the Dataset <code class="docutils literal notranslate"><span class="pre">ds</span></code> back into a LiPD object:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lipd</span> <span class="o">=</span> <span class="n">LiPD</span><span class="p">()</span>
+<span class="n">lipd</span><span class="o">.</span><span class="n">load_datasets</span><span class="p">([</span><span class="n">ds</span><span class="p">])</span>
+<span class="n">lipd</span><span class="o">.</span><span class="n">create_lipd</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">getName</span><span class="p">(),</span> <span class="s2">&quot;../data/Oman.Tian.2023.lpd&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="opening-the-lipd-file">
+<h3>Opening the LiPD file<a class="headerlink" href="#opening-the-lipd-file" title="Link to this heading">#</a></h3>
+<p>Let’s re-open the LiPD file that we have just created and check some of our work.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="n">LiPD</span><span class="p">()</span>
+<span class="n">file</span> <span class="o">=</span> <span class="s2">&quot;../data/Oman.Tian.2023.lpd&quot;</span>
+
+<span class="n">L</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading 1 LiPD files
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  2.93it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s get the name of the dataset:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="o">.</span><span class="n">get_all_dataset_names</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Oman.Tian.2023&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_essential</span> <span class="o">=</span> <span class="n">L</span><span class="o">.</span><span class="n">get_timeseries_essentials</span><span class="p">()</span>
+
+<span class="n">df_essential</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>dataSetName</th>
+      <th>archiveType</th>
+      <th>geo_meanLat</th>
+      <th>geo_meanLon</th>
+      <th>geo_meanElev</th>
+      <th>paleoData_variableName</th>
+      <th>paleoData_values</th>
+      <th>paleoData_units</th>
+      <th>paleoData_proxy</th>
+      <th>paleoData_proxyGeneral</th>
+      <th>time_variableName</th>
+      <th>time_values</th>
+      <th>time_units</th>
+      <th>depth_variableName</th>
+      <th>depth_values</th>
+      <th>depth_units</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Oman.Tian.2023</td>
+      <td>Speleothem</td>
+      <td>17.17</td>
+      <td>54.3</td>
+      <td>650.0</td>
+      <td>d13C</td>
+      <td>[-2.71, -4.12, -3.45, -3.11, -3.61, -4.86, -4....</td>
+      <td>permil</td>
+      <td>None</td>
+      <td>None</td>
+      <td>age</td>
+      <td>[401.88, 408.55, 424.07, 438.75, 450.24, 461.3...</td>
+      <td>yr BP</td>
+      <td>depth</td>
+      <td>[0.0, 0.69, 1.37, 2.06, 2.75, 3.43, 4.12, 4.81...</td>
+      <td>mm</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Oman.Tian.2023</td>
+      <td>Speleothem</td>
+      <td>17.17</td>
+      <td>54.3</td>
+      <td>650.0</td>
+      <td>d18O</td>
+      <td>[-0.2, -0.59, -0.58, -0.73, -1.26, -1.19, -0.6...</td>
+      <td>permil</td>
+      <td>None</td>
+      <td>None</td>
+      <td>age</td>
+      <td>[401.88, 408.55, 424.07, 438.75, 450.24, 461.3...</td>
+      <td>yr BP</td>
+      <td>depth</td>
+      <td>[0.0, 0.69, 1.37, 2.06, 2.75, 3.43, 4.12, 4.81...</td>
+      <td>mm</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Oman.Tian.2023</td>
+      <td>Speleothem</td>
+      <td>17.17</td>
+      <td>54.3</td>
+      <td>650.0</td>
+      <td>d13C</td>
+      <td>[-2.71, -4.12, -3.45, -3.11, -3.61, -4.86, -4....</td>
+      <td>permil</td>
+      <td>None</td>
+      <td>None</td>
+      <td>age</td>
+      <td>[401.88, 408.55, 424.07, 438.75, 450.24, 461.3...</td>
+      <td>yr BP</td>
+      <td>depth</td>
+      <td>[0.0, 0.69, 1.37, 2.06, 2.75, 3.43, 4.12, 4.81...</td>
+      <td>mm</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Oman.Tian.2023</td>
+      <td>Speleothem</td>
+      <td>17.17</td>
+      <td>54.3</td>
+      <td>650.0</td>
+      <td>d18O</td>
+      <td>[-0.2, -0.59, -0.58, -0.73, -1.26, -1.19, -0.6...</td>
+      <td>permil</td>
+      <td>None</td>
+      <td>None</td>
+      <td>age</td>
+      <td>[401.88, 408.55, 424.07, 438.75, 450.24, 461.3...</td>
+      <td>yr BP</td>
+      <td>depth</td>
+      <td>[0.0, 0.69, 1.37, 2.06, 2.75, 3.43, 4.12, 4.81...</td>
+      <td>mm</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Oman.Tian.2023</td>
+      <td>Speleothem</td>
+      <td>17.17</td>
+      <td>54.3</td>
+      <td>650.0</td>
+      <td>d13C</td>
+      <td>[-2.71, -4.12, -3.45, -3.11, -3.61, -4.86, -4....</td>
+      <td>permil</td>
+      <td>None</td>
+      <td>None</td>
+      <td>age</td>
+      <td>[401.88, 408.55, 424.07, 438.75, 450.24, 461.3...</td>
+      <td>yr BP</td>
+      <td>depth</td>
+      <td>[0.0, 0.69, 1.37, 2.06, 2.75, 3.43, 4.12, 4.81...</td>
+      <td>mm</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>And voila! The LiPD file is ready to be used.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="L3_b_editing.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Editing LiPD Files</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preamble">Preamble</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#goals">Goals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keywords">Keywords</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-requisites">Pre-requisites</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-description">Data Description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstration">Demonstration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opening-our-template-file">Opening our template file</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata">Metadata</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#root-metadata">Root metadata</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#dealing-with-new-standard-terms">Dealing with new standard terms</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#publication-metadata">Publication metadata</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#location-metadata">Location metadata</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#funding-metadata">Funding metadata</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paleodata">PaleoData</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chrondata">ChronData</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-an-ensemble-table">Adding an ensemble table</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-a-lipd-file">Writing a LiPD file</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opening-the-lipd-file">Opening the LiPD file</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Deborah Khider, Varun Ratnakar
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

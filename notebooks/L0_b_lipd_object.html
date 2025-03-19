@@ -59,11 +59,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/L0_lipd_object';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/L0_b_lipd_object';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Working with ensembles in PyLiPD" href="L1_working_with_ensembles.html" />
-    <link rel="prev" title="Reading LiPD formatted datasets with PyLiPD" href="L0_loading_lipd_datasets.html" />
+    <link rel="next" title="Working with ensembles in PyLiPD" href="L1_a_working_with_ensembles.html" />
+    <link rel="prev" title="Reading LiPD formatted datasets with PyLiPD" href="L0_a_loading_lipd_datasets.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -188,24 +188,25 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="L0_loading_lipd_datasets.html">Reading LiPD formatted datasets with <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="L0_a_loading_lipd_datasets.html">Reading LiPD formatted datasets with <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code></a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Basic manipulation of <code class="docutils literal notranslate"><span class="pre">pylipd.LiPD</span></code> objects</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Functionalities</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="L1_working_with_ensembles.html">Working with ensembles in <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="L1_getting_information.html">Retrieving textual information from LiPD files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="L1_filtering.html">Filtering through queries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="L1_a_working_with_ensembles.html">Working with ensembles in <code class="docutils literal notranslate"><span class="pre">PyLiPD</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="L1_b_getting_information.html">Retrieving textual information from LiPD files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="L1_c_filtering.html">Filtering through queries</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Querying using SPARQL</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="L2_custom_queries.html">Custom queries on LiPD objects</a></li>
-<li class="toctree-l1"><a class="reference internal" href="L2_using_graphdb.html">Directly querying the LiPDGraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="L2_a_custom_queries.html">Custom queries on LiPD objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="L2_b_using_graphdb.html">Directly querying the LiPDGraph</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Editing LiPD files</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="L3_dataset_class.html">The Dataset class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="L3_editing.html">Editing LiPD Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="L3_a_dataset_class.html">The Dataset class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="L3_b_editing.html">Editing LiPD Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="L3_c_create_template.html">Creating LiPD files from a tabular template</a></li>
 </ul>
 
     </div>
@@ -260,7 +261,7 @@
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/LinkedEarth/pylipdTutorials/jupyterbook?urlpath=tree/notebooks/L0_lipd_object.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/LinkedEarth/pylipdTutorials/jupyterbook?urlpath=tree/notebooks/L0_b_lipd_object.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -308,7 +309,7 @@
       
       
       
-      <li><a href="https://github.com/LinkedEarth/pylipdTutorials/issues/new?title=Issue%20on%20page%20%2Fnotebooks/L0_lipd_object.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/LinkedEarth/pylipdTutorials/issues/new?title=Issue%20on%20page%20%2Fnotebooks/L0_b_lipd_object.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -338,7 +339,7 @@
       
       
       
-      <li><a href="../_sources/notebooks/L0_lipd_object.ipynb" target="_blank"
+      <li><a href="../_sources/notebooks/L0_b_lipd_object.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -1695,7 +1696,7 @@ Name: 4, Length: 90, dtype: object
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="L0_loading_lipd_datasets.html"
+       href="L0_a_loading_lipd_datasets.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
@@ -1704,7 +1705,7 @@ Name: 4, Length: 90, dtype: object
       </div>
     </a>
     <a class="right-next"
-       href="L1_working_with_ensembles.html"
+       href="L1_a_working_with_ensembles.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
