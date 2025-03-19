@@ -1,0 +1,42 @@
+name: Build JupyterBook 
+
+on:
+  workflow_run:
+    workflows: ["Sync JupyterBook"]  # Must match the exact name of your sync workflow
+    types: [completed]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
+    steps:
+
+    - name: Checkout files in repo
+      uses: actions/checkout@v3
+
+    - name: Setup Miniconda
+      uses: conda-incubator/setup-miniconda@v2
+      with:
+        activate-environment: pylipd
+        environment-file: environment.yml
+        python-version: "3.11"
+        auto-activate-base: false
+
+    - name: Install JupyterBook
+      run: |
+        conda activate pylipd
+        pip install jupyter-book>=0.7.0b
+        conda list
+    
+    - name: Build the Book
+      run: |
+        jupyter-book build .
+    
+    - name: GitHub Pages Actions
+      uses: peaceiris/actions-gh-pages@v3.6.1
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./_build/html
