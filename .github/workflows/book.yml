@@ -16,6 +16,8 @@ jobs:
 
     - name: Checkout files in repo
       uses: actions/checkout@v3
+      with:
+        ref: jupyterbook
 
     - name: Setup Miniconda
       uses: conda-incubator/setup-miniconda@v2
