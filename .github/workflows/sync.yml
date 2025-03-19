@@ -10,26 +10,39 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout main branch
+    - name: Checkout repository
       uses: actions/checkout@v4
       with:
-        fetch-depth: 0
+        fetch-depth: 0  # Fetch full history to allow branch switching
 
-    - name: Fetch JupyterBook branch
+    - name: Fetch all branches
       run: |
-        git fetch origin jupyterbook:jupyterbook
+        git fetch --all
 
-    - name: Checkout JupyterBook branch
+    - name: Switch to jupyterbook branch
       run: |
-        git checkout jupyterbook
+        if git rev-parse --verify origin/jupyterbook; then
+          git checkout jupyterbook
+        else
+          echo "Branch 'jupyterbook' does not exist. Creating it..."
+          git checkout -b jupyterbook
+        fi
 
-    - name: Copy data, figures, and notebooks from main
+    - name: Sync files from main branch
       run: |
         git checkout main -- data figures notebooks
         git add data figures notebooks
 
+    - name: Verify copied files
+      run: |
+        echo "Verifying copied directories..."
+        ls -la data
+        ls -la figures
+        ls -la notebooks
+
     - name: Generate _toc.yml
       run: |
+        echo "Generating _toc.yml..."
         cat <<EOF > _toc.yml
         format: jb-book
         root: intro
@@ -43,29 +56,32 @@ jobs:
         EOF
 
         for file in notebooks/L0_*.ipynb; do
-          echo "    - file: $file" >> _toc.yml
+          [ -e "$file" ] && echo "    - file: $file" >> _toc.yml
         done
 
         echo "  - caption: Basic Functionalities" >> _toc.yml
         echo "    chapters:" >> _toc.yml
         for file in notebooks/L1_*.ipynb; do
-          echo "    - file: $file" >> _toc.yml
+          [ -e "$file" ] && echo "    - file: $file" >> _toc.yml
         done
 
         echo "  - caption: Advanced Querying using SPARQL" >> _toc.yml
         echo "    chapters:" >> _toc.yml
         for file in notebooks/L2_*.ipynb; do
-          echo "    - file: $file" >> _toc.yml
+          [ -e "$file" ] && echo "    - file: $file" >> _toc.yml
         done
 
         echo "  - caption: Editing LiPD files" >> _toc.yml
         echo "    chapters:" >> _toc.yml
         for file in notebooks/L3_*.ipynb; do
-          echo "    - file: $file" >> _toc.yml
+          [ -e "$file" ] && echo "    - file: $file" >> _toc.yml
         done
+
+    - name: Show _toc.yml contents
+      run: cat _toc.yml
 
     - name: Commit and push changes
       run: |
         git add _toc.yml
-        git commit -m "Sync notebooks and update _toc.yml" || echo "No changes to commit"
+        git commit -m "Sync files and update _toc.yml" || echo "No changes to commit"
         git push origin jupyterbook
