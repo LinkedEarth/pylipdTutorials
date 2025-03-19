@@ -13,7 +13,8 @@ The notebooks are organized in three levels:
 
 - Level 0: Basic functionalities, such as loading a dataset in the LiPD format, working with the resulting `LiPD` object, and exporting the information to a [Pandas DataFrame](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html) for further analysis.
 - Level 1: Using wrapper functions to get information about the variables contained in the datasets, filtering by specific metadata (e.g., variable name), obtaining a bilbiography and working with age ensembles.
-- Level 2: Using [SPARQL](https://www.w3.org/TR/rdf-sparql-query/) directly to query the `LiPD` object. 
+- Level 2: Using [SPARQL](https://www.w3.org/TR/rdf-sparql-query/) directly to query the `LiPD` object.
+- Level 3: Editing and creating LiPD files
 
 ## Read-only
 
