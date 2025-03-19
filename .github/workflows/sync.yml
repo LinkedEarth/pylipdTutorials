@@ -1,93 +1,86 @@
-name: Sync to JupyterBook
-
+name: Sync JupyterBook
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
-  sync:
+  sync-jupyterbook:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: write
+    defaults:
+      run:
+        shell: bash -l {0}
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+    - uses: actions/checkout@v4
       with:
-        fetch-depth: 0  # Fetch full history to allow branch switching
+        fetch-depth: 0
 
-    - name: Fetch all branches
-      run: |
-        git fetch --all
+    - uses: conda-incubator/setup-miniconda@v2
+      with:
+        activate-environment: pylipd
+        environment-file: environment.yml
+        auto-activate-base: false
 
-    - name: Switch to jupyterbook branch
+    - name: Install dependencies
       run: |
-        if git ls-remote --exit-code --heads origin jupyterbook; then
-          git checkout jupyterbook
-        else
-          echo "Branch 'jupyterbook' does not exist. Creating it..."
-          git checkout -b jupyterbook
-          git push -u origin jupyterbook
-        fi
+        conda activate pylipd
+        pip install pyyaml
 
-    - name: Ensure clean branch state
+    - name: Configure Git
       run: |
-        git reset --hard origin/jupyterbook
-        git clean -fd
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-    - name: Sync files from main branch
+    - name: Copy Files and Update TOC
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        git checkout main -- data figures notebooks
-        git add data figures notebooks
+        git checkout jupyterbook
+        rm -rf notebooks/ data/ figures/
+        git checkout main -- notebooks/ data/ figures/
+        
+        cat << 'EOF' > update_toc.py
+        import yaml
+        import glob
+        import os
 
-    - name: Verify copied files
-      run: |
-        echo "Verifying copied directories..."
-        ls -la data
-        ls -la figures
-        ls -la notebooks
+        toc = {
+            'format': 'jb-book',
+            'root': 'intro',
+            'parts': [
+                {'caption': 'Dataset Representation in PyLiPD', 'chapters': [
+                    {'file': 'graph.md'},
+                    {'file': 'standards.md'}
+                ]},
+                {'caption': 'Getting Started', 'chapters': []},
+                {'caption': 'Basic Functionalities', 'chapters': []},
+                {'caption': 'Advanced Querying using SPARQL', 'chapters': []},
+                {'caption': 'Editing LiPD files', 'chapters': []}
+            ]
+        }
 
-    - name: Generate _toc.yml
-      run: |
-        echo "Generating _toc.yml..."
-        cat <<EOF > _toc.yml
-        format: jb-book
-        root: intro
-        parts:
-          - caption: Dataset Representation in PyLiPD
-            chapters:
-            - file: graph.md
-            - file: standards.md
-          - caption: Getting Started
-            chapters:
+        level_map = {'L0': 1, 'L1': 2, 'L2': 3, 'L3': 4}  # Mapping to correct sections
+
+        notebooks = sorted(glob.glob('notebooks/L*.ipynb'))
+
+        for nb in notebooks:
+            level = os.path.basename(nb)[:2]  # Extract L0, L1, etc.
+            if level in level_map:
+                part_index = level_map[level]
+                toc['parts'][part_index]['chapters'].append({'file': nb})
+
+        with open('_toc.yml', 'w') as f:
+            yaml.dump(toc, f, sort_keys=False)
         EOF
+        
+        conda activate pylipd
+        python update_toc.py
 
-        for file in notebooks/L0_*.ipynb; do
-          [ -e "$file" ] && echo "    - file: $file" >> _toc.yml
-        done
-
-        echo "  - caption: Basic Functionalities" >> _toc.yml
-        echo "    chapters:" >> _toc.yml
-        for file in notebooks/L1_*.ipynb; do
-          [ -e "$file" ] && echo "    - file: $file" >> _toc.yml
-        done
-
-        echo "  - caption: Advanced Querying using SPARQL" >> _toc.yml
-        echo "    chapters:" >> _toc.yml
-        for file in notebooks/L2_*.ipynb; do
-          [ -e "$file" ] && echo "    - file: $file" >> _toc.yml
-        done
-
-        echo "  - caption: Editing LiPD files" >> _toc.yml
-        echo "    chapters:" >> _toc.yml
-        for file in notebooks/L3_*.ipynb; do
-          [ -e "$file" ] && echo "    - file: $file" >> _toc.yml
-        done
-
-    - name: Show _toc.yml contents
-      run: cat _toc.yml
-
-    - name: Commit and push changes
-      run: |
-        git add _toc.yml
-        git commit -m "Sync files and update _toc.yml" || echo "No changes to commit"
-        git push origin jupyterbook || git push origin jupyterbook --force
+        git add notebooks/ data/ figures/ _toc.yml
+        if ! git diff --staged --quiet; then
+          git commit -m "Auto-sync notebooks, data, figures, and update TOC"
+          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}"
+          git push origin jupyterbook
+        fi
