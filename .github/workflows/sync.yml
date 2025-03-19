@@ -21,12 +21,18 @@ jobs:
 
     - name: Switch to jupyterbook branch
       run: |
-        if git rev-parse --verify origin/jupyterbook; then
+        if git ls-remote --exit-code --heads origin jupyterbook; then
           git checkout jupyterbook
         else
           echo "Branch 'jupyterbook' does not exist. Creating it..."
           git checkout -b jupyterbook
+          git push -u origin jupyterbook
         fi
+
+    - name: Ensure clean branch state
+      run: |
+        git reset --hard origin/jupyterbook
+        git clean -fd
 
     - name: Sync files from main branch
       run: |
@@ -84,4 +90,4 @@ jobs:
       run: |
         git add _toc.yml
         git commit -m "Sync files and update _toc.yml" || echo "No changes to commit"
-        git push origin jupyterbook
+        git push origin jupyterbook || git push origin jupyterbook --force
