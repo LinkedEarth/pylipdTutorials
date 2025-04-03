@@ -1094,9 +1094,9 @@ ID: http://linked.earth/ontology/archive#MyArchiveType
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loc</span><span class="o">.</span><span class="n">setLatitude</span><span class="p">(</span><span class="n">geo</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">loc</span><span class="o">.</span><span class="n">setLongitude</span><span class="p">(</span><span class="n">geo</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">loc</span><span class="o">.</span><span class="n">setElevation</span><span class="p">(</span><span class="n">geo</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loc</span><span class="o">.</span><span class="n">setLatitude</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">geo</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]))</span>
+<span class="n">loc</span><span class="o">.</span><span class="n">setLongitude</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">geo</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]))</span>
+<span class="n">loc</span><span class="o">.</span><span class="n">setElevation</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">geo</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">]))</span>
 </pre></div>
 </div>
 </div>
@@ -1500,10 +1500,10 @@ ID: http://linked.earth/ontology/archive#MyArchiveType
     <span class="c1"># Make sure the data is JSON writable (no numpy arrays or Pandas DataFrame)</span>
     <span class="n">var</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">df_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()))</span>
     <span class="c1"># Calculate some metadata about the values - this makes it easier to do some queries later on, including looking for data in a particular time slice. </span>
-    <span class="n">var</span><span class="o">.</span><span class="n">setMinValue</span><span class="p">(</span><span class="n">df_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
-    <span class="n">var</span><span class="o">.</span><span class="n">setMaxValue</span><span class="p">(</span><span class="n">df_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
-    <span class="n">var</span><span class="o">.</span><span class="n">setMeanValue</span><span class="p">(</span><span class="n">df_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
-    <span class="n">var</span><span class="o">.</span><span class="n">setMedianValue</span><span class="p">(</span><span class="n">df_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">())</span>
+    <span class="n">var</span><span class="o">.</span><span class="n">setMinValue</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">df_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()))</span>
+    <span class="n">var</span><span class="o">.</span><span class="n">setMaxValue</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">df_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()))</span>
+    <span class="n">var</span><span class="o">.</span><span class="n">setMeanValue</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">df_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>
+    <span class="n">var</span><span class="o">.</span><span class="n">setMedianValue</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">df_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()))</span>
     <span class="c1"># Attach the resolution metadata information to the variable</span>
     <span class="n">var</span><span class="o">.</span><span class="n">setResolution</span><span class="p">(</span><span class="n">Res</span><span class="p">)</span>
     <span class="c1"># append in the list</span>
@@ -2143,7 +2143,7 @@ ID: http://linked.earth/ontology/archive#MyArchiveType
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading 1 LiPD files
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  2.93it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  3.36it/s]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..

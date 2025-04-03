@@ -524,7 +524,7 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading 16 LiPD files
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████████████████████████████████████| 16/16 [00:00&lt;00:00, 136.57it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|███████████████████████████████████████████| 16/16 [00:00&lt;00:00, 64.19it/s]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
@@ -547,7 +547,7 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading 3 LiPD files
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████████| 3/3 [00:00&lt;00:00,  3.74it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████████| 3/3 [00:01&lt;00:00,  2.45it/s]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
@@ -707,138 +707,83 @@ document.write(`
     <tr>
       <th>0</th>
       <td>Ocn-RedSea.Felis.2000</td>
-      <td>27.8500</td>
+      <td>27.85</td>
       <td>34.3200</td>
       <td>-6.0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>Ant-WAIS-Divide.Severinghaus.2012</td>
-      <td>-79.4630</td>
-      <td>-112.1250</td>
-      <td>1766.0</td>
+      <td>Ocn-RedSea.Felis.2000</td>
+      <td>27.85</td>
+      <td>34.3200</td>
+      <td>-6.0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>Asi-SourthAndMiddleUrals.Demezhko.2007</td>
-      <td>55.0000</td>
-      <td>59.5000</td>
-      <td>1900.0</td>
+      <td>Ocn-RedSea.Felis.2000</td>
+      <td>27.85</td>
+      <td>34.3200</td>
+      <td>-6.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>Ocn-AlboranSea436B.Nieto-Moreno.2013</td>
-      <td>36.2053</td>
-      <td>-4.3133</td>
-      <td>-1108.0</td>
+      <td>Ocn-RedSea.Felis.2000</td>
+      <td>27.85</td>
+      <td>34.3200</td>
+      <td>-6.0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>Eur-SpannagelCave.Mangini.2005</td>
-      <td>47.1000</td>
-      <td>11.6000</td>
-      <td>2347.0</td>
+      <td>Ocn-RedSea.Felis.2000</td>
+      <td>27.85</td>
+      <td>34.3200</td>
+      <td>-6.0</td>
     </tr>
     <tr>
-      <th>5</th>
-      <td>Ocn-FeniDrift.Richter.2009</td>
-      <td>55.5000</td>
-      <td>-13.9000</td>
-      <td>-2543.0</td>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
     </tr>
     <tr>
-      <th>6</th>
-      <td>Eur-LakeSilvaplana.Trachsel.2010</td>
-      <td>46.5000</td>
-      <td>9.8000</td>
-      <td>1791.0</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>Ocn-PedradeLume-CapeVerdeIslands.Moses.2006</td>
-      <td>16.7600</td>
+      <th>147</th>
+      <td>CO06MOPE</td>
+      <td>16.75</td>
       <td>-22.8883</td>
       <td>-5.0</td>
     </tr>
     <tr>
-      <th>8</th>
-      <td>Ocn-SinaiPeninsula,RedSea.Moustafa.2000</td>
-      <td>27.8483</td>
-      <td>34.3100</td>
-      <td>-3.0</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>Eur-NorthernSpain.Martin-Chivelet.2011</td>
-      <td>42.9000</td>
-      <td>-3.5000</td>
-      <td>1250.0</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>Arc-Kongressvatnet.D'Andrea.2012</td>
-      <td>78.0217</td>
-      <td>13.9311</td>
-      <td>94.0</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>Eur-CoastofPortugal.Abrantes.2011</td>
-      <td>41.1000</td>
-      <td>-8.9000</td>
-      <td>-80.0</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>Eur-SpanishPyrenees.Dorado-Linan.2012</td>
-      <td>42.5000</td>
-      <td>1.0000</td>
-      <td>1200.0</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>Eur-FinnishLakelands.Helama.2014</td>
-      <td>62.0000</td>
-      <td>28.3250</td>
-      <td>130.0</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>Eur-NorthernScandinavia.Esper.2012</td>
-      <td>68.0000</td>
-      <td>25.0000</td>
-      <td>300.0</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>Eur-Stockholm.Leijonhufvud.2009</td>
-      <td>59.3200</td>
-      <td>18.0600</td>
-      <td>10.0</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>Crystal.McCabe-Glynn.2013</td>
-      <td>36.5900</td>
-      <td>-118.8200</td>
-      <td>1386.0</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>ODP846.Lawrence.2006</td>
-      <td>-3.1000</td>
-      <td>-90.8000</td>
-      <td>-3296.0</td>
-    </tr>
-    <tr>
-      <th>18</th>
+      <th>148</th>
       <td>CO06MOPE</td>
-      <td>16.7500</td>
+      <td>16.75</td>
+      <td>-22.8883</td>
+      <td>-5.0</td>
+    </tr>
+    <tr>
+      <th>149</th>
+      <td>CO06MOPE</td>
+      <td>16.75</td>
+      <td>-22.8883</td>
+      <td>-5.0</td>
+    </tr>
+    <tr>
+      <th>150</th>
+      <td>CO06MOPE</td>
+      <td>16.75</td>
+      <td>-22.8883</td>
+      <td>-5.0</td>
+    </tr>
+    <tr>
+      <th>151</th>
+      <td>CO06MOPE</td>
+      <td>16.75</td>
       <td>-22.8883</td>
       <td>-5.0</td>
     </tr>
   </tbody>
 </table>
+<p>152 rows × 4 columns</p>
 </div></div></div>
 </div>
 </section>
@@ -852,60 +797,60 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;d18O&#39;,
- &#39;year&#39;,
- &#39;uncertainty_temperature&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;year&#39;,
+ &#39;d18O&#39;,
  &#39;temperature&#39;,
- &#39;depth_top&#39;,
- &#39;depth_bottom&#39;,
- &#39;Mg_Ca&#39;,
+ &#39;uncertainty_temperature&#39;,
  &#39;notes&#39;,
+ &#39;Mg_Ca&#39;,
+ &#39;depth_bottom&#39;,
+ &#39;depth_top&#39;,
  &#39;Uk37&#39;,
  &#39;trsgi&#39;,
  &#39;MXD&#39;,
- &#39;depth_dating&#39;,
- &#39;230th/238u_uncertainty&#39;,
- &#39;238u_uncertainty&#39;,
+ &#39;corr_age&#39;,
+ &#39;230th age_uncertainty&#39;,
+ &#39;230th/238u&#39;,
  &#39;232th&#39;,
- &#39;d234u_undertainty&#39;,
- &#39;230th/232th_uncertainty&#39;,
- &#39;depth&#39;,
+ &#39;230th age&#39;,
+ &#39;d234uinitial_uncertainty&#39;,
+ &#39;depth_dating&#39;,
+ &#39;230th age_uncertaity&#39;,
  &#39;230th/232th&#39;,
  &#39;d234u&#39;,
- &#39;238u&#39;,
- &#39;230th/238u&#39;,
- &#39;230th age_uncertainty&#39;,
- &#39;d234uinitial_uncertainty&#39;,
- &#39;Year&#39;,
- &#39;d234uinitial&#39;,
- &#39;sample&#39;,
- &#39;corr_age_uncert&#39;,
- &#39;corr_age&#39;,
- &#39;230th age&#39;,
- &#39;230th age_uncertaity&#39;,
+ &#39;d234u_undertainty&#39;,
  &#39;232th_uncertainty&#39;,
- &#39;age&#39;,
+ &#39;depth&#39;,
+ &#39;238u_uncertainty&#39;,
+ &#39;238u&#39;,
  &#39;d18o&#39;,
- &#39;median&#39;,
- &#39;site/hole&#39;,
- &#39;sample label&#39;,
- &#39;temp prahl&#39;,
- &#39;lower95&#39;,
- &#39;c37 total&#39;,
+ &#39;sample&#39;,
+ &#39;Year&#39;,
+ &#39;230th/238u_uncertainty&#39;,
+ &#39;230th/232th_uncertainty&#39;,
+ &#39;corr_age_uncert&#39;,
+ &#39;d234uinitial&#39;,
+ &#39;age&#39;,
  &#39;u. peregrina d18o&#39;,
  &#39;c. wuellerstorfi d13c&#39;,
- &#39;section&#39;,
+ &#39;site/hole&#39;,
  &#39;d180&#39;,
+ &#39;sample label&#39;,
+ &#39;section&#39;,
+ &#39;sst&#39;,
+ &#39;interval&#39;,
  &#39;u. peregrina d13c&#39;,
  &#39;event&#39;,
- &#39;temp muller&#39;,
  &#39;c. wuellerstorfi d18o&#39;,
+ &#39;temp muller&#39;,
  &#39;depth cr&#39;,
  &#39;depth comp&#39;,
- &#39;ukprime37&#39;,
- &#39;sst&#39;,
+ &#39;median&#39;,
  &#39;upper95&#39;,
- &#39;interval&#39;]
+ &#39;temp prahl&#39;,
+ &#39;ukprime37&#39;,
+ &#39;lower95&#39;,
+ &#39;c37 total&#39;]
 </pre></div>
 </div>
 </div>
@@ -946,32 +891,32 @@ document.write(`
     <tr>
       <th>0</th>
       <td>http://linked.earth/lipd/Ocn-RedSea.Felis.2000...</td>
-      <td>Ocean2kHR_019</td>
-      <td>d18O</td>
+      <td>PYTXPC7HUA2</td>
+      <td>year</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>http://linked.earth/lipd/Eur-SpannagelCave.Man...</td>
-      <td>Eur_001</td>
-      <td>d18O</td>
+      <td>http://linked.earth/lipd/Ant-WAIS-Divide.Sever...</td>
+      <td>PYTAAFWZCUK</td>
+      <td>year</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>http://linked.earth/lipd/Ocn-PedradeLume-CapeV...</td>
-      <td>Ocean2kHR_107</td>
-      <td>d18O</td>
+      <td>http://linked.earth/lipd/Asi-SourthAndMiddleUr...</td>
+      <td>PYTX5TD5SOT</td>
+      <td>year</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>http://linked.earth/lipd/Ocn-SinaiPeninsula_Re...</td>
-      <td>Ocean2kHR_018</td>
-      <td>d18O</td>
+      <td>http://linked.earth/lipd/Ocn-AlboranSea436B.Ni...</td>
+      <td>PYTPD2RJATT</td>
+      <td>year</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>http://linked.earth/lipd/Eur-NorthernSpain.Mar...</td>
-      <td>Eur_008</td>
-      <td>d18O</td>
+      <td>http://linked.earth/lipd/Eur-SpannagelCave.Man...</td>
+      <td>PYTSOOGT8HT</td>
+      <td>year</td>
     </tr>
     <tr>
       <th>...</th>
@@ -981,33 +926,33 @@ document.write(`
     </tr>
     <tr>
       <th>93</th>
-      <td>http://linked.earth/lipd/paleo0measurement1.PY...</td>
-      <td>PYTPQ0FJO1S</td>
-      <td>depth comp</td>
-    </tr>
-    <tr>
-      <th>94</th>
-      <td>http://linked.earth/lipd/paleo0measurement0.PY...</td>
-      <td>PYTM9N6HCQM</td>
-      <td>ukprime37</td>
-    </tr>
-    <tr>
-      <th>95</th>
-      <td>http://linked.earth/lipd/paleo0model0ensemble0...</td>
-      <td>PYTDW6AIJPW</td>
-      <td>sst</td>
-    </tr>
-    <tr>
-      <th>96</th>
       <td>http://linked.earth/lipd/chron0model0summary0....</td>
       <td>PYTDIEKUM44</td>
       <td>upper95</td>
     </tr>
     <tr>
+      <th>94</th>
+      <td>http://linked.earth/lipd/paleo0measurement0.PY...</td>
+      <td>PYT95DVDUU3</td>
+      <td>temp prahl</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>http://linked.earth/lipd/paleo0measurement0.PY...</td>
+      <td>PYTM9N6HCQM</td>
+      <td>ukprime37</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>http://linked.earth/lipd/chron0model0summary0....</td>
+      <td>PYTI487BQDZ</td>
+      <td>lower95</td>
+    </tr>
+    <tr>
       <th>97</th>
       <td>http://linked.earth/lipd/paleo0measurement0.PY...</td>
-      <td>PYT2ZB6MLZ9</td>
-      <td>interval</td>
+      <td>PYT10H23U2E</td>
+      <td>c37 total</td>
     </tr>
   </tbody>
 </table>
@@ -1033,8 +978,8 @@ Cannot find a matching record for the provided DOI (None), creating the entry ma
 Cannot find a matching record for the provided DOI (None), creating the entry manually
 Cannot find a matching record for the provided DOI (None), creating the entry manually
 Cannot find a matching record for the provided DOI (None), creating the entry manually
-Cannot find a matching record for the provided DOI (None), creating the entry manually
 Cannot find a matching record for the provided DOI (http://nbn-resolving.de/urn:nbn:de:gbv:46-ep000102745), creating the entry manually
+Cannot find a matching record for the provided DOI (None), creating the entry manually
 Cannot find a matching record for the provided DOI (None), creating the entry manually
 Cannot find a matching record for the provided DOI (None), creating the entry manually
 Cannot find a matching record for the provided DOI (None), creating the entry manually
@@ -1105,29 +1050,8 @@ Cannot find a matching record for the provided DOI (None), creating the entry ma
     <tr>
       <th>0</th>
       <td>Ocn-RedSea.Felis.2000</td>
-      <td>A coral oxygen isotope record from the norther...</td>
-      <td>Ahmed H. Nawar and Gerold Wefer and Thomas Fel...</td>
-      <td>10.1029/1999PA000477</td>
-      <td>None</td>
-      <td>2000.0</td>
-      <td>Paleoceanography</td>
-      <td>15</td>
-      <td>6.0</td>
-      <td>679-694</td>
-      <td>article</td>
-      <td>Wiley-Blackwell</td>
-      <td>None</td>
-      <td>felis2000acoraloxygenisotoperecord</td>
-      <td>None</td>
-      <td>None</td>
-      <td>None</td>
-      <td>None</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Ocn-RedSea.Felis.2000</td>
       <td>Tropical sea surface temperatures for the past...</td>
-      <td>Jessica E. Tierney and Kevin J. Anchukaitis an...</td>
+      <td>Casey P. Saenger and Jens Zinke and Michael N....</td>
       <td>10.1002/2014PA002717</td>
       <td>None</td>
       <td>2015.0</td>
@@ -1139,6 +1063,27 @@ Cannot find a matching record for the provided DOI (None), creating the entry ma
       <td>Wiley-Blackwell</td>
       <td>None</td>
       <td>tierney2015tropicalseasurfacetempera</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Ocn-RedSea.Felis.2000</td>
+      <td>A coral oxygen isotope record from the norther...</td>
+      <td>Jürgen Pätzold and Yossi Loya and Maoz Fine an...</td>
+      <td>10.1029/1999PA000477</td>
+      <td>None</td>
+      <td>2000.0</td>
+      <td>Paleoceanography</td>
+      <td>15</td>
+      <td>6.0</td>
+      <td>679-694</td>
+      <td>article</td>
+      <td>Wiley-Blackwell</td>
+      <td>None</td>
+      <td>felis2000acoraloxygenisotoperecord</td>
       <td>None</td>
       <td>None</td>
       <td>None</td>
@@ -1190,7 +1135,7 @@ Cannot find a matching record for the provided DOI (None), creating the entry ma
       <th>4</th>
       <td>Ant-WAIS-Divide.Severinghaus.2012</td>
       <td>Little Ice Age cold interval in West Antarctic...</td>
-      <td>Anais J. Orsi and Bruce D. Cornuelle and Jeffr...</td>
+      <td>Bruce D. Cornuelle and Jeffrey P. Severinghaus...</td>
       <td>10.1029/2012GL051260</td>
       <td>None</td>
       <td>2012.0</td>
