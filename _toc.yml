@@ -7,19 +7,19 @@ parts:
   - file: standards.md
 - caption: Getting Started
   chapters:
-  - file: notebooks/L0_lipd_object.ipynb
-  - file: notebooks/L0_loading_lipd_datasets.ipynb
+  - file: notebooks/L0_a_loading_lipd_datasets.ipynb
+  - file: notebooks/L0_b_lipd_object.ipynb
 - caption: Basic Functionalities
   chapters:
-  - file: notebooks/L1_filtering.ipynb
-  - file: notebooks/L1_getting_information.ipynb
-  - file: notebooks/L1_working_with_ensembles.ipynb
+  - file: notebooks/L1_a_working_with_ensembles.ipynb
+  - file: notebooks/L1_b_getting_information.ipynb
+  - file: notebooks/L1_c_filtering.ipynb
 - caption: Advanced Querying using SPARQL
   chapters:
-  - file: notebooks/L2_custom_queries.ipynb
-  - file: notebooks/L2_using_graphdb.ipynb
+  - file: notebooks/L2_a_custom_queries.ipynb
+  - file: notebooks/L2_b_using_graphdb.ipynb
 - caption: Editing LiPD files
   chapters:
-  - file: notebooks/L3_create_template.ipynb
-  - file: notebooks/L3_dataset_class.ipynb
-  - file: notebooks/L3_editing.ipynb
+  - file: notebooks/L3_a_dataset_class.ipynb
+  - file: notebooks/L3_b_editing.ipynb
+  - file: notebooks/L3_c_create_template.ipynb
